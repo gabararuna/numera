@@ -22,7 +22,7 @@ export default function CTASection() {
   const { t } = useLanguage()
 
   return (
-    <section className="py-24 px-6 md:px-12 bg-black overflow-hidden relative">
+    <section id="contact" className="py-24 px-6 md:px-12 bg-black overflow-hidden relative">
       <div className="max-w-[1800px] mx-auto">
         <FadeIn>
           <div className="w-full h-[400px] md:h-[600px] border border-white/10 rounded-[2.5rem] bg-transparent relative overflow-hidden">
@@ -63,10 +63,12 @@ export default function CTASection() {
                   {t('cta_description')}
                 </p>
               </FadeIn>
-              <FadeIn delay={0.4}>
+              <FadeIn delay={0.4} className="flex flex-wrap gap-4 md:gap-6 justify-start md:justify-center">
                 <a
                   className="glass-btn group"
-                  href="/contato"
+                  href="https://wa.me/5598992172631"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <span className="relative z-10 text-sm font-light tracking-wide">
                     {t('cta_button1')}
@@ -74,7 +76,7 @@ export default function CTASection() {
                 </a>
                 <a
                   className="glass-btn group"
-                  href="/contato"
+                  href="mailto:gabrielararunasm@gmail.com"
                 >
                   <span className="relative z-10 text-sm font-light tracking-wide">
                     {t('cta_button2')}
@@ -82,7 +84,7 @@ export default function CTASection() {
                 </a>
                 <a
                   className="glass-btn group"
-                  href="/contato"
+                  href="tel:+5598992172631"
                 >
                   <span className="relative z-10 text-sm font-light tracking-wide">
                     {t('cta_button3')}

@@ -63,35 +63,30 @@ export default function TradingInfrastructure() {
   const projects = [
     {
       name: t('project_esticaferias'),
-      logo: { src: '/ecosystem/esticaferias.svg', size: 'h-6.5 mt-0' },
       desc: t('esticaferias_desc'),
       badge: t('badge_calculator'),
       url: 'http://esticaferias.gabrielararuna.com/',
     },
     {
       name: t('project_remunera'),
-      logo: { src: '/ecosystem/remunera.svg', size: 'h-5 mt-2' },
       desc: t('remunera_desc'),
       badge: t('badge_calculator'),
       url: 'http://remunera.gabrielararuna.com/',
     },
     {
       name: t('project_cronos'),
-      logo: { src: '/ecosystem/cronos.svg', size: 'h-6 mt-2' },
       desc: t('cronos_desc'),
       badge: t('badge_app'),
       url: 'https://cronos.gabrielararuna.com/',
     },
     {
       name: t('project_monno'),
-      logo: { src: '/ecosystem/monno.svg', size: 'h-7' },
       desc: t('monno_desc'),
       badge: t('badge_app'),
       url: 'https://monno.gabrielararuna.com/',
     },
     {
       name: t('project_sage'),
-      logo: { src: '/ecosystem/sage.svg', size: 'h-7 mt-1' },
       desc: t('sage_desc'),
       badge: t('badge_app'),
       url: 'https://sage.gabrielararuna.com/',
@@ -121,29 +116,21 @@ export default function TradingInfrastructure() {
             <FadeIn key={project.name} delay={0.1 * (i + 1)}>
               <a href={project.url} target="_blank" rel="noopener noreferrer">
                 <GradientCard bgPosition={(i / (projects.length - 1)) * 100}>
-                  <div className="relative z-10 mb-2">
-                    {project.logo ? (
-                      <img
-                        src={project.logo.src}
-                        alt={project.name}
-                        className={`${project.logo.size} filter grayscale opacity-40`}
-                      />
-                    ) : (
-                      <h3 className="text-lg md:text-xl font-light text-white tracking-tight">
-                        {project.name}
-                      </h3>
-                    )}
+                  <div className="relative z-10 mb-6">
+                    <h3 className="text-xl md:text-2xl font-medium text-white tracking-tight shimmer-text">
+                      {project.name}
+                    </h3>
                   </div>
-                  <div className="relative z-10 mt-1  space-y-4">
+                  <div className="relative z-10 space-y-4">
                     <span className="inline-block px-3 py-1 border border-[#00BFA5]/20 text-[#00BFA5] text-[10px] tracking-wider uppercase rounded-full font-medium">
                       {project.badge}
                     </span>
                     <p className="text-xs md:text-sm text-white/40 font-light leading-relaxed">
                       {project.desc}
                     </p>
-                    <a href={project.url} target="_blank" rel="noopener noreferrer" className="glass-btn group mt-2 inline-block px-4 py-2">
+                    <div className="glass-btn group mt-2 inline-block px-4 py-2">
                       Acessar
-                    </a>
+                    </div>
                   </div>
                 </GradientCard>
               </a>

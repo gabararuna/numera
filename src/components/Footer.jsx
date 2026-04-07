@@ -8,17 +8,6 @@ export default function Footer() {
       <div className="max-w-[1800px] mx-auto">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div className="flex items-center gap-4">
-            <a className="inline-block cursor-pointer" href="/">
-              <img
-                alt="Numera Logo"
-                loading="lazy"
-                width="24"
-                height="24"
-                className="w-6 h-6"
-                style={{ filter: 'brightness(0) invert(1)' }}
-                src="/logo.svg"
-              />
-            </a>
             <span className="text-sm text-white/40 font-light">
               {t('footer_copy')}
             </span>

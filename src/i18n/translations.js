@@ -40,30 +40,28 @@ export const translations = {
     metric_6_title: "Unificação de KPIs",
     metric_6_desc:
       "Utilização das métricas captadas em outros projetos para criação de relatório único consolidando os principais KPIs relacionados ao setor de obras em um único lugar.",
-    
-      
 
     // Methodology
-    methodology_heading: "Inteligência de Dados",
+    methodology_heading: "Nossos Serviços",
     methodology_description:
-      "O diferencial entre operar com dados e operar com inteligência.",
+      "O diferencial entre operar com dados e operar com inteligência",
     methodology_card0_label: "Serviços",
-    methodology_card0_title: "Inteligência de Dados",
+    methodology_card0_title: "Otimização de Processos",
     methodology_card0_desc:
-      "Integração com múltiplas fontes de dados. Otimize operações com KNIME e Python para maior eficiência e produtividade empresarial. Processamento de dados em larga escala para resultados concretos.",
+      "Integração com múltiplas fontes de dados para otimizar o seu processo e trazer a melhor versão da sua produtividade empresarial. Com processamento de dados em larga escsala, construção de dashboards, construção de aplicativos e consultoria empresarial.",
     methodology_card1_label: "Treinamentos",
     methodology_card1_title: "Treinamentos Corporativos",
     methodology_card1_desc:
-      "Capacite sua equipe com treinamentos práticos em SQL, KNIME e Python para análise de dados. Cursos personalizados para sua empresa com suporte pós-treinamento.",
+      "Capacite sua equipe com treinamentos práticos para tratamento de dados, otimização de processos e construção de relatórios e aplicações utilizando as melhores tecnologias do mercado. Torne seu processo eficiente pelas mãos de quem entende do assunto.",
     methodology_card2_label: "Consultoria",
     methodology_card2_title: "Planejamento Estratégico",
     methodology_card2_desc:
-      "Alinhe decisões estratégicas com dados reais. Oferecemos consultoria especializada para transformar insights em planos de ação mensuráveis e escaláveis.",
+      "Alinhe decisões estratégicas com dados reais. Oferecemos consultoria especializada para transformar dados em insights específicos para o seu negócio que trarão uma visão completa do que deve ser feito para alcançar os melhores resultados.",
 
     // Ecosystem / Trading Infrastructure
     ecosystem_heading: "Ecossistema Numera",
     ecosystem_description:
-      "Projetos reais construídos do zero para resolver problemas práticos de gestão, finanças e educação.",
+      "Projetos reais construídos do zero para resolver problemas reais",
 
     // Project names & tags
     project_cronos: "Cronos",
@@ -119,7 +117,7 @@ export const translations = {
     cta_button3: "Telefone",
 
     // Footer
-    footer_copy: "© 2025 Numera. Todos os direitos reservados.",
+    footer_copy: "© 2026 Numera. Todos os direitos reservados.",
     footer_privacy: "Privacidade",
     footer_cookies: "Cookies",
 
@@ -130,117 +128,116 @@ export const translations = {
   },
 
   en: {
-    nav_home: "Home",
+    nav_home: "Home  ",
     nav_solutions: "Solutions",
     nav_about: "About",
     nav_contact: "Contact",
 
-    hero_cta: "Contact Us",
-    hero_heading: "Transform data into intelligence to drive growth.",
+    hero_cta: "Contact Us  ",
+    hero_heading: "Transform data into intelligence to heavily boost business growth.",
     hero_description:
-      "Specialists in transforming data into concrete results, offering personalized solutions in data intelligence, process automation, and strategic planning for businesses.",
+      "Specialists in turning data into concrete results, delivering personalized solutions in data intelligence, process automation, and high-level strategic planning for corporate clients.",
 
-    ticker_heading: "Successful partnerships with companies that trust Numera.",
+    ticker_heading: "Successful partnerships with companies trusting in Numera.",
 
-    solutions_heading: "Success Cases",
+    solutions_heading: "Success Stories ",
     solutions_description:
-      "Discover the projects where our data expertise created real impact for clients.",
-    metric_0_title: "Data Intelligence",
+      "Discover some of our proudest projects that drive success.",
+    metric_0_title: "Delivery Control Sys",
     metric_0_desc:
-      "Transform data into intelligence to drive our clients' growth through customized solutions.",
-    metric_1_title: "System Integration",
+      "We used our knowledge to generate a system capable of tracking contract execution right from its opening to the absolute final delivery of all its vital files.",
+    metric_1_title: "Disruption Alerts ",
     metric_1_desc:
-      "Large-scale data processing with automated integration of multiple corporate data sources.",
-    metric_2_title: "Training",
+      "Mapping and consolidating database information to indicate materials that might be missing in the field during upcoming cycles, ensuring swift immediate actions.",
+    metric_2_title: "Data Skill Training ",
     metric_2_desc:
-      "Empower your team with hands-on training in SQL, KNIME, and Python for customized data analysis.",
-    metric_3_title: "Executive Validation",
+      "Team training to prevent simplified analysis via shared spreadsheets, promoting an evolution to complex systems using deep relational databases, SQL, and robust BI.",
+    metric_3_title: "Inputs Management",
     metric_3_desc:
-      "Elimination of 80% of manual report generation time with full automation of daily executive reports.",
-    metric_4_title: "Project Management",
+      "Creation of an efficient system to manage and control the company's main input indicators, aiming to identify distinct variations in the quality of site management.",
+    metric_4_title: "Stock Management ",
     metric_4_desc:
-      "Centralization of 100% of contracts and budgets in a single platform with real-time executive dashboard.",
-    metric_5_title: "Operational Analysis",
+      "Development of a highly detailed report to carefully track the return of critical materials to stock that were severely impacting our rework and inventory metrics.",
+    metric_5_title: "Analytics Panel  ",
     metric_5_desc:
-      "40% reduction in operational analysis time with automated integration of multiple data sources.",
-    metric_6_title: "Errors Eliminated",
+      "Implementation of a dashboard detailing the entire life cycle of inputs to capture early indications of potential future failure points and fully optimize processes.",
+    metric_6_title: "KPIs Unification  ",
     metric_6_desc:
-      "100% reduction in manual processing errors with automated strategic validation systems.",
-    metric_7_title: "Digital Transformation",
-    metric_7_desc:
-      "Complete digital transformation program empowering teams for continuous operational excellence.",
+      "Utilization of various metrics captured in other projects to create a single report consolidating the main essential KPIs related to the construction sector securely.",
 
-    methodology_heading: "Data Intelligence",
+    methodology_heading: "Our Services   ",
     methodology_description:
-      "The difference between operating with data and operating with intelligence.",
+      "The difference between operating with data and smart operations",
     methodology_card0_label: "Services",
-    methodology_card0_title: "Data Intelligence",
+    methodology_card0_title: "Process Optimization   ",
     methodology_card0_desc:
-      "Integration with multiple data sources. Optimize operations with KNIME and Python for greater efficiency and business productivity. Large-scale data processing for concrete results.",
-    methodology_card1_label: "Training",
-    methodology_card1_title: "Corporate Training",
+      "Integration with multiple data sources to optimize your workflow and bring out the absolute best version of your corporate productivity. Features large-scale data processing, advanced dashboard building, app creation, and dedicated business consulting.",
+    methodology_card1_label: "Skills Train",
+    methodology_card1_title: "Corporate Staff Training ",
     methodology_card1_desc:
-      "Empower your team with hands-on training in SQL, KNIME, and Python for data analysis. Custom courses for your company with post-training support.",
-    methodology_card2_label: "Consulting",
-    methodology_card2_title: "Strategic Planning",
+      "Empower your team with practical training for data handling, process optimization, and building reports and applications using the finest technologies available on the market. Make your entire process highly efficient with hands-on expert guidance today.",
+    methodology_card2_label: "Consulting ",
+    methodology_card2_title: "Strategic Core Planning ",
     methodology_card2_desc:
-      "Align strategic decisions with real data. We offer specialized consulting to transform insights into measurable and scalable action plans.",
+      "Align strategic decisions perfectly with real data. We offer specialized consulting to transform facts into unique business insights, providing a complete and actionable vision of exactly what must be done to achieve the very best possible results.",
 
-    ecosystem_heading: "Numera Ecosystem",
+    ecosystem_heading: "Numera Ecosystem  ",
     ecosystem_description:
-      "Real projects built from scratch to solve practical problems in management, finance, and education.",
+      "Real-world projects built entirely from scratch to solve real issues",
 
     project_cronos: "Cronos",
     cronos_desc:
-      "Individual time tracking with login system and balance projection per configurable cycle.",
-    cronos_tag0: "Time Tracking",
+      "App featuring a login system and proprietary database for time management, aimed at facilitating total control of hour banks perfectly within a set cycle.",
+    cronos_tag0: "Time Management",
     cronos_tag1: "Login",
-    cronos_tag2: "Balance Projection",
+    cronos_tag2: "Balance Forecast ",
     cronos_tag3: "Configurable Cycle",
 
     project_monno: "Monno",
     monno_desc:
-      "Individual financial management with categorization, planning, predictive analysis, and customizable interface.",
-    monno_tag0: "Financial Management",
-    monno_tag1: "Categorization",
-    monno_tag2: "Predictive Analysis",
-    monno_tag3: "Customizable Interface",
+      "App specifically for individual financial management featuring accurate categorization, predictive analysis, and UI customization.",
+    monno_tag0: "Financial Manage.",
+    monno_tag1: "Categorizing ",
+    monno_tag2: "Predictive Analy.",
+    monno_tag3: "Custom Interface      ",
 
     project_esticaferias: "Estica Férias",
     esticaferias_desc:
-      "Calculator for the best periods for a CLT worker to take vacation based on holidays and weekends.",
+      "Web calculator built to discover the absolute best periods to take vacations based on holidays and weekends combined with location settings.",
     esticaferias_tag0: "CLT",
-    esticaferias_tag1: "Vacation",
+    esticaferias_tag1: "Leaves",
     esticaferias_tag2: "Holidays",
-    esticaferias_tag3: "Auto Calculation",
+    esticaferias_tag3: "Auto Calc. Process",
 
     project_remunera: "Remunera",
     remunera_desc:
-      "CLT remuneration calculator to discover real annual compensation and compare with job offers.",
+      "Web-based calculator for workers aiming to discover the true real compensation throughout the year and its entries for clear job comparisons.",
     remunera_tag0: "CLT",
-    remunera_tag1: "Real Remuneration",
-    remunera_tag2: "Salary Comparison",
-    remunera_tag3: "Annual Analysis",
+    remunera_tag1: "Real Compensate.",
+    remunera_tag2: "Salary Comparisons ",
+    remunera_tag3: "Year Analysis",
 
     project_sage: "Sage",
     sage_desc:
-      "Scalable course platform for data science, UI, UX, Python programming, and SQL.",
-    sage_tag0: "Courses",
-    sage_tag1: "Data Science",
+      "Highly scalable course platform offering rich classes on Data Science, User Interface Design, User Experience, alongside Python and SQL coding.",
+    sage_tag0: "Course",
+    sage_tag1: "Data Science Pro",
     sage_tag2: "Python",
     sage_tag3: "SQL",
     sage_tag4: "UI/UX",
 
-    badge_calculator: "Web Calculator",
-    badge_app: "Web Application",
+    badge_calculator: "Web Calculator ",
+    badge_app: "Web App System",
 
-    cta_heading: "Solutions for Your Business.",
+    cta_heading: "Solutions for Business Now",
     cta_description:
-      "Explore our data intelligence solutions, process automation, and customized corporate training.",
-    cta_button: "Solutions",
+      "Explore our expert data intelligence solutions, seamless process automation, and fully custom corporate training now.",
+    cta_button1: "WhatsApp",
+    cta_button2: "E-mail",
+    cta_button3: "Call Us ",
 
-    footer_copy: "© 2025 Numera. All rights reserved.",
-    footer_privacy: "Privacy",
+    footer_copy: "© 2026 Numera. All rights strictly reserved.",
+    footer_privacy: "Privacy Pol",
     footer_cookies: "Cookies",
 
     lang_pt: "PT",
@@ -250,100 +247,97 @@ export const translations = {
 
   es: {
     nav_home: "Inicio",
-    nav_solutions: "Soluciones",
-    nav_about: "Acerca de",
+    nav_solutions: "Solución",
+    nav_about: "Sobre",
     nav_contact: "Contacto",
 
-    hero_cta: "Contáctenos",
-    hero_heading: "Transformar datos en inteligencia para impulsar el crecimiento.",
+    hero_cta: "Contáctenos ",
+    hero_heading: "Transformar datos en inteligencia para así impulsar crecimiento.",
     hero_description:
-      "Especialistas en transformar datos en resultados concretos, ofreciendo soluciones personalizadas en inteligencia de datos, automatización de procesos y planificación estratégica para empresas.",
+      "Especialistas en transformar datos en resultados concretos, ofreciendo soluciones personalizadas en inteligencia de datos, automatización de procesos y plan estratégico para empresas.",
 
-    ticker_heading: "Alianzas exitosas con empresas que confían en Numera.",
+    ticker_heading: "Asociaciones de éxito con empresas que confían en Numera.",
 
-    solutions_heading: "Casos de Éxito",
+    solutions_heading: "Casos de Éxito  ",
     solutions_description:
-      "Conoce los proyectos donde nuestra experiencia en datos generó un impacto real para los clientes.",
-    metric_0_title: "Inteligencia de Datos",
+      "Conoce algunos de nuestros proyectos de los que presumimos.",
+    metric_0_title: "Control de Entregas ",
     metric_0_desc:
-      "Transformar datos en inteligencia para impulsar el crecimiento de nuestros clientes a través de soluciones personalizadas.",
-    metric_1_title: "Integración de Sistemas",
+      "Usamos nuestro conocimiento para crear un sistema que logró acompañar la ejecución de los contratos desde su apertura hasta la entrega final de sus archivos.",
+    metric_1_title: "Alertas de Ruptura",
     metric_1_desc:
-      "Procesamiento de datos a gran escala con integración automatizada de múltiples fuentes de datos corporativos.",
-    metric_2_title: "Capacitaciones",
+      "Mapeo y consolidación de la información del banco para indicar materiales que tienen la posibilidad de faltar en campo en los próximos ciclos para acción rápida.",
+    metric_2_title: "Formación en Datos  ",
     metric_2_desc:
-      "Capacite a su equipo con entrenamientos prácticos en SQL, KNIME y Python para análisis de datos personalizado.",
-    metric_3_title: "Validación Ejecutiva",
+      "Capacitación del equipo para evitar análisis simples a través de compartir planillas y evolución a un sistema complejo utilizando bases de datos, redes SQL y BI.",
+    metric_3_title: "Gestión de Bienes",
     metric_3_desc:
-      "Eliminación del 80% del tiempo manual de generación de informes con automatización completa de informes ejecutivos diarios.",
-    metric_4_title: "Gestión de Proyectos",
+      "Creación de un sistema eficiente para gestionar y controlar los principales indicadores de insumos de la empresa para ubicar variaciones en calidad de obras civiles.",
+    metric_4_title: "Gestión de Stocks",
     metric_4_desc:
-      "Centralización del 100% de contratos y presupuestos en una única plataforma con dashboard ejecutivo en tiempo real.",
-    metric_5_title: "Análisis Operacional",
+      "Desarrollo de un informe detallado para el seguimiento del retorno de materiales al stock que impactaban de forma muy severa a los indicadores de retrabajo y stock.",
+    metric_5_title: "Panel de Análisis",
     metric_5_desc:
-      "Reducción del 40% en el tiempo de análisis operacional con integración automatizada de múltiples fuentes de datos.",
-    metric_6_title: "Errores Eliminados",
+      "Implementación de panel con detalles de todo el ciclo de vida de insumos para la captación e indicación anticipada de puntos de falla futura para optimizar procesos.",
+    metric_6_title: "Unificación de KPI",
     metric_6_desc:
-      "Reducción del 100% de errores de procesamiento manual con sistemas automatizados de validación estratégica.",
-    metric_7_title: "Transformación Digital",
-    metric_7_desc:
-      "Programa completo de transformación digital capacitando equipos para la excelencia operacional continua.",
+      "Utilización de métricas captadas en otros proyectos para la creación de un informe único consolidando los principales KPIs referidos al sector de obras en un lugar.",
 
-    methodology_heading: "Inteligencia de Datos",
+    methodology_heading: "Servicios Clave",
     methodology_description:
-      "La diferencia entre operar con datos y operar con inteligencia.",
-    methodology_card0_label: "Servicios",
-    methodology_card0_title: "Inteligencia de Datos",
+      "El diferencial entre operar con datos y operar con inteligencia",
+    methodology_card0_label: "Servicio",
+    methodology_card0_title: "Optimización de Proceso",
     methodology_card0_desc:
-      "Integración con múltiples fuentes de datos. Optimice operaciones con KNIME y Python para mayor eficiencia y productividad empresarial. Procesamiento de datos a gran escala para resultados concretos.",
-    methodology_card1_label: "Capacitaciones",
-    methodology_card1_title: "Capacitaciones Corporativas",
+      "Integración con múltiples fuentes de datos para optimizar su proceso y aportar la mejor versión de la productividad empresarial. Con el procesamiento de datos a gran escala, la creación de dashboards, construcción de aplicaciones y consultoría corporativa.",
+    methodology_card1_label: "Capacitación",
+    methodology_card1_title: "Formaciones Corporativas ",
     methodology_card1_desc:
-      "Capacite a su equipo con entrenamientos prácticos en SQL, KNIME y Python para análisis de datos. Cursos personalizados para su empresa con soporte poscapacitación.",
+      "Capacite a su equipo con entrenamientos muy prácticos para manejo de datos, optimización de procesos y creación de informes y aplicaciones usando las mejores tecnologías del mercado. Haga que su proceso sea muy eficiente con manos de expertos en la materia.",
     methodology_card2_label: "Consultoría",
-    methodology_card2_title: "Planificación Estratégica",
+    methodology_card2_title: "Planeamiento Estratégico",
     methodology_card2_desc:
-      "Alinee decisiones estratégicas con datos reales. Ofrecemos consultoría especializada para transformar insights en planes de acción medibles y escalables.",
+      "Alinee decisiones estratégicas con datos reales. Ofrecemos consultoría especial para transformar datos en insights específicos para su negocio que traerán la visión completa de lo que debe ser hecho para así poder alcanzar los mejores resultados.",
 
-    ecosystem_heading: "Ecosistema Numera",
+    ecosystem_heading: "Ecosistema Numera ",
     ecosystem_description:
-      "Proyectos reales construidos desde cero para resolver problemas prácticos de gestión, finanzas y educación.",
+      "Proyectos reales construidos desde cero para así resolver problemas reales",
 
     project_cronos: "Cronos",
     cronos_desc:
-      "Gestión individual de asistencia con sistema de login y proyección de saldo por ciclo configurable.",
-    cronos_tag0: "Gestión de Asistencia",
+      "App con un sistema de login y base de datos propia para la gestión de asistencia, con el objetivo de facilitar el control del banco de horas en un ciclo.",
+    cronos_tag0: "Control Asisten",
     cronos_tag1: "Login",
-    cronos_tag2: "Proyección de Saldo",
+    cronos_tag2: "Proyección Saldos",
     cronos_tag3: "Ciclo Configurable",
 
     project_monno: "Monno",
     monno_desc:
-      "Gestión financiera individual con categorización, planificación, análisis predictivo e interfaz personalizable.",
-    monno_tag0: "Gestión Financiera",
-    monno_tag1: "Categorización",
-    monno_tag2: "Análisis Predictivo",
-    monno_tag3: "Interfaz Personalizable",
+      "Aplicativo móvil para la gestión financiera individual con categorización clara, planificación, gran análisis predictivo e interfaz personalizable.",
+    monno_tag0: "Gestión Financier",
+    monno_tag1: "Categorizado ",
+    monno_tag2: "Análisis Predict.",
+    monno_tag3: "Interfaz Personalizada",
 
     project_esticaferias: "Estica Férias",
     esticaferias_desc:
-      "Calculadora de los mejores períodos para un empleado tomar vacaciones según festivos y fines de semana.",
+      "Calculadora web para descubrir los mejores períodos para tomar vacaciones con base en los festivos y fines de semana con registro de la zona.",
     esticaferias_tag0: "CLT",
-    esticaferias_tag1: "Vacaciones",
-    esticaferias_tag2: "Festivos",
+    esticaferias_tag1: "Vacac.",
+    esticaferias_tag2: "Feriados",
     esticaferias_tag3: "Cálculo Automático",
 
     project_remunera: "Remunera",
     remunera_desc:
-      "Calculadora de remuneración para descubrir la remuneración real a lo largo del año y comparar con ofertas de empleo.",
+      "Calculadora web para CLT que busca descubrir su remuneración real a lo largo de un año y sus previsiones para comparar con otras propuestas.",
     remunera_tag0: "CLT",
-    remunera_tag1: "Remuneración Real",
-    remunera_tag2: "Comparación Salarial",
+    remunera_tag1: "Remuneración Fia",
+    remunera_tag2: "Comparación Salario",
     remunera_tag3: "Análisis Anual",
 
     project_sage: "Sage",
     sage_desc:
-      "Plataforma escalable de cursos para ciencia de datos, UI, UX, programación en Python y SQL.",
+      "Plataforma de cursos escalable que da clases sobre Ciencias de Datos, Diseño de Interfaz, Experiencia del Usuario y programación Python y SQL.",
     sage_tag0: "Cursos",
     sage_tag1: "Ciencia de Datos",
     sage_tag2: "Python",
@@ -353,20 +347,22 @@ export const translations = {
     badge_calculator: "Calculadora Web",
     badge_app: "Aplicación Web",
 
-    cta_heading: "Soluciones para su Negocio.",
+    cta_heading: "Soluciones para su Negocio",
     cta_description:
-      "Explore nuestras soluciones de inteligencia de datos, automatización de procesos y capacitaciones corporativas personalizadas.",
-    cta_button: "Soluciones",
+      "Explore nuestras soluciones en inteligencia de datos, la automatización de procesos y entrenamientos corporativos hoy.",
+    cta_button1: "WhatsApp",
+    cta_button2: "E-mail",
+    cta_button3: "Teléfono",
 
-    footer_copy: "© 2025 Numera. Todos los derechos reservados.",
-    footer_privacy: "Privacidad",
+    footer_copy: "© 2026 Numera. Todos los derechos reservados",
+    footer_privacy: "Privacidad ",
     footer_cookies: "Cookies",
 
     lang_pt: "PT",
     lang_en: "EN",
     lang_es: "ES",
   },
-}
+};
 
-export const languages = ["pt", "en", "es"]
-export const defaultLanguage = "pt"
+export const languages = ["pt", "en", "es"];
+export const defaultLanguage = "pt";

@@ -33,8 +33,8 @@ export default function HeroSection() {
           />
         </div>
 
-        {/* Left-aligned content block */}
-        <div className="absolute inset-0 flex items-start justify-start p-8 md:p-16 pt-16 md:pt-24 z-20 pointer-events-none">
+        {/* Vertically centered, left-aligned content block */}
+        <div className="absolute inset-0 flex items-center justify-start p-8 md:p-16 z-20 pointer-events-none">
           <div className="max-w-4xl pointer-events-auto">
             {/* Logo with shimmer effect */}
             <motion.div
@@ -70,7 +70,7 @@ export default function HeroSection() {
             >
               <a
                 className="glass-btn group"
-                href="/contato"
+                href="#contact"
               >
                 <span className="relative z-10 text-sm font-light tracking-wide">
                   {t('hero_cta')}

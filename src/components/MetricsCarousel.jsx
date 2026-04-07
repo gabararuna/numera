@@ -41,13 +41,13 @@ export default function MetricsCarousel() {
 
   // Background images for each card
   const cardImages = [
-    '/public/cases/nexus.jpeg',
-    '/public/cases/ruptura.jpeg',
-    '/public/cases/treinamento.jpg',
-    '/public/cases/gestaomateriais.jpeg',
-    '/public/cases/devolucao.jpeg',
-    '/public/cases/paineldetalhado.jpeg',
-    '/public/cases/cartadiretriz.jpeg',
+    '/cases/nexus.jpeg',
+    '/cases/ruptura.jpeg',
+    '/cases/treinamento.jpg',
+    '/cases/gestaomateriais.jpeg',
+    '/cases/devolucao.jpeg',
+    '/cases/paineldetalhado.jpeg',
+    '/cases/cartadiretriz.jpeg',
    ]
 
   const maxPage = metrics.length - CARDS_VISIBLE

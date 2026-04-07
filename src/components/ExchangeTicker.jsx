@@ -28,9 +28,12 @@ export default function ExchangeTicker() {
   const logos = [
     { src: 'vale.svg', width: 130 },
     { src: 'spot.svg', width: 120 },
-    { src: 'alumar.svg', width: 120 },
+    { src: 'alumar.svg', width: 140 },
     { src: 'projeta.svg', width: 140 },
-    { src: 'equatorial.svg', width: 140 },   
+    { src: 'equatorial.svg', width: 140 },
+    { src: 'amorim.svg', width: 140 },
+    { src: 'arcadis.svg', width: 160 },
+    { src: 'TJMA.svg', width: 100 },
   ]
   const allLogos = [...logos, ...logos, ...logos, ...logos]
   const gap = 80

@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:qtcapital.ai)",
+      "Bash(npm run:*)",
+      "Bash(curl -sL \"https://qtcapital.ai/\")",
+      "Bash(curl -sLO \"https://qtcapital.ai/brand/logo.svg\" -o \"C:\\\\Códigos\\\\numera\\\\qt-capital-clone\\\\public\\\\logo.svg\")",
+      "Bash(curl -sLO \"https://qtcapital.ai/landing_page/abstract_blop.webp\" -o \"C:\\\\Códigos\\\\numera\\\\qt-capital-clone\\\\public\\\\abstract_blop.webp\")",
+      "WebFetch(domain:numeraeng.lovable.app)",
+      "Bash(curl -s 'https://numeraeng.lovable.app/')",
+      "Bash(curl -s 'https://numeraeng.lovable.app/assets/index-ClWypF8G.js')",
+      "Read(//tmp/**)",
+      "Bash(curl -s 'https://numeraeng.lovable.app/~flock.js')",
+      "Bash(curl -s 'https://numeraeng.lovable.app/assets/index-ClWypF8G.js' strings)",
+      "Bash(curl -s 'http://localhost:5173/')",
+      "Bash(taskkill //F //IM node.exe)",
+      "Bash(npx vite:*)",
+      "Bash(find C:/Códigos/numera/src -name i18n* -o -name *translation* -o -name *locale*)",
+      "Bash(dir:*)"
+    ]
+  }
+}

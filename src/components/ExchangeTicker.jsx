@@ -33,7 +33,7 @@ export default function ExchangeTicker() {
     { src: 'equatorial.svg', width: 140 },
     { src: 'amorim.svg', width: 140 },
     { src: 'arcadis.svg', width: 160 },
-    { src: 'TJMA.svg', width: 100 },
+    { src: 'TJMA.svg', width: 140 },
   ]
   const allLogos = [...logos, ...logos, ...logos, ...logos]
   const gap = 80

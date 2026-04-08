@@ -25,7 +25,7 @@ export default function CTASection() {
     <section id="contact" className="py-24 px-6 md:px-12 bg-black overflow-hidden relative">
       <div className="max-w-[1800px] mx-auto">
         <FadeIn>
-          <div className="w-full h-[400px] md:h-[600px] border border-white/10 rounded-[2.5rem] bg-transparent relative overflow-hidden">
+          <div className="w-full min-h-[450px] md:h-[600px] border border-white/10 rounded-[2.5rem] bg-transparent relative overflow-hidden flex items-center justify-center py-12 md:py-0">
             {/* Blue edge gradients */}
             <div className="absolute inset-0 pointer-events-none">
               <div
@@ -52,7 +52,7 @@ export default function CTASection() {
             </div>
 
             {/* Content */}
-            <div className="relative z-10 w-full h-full flex flex-col items-start md:items-center justify-center text-left md:text-center px-10 md:px-6">
+            <div className="relative z-10 w-full h-full flex flex-col items-center md:items-center justify-center text-center md:text-center px-6 md:px-6">
               <FadeIn delay={0.2}>
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-white mb-6 leading-tight shimmer-text">
                   {t('cta_heading')}
@@ -63,9 +63,9 @@ export default function CTASection() {
                   {t('cta_description')}
                 </p>
               </FadeIn>
-              <FadeIn delay={0.4} className="flex flex-wrap gap-4 md:gap-6 justify-start md:justify-center">
+              <FadeIn delay={0.4} className="flex flex-col sm:flex-row flex-wrap gap-4 md:gap-6 justify-center w-full max-w-md sm:max-w-none">
                 <a
-                  className="glass-btn group"
+                  className="glass-btn group w-full sm:w-auto"
                   href="https://wa.me/5598992172631"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -75,7 +75,7 @@ export default function CTASection() {
                   </span>
                 </a>
                 <a
-                  className="glass-btn group"
+                  className="glass-btn group w-full sm:w-auto"
                   href="mailto:gabrielararunasm@gmail.com"
                 >
                   <span className="relative z-10 text-sm font-light tracking-wide">
@@ -83,7 +83,7 @@ export default function CTASection() {
                   </span>
                 </a>
                 <a
-                  className="glass-btn group"
+                  className="glass-btn group w-full sm:w-auto"
                   href="tel:+5598992172631"
                 >
                   <span className="relative z-10 text-sm font-light tracking-wide">

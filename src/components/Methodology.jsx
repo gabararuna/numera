@@ -31,7 +31,7 @@ export default function Methodology() {
     <section className="py-12 px-6 md:px-12 bg-black">
       <div className="max-w-[1800px] mx-auto">
         {/* Header - centered */}
-        <div className="mb-24 text-center">
+        <div className="mb-24 text-left">
           <FadeIn>
             <h2 className="text-xl md:text-3xl font-light tracking-tight text-white mb-4 shimmer-text">
               {t('methodology_heading')}

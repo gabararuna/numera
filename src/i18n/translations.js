@@ -96,6 +96,14 @@ export const translations = {
     remunera_tag2: "Comparação Salarial",
     remunera_tag3: "Análise Anual",
 
+    project_habita: "Habita",
+    habita_desc:
+      "Financiar ou alugar? A resposta depende do seu dinheiro, não de regras de mercado. Compare cenários e descubra a escolha matematicamente vantajosa.",
+    habita_tag0: "Comparativo",
+    habita_tag1: "Financiamento",
+    habita_tag2: "Aluguel",
+    habita_tag3: "Simulação",
+
     project_sage: "Sage",
     sage_desc:
       "Plataforma de cursos escalável com cursos sobre Ciência de Dados, Desenho de Interfaces, Experiência do Usuário e programação em Python e SQL.",
@@ -217,6 +225,14 @@ export const translations = {
     remunera_tag2: "Salary Comparisons ",
     remunera_tag3: "Year Analysis",
 
+    project_habita: "Habita",
+    habita_desc:
+      "Buy or rent? The answer depends on your money, not market rules. Compare scenarios and discover the most mathematically advantageous choice.",
+    habita_tag0: "Comparison",
+    habita_tag1: "Financing",
+    habita_tag2: "Rent",
+    habita_tag3: "Simulation",
+
     project_sage: "Sage",
     sage_desc:
       "Highly scalable course platform offering rich classes on Data Science, User Interface Design, User Experience, alongside Python and SQL coding.",
@@ -334,6 +350,14 @@ export const translations = {
     remunera_tag1: "Remuneración Fia",
     remunera_tag2: "Comparación Salario",
     remunera_tag3: "Análisis Anual",
+
+    project_habita: "Habita",
+    habita_desc:
+      "¿Financiar o alquilar? La respuesta depende de su dinero, no del mercado. Compare escenarios y descubra la opción matemáticamente ventajosa.",
+    habita_tag0: "Comparativo",
+    habita_tag1: "Préstamo",
+    habita_tag2: "Alquiler",
+    habita_tag3: "Simulación",
 
     project_sage: "Sage",
     sage_desc:

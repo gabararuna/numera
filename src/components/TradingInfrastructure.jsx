@@ -74,6 +74,12 @@ export default function TradingInfrastructure() {
       url: 'http://remunera.gabrielararuna.com/',
     },
     {
+      name: t('project_habita'),
+      desc: t('habita_desc'),
+      badge: t('badge_calculator'),
+      url: 'https://habita.gabrielararuna.com/',
+    },
+    {
       name: t('project_cronos'),
       desc: t('cronos_desc'),
       badge: t('badge_app'),

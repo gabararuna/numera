@@ -80,6 +80,12 @@ export default function TradingInfrastructure() {
       url: 'https://habita.gabrielararuna.com/',
     },
     {
+      name: t('project_mega'),
+      desc: t('mega_desc'),
+      badge: t('badge_calculator'),
+      url: 'https://mega.gabrielararuna.com/',
+    },
+    {
       name: t('project_cronos'),
       desc: t('cronos_desc'),
       badge: t('badge_app'),

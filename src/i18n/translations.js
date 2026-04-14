@@ -104,6 +104,14 @@ export const translations = {
     habita_tag2: "Aluguel",
     habita_tag3: "Simulação",
 
+    project_mega: "Mega",
+    mega_desc:
+      "Se você ganhar um grande prêmio, é importante saber como investir para evitar que o seu patrimônio perca valor ao longo do tempo com a nossa calculadora.",
+    mega_tag0: "Comparativo",
+    mega_tag1: "Financiamento",
+    mega_tag2: "Aluguel",
+    mega_tag3: "Simulação",
+
     project_sage: "Sage",
     sage_desc:
       "Plataforma de cursos escalável com cursos sobre Ciência de Dados, Desenho de Interfaces, Experiência do Usuário e programação em Python e SQL.",
@@ -233,6 +241,13 @@ export const translations = {
     habita_tag2: "Rent",
     habita_tag3: "Simulation",
 
+    project_mega: "Mega",
+    mega_desc: "If you happen to win a huge jackpot, it's very important to know how to invest to prevent your wealth from losing value over time with our calculator.",
+    mega_tag0: "Comparative",
+    mega_tag1: "Financing",
+    mega_tag2: "Renting",
+    mega_tag3: "Simulator",
+
     project_sage: "Sage",
     sage_desc:
       "Highly scalable course platform offering rich classes on Data Science, User Interface Design, User Experience, alongside Python and SQL coding.",
@@ -358,6 +373,13 @@ export const translations = {
     habita_tag1: "Préstamo",
     habita_tag2: "Alquiler",
     habita_tag3: "Simulación",
+
+    project_mega: "Mega",
+    mega_desc: "Si llegas a ganar un gran premio, es fundamental saber cómo invertir para evitar que tu patrimonio pierda valor a lo largo del tiempo con la calculadora.",
+    mega_tag0: "Comparativo",
+    mega_tag1: "Financiación",
+    mega_tag2: "Alquiler",
+    mega_tag3: "Simulador",
 
     project_sage: "Sage",
     sage_desc:

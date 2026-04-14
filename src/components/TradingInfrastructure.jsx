@@ -86,6 +86,12 @@ export default function TradingInfrastructure() {
       url: 'https://mega.gabrielararuna.com/',
     },
     {
+      name: t('project_mobi'),
+      desc: t('mobi_desc'),
+      badge: t('badge_calculator'),
+      url: 'https://mobi.gabrielararuna.com/',
+    },
+    {
       name: t('project_cronos'),
       desc: t('cronos_desc'),
       badge: t('badge_app'),

@@ -112,6 +112,13 @@ export const translations = {
     mega_tag2: "Aluguel",
     mega_tag3: "Simulação",
 
+    project_mobi: "Mobi",
+      mobi_desc: "Saiba qual o melhor cenário para você se locomover considerando as opções de financiamento, aquisição e aplicativo com o nosso simulador inteligente.",
+      mobi_tag0: "Comparativo",
+      mobi_tag1: "Financiamento",
+      mobi_tag2: "Aluguel",
+      mobi_tag3: "Simulação",
+
     project_sage: "Sage",
     sage_desc:
       "Plataforma de cursos escalável com cursos sobre Ciência de Dados, Desenho de Interfaces, Experiência do Usuário e programação em Python e SQL.",
@@ -248,6 +255,13 @@ export const translations = {
     mega_tag2: "Renting",
     mega_tag3: "Simulator",
 
+    project_mobi: "Mobi",
+      mobi_desc: "Find out the best mobility scenario for you by considering financing, purchasing, and app options with our smart simulator.",
+      mobi_tag0: "Comparison",
+      mobi_tag1: "Financing",
+      mobi_tag2: "Rental",
+      mobi_tag3: "Simulation",
+
     project_sage: "Sage",
     sage_desc:
       "Highly scalable course platform offering rich classes on Data Science, User Interface Design, User Experience, alongside Python and SQL coding.",
@@ -380,6 +394,13 @@ export const translations = {
     mega_tag1: "Financiación",
     mega_tag2: "Alquiler",
     mega_tag3: "Simulador",
+
+    project_mobi: "Mobi",
+      mobi_desc: "Descubre cuál es el mejor escenario para movilizarte considerando las opciones de financiación, adquisición y aplicación con nuestro simulador inteligente.",
+      mobi_tag0: "Comparativa",
+      mobi_tag1: "Financiación",
+      mobi_tag2: "Alquiler",
+      mobi_tag3: "Simulación",
 
     project_sage: "Sage",
     sage_desc:

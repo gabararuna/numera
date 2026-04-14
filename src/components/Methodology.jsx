@@ -38,7 +38,7 @@ export default function Methodology() {
             </h2>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <p className="text-white/40 text-sm md:text-base font-light leading-relaxed max-w-xl mx-auto">
+            <p className="text-white/40 text-sm md:text-base font-light leading-relaxed mx-auto">
               {t('methodology_description')}
             </p>
           </FadeIn>

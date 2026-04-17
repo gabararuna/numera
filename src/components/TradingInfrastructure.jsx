@@ -109,6 +109,12 @@ export default function TradingInfrastructure() {
       badge: t('badge_app'),
       url: 'https://sage.gabrielararuna.com/',
     },
+    {
+      name: t('project_bateesteira'),
+      desc: t('bateesteira_desc'),
+      badge: t('badge_app'),
+      url: 'https://bateesteira.gabrielararuna.com/',
+    },
   ]
 
   return (

@@ -128,6 +128,15 @@ export const translations = {
     sage_tag3: "SQL",
     sage_tag4: "UI/UX",
 
+    project_bateesteira: "Bate Esteira",
+    bateesteira_desc:
+      "Sistema completo para gestão de eventos de vaquejada com venda de senhas conectada a sistema financeiro com proteção end to end e split playment.",
+    bateesteira_tag0: "Cursos",
+    bateesteira_tag1: "Ciência de Dados",
+    bateesteira_tag2: "Python",
+    bateesteira_tag3: "SQL",
+    bateesteira_tag4: "UI/UX",
+
     badge_calculator: "Calculadora Web",
     badge_app: "Aplicativo Web",
 
@@ -271,6 +280,15 @@ export const translations = {
     sage_tag3: "SQL",
     sage_tag4: "UI/UX",
 
+    project_bateesteira: "Bate Esteira",
+    bateesteira_desc:
+      "Complete system for vaquejada event management with entry sales linked to a financial system with end-to-end protection and split payment.",
+    bateesteira_tag0: "Courses",
+    bateesteira_tag1: "Data Science",
+    bateesteira_tag2: "Python",
+    bateesteira_tag3: "SQL",
+    bateesteira_tag4: "UI/UX",
+
     badge_calculator: "Web Calculator ",
     badge_app: "Web App System",
 
@@ -410,6 +428,15 @@ export const translations = {
     sage_tag2: "Python",
     sage_tag3: "SQL",
     sage_tag4: "UI/UX",
+
+    project_bateesteira: "Bate Esteira",
+    bateesteira_desc:
+      "Sistema completo para gestión de eventos de vaquejada con venta de pases conectada a un sistema financiero con protección end-to-end y split payment.",
+    bateesteira_tag0: "Cursos",
+    bateesteira_tag1: "Ciencia de Datos",
+    bateesteira_tag2: "Python",
+    bateesteira_tag3: "SQL",
+    bateesteira_tag4: "UI/UX",
 
     badge_calculator: "Calculadora Web",
     badge_app: "Aplicación Web",

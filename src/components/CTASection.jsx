@@ -76,7 +76,7 @@ export default function CTASection() {
                 </a>
                 <a
                   className="glass-btn group w-full sm:w-auto"
-                  href="mailto:gabrielararunasm@gmail.com"
+                  href="mailto:contato@gruponumera.com"
                 >
                   <span className="relative z-10 text-sm font-light tracking-wide">
                     {t('cta_button2')}

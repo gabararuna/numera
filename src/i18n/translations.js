@@ -8,7 +8,7 @@ export const translations = {
 
     // Hero
     hero_cta: "Fale Conosco",
-    hero_heading: "Transformar dados em inteligência para impulsionar o crescimento.",
+    hero_heading: "Transformar dados em inteligência para impulsionar o seu crescimento.",
     hero_description:
       "Especialistas em transformar dados em resultados concretos, oferecendo soluções personalizadas em inteligência de dados, automação de processos e planejamento estratégico para empresas.",
 
@@ -166,7 +166,7 @@ export const translations = {
     nav_contact: "Contact",
 
     hero_cta: "Contact Us  ",
-    hero_heading: "Transform data into intelligence to heavily boost business growth.",
+    hero_heading: "Transform data into intelligence to heavily boost your business growth.",
     hero_description:
       "Specialists in turning data into concrete results, delivering personalized solutions in data intelligence, process automation, and high-level strategic planning for corporate clients.",
 
@@ -315,7 +315,7 @@ export const translations = {
     nav_contact: "Contacto",
 
     hero_cta: "Contáctenos ",
-    hero_heading: "Transformar datos en inteligencia para así impulsar crecimiento.",
+    hero_heading: "Transformar datos en inteligencia para así impulsar su crecimiento.",
     hero_description:
       "Especialistas en transformar datos en resultados concretos, ofreciendo soluciones personalizadas en inteligencia de datos, automatización de procesos y plan estratégico para empresas.",
 

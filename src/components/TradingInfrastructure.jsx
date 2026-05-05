@@ -197,14 +197,14 @@ export default function TradingInfrastructure() {
                 </div>
                 <div className="flex flex-col gap-2.5 flex-1 min-h-0">
                   <div className="flex flex-wrap gap-1.5">
-                    <span className="inline-block w-fit px-2.5 py-0.5 border border-[#00BFA5]/20 text-[#00BFA5] text-[9px] tracking-wider uppercase rounded-full font-medium">
-                      {project.badge}
-                    </span>
-                    {project.wip && (
-                      <span className="inline-block w-fit px-2.5 py-0.5 border border-white/15 text-white/40 text-[9px] tracking-wider uppercase rounded-full font-medium">
-                        {t('badge_wip')}
-                      </span>
-                    )}
+                    {project.wip
+                      ? <span className="inline-block w-fit px-2.5 py-0.5 border border-white/15 text-white/40 text-[9px] tracking-wider uppercase rounded-full font-medium">
+                          {t('badge_wip')}
+                        </span>
+                      : <span className="inline-block w-fit px-2.5 py-0.5 border border-[#00BFA5]/20 text-[#00BFA5] text-[9px] tracking-wider uppercase rounded-full font-medium">
+                          {project.badge}
+                        </span>
+                    }
                   </div>
                   <p className="text-xs text-white/55 font-light leading-relaxed line-clamp-3">
                     {project.desc}

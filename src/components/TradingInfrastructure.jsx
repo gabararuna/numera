@@ -156,7 +156,7 @@ export default function TradingInfrastructure() {
             </h2>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <p className="text-white/40 text-sm font-light leading-relaxed max-w-xl">
+            <p className="text-white/55 text-sm font-light leading-relaxed max-w-xl">
               {t('ecosystem_description')}
             </p>
           </FadeIn>
@@ -172,7 +172,7 @@ export default function TradingInfrastructure() {
                 className={`px-4 py-1.5 rounded-full text-[11px] tracking-wider font-medium transition-all duration-300 border cursor-pointer ${
                   filter === tab.key
                     ? 'border-[#00BFA5]/60 text-[#00BFA5] bg-[#00BFA5]/8'
-                    : 'border-white/10 text-white/40 hover:text-white/65 hover:border-white/20'
+                    : 'border-white/10 text-white/50 hover:text-white/65 hover:border-white/20'
                 }`}
               >
                 {tab.label}
@@ -182,10 +182,10 @@ export default function TradingInfrastructure() {
         </FadeIn>
 
         {/* Grid — compact 4 colunas no desktop */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 auto-rows-[180px] md:auto-rows-[156px]">
           {filtered.map((project, i) => {
             const inner = (
-              <GradientCard className="p-4">
+              <GradientCard className="p-4 h-full">
                 <div className="flex items-start justify-between gap-2 mb-3">
                   <h3 className="text-base md:text-lg font-medium text-white tracking-tight shimmer-text leading-tight">
                     {project.name}
@@ -195,7 +195,7 @@ export default function TradingInfrastructure() {
                     : <Loader2 size={16} className="shrink-0 mt-0.5 text-white/20 animate-spin" />
                   }
                 </div>
-                <div className="flex flex-col gap-2.5">
+                <div className="flex flex-col gap-2.5 flex-1 min-h-0">
                   <div className="flex flex-wrap gap-1.5">
                     <span className="inline-block w-fit px-2.5 py-0.5 border border-[#00BFA5]/20 text-[#00BFA5] text-[9px] tracking-wider uppercase rounded-full font-medium">
                       {project.badge}
@@ -206,7 +206,7 @@ export default function TradingInfrastructure() {
                       </span>
                     )}
                   </div>
-                  <p className="text-[11px] md:text-xs text-white/40 font-light leading-relaxed">
+                  <p className="text-xs text-white/55 font-light leading-relaxed line-clamp-3">
                     {project.desc}
                   </p>
                 </div>
@@ -214,10 +214,10 @@ export default function TradingInfrastructure() {
             )
 
             return (
-              <FadeIn key={project.name} delay={0.05 * (i + 1)}>
+              <FadeIn key={project.name} delay={0.05 * (i + 1)} className="h-full">
                 {project.url
-                  ? <a href={project.url} target="_blank" rel="noopener noreferrer" className="block">{inner}</a>
-                  : <div className="cursor-default">{inner}</div>
+                  ? <a href={project.url} target="_blank" rel="noopener noreferrer" className="block h-full">{inner}</a>
+                  : <div className="cursor-default h-full">{inner}</div>
                 }
               </FadeIn>
             )

@@ -153,7 +153,7 @@ export default function MetricsCarousel() {
             <h2 className="text-xl md:text-3xl font-light tracking-tight text-white mb-4 shimmer-text">
               {t('solutions_heading')}
             </h2>
-            <p className="text-white/40 text-sm md:text-base font-light leading-relaxed max-w-xl">
+            <p className="text-white/55 text-sm md:text-base font-light leading-relaxed max-w-xl">
               {t('solutions_description')}
             </p>
           </FadeIn>

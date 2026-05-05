@@ -93,7 +93,7 @@ export default function Methodology() {
             </h2>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <p className="text-white/40 text-sm md:text-base font-light leading-relaxed mx-auto">
+            <p className="text-white/55 text-sm md:text-base font-light leading-relaxed mx-auto">
               {t('methodology_description')}
             </p>
           </FadeIn>
@@ -105,13 +105,13 @@ export default function Methodology() {
             <FadeIn key={i} delay={0.15 * (i + 1)}>
               <TiltCard>
                 <div className="space-y-3">
-                  <h4 className="text-[10px] tracking-widest text-white/30 font-medium uppercase">
+                  <h4 className="text-[10px] tracking-widest text-white/45 font-medium uppercase">
                     {card.label}
                   </h4>
                   <h3 className="text-lg md:text-xl font-light text-white tracking-tight">
                     {card.title}
                   </h3>
-                  <p className="text-sm text-white/40 font-light leading-relaxed max-w-sm">
+                  <p className="text-sm text-white/55 font-light leading-relaxed max-w-sm">
                     {card.desc}
                   </p>
                 </div>

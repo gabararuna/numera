@@ -99,7 +99,7 @@ export const translations = {
 
     project_sage: "Sage",
     sage_desc:
-      "Trilhas em Ciência de Dados, Python, SQL e UI/UX numa plataforma escalável.",
+      "Trilhas práticas em Ciência de Dados, Python, SQL e UI/UX numa plataforma escalável.",
 
     project_bateesteira: "Bate Esteira",
     bateesteira_desc:
@@ -217,7 +217,7 @@ export const translations = {
 
     project_mega: "Mega",
     mega_desc:
-      "Plan how to invest a large prize to preserve and grow your wealth over time.",
+      "Plan how to invest a large prize to preserve and grow your personal wealth over time.",
 
     project_mobi: "Mobi",
     mobi_desc:
@@ -225,7 +225,7 @@ export const translations = {
 
     project_sage: "Sage",
     sage_desc:
-      "Tracks in Data Science, Python, SQL and UI/UX on a scalable course platform.",
+      "Learning tracks in Data Science, Python, SQL and UI/UX built on a scalable platform.",
 
     project_bateesteira: "Bate Esteira",
     bateesteira_desc:
@@ -337,7 +337,7 @@ export const translations = {
 
     project_habita: "Habita",
     habita_desc:
-      "¿Financiar o alquilar? Encuentra la opción más ventajosa según tus números.",
+      "¿Financiar o alquilar? Compara ambos escenarios y encuentra la opción más ventajosa.",
 
     project_mega: "Mega",
     mega_desc:

@@ -156,7 +156,7 @@ export default function TradingInfrastructure() {
             </h2>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <p className="text-white/55 text-sm font-light leading-relaxed max-w-xl">
+            <p className="text-white/70 text-sm font-light leading-relaxed max-w-xl">
               {t('ecosystem_description')}
             </p>
           </FadeIn>
@@ -182,7 +182,7 @@ export default function TradingInfrastructure() {
         </FadeIn>
 
         {/* Grid — compact 4 colunas no desktop */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 auto-rows-[180px] md:auto-rows-[156px]">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 auto-rows-[196px] md:auto-rows-[172px]">
           {filtered.map((project, i) => {
             const inner = (
               <GradientCard className="p-4 h-full">
@@ -206,7 +206,7 @@ export default function TradingInfrastructure() {
                         </span>
                     }
                   </div>
-                  <p className="text-xs text-white/55 font-light leading-relaxed line-clamp-3">
+                  <p className="text-sm text-white/70 font-light leading-relaxed line-clamp-3">
                     {project.desc}
                   </p>
                 </div>

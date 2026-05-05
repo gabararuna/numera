@@ -8,23 +8,23 @@ export default function Footer() {
       <div className="max-w-[1800px] mx-auto">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div className="flex items-center gap-4">
-            <span className="text-sm text-white/50 font-light">
+            <span className="text-sm text-white/65 font-light">
               {t('footer_copy')}
             </span>
           </div>
 
           <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
             <div className="flex flex-wrap gap-4 md:gap-8">
-              <a className="text-sm text-white/50 hover:text-white/80 transition-colors" href="/">
+              <a className="text-sm text-white/65 hover:text-white/80 transition-colors" href="/">
                 {t('nav_home')}
               </a>
-              <a className="text-sm text-white/50 hover:text-white/80 transition-colors" href="/solucoes">
+              <a className="text-sm text-white/65 hover:text-white/80 transition-colors" href="/solucoes">
                 {t('nav_solutions')}
               </a>
-              <a className="text-sm text-white/50 hover:text-white/80 transition-colors" href="/sobre">
+              <a className="text-sm text-white/65 hover:text-white/80 transition-colors" href="/sobre">
                 {t('nav_about')}
               </a>
-              <a className="text-sm text-white/50 hover:text-white/80 transition-colors" href="/contato">
+              <a className="text-sm text-white/65 hover:text-white/80 transition-colors" href="/contato">
                 {t('nav_contact')}
               </a>
             </div>
@@ -33,7 +33,7 @@ export default function Footer() {
 
             <div className="flex flex-wrap gap-4 md:gap-8">
               <a
-                className="text-sm text-white/50 hover:text-white/80 transition-colors"
+                className="text-sm text-white/65 hover:text-white/80 transition-colors"
                 href="https://www.iubenda.com/privacy-policy/54914294"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -41,7 +41,7 @@ export default function Footer() {
                 {t('footer_privacy')}
               </a>
               <a
-                className="text-sm text-white/50 hover:text-white/80 transition-colors"
+                className="text-sm text-white/65 hover:text-white/80 transition-colors"
                 href="https://www.iubenda.com/privacy-policy/54914294/cookie-policy"
                 target="_blank"
                 rel="noopener noreferrer"

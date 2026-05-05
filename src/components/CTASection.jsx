@@ -59,7 +59,7 @@ export default function CTASection() {
                 </h2>
               </FadeIn>
               <FadeIn delay={0.3}>
-                <p className="text-white/60 text-sm md:text-base font-light tracking-wide leading-relaxed max-w-xl mb-10">
+                <p className="text-white/70 text-sm md:text-base font-light tracking-wide leading-relaxed max-w-xl mb-10">
                   {t('cta_description')}
                 </p>
               </FadeIn>

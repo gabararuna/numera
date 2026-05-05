@@ -124,7 +124,7 @@ export default function HeroSection() {
               animate={heroReady ? { opacity: 1, y: 0 } : {}}
               initial={{ opacity: 0, y: 20 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="text-sm md:text-base text-white/60 font-light tracking-wide leading-relaxed max-w-2xl mb-8"
+              className="text-sm md:text-base text-white/75 font-light tracking-wide leading-relaxed max-w-2xl mb-8"
             >
               {t('hero_description')}
             </motion.p>

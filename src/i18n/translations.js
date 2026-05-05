@@ -8,142 +8,115 @@ export const translations = {
 
     // Hero
     hero_cta: "Fale Conosco",
-    hero_heading: "Transformando dados em inteligência para impulsionar o seu crescimento.",
+    hero_heading_1: "Faça a sua operação atingir o ápice.",
+    hero_heading_2: "Nós sabemos como chegar lá.",
     hero_description:
-      "Especialistas em transformar dados em resultados concretos, oferecendo soluções personalizadas em inteligência de dados, automação de processos e planejamento estratégico para empresas.",
+      "Processos manuais, retrabalho e decisões sem dados custam tempo que o seu negócio não pode desperdiçar. A Numera desenvolve soluções de tecnologia personalizadas para o seu contexto, com foco em resultado prático.",
 
     // Exchange Ticker
-    ticker_heading: "Parcerias de sucesso com empresas que confiam na Numera.",
+    ticker_heading: "Empresas que escolheram a Numera para crescer com tecnologia.",
 
     // Metrics Carousel
     solutions_heading: "Cases de Sucesso",
     solutions_description:
-      "Conheça alguns de nossos projetos dos quais nos orgulhamos",
+      "Veja como ajudamos empresas reais a trabalhar melhor e entregar mais.",
     metric_0_title: "Controle de Entregas",
     metric_0_desc:
-      "Usamos o nosso conhecimento para gerar um sistema que conseguia acompanhar a realização dos contratos desde sua abertura até a entrega final dos seus arquivos.",
+      "Desenvolvemos um sistema para acompanhar a execução dos contratos desde a abertura até a entrega final. A equipe ganhou visibilidade total do processo e zerou o retrabalho por falta de informação.",
     metric_1_title: "Alertas de Ruptura",
     metric_1_desc:
-      "Mapeamento e consolidação das informações do banco para indicação de materiais que há a possibilidade de faltar em campo nos próximos ciclos para ação imediata.",
+      "Mapeamos os dados do banco de insumos e criamos alertas automáticos para materiais com risco de faltar em campo. A equipe passou a agir antes do problema acontecer.",
     metric_2_title: "Capacitação em Dados",
     metric_2_desc:
-      "Capacitação da equipe para evitar análises simplificadas através de compartilhamento de planilhas e evolução para sistema complexo usando banco de dados, SQL e BI.",
+      "Levamos a equipe de planilhas compartilhadas para um sistema com banco de dados, SQL e BI. Analistas que dependiam de terceiros passaram a resolver problemas sozinhos.",
     metric_3_title: "Gestão de Insumos",
     metric_3_desc:
-      "Criação de um sistema eficiente para gerenciar e controlar os principais indicadores de insumos da empresa para identificar variação na qualidade da gestão das obras.",
+      "Criamos um sistema para controlar os indicadores de insumos das obras em tempo real. A gestão passou a identificar variações de qualidade que antes passavam despercebidas.",
     metric_4_title: "Gestão de Estoque",
     metric_4_desc:
-      "Desenvolvimento de relatório detalhado para acompanhamento do retorno de materiais para o estoque que impactavam severamente os indicadores de retrabalho e estoque.",
+      "Desenvolvemos um relatório de rastreamento de materiais devolvidos ao estoque. Os índices de retrabalho caíram e o inventário voltou a refletir a realidade da operação.",
     metric_5_title: "Painel de Análise",
     metric_5_desc:
-      "Implementação de painel com detalhamento de todo o ciclo de vida dos insumos para captação indicação antecipada de pontos de falha futura para otimizar os processos.",
+      "Construímos um painel com o ciclo de vida completo dos insumos. A equipe passou a identificar pontos de falha antes que virassem problema na operação.",
     metric_6_title: "Unificação de KPIs",
     metric_6_desc:
-      "Utilização das métricas captadas em outros projetos para criação de relatório único consolidando os principais KPIs relacionados ao setor de obras em um único lugar.",
+      "Unimos as métricas de vários projetos em um único relatório de KPIs de obras. A gestão parou de buscar informação em vários lugares e ganhou tempo para decidir.",
 
     // Methodology
     methodology_heading: "Nossos Serviços",
     methodology_description:
-      "O diferencial entre operar com dados e operar com inteligência",
-    methodology_card0_label: "Serviços",
-    methodology_card0_title: "Otimização de Processos",
+      "Mais produtividade, menos retrabalho e decisões melhores para o seu negócio.",
+    methodology_card0_label: "Processos",
+    methodology_card0_title: "Automação e Otimização",
     methodology_card0_desc:
-      "Integração com múltiplas fontes de dados para otimizar o seu processo e trazer a melhor versão da sua produtividade empresarial. Com processamento de dados em larga escsala, construção de dashboards, construção de aplicativos e consultoria empresarial.",
+      "Mapeamos o que trava a sua operação e criamos a solução mais eficiente para o seu negócio. Dashboards, aplicações e automações feitas para o jeito que você trabalha, não para o mercado genérico.",
     methodology_card1_label: "Treinamentos",
     methodology_card1_title: "Treinamentos Corporativos",
     methodology_card1_desc:
-      "Capacite sua equipe com treinamentos práticos para tratamento de dados, otimização de processos e construção de relatórios e aplicações utilizando as melhores tecnologias do mercado. Torne seu processo eficiente pelas mãos de quem entende do assunto.",
+      "Sua equipe aprende fazendo, com treinamentos práticos em SQL, Python, BI e automação. O resultado é um time mais autônomo, com menos dependência de terceiros e impacto direto na produtividade.",
     methodology_card2_label: "Consultoria",
     methodology_card2_title: "Planejamento Estratégico",
     methodology_card2_desc:
-      "Alinhe decisões estratégicas com dados reais. Oferecemos consultoria especializada para transformar dados em insights específicos para o seu negócio que trarão uma visão completa do que deve ser feito para alcançar os melhores resultados.",
+      "Decisões certas começam com dados confiáveis. Organizamos seus indicadores, identificamos o que está travando o crescimento e entregamos clareza sobre onde focar esforço para ter resultado.",
 
-    // Ecosystem / Trading Infrastructure
+    // Ecosystem
     ecosystem_heading: "Ecossistema Numera",
     ecosystem_description:
-      "Projetos reais construídos do zero para resolver problemas reais",
+      "Sistemas reais, criados do zero para resolver problemas reais.",
+    ecosystem_filter_all: "Todos",
+    ecosystem_filter_calculators: "Calculadoras",
+    ecosystem_filter_apps: "Aplicativos",
+    ecosystem_access: "Acessar",
 
-    // Project names & tags
+    // Projects — descrições entre 75 e 85 caracteres
     project_cronos: "Cronos",
     cronos_desc:
-      "Aplicativo com sistema de login e banco de dados próprio para gestão de ponto com objetivo de facilitar controle de banco de horas dentor de um ciclo.",
-    cronos_tag0: "Gestão de Ponto",
-    cronos_tag1: "Login",
-    cronos_tag2: "Projeção de Saldo",
-    cronos_tag3: "Ciclo Configurável",
+      "Controla banco de horas com banco de dados próprio, login e ciclos configuráveis.",
 
     project_monno: "Monno",
     monno_desc:
-      "Aplicativo para gestão financeira individual com categorização, planejamento, análise preditiva e interface personalizável.",
-    monno_tag0: "Gestão Financeira",
-    monno_tag1: "Categorização",
-    monno_tag2: "Análise Preditiva",
-    monno_tag3: "Interface Customizável",
+      "Gestão financeira pessoal com categorização, planejamento e análise preditiva.",
 
     project_esticaferias: "Estica Férias",
     esticaferias_desc:
-      "Calculadora web para descobrir os melhores períodos para tirar férias com base nos feriados e fins de semana com registro de localização.",
-    esticaferias_tag0: "CLT",
-    esticaferias_tag1: "Férias",
-    esticaferias_tag2: "Feriados",
-    esticaferias_tag3: "Cálculo Automático",
+      "Descubra os melhores períodos para férias com base em feriados e fins de semana.",
 
     project_remunera: "Remunera",
     remunera_desc:
-      "Calculadora web para CLT com objetivo de descobrir a remuneração real ao longo do ano e seus lançamentos para comparação com propostas.",
-    remunera_tag0: "CLT",
-    remunera_tag1: "Remuneração Real",
-    remunera_tag2: "Comparação Salarial",
-    remunera_tag3: "Análise Anual",
+      "Compare a remuneração real de CLT, PJ e servidores com os lançamentos do ano.",
 
     project_habita: "Habita",
     habita_desc:
-      "Financiar ou alugar? A resposta depende do seu dinheiro, não de regras de mercado. Compare cenários e descubra a escolha matematicamente vantajosa.",
-    habita_tag0: "Comparativo",
-    habita_tag1: "Financiamento",
-    habita_tag2: "Aluguel",
-    habita_tag3: "Simulação",
+      "Financiar ou alugar? Descubra a opção mais vantajosa com base nos seus números.",
 
     project_mega: "Mega",
     mega_desc:
-      "Se você ganhar um grande prêmio, é importante saber como investir para evitar que o seu patrimônio perca valor ao longo do tempo com a nossa calculadora.",
-    mega_tag0: "Comparativo",
-    mega_tag1: "Financiamento",
-    mega_tag2: "Aluguel",
-    mega_tag3: "Simulação",
+      "Saiba como investir um grande prêmio para preservar e multiplicar o patrimônio.",
 
     project_mobi: "Mobi",
-      mobi_desc: "Saiba qual o melhor cenário para você se locomover considerando as opções de financiamento, aquisição e aplicativo com o nosso simulador inteligente.",
-      mobi_tag0: "Comparativo",
-      mobi_tag1: "Financiamento",
-      mobi_tag2: "Aluguel",
-      mobi_tag3: "Simulação",
+    mobi_desc:
+      "Compare financiamento, aquisição e apps e descubra o melhor cenário de mobilidade.",
 
     project_sage: "Sage",
     sage_desc:
-      "Plataforma de cursos escalável com cursos sobre Ciência de Dados, Desenho de Interfaces, Experiência do Usuário e programação em Python e SQL.",
-    sage_tag0: "Cursos",
-    sage_tag1: "Ciência de Dados",
-    sage_tag2: "Python",
-    sage_tag3: "SQL",
-    sage_tag4: "UI/UX",
+      "Trilhas em Ciência de Dados, Python, SQL e UI/UX numa plataforma escalável.",
 
     project_bateesteira: "Bate Esteira",
     bateesteira_desc:
-      "Sistema completo para gestão de eventos de vaquejada com venda de senhas conectada a sistema financeiro com proteção end to end e split playment.",
-    bateesteira_tag0: "Cursos",
-    bateesteira_tag1: "Ciência de Dados",
-    bateesteira_tag2: "Python",
-    bateesteira_tag3: "SQL",
-    bateesteira_tag4: "UI/UX",
+      "Eventos de vaquejada com venda de senhas, sistema financeiro e split payment.",
+
+    project_integra: "Integra",
+    integra_desc:
+      "Ciclo completo de contratos de engenharia, da abertura às medições, com permissões.",
 
     badge_calculator: "Calculadora Web",
-    badge_app: "Aplicativo Web",
+    badge_app: "Aplicação Web",
+    badge_wip: "Em Desenvolvimento",
 
     // CTA Section
-    cta_heading: "Soluções para seu Negócio.",
+    cta_heading: "Pronto para ver a sua operação funcionar melhor?",
     cta_description:
-      "Explore nossas soluções de inteligência de dados, automação de processos e treinamentos corporativos personalizados.",
+      "Fale com a Numera e descubra como podemos ajudar a sua equipe a trabalhar com mais eficiência e menos esforço desperdiçado.",
     cta_button1: "WhatsApp",
     cta_button2: "E-mail",
     cta_button3: "Telefone",
@@ -153,154 +126,128 @@ export const translations = {
     footer_privacy: "Privacidade",
     footer_cookies: "Cookies",
 
-    // Language names
     lang_pt: "PT",
     lang_en: "EN",
     lang_es: "ES",
   },
 
   en: {
-    nav_home: "Home  ",
+    nav_home: "Home",
     nav_solutions: "Solutions",
     nav_about: "About",
     nav_contact: "Contact",
 
-    hero_cta: "Contact Us  ",
-    hero_heading: "Transforming data into intelligence to heavily boost your business growth.",
+    hero_cta: "Contact Us",
+    hero_heading_1: "Your operation deserves to work better.",
+    hero_heading_2: "We know how to get there.",
     hero_description:
-      "Specialists in turning data into concrete results, delivering personalized solutions in data intelligence, process automation, and high-level strategic planning for corporate clients.",
+      "Manual processes, rework and decisions without data cost time your business cannot afford to waste. Numera develops custom technology solutions for your context, focused on practical results.",
 
-    ticker_heading: "Successful partnerships with companies trusting in Numera.",
+    ticker_heading: "Companies that chose Numera to grow through technology.",
 
-    solutions_heading: "Success Stories ",
+    solutions_heading: "Success Stories",
     solutions_description:
-      "Discover some of our proudest projects that drive success.",
-    metric_0_title: "Delivery Control Sys",
+      "See how we helped real companies work better and deliver more.",
+    metric_0_title: "Delivery Control",
     metric_0_desc:
-      "We used our knowledge to generate a system capable of tracking contract execution right from its opening to the absolute final delivery of all its vital files.",
-    metric_1_title: "Disruption Alerts ",
+      "We built a system to track contract execution from opening to final delivery. The team gained full visibility of the process and eliminated rework caused by missing information.",
+    metric_1_title: "Disruption Alerts",
     metric_1_desc:
-      "Mapping and consolidating database information to indicate materials that might be missing in the field during upcoming cycles, ensuring swift immediate actions.",
-    metric_2_title: "Data Skill Training ",
+      "We mapped the input database and created automatic alerts for materials at risk of running out in the field. The team started acting before the problem happened.",
+    metric_2_title: "Data Skills Training",
     metric_2_desc:
-      "Team training to prevent simplified analysis via shared spreadsheets, promoting an evolution to complex systems using deep relational databases, SQL, and robust BI.",
+      "We moved the team from shared spreadsheets to a system with databases, SQL and BI. Analysts who relied on others started solving problems on their own.",
     metric_3_title: "Inputs Management",
     metric_3_desc:
-      "Creation of an efficient system to manage and control the company's main input indicators, aiming to identify distinct variations in the quality of site management.",
-    metric_4_title: "Stock Management ",
+      "We built a system to control construction site input indicators in real time. Management started spotting quality variations that used to go unnoticed.",
+    metric_4_title: "Stock Management",
     metric_4_desc:
-      "Development of a highly detailed report to carefully track the return of critical materials to stock that were severely impacting our rework and inventory metrics.",
-    metric_5_title: "Analytics Panel  ",
+      "We developed a tracking report for materials returned to stock. Rework rates dropped and inventory started reflecting the actual state of operations.",
+    metric_5_title: "Analytics Panel",
     metric_5_desc:
-      "Implementation of a dashboard detailing the entire life cycle of inputs to capture early indications of potential future failure points and fully optimize processes.",
-    metric_6_title: "KPIs Unification  ",
+      "We built a dashboard covering the full input lifecycle. The team started identifying failure points before they turned into problems on the floor.",
+    metric_6_title: "KPIs Unification",
     metric_6_desc:
-      "Utilization of various metrics captured in other projects to create a single report consolidating the main essential KPIs related to the construction sector securely.",
+      "We merged metrics from several projects into one construction KPI report. Management stopped searching across multiple sources and gained time to decide.",
 
-    methodology_heading: "Our Services   ",
+    methodology_heading: "Our Services",
     methodology_description:
-      "The difference between operating with data and smart operations",
-    methodology_card0_label: "Services",
-    methodology_card0_title: "Process Optimization   ",
+      "More productivity, less rework and better decisions for your business.",
+    methodology_card0_label: "Processes",
+    methodology_card0_title: "Automation and Optimization",
     methodology_card0_desc:
-      "Integration with multiple data sources to optimize your workflow and bring out the absolute best version of your corporate productivity. Features large-scale data processing, advanced dashboard building, app creation, and dedicated business consulting.",
-    methodology_card1_label: "Skills Train",
-    methodology_card1_title: "Corporate Staff Training ",
+      "We map what is slowing your operation down and build the most efficient solution for your business. Dashboards, applications and automations made for the way you work, not for the generic market.",
+    methodology_card1_label: "Training",
+    methodology_card1_title: "Corporate Training",
     methodology_card1_desc:
-      "Empower your team with practical training for data handling, process optimization, and building reports and applications using the finest technologies available on the market. Make your entire process highly efficient with hands-on expert guidance today.",
-    methodology_card2_label: "Consulting ",
-    methodology_card2_title: "Strategic Core Planning ",
+      "Your team learns by doing, with hands-on training in SQL, Python, BI and automation. The result is a more autonomous team, less reliance on third parties and a direct impact on productivity.",
+    methodology_card2_label: "Consulting",
+    methodology_card2_title: "Strategic Planning",
     methodology_card2_desc:
-      "Align strategic decisions perfectly with real data. We offer specialized consulting to transform facts into unique business insights, providing a complete and actionable vision of exactly what must be done to achieve the very best possible results.",
+      "Right decisions start with reliable data. We organize your indicators, identify what is blocking growth and deliver clarity on where to focus effort to get results.",
 
-    ecosystem_heading: "Numera Ecosystem  ",
+    ecosystem_heading: "Numera Ecosystem",
     ecosystem_description:
-      "Real-world projects built entirely from scratch to solve real issues",
+      "Real systems, built from scratch to solve real problems.",
+    ecosystem_filter_all: "All",
+    ecosystem_filter_calculators: "Calculators",
+    ecosystem_filter_apps: "Apps",
+    ecosystem_access: "Access",
 
+    // Projects — descriptions between 75 and 85 characters
     project_cronos: "Cronos",
     cronos_desc:
-      "App featuring a login system and proprietary database for time management, aimed at facilitating total control of hour banks perfectly within a set cycle.",
-    cronos_tag0: "Time Management",
-    cronos_tag1: "Login",
-    cronos_tag2: "Balance Forecast ",
-    cronos_tag3: "Configurable Cycle",
+      "Controls hour banks with a proprietary database, login and configurable cycles.",
 
     project_monno: "Monno",
     monno_desc:
-      "App specifically for individual financial management featuring accurate categorization, predictive analysis, and UI customization.",
-    monno_tag0: "Financial Manage.",
-    monno_tag1: "Categorizing ",
-    monno_tag2: "Predictive Analy.",
-    monno_tag3: "Custom Interface      ",
+      "Personal financial management with categorization, planning and predictive analysis.",
 
     project_esticaferias: "Estica Férias",
     esticaferias_desc:
-      "Web calculator built to discover the absolute best periods to take vacations based on holidays and weekends combined with location settings.",
-    esticaferias_tag0: "CLT",
-    esticaferias_tag1: "Leaves",
-    esticaferias_tag2: "Holidays",
-    esticaferias_tag3: "Auto Calc. Process",
+      "Find the best vacation periods by crossing holidays, weekends and your location.",
 
     project_remunera: "Remunera",
     remunera_desc:
-      "Web-based calculator for workers aiming to discover the true real compensation throughout the year and its entries for clear job comparisons.",
-    remunera_tag0: "CLT",
-    remunera_tag1: "Real Compensate.",
-    remunera_tag2: "Salary Comparisons ",
-    remunera_tag3: "Year Analysis",
+      "Compare real compensation for CLT, PJ and public servants across the full year.",
 
     project_habita: "Habita",
     habita_desc:
-      "Buy or rent? The answer depends on your money, not market rules. Compare scenarios and discover the most mathematically advantageous choice.",
-    habita_tag0: "Comparison",
-    habita_tag1: "Financing",
-    habita_tag2: "Rent",
-    habita_tag3: "Simulation",
+      "Buy or rent? Compare scenarios and find the most advantageous choice for your money.",
 
     project_mega: "Mega",
-    mega_desc: "If you happen to win a huge jackpot, it's very important to know how to invest to prevent your wealth from losing value over time with our calculator.",
-    mega_tag0: "Comparative",
-    mega_tag1: "Financing",
-    mega_tag2: "Renting",
-    mega_tag3: "Simulator",
+    mega_desc:
+      "Plan how to invest a large prize to preserve and grow your wealth over time.",
 
     project_mobi: "Mobi",
-      mobi_desc: "Find out the best mobility scenario for you by considering financing, purchasing, and app options with our smart simulator.",
-      mobi_tag0: "Comparison",
-      mobi_tag1: "Financing",
-      mobi_tag2: "Rental",
-      mobi_tag3: "Simulation",
+    mobi_desc:
+      "Compare financing, purchase and ride apps to find your best mobility scenario.",
 
     project_sage: "Sage",
     sage_desc:
-      "Highly scalable course platform offering rich classes on Data Science, User Interface Design, User Experience, alongside Python and SQL coding.",
-    sage_tag0: "Course",
-    sage_tag1: "Data Science Pro",
-    sage_tag2: "Python",
-    sage_tag3: "SQL",
-    sage_tag4: "UI/UX",
+      "Tracks in Data Science, Python, SQL and UI/UX on a scalable course platform.",
 
     project_bateesteira: "Bate Esteira",
     bateesteira_desc:
-      "Complete system for vaquejada event management with entry sales linked to a financial system with end-to-end protection and split payment.",
-    bateesteira_tag0: "Courses",
-    bateesteira_tag1: "Data Science",
-    bateesteira_tag2: "Python",
-    bateesteira_tag3: "SQL",
-    bateesteira_tag4: "UI/UX",
+      "Vaquejada event management with ticket sales, financial system and split payment.",
 
-    badge_calculator: "Web Calculator ",
-    badge_app: "Web App System",
+    project_integra: "Integra",
+    integra_desc:
+      "Engineering contract lifecycle from opening to measurements, with user permissions.",
 
-    cta_heading: "Solutions for Business Now",
+    badge_calculator: "Web Calculator",
+    badge_app: "Web App",
+    badge_wip: "In Development",
+
+    cta_heading: "Ready to see your operation working better?",
     cta_description:
-      "Explore our expert data intelligence solutions, seamless process automation, and fully custom corporate training now.",
+      "Talk to Numera and find out how we can help your team work with more efficiency and less wasted effort.",
     cta_button1: "WhatsApp",
     cta_button2: "E-mail",
-    cta_button3: "Call Us ",
+    cta_button3: "Call Us",
 
-    footer_copy: "© 2026 Numera. All rights strictly reserved.",
-    footer_privacy: "Privacy Pol",
+    footer_copy: "© 2026 Numera. All rights reserved.",
+    footer_privacy: "Privacy",
     footer_cookies: "Cookies",
 
     lang_pt: "PT",
@@ -310,146 +257,121 @@ export const translations = {
 
   es: {
     nav_home: "Inicio",
-    nav_solutions: "Solución",
+    nav_solutions: "Soluciones",
     nav_about: "Sobre",
     nav_contact: "Contacto",
 
-    hero_cta: "Contáctenos ",
-    hero_heading: "Transformando datos en inteligencia para así impulsar su crecimiento.",
+    hero_cta: "Contáctenos",
+    hero_heading_1: "Su operación merece funcionar mejor.",
+    hero_heading_2: "Sabemos cómo llegar hasta ahí.",
     hero_description:
-      "Especialistas en transformar datos en resultados concretos, ofreciendo soluciones personalizadas en inteligencia de datos, automatización de procesos y plan estratégico para empresas.",
+      "Los procesos manuales, el retrabajo y las decisiones sin datos cuestan tiempo que su negocio no puede desperdiciar. Numera desarrolla soluciones tecnológicas personalizadas para su contexto, con foco en resultados prácticos.",
 
-    ticker_heading: "Asociaciones de éxito con empresas que confían en Numera.",
+    ticker_heading: "Empresas que eligieron Numera para crecer con tecnología.",
 
-    solutions_heading: "Casos de Éxito  ",
+    solutions_heading: "Casos de Éxito",
     solutions_description:
-      "Conoce algunos de nuestros proyectos de los que presumimos.",
-    metric_0_title: "Control de Entregas ",
+      "Vea cómo ayudamos a empresas reales a trabajar mejor y entregar más.",
+    metric_0_title: "Control de Entregas",
     metric_0_desc:
-      "Usamos nuestro conocimiento para crear un sistema que logró acompañar la ejecución de los contratos desde su apertura hasta la entrega final de sus archivos.",
+      "Desarrollamos un sistema para acompañar la ejecución de los contratos desde su apertura hasta la entrega final. El equipo ganó visibilidad total del proceso y eliminó el retrabajo por falta de información.",
     metric_1_title: "Alertas de Ruptura",
     metric_1_desc:
-      "Mapeo y consolidación de la información del banco para indicar materiales que tienen la posibilidad de faltar en campo en los próximos ciclos para acción rápida.",
-    metric_2_title: "Formación en Datos  ",
+      "Mapeamos los datos del banco de insumos y creamos alertas automáticas para materiales con riesgo de falta en campo. El equipo empezó a actuar antes de que el problema ocurriera.",
+    metric_2_title: "Formación en Datos",
     metric_2_desc:
-      "Capacitación del equipo para evitar análisis simples a través de compartir planillas y evolución a un sistema complejo utilizando bases de datos, redes SQL y BI.",
-    metric_3_title: "Gestión de Bienes",
+      "Llevamos al equipo de hojas compartidas a un sistema con base de datos, SQL y BI. Analistas que dependían de terceros empezaron a resolver problemas por su cuenta.",
+    metric_3_title: "Gestión de Insumos",
     metric_3_desc:
-      "Creación de un sistema eficiente para gestionar y controlar los principales indicadores de insumos de la empresa para ubicar variaciones en calidad de obras civiles.",
+      "Creamos un sistema para controlar los indicadores de insumos de las obras en tiempo real. La gestión empezó a detectar variaciones de calidad que antes pasaban desapercibidas.",
     metric_4_title: "Gestión de Stocks",
     metric_4_desc:
-      "Desarrollo de un informe detallado para el seguimiento del retorno de materiales al stock que impactaban de forma muy severa a los indicadores de retrabajo y stock.",
+      "Desarrollamos un informe de seguimiento de materiales devueltos al stock. Los índices de retrabajo bajaron y el inventario volvió a reflejar la realidad de la operación.",
     metric_5_title: "Panel de Análisis",
     metric_5_desc:
-      "Implementación de panel con detalles de todo el ciclo de vida de insumos para la captación e indicación anticipada de puntos de falla futura para optimizar procesos.",
-    metric_6_title: "Unificación de KPI",
+      "Construimos un panel con el ciclo de vida completo de los insumos. El equipo empezó a identificar puntos de falla antes de que se convirtieran en problemas en la operación.",
+    metric_6_title: "Unificación de KPIs",
     metric_6_desc:
-      "Utilización de métricas captadas en otros proyectos para la creación de un informe único consolidando los principales KPIs referidos al sector de obras en un lugar.",
+      "Unimos las métricas de varios proyectos en un único informe de KPIs de obras. La gestión dejó de buscar información en varios lugares y ganó tiempo para decidir.",
 
     methodology_heading: "Servicios Clave",
     methodology_description:
-      "El diferencial entre operar con datos y operar con inteligencia",
-    methodology_card0_label: "Servicio",
-    methodology_card0_title: "Optimización de Proceso",
+      "Más productividad, menos retrabajo y mejores decisiones para su negocio.",
+    methodology_card0_label: "Procesos",
+    methodology_card0_title: "Automatización y Optimización",
     methodology_card0_desc:
-      "Integración con múltiples fuentes de datos para optimizar su proceso y aportar la mejor versión de la productividad empresarial. Con el procesamiento de datos a gran escala, la creación de dashboards, construcción de aplicaciones y consultoría corporativa.",
-    methodology_card1_label: "Capacitación",
-    methodology_card1_title: "Formaciones Corporativas ",
+      "Mapeamos lo que frena su operación y creamos la solución más eficiente para su negocio. Dashboards, aplicaciones y automatizaciones hechas para la forma en que usted trabaja, no para el mercado genérico.",
+    methodology_card1_label: "Formación",
+    methodology_card1_title: "Formaciones Corporativas",
     methodology_card1_desc:
-      "Capacite a su equipo con entrenamientos muy prácticos para manejo de datos, optimización de procesos y creación de informes y aplicaciones usando las mejores tecnologías del mercado. Haga que su proceso sea muy eficiente con manos de expertos en la materia.",
+      "Su equipo aprende haciendo, con capacitaciones prácticas en SQL, Python, BI y automatización. El resultado es un equipo más autónomo, con menos dependencia de terceros e impacto directo en la productividad.",
     methodology_card2_label: "Consultoría",
     methodology_card2_title: "Planeamiento Estratégico",
     methodology_card2_desc:
-      "Alinee decisiones estratégicas con datos reales. Ofrecemos consultoría especial para transformar datos en insights específicos para su negocio que traerán la visión completa de lo que debe ser hecho para así poder alcanzar los mejores resultados.",
+      "Las decisiones correctas comienzan con datos confiables. Organizamos sus indicadores, identificamos qué está bloqueando el crecimiento y entregamos claridad sobre dónde enfocar el esfuerzo para obtener resultados.",
 
-    ecosystem_heading: "Ecosistema Numera ",
+    ecosystem_heading: "Ecosistema Numera",
     ecosystem_description:
-      "Proyectos reales construidos desde cero para así resolver problemas reales",
+      "Sistemas reales, creados desde cero para resolver problemas reales.",
+    ecosystem_filter_all: "Todos",
+    ecosystem_filter_calculators: "Calculadoras",
+    ecosystem_filter_apps: "Aplicaciones",
+    ecosystem_access: "Acceder",
 
+    // Projects — descripciones entre 75 y 85 caracteres
     project_cronos: "Cronos",
     cronos_desc:
-      "App con un sistema de login y base de datos propia para la gestión de asistencia, con el objetivo de facilitar el control del banco de horas en un ciclo.",
-    cronos_tag0: "Control Asisten",
-    cronos_tag1: "Login",
-    cronos_tag2: "Proyección Saldos",
-    cronos_tag3: "Ciclo Configurable",
+      "Controla el banco de horas con base de datos propia, login y ciclos configurables.",
 
     project_monno: "Monno",
     monno_desc:
-      "Aplicativo móvil para la gestión financiera individual con categorización clara, planificación, gran análisis predictivo e interfaz personalizable.",
-    monno_tag0: "Gestión Financier",
-    monno_tag1: "Categorizado ",
-    monno_tag2: "Análisis Predict.",
-    monno_tag3: "Interfaz Personalizada",
+      "Gestión financiera personal con categorización, planificación y análisis predictivo.",
 
     project_esticaferias: "Estica Férias",
     esticaferias_desc:
-      "Calculadora web para descubrir los mejores períodos para tomar vacaciones con base en los festivos y fines de semana con registro de la zona.",
-    esticaferias_tag0: "CLT",
-    esticaferias_tag1: "Vacac.",
-    esticaferias_tag2: "Feriados",
-    esticaferias_tag3: "Cálculo Automático",
+      "Los mejores períodos de vacaciones, cruzando festivos, fines de semana y ubicación.",
 
     project_remunera: "Remunera",
     remunera_desc:
-      "Calculadora web para CLT que busca descubrir su remuneración real a lo largo de un año y sus previsiones para comparar con otras propuestas.",
-    remunera_tag0: "CLT",
-    remunera_tag1: "Remuneración Fia",
-    remunera_tag2: "Comparación Salario",
-    remunera_tag3: "Análisis Anual",
+      "Compara la remuneración real de CLT, PJ y servidores públicos a lo largo del año.",
 
     project_habita: "Habita",
     habita_desc:
-      "¿Financiar o alquilar? La respuesta depende de su dinero, no del mercado. Compare escenarios y descubra la opción matemáticamente ventajosa.",
-    habita_tag0: "Comparativo",
-    habita_tag1: "Préstamo",
-    habita_tag2: "Alquiler",
-    habita_tag3: "Simulación",
+      "¿Financiar o alquilar? Encuentra la opción más ventajosa según tus números.",
 
     project_mega: "Mega",
-    mega_desc: "Si llegas a ganar un gran premio, es fundamental saber cómo invertir para evitar que tu patrimonio pierda valor a lo largo del tiempo con la calculadora.",
-    mega_tag0: "Comparativo",
-    mega_tag1: "Financiación",
-    mega_tag2: "Alquiler",
-    mega_tag3: "Simulador",
+    mega_desc:
+      "Planifica cómo invertir un gran premio para preservar y multiplicar tu patrimonio.",
 
     project_mobi: "Mobi",
-      mobi_desc: "Descubre cuál es el mejor escenario para movilizarte considerando las opciones de financiación, adquisición y aplicación con nuestro simulador inteligente.",
-      mobi_tag0: "Comparativa",
-      mobi_tag1: "Financiación",
-      mobi_tag2: "Alquiler",
-      mobi_tag3: "Simulación",
+    mobi_desc:
+      "Compara opciones de financiación, adquisición y apps para tu mejor escenario.",
 
     project_sage: "Sage",
     sage_desc:
-      "Plataforma de cursos escalable que da clases sobre Ciencias de Datos, Diseño de Interfaz, Experiencia del Usuario y programación Python y SQL.",
-    sage_tag0: "Cursos",
-    sage_tag1: "Ciencia de Datos",
-    sage_tag2: "Python",
-    sage_tag3: "SQL",
-    sage_tag4: "UI/UX",
+      "Rutas en Ciencia de Datos, Python, SQL e UI/UX en una plataforma de cursos escalable.",
 
     project_bateesteira: "Bate Esteira",
     bateesteira_desc:
-      "Sistema completo para gestión de eventos de vaquejada con venta de pases conectada a un sistema financiero con protección end-to-end y split payment.",
-    bateesteira_tag0: "Cursos",
-    bateesteira_tag1: "Ciencia de Datos",
-    bateesteira_tag2: "Python",
-    bateesteira_tag3: "SQL",
-    bateesteira_tag4: "UI/UX",
+      "Eventos de vaquejada con venta de entradas, sistema financiero y split payment.",
+
+    project_integra: "Integra",
+    integra_desc:
+      "Ciclo completo de contratos de ingeniería, de la apertura a mediciones, con permisos.",
 
     badge_calculator: "Calculadora Web",
     badge_app: "Aplicación Web",
+    badge_wip: "En Desarrollo",
 
-    cta_heading: "Soluciones para su Negocio",
+    cta_heading: "¿Listo para ver su operación funcionando mejor?",
     cta_description:
-      "Explore nuestras soluciones en inteligencia de datos, la automatización de procesos y entrenamientos corporativos hoy.",
+      "Hable con Numera y descubra cómo podemos ayudar a su equipo a trabajar con más eficiencia y menos esfuerzo desperdiciado.",
     cta_button1: "WhatsApp",
     cta_button2: "E-mail",
     cta_button3: "Teléfono",
 
-    footer_copy: "© 2026 Numera. Todos los derechos reservados",
-    footer_privacy: "Privacidad ",
+    footer_copy: "© 2026 Numera. Todos los derechos reservados.",
+    footer_privacy: "Privacidad",
     footer_cookies: "Cookies",
 
     lang_pt: "PT",

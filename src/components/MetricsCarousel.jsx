@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageContext'
 
 function FadeIn({ children, delay = 0, className = '' }) {
@@ -18,99 +19,136 @@ function FadeIn({ children, delay = 0, className = '' }) {
   )
 }
 
-const GAP = '1.5rem'
+const cardImages = [
+  '/cases/nexus.jpeg',
+  '/cases/ruptura.jpeg',
+  '/cases/treinamento.jpg',
+  '/cases/gestaomateriais.jpeg',
+  '/cases/devolucao.jpeg',
+  '/cases/paineldetalhado.jpeg',
+  '/cases/cartadiretriz.jpeg',
+]
 
 export default function MetricsCarousel() {
   const { t } = useLanguage()
-  const sectionRef = useRef(null)
   const scrollRef = useRef(null)
-  
-  // Responsive cards visible
+
+  // Drag state — refs to avoid re-renders
+  const isDragging = useRef(false)
+  const wasDragging = useRef(false)
+  const dragStartX = useRef(0)
+  const dragScrollLeft = useRef(0)
+
   const [visibleCards, setVisibleCards] = useState(4)
-  const [page, setPage] = useState(0)
+  const [activeDot, setActiveDot] = useState(0)
 
   useEffect(() => {
-    const handleResize = () => {
+    const onResize = () => {
       if (window.innerWidth < 768) setVisibleCards(1)
       else if (window.innerWidth < 1280) setVisibleCards(2)
       else setVisibleCards(4)
     }
-    handleResize()
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
+    onResize()
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
   }, [])
 
-  // Mouse wheel to horizontal scroll
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-
-    const onWheel = (e) => {
-      if (e.deltaY === 0) return;
-      // Prevent vertical scroll over the carousel
-      e.preventDefault();
-      // Apply deltaY to horizontal scroll
-      el.scrollLeft += e.deltaY;
-    };
-
-    el.addEventListener('wheel', onWheel, { passive: false });
-    return () => el.removeEventListener('wheel', onWheel);
-  }, []);
-
-  const handleScroll = () => {
-    if (scrollRef.current) {
-      const { scrollLeft, offsetWidth } = scrollRef.current;
-      // Calculate active page based on scroll position
-      const cardWidth = offsetWidth / visibleCards;
-      const newPage = Math.round(scrollLeft / cardWidth);
-      if (newPage !== page) setPage(newPage);
-    }
-  };
-
-  const scrollToPage = (p) => {
-    if (scrollRef.current) {
-      const cardWidth = scrollRef.current.offsetWidth / visibleCards;
-      scrollRef.current.scrollTo({
-        left: p * cardWidth,
-        behavior: 'smooth'
-      });
-      setPage(p);
-    }
-  };
-
-  const inView = useInView(sectionRef, { once: true, margin: '-80px' })
-
-  // Build metrics array from translations - dynamically determine count
-  // Check how many metrics exist in translations by looking for existing keys
-  let metricsCount = 0;
-  while (t(`metric_${metricsCount}_title`) !== `metric_${metricsCount}_title`) {
-    metricsCount++;
-  }
-
+  // Build metrics from translations
+  let metricsCount = 0
+  while (t(`metric_${metricsCount}_title`) !== `metric_${metricsCount}_title`) metricsCount++
   const metrics = Array.from({ length: metricsCount }, (_, i) => ({
     title: t(`metric_${i}_title`),
     desc: t(`metric_${i}_desc`),
   }))
+  const N = metrics.length
 
-  // Background images for each card
-  const cardImages = [
-    '/cases/nexus.jpeg',
-    '/cases/ruptura.jpeg',
-    '/cases/treinamento.jpg',
-    '/cases/gestaomateriais.jpeg',
-    '/cases/devolucao.jpeg',
-    '/cases/paineldetalhado.jpeg',
-    '/cases/cartadiretriz.jpeg',
-   ]
+  // Triple the array for infinite loop: [copy A | copy B (real) | copy C]
+  const looped = [...metrics, ...metrics, ...metrics]
 
-  const maxPage = Math.max(0, metrics.length - visibleCards)
-  const showNavigation = metrics.length > visibleCards
+  // On mount / resize: start positioned at the middle copy (B)
+  useEffect(() => {
+    const el = scrollRef.current
+    if (!el) return
+    const timer = setTimeout(() => {
+      el.scrollLeft = el.scrollWidth / 3
+    }, 50)
+    return () => clearTimeout(timer)
+  }, [visibleCards])
+
+  // Infinite loop: silently teleport when drifting into outer copies
+  const handleScroll = () => {
+    const el = scrollRef.current
+    if (!el) return
+    const oneSet = el.scrollWidth / 3
+
+    if (el.scrollLeft < oneSet * 0.5) {
+      el.scrollLeft += oneSet
+      return
+    }
+    if (el.scrollLeft > oneSet * 2.5) {
+      el.scrollLeft -= oneSet
+      return
+    }
+
+    // Update active dot relative to middle copy
+    const rel = el.scrollLeft - oneSet
+    const step = oneSet / N
+    setActiveDot(Math.max(0, Math.min(Math.round(rel / step), N - 1)))
+  }
+
+  // Arrow buttons — scroll exactly one card width
+  const scrollCard = (direction) => {
+    const el = scrollRef.current
+    if (!el) return
+    const cardStep = el.scrollWidth / looped.length
+    el.scrollBy({ left: direction * cardStep, behavior: 'smooth' })
+  }
+
+  // Dot click — jump to that card within the middle copy
+  const scrollToDot = (index) => {
+    const el = scrollRef.current
+    if (!el) return
+    const oneSet = el.scrollWidth / 3
+    const step = oneSet / N
+    el.scrollTo({ left: oneSet + index * step, behavior: 'smooth' })
+  }
+
+  // ── Click-and-drag ──────────────────────────────────────────────
+  const onMouseDown = (e) => {
+    isDragging.current = true
+    wasDragging.current = false
+    dragStartX.current = e.clientX
+    dragScrollLeft.current = scrollRef.current?.scrollLeft ?? 0
+    if (scrollRef.current) scrollRef.current.style.cursor = 'grabbing'
+  }
+
+  const onMouseMove = (e) => {
+    if (!isDragging.current) return
+    const dx = e.clientX - dragStartX.current
+    if (Math.abs(dx) > 4) wasDragging.current = true
+    if (scrollRef.current) scrollRef.current.scrollLeft = dragScrollLeft.current - dx
+  }
+
+  const onMouseUp = () => {
+    isDragging.current = false
+    if (scrollRef.current) scrollRef.current.style.cursor = 'grab'
+  }
+
+  // Block click-through after drag (links inside cards)
+  const onClickCapture = (e) => {
+    if (wasDragging.current) {
+      e.preventDefault()
+      e.stopPropagation()
+      wasDragging.current = false
+    }
+  }
 
   return (
-    <section className="pt-12 pb-0 bg-black overflow-hidden relative" ref={sectionRef}>
+    <section className="pt-12 pb-0 bg-black overflow-hidden relative">
       <div className="max-w-[1800px] mx-auto px-6 md:px-12">
+
         {/* Header */}
-        <div className="mb-20 flex flex-col md:flex-row md:items-center md:justify-between">
+        <div className="mb-20">
           <FadeIn>
             <h2 className="text-xl md:text-3xl font-light tracking-tight text-white mb-4 shimmer-text">
               {t('solutions_heading')}
@@ -121,79 +159,87 @@ export default function MetricsCarousel() {
           </FadeIn>
         </div>
 
-        {/* Carousel */}
-        <div className="relative group/carousel">
-          <div 
+        {/* Carousel wrapper */}
+        <div className="relative">
+
+          {/* ◀ Left button */}
+          <button
+            onClick={() => scrollCard(-1)}
+            className="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full border border-white/10 bg-black/70 backdrop-blur-sm flex items-center justify-center text-white/40 hover:text-white hover:border-[#00BFA5]/40 hover:bg-[#00BFA5]/10 transition-all duration-300"
+            aria-label="Anterior"
+          >
+            <ChevronLeft size={16} />
+          </button>
+
+          {/* Scroll track — overflow-x: auto (trackpad / touch nativo, sem bloquear scroll vertical) */}
+          <div
             ref={scrollRef}
             onScroll={handleScroll}
-            className="relative h-[420px] md:h-[480px] overflow-x-auto scrollbar-hide scroll-smooth snap-x snap-mandatory flex gap-6 w-full max-w-full"
-            style={{ 
-              scrollbarWidth: 'none', 
+            onMouseDown={onMouseDown}
+            onMouseMove={onMouseMove}
+            onMouseUp={onMouseUp}
+            onMouseLeave={onMouseUp}
+            onClickCapture={onClickCapture}
+            className="h-[420px] md:h-[480px] overflow-x-auto no-scrollbar flex gap-6 w-full select-none"
+            style={{
+              scrollbarWidth: 'none',
               msOverflowStyle: 'none',
-              WebkitOverflowScrolling: 'touch'
+              WebkitOverflowScrolling: 'touch',
+              cursor: 'grab',
             }}
           >
-            <style dangerouslySetInnerHTML={{ __html: `
-              .scrollbar-hide::-webkit-scrollbar { display: none; }
-            `}} />
-            
-            {metrics.map((metric, i) => (
+            {looped.map((metric, i) => (
+              <div
+                key={i}
+                className="h-full shrink-0 border border-white/10 rounded-[2rem] overflow-hidden relative flex flex-col justify-end group shadow-2xl"
+                style={{ width: `calc((100% - (24px * (${visibleCards} - 1))) / ${visibleCards})` }}
+              >
+                {/* Background image */}
                 <div
-                  key={i}
-                  className="h-full shrink-0 border border-white/10 rounded-[2rem] overflow-hidden relative flex flex-col justify-end group shadow-2xl snap-start"
-                  style={{ width: `calc((100% - (${GAP} * (${visibleCards} - 1))) / ${visibleCards})` }}
-                >
-                  {/* Image */}
-                  <div
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110"
-                    style={{ backgroundImage: `url(${cardImages[i]})` }}
-                  />
-
-                  {/* Dark gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-
-                  {/* Glass card with content */}
-                  <div className="relative z-10 glass-card m-4 md:m-5 p-5 md:p-6 rounded-xl">
-                    <h3 className="text-lg md:text-xl font-light text-white tracking-tight mb-2">
-                      {metric.title}
-                    </h3>
-                    <p className="text-xs md:text-sm text-white/70 font-light leading-relaxed">
-                      {metric.desc}
-                    </p>
-                  </div>
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110 pointer-events-none"
+                  style={{ backgroundImage: `url(${cardImages[i % N]})` }}
+                />
+                {/* Dark gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none" />
+                {/* Glass content */}
+                <div className="relative z-10 glass-card m-4 md:m-5 p-5 md:p-6 rounded-xl pointer-events-none">
+                  <h3 className="text-lg md:text-xl font-light text-white tracking-tight mb-2">
+                    {metric.title}
+                  </h3>
+                  <p className="text-xs md:text-sm text-white/70 font-light leading-relaxed">
+                    {metric.desc}
+                  </p>
                 </div>
-              ))}
+              </div>
+            ))}
           </div>
 
-          {/* Navigation & Pagination */}
-          <div className="flex flex-col items-center gap-8 mt-12">
-            {/* Dots */}
-            <div className="flex gap-2.5">
-              {metrics.map((_, i) => {
-                // Determine if this dot represents the currently visible range
-                // For simplicity, let's just highlight dots up to the metrics length - visibleCards
-                const isActive = (i === page)
-                const isNavigable = i <= maxPage
-                
-                if (!isNavigable && metrics.length > visibleCards) return null;
-
-                return (
-                  <button
-                    key={i}
-                    onClick={() => scrollToPage(i)}
-                    className={`h-1.5 rounded-full transition-all duration-500 ease-out ${
-                      isActive 
-                        ? 'w-8 bg-white shadow-[0_0_12px_rgba(255,255,255,0.4)]' 
-                        : 'w-1.5 bg-white/20 hover:bg-white/40'
-                    }`}
-                    aria-label={`Go to slide ${i + 1}`}
-                  />
-                )
-              })}
-            </div>
-
-          </div>
+          {/* ▶ Right button */}
+          <button
+            onClick={() => scrollCard(1)}
+            className="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full border border-white/10 bg-black/70 backdrop-blur-sm flex items-center justify-center text-white/40 hover:text-white hover:border-[#00BFA5]/40 hover:bg-[#00BFA5]/10 transition-all duration-300"
+            aria-label="Próximo"
+          >
+            <ChevronRight size={16} />
+          </button>
         </div>
+
+        {/* Dots */}
+        <div className="flex justify-center gap-2.5 mt-10 mb-4">
+          {metrics.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => scrollToDot(i)}
+              className={`h-1.5 rounded-full transition-all duration-500 ease-out ${
+                activeDot === i
+                  ? 'w-8 bg-white shadow-[0_0_12px_rgba(255,255,255,0.4)]'
+                  : 'w-1.5 bg-white/20 hover:bg-white/40'
+              }`}
+              aria-label={`Slide ${i + 1}`}
+            />
+          ))}
+        </div>
+
       </div>
     </section>
   )

@@ -122,7 +122,7 @@ export default function TradingInfrastructure() {
     {
       name: t('project_bateesteira'),
       desc: t('bateesteira_desc'),
-      //badge: t('badge_app'),
+      badge: t('badge_app'),
       type: 'app',
       url: 'https://bateesteira.gruponumera.com/',
       wip: true,
@@ -130,7 +130,7 @@ export default function TradingInfrastructure() {
     {
       name: t('project_integra'),
       desc: t('integra_desc'),
-      //badge: t('badge_app'),
+      badge: t('badge_app'),
       type: 'app',
       url: null,
       wip: true,

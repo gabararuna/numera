@@ -34,17 +34,13 @@ export default function Footer() {
             <div className="flex flex-wrap gap-4 md:gap-8">
               <a
                 className="text-sm text-white/65 hover:text-white/80 transition-colors"
-                href="https://www.iubenda.com/privacy-policy/54914294"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/privacidade.html"
               >
                 {t('footer_privacy')}
               </a>
               <a
                 className="text-sm text-white/65 hover:text-white/80 transition-colors"
-                href="https://www.iubenda.com/privacy-policy/54914294/cookie-policy"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/cookies.html"
               >
                 {t('footer_cookies')}
               </a>

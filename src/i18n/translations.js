@@ -109,6 +109,10 @@ export const translations = {
     integra_desc:
       "Ciclo completo de contratos de engenharia, da abertura às medições, com permissões.",
 
+    project_nyot: "NYOT",
+    nyot_desc:
+      "Rastreie hábitos, métricas corporais e treinos com visual minimalista e luxuoso.",
+
     badge_calculator: "Calculadora Web",
     badge_app: "Aplicação Web",
     badge_wip: "Em Desenvolvimento",
@@ -235,6 +239,10 @@ export const translations = {
     integra_desc:
       "Engineering contract lifecycle from opening to measurements, with user permissions.",
 
+    project_nyot: "NYOT",
+    nyot_desc:
+      "Track habits, body metrics and workouts with a minimalist, polished interface.",
+
     badge_calculator: "Web Calculator",
     badge_app: "Web App",
     badge_wip: "In Development",
@@ -358,6 +366,10 @@ export const translations = {
     project_integra: "Integra",
     integra_desc:
       "Ciclo completo de contratos de ingeniería, de la apertura a mediciones, con permisos.",
+
+    project_nyot: "NYOT",
+    nyot_desc:
+      "Registra hábitos, métricas corporales y entrenamientos con diseño minimalista.",
 
     badge_calculator: "Calculadora Web",
     badge_app: "Aplicación Web",

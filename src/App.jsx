@@ -8,6 +8,7 @@ import Methodology from './components/Methodology'
 import MetricsCarousel from './components/MetricsCarousel'
 import CTASection from './components/CTASection'
 import Footer from './components/Footer'
+import CookieBanner from './components/CookieBanner'
 
 // Global cursor spotlight — usa ref para evitar re-renders durante o movimento
 function CursorSpotlight() {
@@ -49,6 +50,7 @@ function App() {
   return (
     <LanguageProvider>
       <CursorSpotlight />
+      <CookieBanner />
       <div className="max-w-[1800px] mx-auto w-full relative">
         <Navbar />
         <main className="bg-black">

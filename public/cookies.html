@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Política de Cookies | Numera</title>
-  <meta name="description" content="Política de Cookies da Numera — como utilizamos cookies e tecnologias de rastreamento.">
+  <meta name="description" content="Política de Cookies da Numera — quais cookies utilizamos, para que servem e como gerenciá-los.">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -33,9 +33,12 @@
     .subtitle { color: rgba(255,255,255,0.35); margin-bottom: 3.5rem; font-size: 0.95rem; }
     h2 { font-size: 1.125rem; font-weight: 500; color: #fff; margin-top: 2.5rem; margin-bottom: 0.75rem; }
     p { color: rgba(255,255,255,0.55); margin-bottom: 1rem; font-size: 0.9375rem; }
+    ul { color: rgba(255,255,255,0.55); font-size: 0.9375rem; padding-left: 1.5rem; margin-bottom: 1rem; }
+    ul li { margin-bottom: 0.4rem; }
     table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; }
     th { text-align: left; font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.12em; color: #00BFA5; padding: 0.5rem 0.75rem; border-bottom: 1px solid rgba(0,191,165,0.15); font-weight: 500; }
     td { padding: 0.75rem; color: rgba(255,255,255,0.45); font-size: 0.875rem; border-bottom: 1px solid rgba(255,255,255,0.05); vertical-align: top; }
+    td strong { color: rgba(255,255,255,0.7); font-weight: 500; }
     .highlight {
       background: rgba(0,191,165,0.05);
       border: 1px solid rgba(0,191,165,0.15);
@@ -45,6 +48,7 @@
     }
     .highlight p { color: rgba(255,255,255,0.45); margin: 0; font-size: 0.875rem; }
     .label { font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.15em; color: #00BFA5; display: block; margin-bottom: 0.5rem; }
+    .divider { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 2rem 0; }
     footer { border-top: 1px solid rgba(255,255,255,0.08); padding: 2rem; text-align: center; }
     footer p { color: rgba(255,255,255,0.2); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; }
   </style>
@@ -61,88 +65,160 @@
 
     <h2>O que são cookies?</h2>
     <p>
-      Cookies são pequenos arquivos de texto armazenados no seu dispositivo quando você visita um site. Eles
-      permitem que o site reconheça seu dispositivo em visitas futuras, melhore a experiência de navegação e
-      forneça funcionalidades personalizadas.
+      Cookies são pequenos arquivos de texto ou registros armazenados no seu dispositivo quando
+      você visita um site. Eles permitem que o site reconheça seu navegador em visitas futuras,
+      lembre preferências e ofereça funcionalidades personalizadas. Utilizamos tanto cookies
+      (armazenados no navegador) quanto entradas em <em>localStorage</em> (armazenamento local
+      do navegador), com comportamento similar para os fins descritos abaixo.
     </p>
 
-    <h2>Como utilizamos cookies</h2>
-    <p>Nossos sites utilizam as seguintes categorias de cookies:</p>
+    <hr class="divider">
+
+    <h2>Consentimento e suas preferências</h2>
+    <p>
+      Na sua primeira visita, exibimos um <strong>banner de consentimento</strong> onde você pode:
+    </p>
+    <ul>
+      <li><strong>Aceitar todos:</strong> permite o uso de cookies essenciais e analíticos.</li>
+      <li><strong>Apenas essenciais:</strong> somente cookies necessários para o funcionamento básico do site são utilizados.</li>
+    </ul>
+    <p>
+      Sua escolha é registrada no navegador e válida por <strong>13 meses</strong>. Para alterar
+      suas preferências a qualquer momento, basta limpar os dados do site no seu navegador
+      (configurações → privacidade → limpar dados de navegação) — o banner será exibido novamente
+      na próxima visita.
+    </p>
+
+    <hr class="divider">
+
+    <h2>Cookies próprios (gruponumera.com)</h2>
+    <p>Os seguintes itens são armazenados diretamente pelo site da Numera:</p>
 
     <table>
       <thead>
         <tr>
-          <th>Categoria</th>
+          <th>Nome</th>
+          <th>Tipo</th>
           <th>Finalidade</th>
+          <th>Base legal</th>
           <th>Duração</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>Essenciais</td>
-          <td>Necessários para o funcionamento básico do site. Não podem ser desativados.</td>
-          <td>Sessão</td>
+          <td><strong>numera-language</strong></td>
+          <td>localStorage</td>
+          <td>Salva o idioma preferido do usuário (pt, en, es) para exibição correta em visitas futuras.</td>
+          <td>Legítimo interesse</td>
+          <td>Até limpar dados do navegador</td>
         </tr>
         <tr>
-          <td>Desempenho</td>
-          <td>Coletam informações anônimas sobre como os visitantes usam o site para melhorias contínuas.</td>
-          <td>Até 2 anos</td>
+          <td><strong>numera_consent</strong></td>
+          <td>localStorage</td>
+          <td>Registra a escolha de consentimento de cookies (aceito/recusado) e a data da escolha, para fins de conformidade com a LGPD.</td>
+          <td>Obrigação legal</td>
+          <td>13 meses</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>
+      Ambos os itens são armazenados <strong>exclusivamente no seu dispositivo</strong> e não são
+      transmitidos a servidores da Numera nem compartilhados com terceiros.
+    </p>
+
+    <hr class="divider">
+
+    <h2>Cookies de terceiros</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Categoria</th>
+          <th>Terceiro</th>
+          <th>Finalidade</th>
+          <th>Base legal</th>
+          <th>Duração</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Infraestrutura</td>
+          <td>Cloudflare Inc.</td>
+          <td>Entrega de conteúdo, segurança (WAF, anti-DDoS) e diagnóstico de desempenho. Pode armazenar cookies técnicos de sessão.</td>
+          <td>Legítimo interesse</td>
+          <td>Sessão / até 1 ano</td>
         </tr>
         <tr>
-          <td>Publicidade (Google AdSense)</td>
-          <td>Usados pelo Google para veicular anúncios relevantes com base no histórico de navegação.</td>
+          <td>Publicidade (AdSense)</td>
+          <td>Google LLC</td>
+          <td>Exibição de anúncios relevantes com base no histórico de navegação. Ativo apenas nos subdomínios onde o Google AdSense está configurado (ex: nyot, monno).</td>
+          <td>Consentimento</td>
           <td>Até 2 anos</td>
         </tr>
       </tbody>
     </table>
 
-    <h2>Cookies de Publicidade — Google AdSense</h2>
+    <hr class="divider">
+
+    <h2>Cookies de publicidade — Google AdSense</h2>
     <p>
-      Nossos sites e subdomínios utilizam o <strong>Google AdSense</strong> para exibir anúncios. O Google,
-      como fornecedor de publicidade terceirizado, usa cookies — incluindo o <strong>cookie DART</strong> —
-      para veicular anúncios com base em visitas anteriores do usuário a este e a outros sites.
+      Alguns subdomínios da Numera utilizam o <strong>Google AdSense</strong> para exibir anúncios.
+      O Google, como fornecedor terceirizado, usa cookies — incluindo o <strong>cookie DART</strong>
+      (armazenado no domínio <em>doubleclick.net</em>) — para veicular anúncios com base em visitas
+      anteriores do usuário a este e a outros sites.
     </p>
     <p>
-      O cookie DART é armazenado pelo domínio <em>doubleclick.net</em> e está sujeito à Política de Privacidade
-      do Google. Nós não temos acesso nem controle sobre esses cookies de terceiros.
+      A Numera não tem acesso nem controle sobre os cookies definidos pelo Google. Esses cookies
+      são ativados somente após o consentimento do usuário no banner de cookies do respectivo subdomínio.
     </p>
     <div class="highlight">
-      <span class="label">Como desativar anúncios personalizados</span>
+      <span class="label">Como desativar anúncios personalizados do Google</span>
       <p>
-        Acesse as <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">Configurações
-        de anúncios do Google</a> para desativar a personalização de anúncios, ou consulte a
-        <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer">Política de
-        privacidade do Google Ads</a> para mais informações sobre o cookie DART.
+        Acesse as <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">Configurações de anúncios do Google</a>
+        para desativar a personalização, ou consulte a
+        <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer">Política de privacidade do Google Ads</a>
+        para mais detalhes sobre o cookie DART.
       </p>
     </div>
 
-    <h2>Como gerenciar cookies</h2>
+    <hr class="divider">
+
+    <h2>Como gerenciar cookies no navegador</h2>
     <p>
-      Você pode controlar e/ou excluir cookies diretamente pelas configurações do seu navegador. A maioria dos
-      navegadores permite bloquear todos os cookies, aceitar apenas cookies de sites específicos ou receber
-      alertas antes de armazenar um cookie.
+      Você pode controlar ou excluir cookies diretamente pelas configurações do seu navegador.
+      A maioria permite bloquear todos os cookies, aceitar apenas cookies de sites específicos
+      ou receber alertas antes de armazená-los:
     </p>
+    <ul>
+      <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener noreferrer">Google Chrome</a></li>
+      <li><a href="https://support.mozilla.org/pt-BR/kb/gerencie-configuracoes-de-armazenamento-local-de-s" target="_blank" rel="noopener noreferrer">Mozilla Firefox</a></li>
+      <li><a href="https://support.apple.com/pt-br/guide/safari/sfri11471/mac" target="_blank" rel="noopener noreferrer">Safari</a></li>
+      <li><a href="https://support.microsoft.com/pt-br/microsoft-edge/excluir-cookies-no-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" rel="noopener noreferrer">Microsoft Edge</a></li>
+    </ul>
     <p>
-      Desativar cookies pode afetar o funcionamento de algumas funcionalidades do site. Cookies essenciais não
-      podem ser bloqueados sem impacto no uso básico da plataforma.
+      Desativar cookies essenciais pode afetar o funcionamento básico do site (ex: idioma preferido
+      não será lembrado).
     </p>
+
+    <hr class="divider">
 
     <h2>Alterações nesta Política</h2>
     <p>
-      Esta Política de Cookies pode ser atualizada periodicamente. A data de vigência no topo desta página
-      indica quando a versão atual foi publicada. O uso continuado dos nossos serviços após alterações
-      constitui aceite das mudanças.
+      Esta Política de Cookies pode ser atualizada periodicamente. A data no topo desta página indica
+      a versão atual. Alterações significativas serão comunicadas via banner de aviso no site.
     </p>
 
     <h2>Contato</h2>
     <p>
-      Para dúvidas sobre o uso de cookies, entre em contato:
-      <a href="mailto:contato@gruponumera.com">contato@gruponumera.com</a>
+      Para dúvidas sobre o uso de cookies ou para exercer seus direitos previstos na LGPD,
+      entre em contato: <a href="mailto:contato@gruponumera.com">contato@gruponumera.com</a>.
+      Consulte também nossa <a href="/privacidade.html">Política de Privacidade</a> completa.
     </p>
   </main>
 
   <footer>
-    <p>© 2026 Numera. Todos os direitos reservados.</p>
+    <p>© 2026 Numera Consultoria de Engenharia LTDA — CNPJ 51.387.729/0001-01. Todos os direitos reservados.</p>
   </footer>
 </body>
 </html>

@@ -125,6 +125,12 @@ export const translations = {
     cta_button2: "E-mail",
     cta_button3: "Telefone",
 
+    // Cookie banner
+    cookie_text: "Utilizamos cookies essenciais para o funcionamento do site e, com seu consentimento, cookies analíticos para melhorar sua experiência. Saiba mais na nossa",
+    cookie_and: "e na",
+    cookie_accept: "Aceitar todos",
+    cookie_reject: "Apenas essenciais",
+
     // Footer
     footer_copy: "© 2026 Numera. Todos os direitos reservados.",
     footer_privacy: "Privacidade",
@@ -254,6 +260,12 @@ export const translations = {
     cta_button2: "E-mail",
     cta_button3: "Call Us",
 
+    // Cookie banner
+    cookie_text: "We use essential cookies for site functionality and, with your consent, analytics cookies to improve your experience. Learn more in our",
+    cookie_and: "and our",
+    cookie_accept: "Accept all",
+    cookie_reject: "Essential only",
+
     footer_copy: "© 2026 Numera. All rights reserved.",
     footer_privacy: "Privacy",
     footer_cookies: "Cookies",
@@ -381,6 +393,12 @@ export const translations = {
     cta_button1: "WhatsApp",
     cta_button2: "E-mail",
     cta_button3: "Teléfono",
+
+    // Cookie banner
+    cookie_text: "Usamos cookies esenciales para el funcionamiento del sitio y, con su consentimiento, cookies analíticas para mejorar su experiencia. Más información en nuestra",
+    cookie_and: "y en nuestra",
+    cookie_accept: "Aceptar todos",
+    cookie_reject: "Solo esenciales",
 
     footer_copy: "© 2026 Numera. Todos los derechos reservados.",
     footer_privacy: "Privacidad",

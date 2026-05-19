@@ -1,29 +1,33 @@
 export async function onRequestPost(context) {
-  const { request, env } = context
-
-  let body
   try {
-    body = await request.json()
-  } catch {
-    return Response.json({ error: 'Body inválido' }, { status: 400 })
-  }
+    const { request, env } = context
 
-  const { password, content } = body
+    let body
+    try {
+      body = await request.json()
+    } catch {
+      return Response.json({ error: 'Body inválido' }, { status: 400 })
+    }
 
-  if (!password || password !== env.ADMIN_PASSWORD) {
-    return Response.json({ error: 'Senha incorreta' }, { status: 401 })
-  }
+    const { password, content } = body
 
-  if (!content || typeof content !== 'object') {
-    return Response.json({ error: 'Conteúdo inválido' }, { status: 400 })
-  }
+    if (!env.ADMIN_PASSWORD) {
+      return Response.json({ error: 'Variável ADMIN_PASSWORD não configurada no Cloudflare' }, { status: 500 })
+    }
 
-  const repo = env.GITHUB_REPO
-  const token = env.GITHUB_TOKEN
-  const filePath = 'src/content.json'
+    if (!password || password !== env.ADMIN_PASSWORD) {
+      return Response.json({ error: 'Senha incorreta' }, { status: 401 })
+    }
 
-  try {
-    // 1. Obter o SHA atual do arquivo no GitHub
+    if (!content || typeof content !== 'object') {
+      return Response.json({ error: 'Conteúdo inválido' }, { status: 400 })
+    }
+
+    const repo = env.GITHUB_REPO
+    const token = env.GITHUB_TOKEN
+    const filePath = 'src/content.json'
+
+    // Obter o SHA atual do arquivo no GitHub
     const metaRes = await fetch(
       `https://api.github.com/repos/${repo}/contents/${filePath}`,
       {
@@ -36,21 +40,18 @@ export async function onRequestPost(context) {
     )
 
     if (!metaRes.ok) {
-      const err = await metaRes.json()
-      return Response.json({ error: `GitHub API: ${err.message}` }, { status: 502 })
+      const errText = await metaRes.text()
+      return Response.json({ error: `GitHub GET falhou (${metaRes.status}): ${errText.slice(0, 200)}` }, { status: 502 })
     }
 
     const meta = await metaRes.json()
     const sha = meta.sha
 
-    // 2. Codificar o novo conteúdo em base64 (suporte a unicode)
+    // Codificar o conteúdo em base64 com suporte a unicode
     const jsonStr = JSON.stringify(content, null, 2)
-    const bytes = new TextEncoder().encode(jsonStr)
-    let binary = ''
-    for (const byte of bytes) binary += String.fromCharCode(byte)
-    const encoded = btoa(binary)
+    const encoded = btoa(unescape(encodeURIComponent(jsonStr)))
 
-    // 3. Commitar o arquivo atualizado
+    // Commitar o arquivo atualizado
     const putRes = await fetch(
       `https://api.github.com/repos/${repo}/contents/${filePath}`,
       {
@@ -70,12 +71,13 @@ export async function onRequestPost(context) {
     )
 
     if (!putRes.ok) {
-      const err = await putRes.json()
-      return Response.json({ error: `GitHub commit: ${err.message}` }, { status: 502 })
+      const errText = await putRes.text()
+      return Response.json({ error: `GitHub PUT falhou (${putRes.status}): ${errText.slice(0, 200)}` }, { status: 502 })
     }
 
     return Response.json({ ok: true })
+
   } catch (err) {
-    return Response.json({ error: err.message || 'Erro interno' }, { status: 500 })
+    return Response.json({ error: `Exceção: ${err.message || String(err)}` }, { status: 500 })
   }
 }

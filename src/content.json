@@ -7,31 +7,134 @@
     "cta": true
   },
   "projects": [
-    { "id": "esticaferias", "visible": true, "type": "calculator", "wip": false, "url": "http://esticaferias.gruponumera.com/" },
-    { "id": "remunera",     "visible": true, "type": "calculator", "wip": false, "url": "http://remunera.gruponumera.com/" },
-    { "id": "habita",       "visible": true, "type": "calculator", "wip": false, "url": "https://habita.gruponumera.com/" },
-    { "id": "mega",         "visible": true, "type": "calculator", "wip": false, "url": "https://mega.gruponumera.com/" },
-    { "id": "mobi",         "visible": true, "type": "calculator", "wip": false, "url": "https://mobi.gruponumera.com/" },
-    { "id": "cronos",       "visible": true, "type": "app",        "wip": false, "url": "https://cronos.gruponumera.com/" },
-    { "id": "monno",        "visible": true, "type": "app",        "wip": false, "url": "https://monno.gruponumera.com/" },
-    { "id": "sage",         "visible": true, "type": "app",        "wip": false, "url": "https://sage.gruponumera.com/" },
-    { "id": "bateesteira",  "visible": true, "type": "app",        "wip": true,  "url": "https://bateesteira.gruponumera.com/" },
-    { "id": "integra",      "visible": true, "type": "app",        "wip": true,  "url": null },
-    { "id": "nyot",         "visible": true, "type": "app",        "wip": false, "url": "https://nyot.gruponumera.com/" }
+    {
+      "id": "esticaferias",
+      "visible": true,
+      "type": "calculator",
+      "wip": false,
+      "url": "http://esticaferias.gruponumera.com/"
+    },
+    {
+      "id": "remunera",
+      "visible": true,
+      "type": "calculator",
+      "wip": false,
+      "url": "http://remunera.gruponumera.com/"
+    },
+    {
+      "id": "habita",
+      "visible": true,
+      "type": "calculator",
+      "wip": false,
+      "url": "https://habita.gruponumera.com/"
+    },
+    {
+      "id": "mega",
+      "visible": true,
+      "type": "calculator",
+      "wip": false,
+      "url": "https://mega.gruponumera.com/"
+    },
+    {
+      "id": "mobi",
+      "visible": true,
+      "type": "calculator",
+      "wip": false,
+      "url": "https://mobi.gruponumera.com/"
+    },
+    {
+      "id": "cronos",
+      "visible": true,
+      "type": "app",
+      "wip": false,
+      "url": "https://cronos.gruponumera.com/"
+    },
+    {
+      "id": "monno",
+      "visible": true,
+      "type": "app",
+      "wip": false,
+      "url": "https://monno.gruponumera.com/"
+    },
+    {
+      "id": "sage",
+      "visible": false,
+      "type": "app",
+      "wip": false,
+      "url": "https://sage.gruponumera.com/"
+    },
+    {
+      "id": "bateesteira",
+      "visible": true,
+      "type": "app",
+      "wip": true,
+      "url": "https://bateesteira.gruponumera.com/"
+    },
+    {
+      "id": "integra",
+      "visible": true,
+      "type": "app",
+      "wip": true,
+      "url": null
+    },
+    {
+      "id": "nyot",
+      "visible": true,
+      "type": "app",
+      "wip": false,
+      "url": "https://nyot.gruponumera.com/"
+    }
   ],
   "cases": [
-    { "id": "0", "visible": true, "image": "/cases/nexus.jpeg" },
-    { "id": "1", "visible": true, "image": "/cases/ruptura.jpeg" },
-    { "id": "2", "visible": true, "image": "/cases/treinamento.jpg" },
-    { "id": "3", "visible": true, "image": "/cases/gestaomateriais.jpeg" },
-    { "id": "4", "visible": true, "image": "/cases/devolucao.jpeg" },
-    { "id": "5", "visible": true, "image": "/cases/paineldetalhado.jpeg" },
-    { "id": "6", "visible": true, "image": "/cases/cartadiretriz.jpeg" }
+    {
+      "id": "0",
+      "visible": true,
+      "image": "/cases/nexus.jpeg"
+    },
+    {
+      "id": "1",
+      "visible": true,
+      "image": "/cases/ruptura.jpeg"
+    },
+    {
+      "id": "2",
+      "visible": true,
+      "image": "/cases/treinamento.jpg"
+    },
+    {
+      "id": "3",
+      "visible": true,
+      "image": "/cases/gestaomateriais.jpeg"
+    },
+    {
+      "id": "4",
+      "visible": true,
+      "image": "/cases/devolucao.jpeg"
+    },
+    {
+      "id": "5",
+      "visible": true,
+      "image": "/cases/paineldetalhado.jpeg"
+    },
+    {
+      "id": "6",
+      "visible": true,
+      "image": "/cases/cartadiretriz.jpeg"
+    }
   ],
   "services": [
-    { "id": "0", "visible": true },
-    { "id": "1", "visible": true },
-    { "id": "2", "visible": true }
+    {
+      "id": "0",
+      "visible": true
+    },
+    {
+      "id": "1",
+      "visible": true
+    },
+    {
+      "id": "2",
+      "visible": true
+    }
   ],
   "translations": {
     "pt": {

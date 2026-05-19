@@ -322,7 +322,13 @@ export default function Admin() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ password: sessionStorage.getItem('admin_ok'), content: draft }),
       })
-      const data = await res.json()
+      const text = await res.text()
+      let data
+      try {
+        data = JSON.parse(text)
+      } catch {
+        throw new Error(`Erro ${res.status}: a Function /api/publish não respondeu com JSON. Verifique o Cloudflare.`)
+      }
       if (!res.ok || data.error) throw new Error(data.error || 'Erro desconhecido')
       setPublishState('success')
       setDirty(false)

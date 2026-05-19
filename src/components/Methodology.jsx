@@ -1,6 +1,7 @@
 import { useRef, useMemo, useEffect } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { useLanguage } from '../i18n/LanguageContext'
+import content from '../content.json'
 
 function FadeIn({ children, delay = 0, className = '' }) {
   const ref = useRef(null)
@@ -76,11 +77,15 @@ function TiltCard({ children }) {
 export default function Methodology() {
   const { t } = useLanguage()
 
-  const cards = useMemo(() => [
-    { label: t('methodology_card0_label'), title: t('methodology_card0_title'), desc: t('methodology_card0_desc') },
-    { label: t('methodology_card1_label'), title: t('methodology_card1_title'), desc: t('methodology_card1_desc') },
-    { label: t('methodology_card2_label'), title: t('methodology_card2_title'), desc: t('methodology_card2_desc') },
-  ], [t])
+  const cards = useMemo(() =>
+    content.services
+      .filter((s) => s.visible)
+      .map((s) => ({
+        label: t(`methodology_card${s.id}_label`),
+        title: t(`methodology_card${s.id}_title`),
+        desc:  t(`methodology_card${s.id}_desc`),
+      }))
+  , [t])
 
   return (
     <section className="py-12 px-6 md:px-12 bg-black">

@@ -9,20 +9,18 @@ import MetricsCarousel from './components/MetricsCarousel'
 import CTASection from './components/CTASection'
 import Footer from './components/Footer'
 import CookieBanner from './components/CookieBanner'
+import content from './content.json'
 
-// Global cursor spotlight — usa ref para evitar re-renders durante o movimento
 function CursorSpotlight() {
   const ref = useRef(null)
 
   useEffect(() => {
     const el = ref.current
     if (!el) return
-
     const handleMove = (e) => {
       el.style.left = `${e.clientX}px`
       el.style.top = `${e.clientY}px`
     }
-
     window.addEventListener('mousemove', handleMove, { passive: true })
     return () => window.removeEventListener('mousemove', handleMove)
   }, [])
@@ -47,6 +45,7 @@ function CursorSpotlight() {
 }
 
 function App() {
+  const { sections } = content
   return (
     <LanguageProvider>
       <CursorSpotlight />
@@ -55,11 +54,11 @@ function App() {
         <Navbar />
         <main className="bg-black">
           <HeroSection />
-          <ExchangeTicker />
-          <TradingInfrastructure />
-          <MetricsCarousel />
-          <Methodology />
-          <CTASection />
+          {sections.ticker      && <ExchangeTicker />}
+          {sections.ecosystem   && <TradingInfrastructure />}
+          {sections.cases       && <MetricsCarousel />}
+          {sections.methodology && <Methodology />}
+          {sections.cta         && <CTASection />}
         </main>
         <Footer />
       </div>

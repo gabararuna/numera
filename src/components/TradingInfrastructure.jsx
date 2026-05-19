@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { ArrowUpRight, Loader2 } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageContext'
+import content from '../content.json'
 
 function FadeIn({ children, delay = 0, className = '' }) {
   const ref = useRef(null)
@@ -75,87 +76,16 @@ export default function TradingInfrastructure() {
   const { t } = useLanguage()
   const [filter, setFilter] = useState('all')
 
-  const allProjects = [
-    {
-      name: t('project_esticaferias'),
-      desc: t('esticaferias_desc'),
-      badge: t('badge_calculator'),
-      type: 'calculator',
-      url: 'http://esticaferias.gruponumera.com/',
-    },
-    {
-      name: t('project_remunera'),
-      desc: t('remunera_desc'),
-      badge: t('badge_calculator'),
-      type: 'calculator',
-      url: 'http://remunera.gruponumera.com/',
-    },
-    {
-      name: t('project_habita'),
-      desc: t('habita_desc'),
-      badge: t('badge_calculator'),
-      type: 'calculator',
-      url: 'https://habita.gruponumera.com/',
-    },
-    {
-      name: t('project_mega'),
-      desc: t('mega_desc'),
-      badge: t('badge_calculator'),
-      type: 'calculator',
-      url: 'https://mega.gruponumera.com/',
-    },
-    {
-      name: t('project_mobi'),
-      desc: t('mobi_desc'),
-      badge: t('badge_calculator'),
-      type: 'calculator',
-      url: 'https://mobi.gruponumera.com/',
-    },
-    {
-      name: t('project_cronos'),
-      desc: t('cronos_desc'),
-      badge: t('badge_app'),
-      type: 'app',
-      url: 'https://cronos.gruponumera.com/',
-    },
-    {
-      name: t('project_monno'),
-      desc: t('monno_desc'),
-      badge: t('badge_app'),
-      type: 'app',
-      url: 'https://monno.gruponumera.com/',
-    },
-    {
-      name: t('project_sage'),
-      desc: t('sage_desc'),
-      badge: t('badge_app'),
-      type: 'app',
-      url: 'https://sage.gruponumera.com/',
-    },
-    {
-      name: t('project_bateesteira'),
-      desc: t('bateesteira_desc'),
-      badge: t('badge_app'),
-      type: 'app',
-      url: 'https://bateesteira.gruponumera.com/',
-      wip: true,
-    },
-    {
-      name: t('project_integra'),
-      desc: t('integra_desc'),
-      badge: t('badge_app'),
-      type: 'app',
-      url: null,
-      wip: true,
-    },
-    {
-      name: t('project_nyot'),
-      desc: t('nyot_desc'),
-      badge: t('badge_app'),
-      type: 'app',
-      url: 'https://nyot.gruponumera.com/',
-    },
-  ]
+  const allProjects = content.projects
+    .filter((p) => p.visible)
+    .map((p) => ({
+      name: t(`project_${p.id}`),
+      desc: t(`${p.id}_desc`),
+      badge: p.wip ? t('badge_wip') : p.type === 'calculator' ? t('badge_calculator') : t('badge_app'),
+      type: p.type,
+      url: p.url,
+      wip: p.wip,
+    }))
 
   const tabs = [
     { key: 'all', label: t('ecosystem_filter_all') },

@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageContext'
+import content from '../content.json'
 
 function FadeIn({ children, delay = 0, className = '' }) {
   const ref = useRef(null)
@@ -18,16 +19,6 @@ function FadeIn({ children, delay = 0, className = '' }) {
     </motion.div>
   )
 }
-
-const cardImages = [
-  '/cases/nexus.jpeg',
-  '/cases/ruptura.jpeg',
-  '/cases/treinamento.jpg',
-  '/cases/gestaomateriais.jpeg',
-  '/cases/devolucao.jpeg',
-  '/cases/paineldetalhado.jpeg',
-  '/cases/cartadiretriz.jpeg',
-]
 
 export default function MetricsCarousel() {
   const { t } = useLanguage()
@@ -53,12 +44,11 @@ export default function MetricsCarousel() {
     return () => window.removeEventListener('resize', onResize)
   }, [])
 
-  // Build metrics from translations
-  let metricsCount = 0
-  while (t(`metric_${metricsCount}_title`) !== `metric_${metricsCount}_title`) metricsCount++
-  const metrics = Array.from({ length: metricsCount }, (_, i) => ({
-    title: t(`metric_${i}_title`),
-    desc: t(`metric_${i}_desc`),
+  const visibleCases = content.cases.filter((c) => c.visible)
+  const metrics = visibleCases.map((c) => ({
+    title: t(`metric_${c.id}_title`),
+    desc: t(`metric_${c.id}_desc`),
+    image: c.image,
   }))
   const N = metrics.length
 
@@ -197,7 +187,7 @@ export default function MetricsCarousel() {
                 {/* Background image */}
                 <div
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110 pointer-events-none"
-                  style={{ backgroundImage: `url(${cardImages[i % N]})` }}
+                  style={{ backgroundImage: `url(${metric.image})` }}
                 />
                 {/* Dark gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none" />

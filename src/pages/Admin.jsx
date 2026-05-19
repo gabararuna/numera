@@ -245,7 +245,7 @@ function TextsTab({ draft, update, langTab, setLangTab }) {
 
 // ─── Login ────────────────────────────────────────────────────────────────────
 
-function LoginScreen({ password, setPassword, onSubmit, error }) {
+function LoginScreen({ password, setPassword, onSubmit, error, loading }) {
   return (
     <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center">
       <form onSubmit={onSubmit} className="w-full max-w-sm space-y-4 px-6">
@@ -255,15 +255,17 @@ function LoginScreen({ password, setPassword, onSubmit, error }) {
           placeholder="Senha"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#00BFA5]/50"
+          disabled={loading}
+          className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-[#00BFA5]/50 disabled:opacity-50"
           autoFocus
         />
         {error && <p className="text-red-400 text-xs">{error}</p>}
         <button
           type="submit"
-          className="w-full bg-[#00BFA5] hover:bg-[#00a896] text-black text-sm font-medium py-3 rounded-lg transition-colors cursor-pointer"
+          disabled={loading}
+          className="w-full bg-[#00BFA5] hover:bg-[#00a896] text-black text-sm font-medium py-3 rounded-lg transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          Entrar
+          {loading ? 'Verificando...' : 'Entrar'}
         </button>
       </form>
     </div>
@@ -276,6 +278,7 @@ export default function Admin() {
   const [password, setPassword] = useState('')
   const [authed, setAuthed] = useState(() => !!sessionStorage.getItem('admin_ok'))
   const [loginError, setLoginError] = useState('')
+  const [loginLoading, setLoginLoading] = useState(false)
   const [draft, setDraft] = useState(initialContent)
   const [tab, setTab] = useState('sections')
   const [langTab, setLangTab] = useState('pt')
@@ -283,12 +286,26 @@ export default function Admin() {
   const [publishState, setPublishState] = useState('idle')
   const [publishError, setPublishError] = useState('')
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault()
     if (!password.trim()) return
-    sessionStorage.setItem('admin_ok', password)
-    setAuthed(true)
+    setLoginLoading(true)
     setLoginError('')
+    try {
+      const res = await fetch('/api/verify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password }),
+      })
+      const data = await res.json()
+      if (!res.ok || data.error) throw new Error(data.error || 'Senha incorreta')
+      sessionStorage.setItem('admin_ok', password)
+      setAuthed(true)
+    } catch (err) {
+      setLoginError(err.message)
+    } finally {
+      setLoginLoading(false)
+    }
   }
 
   const update = (newDraft) => {
@@ -322,7 +339,7 @@ export default function Admin() {
   }
 
   if (!authed) {
-    return <LoginScreen password={password} setPassword={setPassword} onSubmit={handleLogin} error={loginError} />
+    return <LoginScreen password={password} setPassword={setPassword} onSubmit={handleLogin} error={loginError} loading={loginLoading} />
   }
 
   return (

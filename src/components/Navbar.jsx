@@ -1,5 +1,4 @@
-import { useLanguage } from '../i18n/LanguageContext'
-import { languages } from '../i18n/translations'
+import { useLanguage, languages } from '../i18n/LanguageContext'
 
 export default function Navbar() {
   const { lang, setLang } = useLanguage()

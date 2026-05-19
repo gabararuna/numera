@@ -10,6 +10,10 @@ export async function onRequestPost(context) {
 
   const { password } = body
 
+  if (!env.ADMIN_PASSWORD) {
+    return Response.json({ error: 'Variável ADMIN_PASSWORD não configurada no Cloudflare' }, { status: 500 })
+  }
+
   if (!password || password !== env.ADMIN_PASSWORD) {
     return Response.json({ error: 'Senha incorreta' }, { status: 401 })
   }

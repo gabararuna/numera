@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contato | Numera — Fale com a nossa equipe</title>
+  <meta name="description" content="Entre em contato com a Numera por WhatsApp, e-mail ou telefone. Primeira conversa sem compromisso, proposta em até 48 horas úteis.">
+  <link rel="canonical" href="https://gruponumera.com/contato/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contato | Numera",
+    "url": "https://gruponumera.com/contato/",
+    "description": "Entre em contato com a Numera para uma conversa sem compromisso sobre o seu projeto.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Numera",
+      "url": "https://gruponumera.com",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+55-98-99217-2631",
+        "email": "contato@gruponumera.com",
+        "contactType": "customer support",
+        "availableLanguage": ["Portuguese"]
+      }
+    }
+  }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #000;
+      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+      font-weight: 300;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: #00BFA5; text-decoration: none; }
+    a:hover { color: #00E6C7; }
+
+    header {
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      padding: 1.25rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 50;
+    }
+    header .brand { color: #fff; font-size: 1rem; font-weight: 500; letter-spacing: -0.01em; }
+    header nav { display: flex; gap: 2rem; align-items: center; }
+    header nav a { color: rgba(255,255,255,0.45); font-size: 0.8125rem; text-transform: uppercase; letter-spacing: 0.08em; transition: color 0.2s; font-weight: 400; }
+    header nav a:hover { color: #fff; }
+    header nav a.active { color: #fff; }
+
+    main { max-width: 860px; margin: 0 auto; padding: 5rem 2rem 7rem; }
+
+    .hero-badge {
+      display: inline-block;
+      font-size: 0.625rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #00BFA5;
+      border: 1px solid rgba(0,191,165,0.25);
+      border-radius: 100px;
+      padding: 0.3rem 0.9rem;
+      margin-bottom: 2rem;
+      font-weight: 500;
+    }
+    h1 {
+      font-size: clamp(2.25rem, 5vw, 3.5rem);
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+      color: #fff;
+    }
+    .hero-sub {
+      font-size: 1.0625rem;
+      color: rgba(255,255,255,0.45);
+      font-weight: 300;
+      margin-bottom: 1rem;
+      max-width: 560px;
+      line-height: 1.7;
+    }
+    .hero-intro {
+      font-size: 0.9375rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.8;
+      max-width: 640px;
+      margin-bottom: 4rem;
+    }
+
+    hr { border: none; border-top: 1px solid rgba(255,255,255,0.07); margin: 3.5rem 0; }
+
+    /* Section labels */
+    .section-label {
+      font-size: 0.625rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: rgba(255,255,255,0.3);
+      font-weight: 500;
+      display: block;
+      margin-bottom: 1.25rem;
+    }
+    h2 {
+      font-size: 1.375rem;
+      font-weight: 400;
+      letter-spacing: -0.015em;
+      color: #fff;
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+    p { color: rgba(255,255,255,0.5); margin-bottom: 1rem; font-size: 0.9375rem; line-height: 1.8; }
+
+    /* Channel cards */
+    .channel-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 20px;
+      overflow: hidden;
+      margin-top: 1.5rem;
+    }
+    @media (min-width: 540px) {
+      .channel-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .channel-card {
+      background: #000;
+      padding: 2rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      transition: background 0.25s;
+    }
+    .channel-card:hover { background: rgba(0,191,165,0.03); }
+    .channel-icon {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .channel-label {
+      font-size: 0.625rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #00BFA5;
+      font-weight: 500;
+    }
+    .channel-value {
+      font-size: 0.9375rem;
+      font-weight: 400;
+      color: #fff;
+      letter-spacing: -0.01em;
+    }
+    .channel-desc {
+      font-size: 0.8125rem;
+      color: rgba(255,255,255,0.35);
+      line-height: 1.65;
+      margin-top: 0.25rem;
+    }
+
+    /* Form */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+    @media (min-width: 540px) {
+      .form-row { grid-template-columns: 1fr 1fr; display: grid; gap: 1.25rem; }
+    }
+    .field { display: flex; flex-direction: column; gap: 0.5rem; }
+    label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.35);
+      font-weight: 500;
+    }
+    input, select, textarea {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 0.8rem 1rem;
+      font-size: 0.9375rem;
+      font-family: inherit;
+      font-weight: 300;
+      color: #fff;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      width: 100%;
+    }
+    input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.2); }
+    input:focus, select:focus, textarea:focus {
+      border-color: rgba(0,191,165,0.4);
+      background: rgba(0,191,165,0.03);
+    }
+    select { appearance: none; cursor: pointer; }
+    select option { background: #111; color: #fff; }
+    textarea { resize: vertical; min-height: 140px; line-height: 1.6; }
+
+    .form-submit {
+      margin-top: 0.5rem;
+    }
+    .btn-submit {
+      display: inline-block;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 100px;
+      padding: 0.75rem 2rem;
+      font-size: 0.8125rem;
+      font-family: inherit;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.8);
+      background: transparent;
+      cursor: pointer;
+      transition: border-color 0.25s, color 0.25s, background 0.25s;
+      text-transform: uppercase;
+    }
+    .btn-submit:hover { border-color: #00BFA5; color: #00BFA5; background: rgba(0,191,165,0.05); }
+
+    /* FAQ inline */
+    .faq-list { margin-top: 1.5rem; display: flex; flex-direction: column; }
+    .faq-item {
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      padding: 1.5rem 0;
+    }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-q {
+      font-size: 0.9375rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 0.5rem;
+    }
+    .faq-a {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+    footer span { font-size: 0.8125rem; color: rgba(255,255,255,0.3); }
+    footer nav { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+    footer nav a { font-size: 0.8125rem; color: rgba(255,255,255,0.35); transition: color 0.2s; }
+    footer nav a:hover { color: #fff; }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="brand">Numera</a>
+  <nav>
+    <a href="/">Início</a>
+    <a href="/solucoes/">Soluções</a>
+    <a href="/sobre/">Sobre</a>
+    <a href="/contato/" class="active">Contato</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- Hero -->
+  <div>
+    <span class="hero-badge">Contato</span>
+    <h1>Pronto para conversar?</h1>
+    <p class="hero-sub">Primeiro passo é uma troca direta. Sem funil de vendas, sem e-mails automáticos.</p>
+    <p class="hero-intro">A Numera funciona de forma direta: você nos conta o problema, a gente entende o contexto e responde com uma proposta clara em até 48 horas úteis. Escolha o canal que prefere abaixo — todos chegam na mesma equipe.</p>
+  </div>
+
+  <!-- Canais -->
+  <section>
+    <span class="section-label">Canais de contato</span>
+    <h2>Escolha o canal mais prático para você.</h2>
+    <div class="channel-grid">
+      <a href="https://wa.me/5598992172631" target="_blank" rel="noopener noreferrer" class="channel-card">
+        <span class="channel-icon">💬</span>
+        <span class="channel-label">WhatsApp</span>
+        <span class="channel-value">+55 (98) 99217-2631</span>
+        <span class="channel-desc">Resposta mais rápida. Ideal para uma conversa inicial ou para marcar uma reunião sem burocracia.</span>
+      </a>
+      <a href="mailto:contato@gruponumera.com" class="channel-card">
+        <span class="channel-icon">✉️</span>
+        <span class="channel-label">E-mail</span>
+        <span class="channel-value">contato@gruponumera.com</span>
+        <span class="channel-desc">Para projetos mais complexos ou quando precisar enviar arquivos, planilhas e contexto detalhado antes da reunião.</span>
+      </a>
+      <a href="tel:+5598992172631" class="channel-card">
+        <span class="channel-icon">📞</span>
+        <span class="channel-label">Telefone</span>
+        <span class="channel-value">+55 (98) 99217-2631</span>
+        <span class="channel-desc">Para uma conversa direta e sem texto. Disponível em horário comercial, de segunda a sexta.</span>
+      </a>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- Formulário -->
+  <section>
+    <span class="section-label">Formulário de contato</span>
+    <h2>Prefere escrever? Preencha abaixo.</h2>
+    <p>Descreva o problema ou o projeto. Quanto mais contexto você der, mais precisa será a nossa resposta — mas uma linha já é suficiente para começarmos a conversa.</p>
+
+    <form class="form-grid" action="mailto:contato@gruponumera.com" method="get" enctype="text/plain">
+      <div class="form-row">
+        <div class="field">
+          <label for="nome">Nome completo</label>
+          <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+        </div>
+        <div class="field">
+          <label for="empresa">Empresa</label>
+          <input type="text" id="empresa" name="empresa" placeholder="Nome da empresa">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="assunto">Qual é o seu interesse?</label>
+        <select id="assunto" name="assunto">
+          <option value="" disabled selected>Selecione uma opção</option>
+          <option value="Automação e Dashboard">Automação e Dashboard</option>
+          <option value="Treinamento Corporativo">Treinamento Corporativo em Dados</option>
+          <option value="Consultoria Estratégica">Consultoria e Planejamento Estratégico</option>
+          <option value="Ecossistema de Produtos">Ecossistema de Produtos Numera</option>
+          <option value="Outro">Outro assunto</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="mensagem">Mensagem</label>
+        <textarea id="mensagem" name="mensagem" placeholder="Descreva o problema ou o que você precisa. Sem formalidade — pode ser direto."></textarea>
+      </div>
+
+      <div class="form-submit">
+        <button type="submit" class="btn-submit">Enviar mensagem</button>
+      </div>
+    </form>
+  </section>
+
+  <hr>
+
+  <!-- FAQ -->
+  <section>
+    <span class="section-label">Perguntas rápidas</span>
+    <h2>O que acontece depois que eu entro em contato?</h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <p class="faq-q">Como funciona a primeira reunião?</p>
+        <p class="faq-a">É uma conversa de 30 a 45 minutos, sem compromisso e sem apresentação de PowerPoint. Você explica o problema e a gente responde com clareza sobre o que é possível fazer, qual seria o escopo, quanto tempo levaria e qual seria o próximo passo concreto. Nenhum lado perde tempo.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Vocês atendem empresas de qualquer porte?</p>
+        <p class="faq-a">Sim. Atendemos desde times pequenos de 3 a 5 pessoas que precisam de uma automação específica até empresas com centenas de funcionários que querem profissionalizar a gestão por dados. O escopo e o investimento se ajustam ao contexto — não há um tamanho mínimo de empresa para trabalhar com a Numera.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">É possível contratar apenas o treinamento, sem um projeto de sistema?</p>
+        <p class="faq-a">Sim, com prazer. Treinamentos são uma oferta independente e podem ser contratados isoladamente. Muitas empresas começam pela capacitação da equipe e, depois de ver o resultado, avançam para projetos de automação ou sistema. Outras só precisam do treinamento — e isso é ótimo também.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">Qual é o prazo para receber uma proposta?</p>
+        <p class="faq-a">Até 48 horas úteis após a primeira conversa ou mensagem com contexto suficiente para entendermos o problema. Propostas vagas chegam depois de uma conversa de alinhamento — que também acontece em até 48 horas. Não trabalhamos com fila de espera.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span>© 2026 Numera. Todos os direitos reservados.</span>
+  <nav>
+    <a href="/">Início</a>
+    <a href="/solucoes/">Soluções</a>
+    <a href="/sobre/">Sobre</a>
+    <a href="/contato/">Contato</a>
+    <a href="/privacidade.html">Privacidade</a>
+    <a href="/cookies.html">Cookies</a>
+  </nav>
+</footer>
+
+</body>
+</html>

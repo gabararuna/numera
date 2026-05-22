@@ -6,6 +6,7 @@ import ExchangeTicker from './components/ExchangeTicker'
 import TradingInfrastructure from './components/TradingInfrastructure'
 import Methodology from './components/Methodology'
 import MetricsCarousel from './components/MetricsCarousel'
+import FAQ from './components/FAQ'
 import CTASection from './components/CTASection'
 import Footer from './components/Footer'
 import CookieBanner from './components/CookieBanner'
@@ -58,6 +59,7 @@ function App() {
           {sections.ecosystem   && <TradingInfrastructure />}
           {sections.cases       && <MetricsCarousel />}
           {sections.methodology && <Methodology />}
+          {sections.faq         && <FAQ />}
           {sections.cta         && <CTASection />}
         </main>
         <Footer />

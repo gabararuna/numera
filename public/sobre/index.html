@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre a Numera | Sistemas, Automações e Treinamentos em Dados</title>
+  <meta name="description" content="Conheça a Numera — empresa de tecnologia fundada por profissionais de engenharia e ciência de dados que desenvolvem sistemas sob medida, automações e treinamentos para empresas brasileiras.">
+  <link rel="canonical" href="https://gruponumera.com/sobre/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "Sobre a Numera",
+    "url": "https://gruponumera.com/sobre/",
+    "description": "Conheça a Numera — empresa de tecnologia que desenvolve sistemas sob medida, automações e treinamentos em dados para empresas brasileiras.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Numera",
+      "url": "https://gruponumera.com"
+    }
+  }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #000;
+      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+      font-weight: 300;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: #00BFA5; text-decoration: none; }
+    a:hover { color: #00E6C7; }
+
+    /* Header */
+    header {
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      padding: 1.25rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 50;
+    }
+    header .brand { color: #fff; font-size: 1rem; font-weight: 500; letter-spacing: -0.01em; }
+    header nav { display: flex; gap: 2rem; align-items: center; }
+    header nav a { color: rgba(255,255,255,0.45); font-size: 0.8125rem; text-transform: uppercase; letter-spacing: 0.08em; transition: color 0.2s; font-weight: 400; }
+    header nav a:hover { color: #fff; }
+    header nav a.active { color: #fff; }
+
+    /* Layout */
+    main { max-width: 860px; margin: 0 auto; padding: 5rem 2rem 7rem; }
+
+    /* Hero block */
+    .hero-badge {
+      display: inline-block;
+      font-size: 0.625rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #00BFA5;
+      border: 1px solid rgba(0,191,165,0.25);
+      border-radius: 100px;
+      padding: 0.3rem 0.9rem;
+      margin-bottom: 2rem;
+      font-weight: 500;
+    }
+    h1 {
+      font-size: clamp(2.25rem, 5vw, 3.5rem);
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+      color: #fff;
+    }
+    .hero-sub {
+      font-size: 1.0625rem;
+      color: rgba(255,255,255,0.45);
+      font-weight: 300;
+      margin-bottom: 4rem;
+      max-width: 560px;
+    }
+
+    /* Section */
+    section { margin-bottom: 4rem; }
+    h2 {
+      font-size: 0.625rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #00BFA5;
+      font-weight: 500;
+      margin-bottom: 1.25rem;
+    }
+    h3 {
+      font-size: 1.375rem;
+      font-weight: 400;
+      letter-spacing: -0.015em;
+      color: #fff;
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+    p { color: rgba(255,255,255,0.55); margin-bottom: 1rem; font-size: 0.9375rem; line-height: 1.8; }
+    p:last-child { margin-bottom: 0; }
+
+    /* Divider */
+    hr { border: none; border-top: 1px solid rgba(255,255,255,0.07); margin: 3.5rem 0; }
+
+    /* Pillar cards */
+    .pillar-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-top: 2rem;
+    }
+    @media (min-width: 640px) {
+      .pillar-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .pillar-card {
+      background: #000;
+      padding: 1.75rem 1.5rem;
+    }
+    .pillar-num {
+      font-size: 0.625rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: rgba(255,255,255,0.25);
+      font-weight: 500;
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+    .pillar-title {
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: #fff;
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.01em;
+    }
+    .pillar-desc {
+      font-size: 0.8125rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.7;
+    }
+
+    /* Stats */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-top: 2rem;
+    }
+    @media (min-width: 640px) {
+      .stats-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    .stat-card {
+      background: #000;
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 500;
+      letter-spacing: -0.04em;
+      color: #fff;
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.35);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* CTA */
+    .cta-block {
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 3rem 2.5rem;
+      text-align: center;
+      background: rgba(0,191,165,0.02);
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-block::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 120px;
+      background: linear-gradient(to top, rgba(0,191,165,0.06) 0%, transparent 100%);
+      pointer-events: none;
+    }
+    .cta-block h3 { font-size: 1.5rem; margin-bottom: 0.75rem; }
+    .cta-block p { font-size: 0.875rem; color: rgba(255,255,255,0.45); margin-bottom: 2rem; }
+    .btn {
+      display: inline-block;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 100px;
+      padding: 0.7rem 1.75rem;
+      font-size: 0.8125rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.8);
+      transition: border-color 0.25s, color 0.25s, background 0.25s;
+      text-decoration: none;
+    }
+    .btn:hover { border-color: #00BFA5; color: #00BFA5; background: rgba(0,191,165,0.05); }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+    footer span { font-size: 0.8125rem; color: rgba(255,255,255,0.3); }
+    footer nav { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+    footer nav a { font-size: 0.8125rem; color: rgba(255,255,255,0.35); transition: color 0.2s; }
+    footer nav a:hover { color: #fff; }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="brand">Numera</a>
+  <nav>
+    <a href="/">Início</a>
+    <a href="/solucoes/">Soluções</a>
+    <a href="/sobre/" class="active">Sobre</a>
+    <a href="/contato/">Contato</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- Hero -->
+  <div>
+    <span class="hero-badge">Sobre nós</span>
+    <h1>Tecnologia que resolve problemas reais.</h1>
+    <p class="hero-sub">Conheça a empresa por trás das soluções, a metodologia que guia cada projeto e os valores que definem como trabalhamos.</p>
+  </div>
+
+  <!-- Quem somos -->
+  <section>
+    <h2>Quem somos</h2>
+    <h3>Uma empresa de tecnologia construída para a operação real.</h3>
+    <p>A Numera é uma empresa de tecnologia fundada por profissionais de engenharia e ciência de dados com experiência nos setores industrial, logístico e de serviços. Nascemos da percepção de que a maioria das empresas brasileiras ainda opera com processos manuais, planilhas desconexas e decisões baseadas em intuição — quando a tecnologia para mudar isso já existe, está disponível e está ao alcance de qualquer negócio disposto a usá-la com método.</p>
+    <p>Nosso trabalho começa antes do código. Começa entendendo o problema real da operação: onde está o gargalo, quem sofre com ele todos os dias, qual dado já existe mas não está sendo aproveitado. A partir daí, construímos a solução mais eficiente para aquele contexto específico — seja um dashboard conectado aos dados reais, uma automação que elimina horas de consolidado manual, um sistema interno que substitui uma planilha crítica ou um programa de capacitação que torna a equipe autônoma em dados.</p>
+    <p>Atendemos empresas em todo o Brasil, com foco em setores onde dados e processos têm impacto direto no resultado operacional: construção civil, engenharia, logística, varejo e serviços. Nossa operação é 100% remota, com comunicação estruturada e entregas documentadas.</p>
+  </section>
+
+  <hr>
+
+  <!-- Missão -->
+  <section>
+    <h2>Nossa missão</h2>
+    <h3>Ajudar empresas a tomar decisões melhores com tecnologia aplicada.</h3>
+    <p>Não acreditamos em soluções genéricas. Cada projeto é construído do zero para o problema real do cliente, com foco em entrega prática, transferência de conhecimento e resultado mensurável. Uma solução que a equipe não usa não é uma solução — por isso investimos tanto no processo de adoção e capacitação quanto na construção técnica.</p>
+    <p>Valorizamos clareza sobre o escopo antes de iniciar qualquer trabalho, honestidade técnica sobre o que é e o que não é possível, e impacto real como única métrica de sucesso. Não vendemos projeto — entregamos resultado.</p>
+  </section>
+
+  <hr>
+
+  <!-- Como trabalhamos -->
+  <section>
+    <h2>Como trabalhamos</h2>
+    <h3>Três pilares que guiam cada projeto, do diagnóstico à entrega.</h3>
+    <div class="pillar-grid">
+      <div class="pillar-card">
+        <span class="pillar-num">01</span>
+        <div class="pillar-title">Mapear antes de construir</div>
+        <p class="pillar-desc">Antes de escrever uma linha de código, entendemos o processo, os dados disponíveis e o resultado esperado. Isso evita construir a solução certa para o problema errado — o erro mais caro em tecnologia.</p>
+      </div>
+      <div class="pillar-card">
+        <span class="pillar-num">02</span>
+        <div class="pillar-title">Construir para ser usado</div>
+        <p class="pillar-desc">Sistemas complicados não são usados. Priorizamos interfaces claras, fluxos simples e documentação para que a equipe do cliente opere tudo de forma autônoma — sem precisar chamar ninguém para o dia a dia.</p>
+      </div>
+      <div class="pillar-card">
+        <span class="pillar-num">03</span>
+        <div class="pillar-title">Transferir o conhecimento</div>
+        <p class="pillar-desc">Não entregamos caixas-pretas. Ao final de cada projeto, a equipe do cliente entende o que foi construído, como mantê-lo e como evoluí-lo. A Numera não gera dependência: gera capacidade.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- Números -->
+  <section>
+    <h2>Nossos números</h2>
+    <h3>Resultado em escala, entrega por entrega.</h3>
+    <p>Cada número abaixo representa um projeto concluído, uma equipe capacitada ou uma empresa que passou a trabalhar melhor. Não somos uma grande consultoria — somos um time focado, que prefere entregar bem a crescer rápido.</p>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <span class="stat-number">30+</span>
+        <span class="stat-label">Projetos entregues</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">15+</span>
+        <span class="stat-label">Empresas atendidas</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">200+</span>
+        <span class="stat-label">Profissionais treinados</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">5</span>
+        <span class="stat-label">Anos em dados e tech</span>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- Setores -->
+  <section>
+    <h2>Onde atuamos</h2>
+    <h3>Setores onde dados e processos definem o resultado.</h3>
+    <p>Nossa metodologia foi desenvolvida e testada em ambientes operacionalmente complexos, onde a qualidade da informação tem impacto direto no resultado financeiro e na capacidade de entrega. Os setores que mais atendemos incluem construção civil e engenharia — com foco em controle de contratos, insumos e KPIs de obra — logística, com rastreamento de entregas e gestão de estoque, e serviços, com automações de relatórios e dashboards de acompanhamento.</p>
+    <p>A metodologia é agnóstica de setor. Se o problema envolve dado, processo e decisão, é um problema que a Numera pode resolver.</p>
+  </section>
+
+  <hr>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <h3>Pronto para ver a sua operação funcionar melhor?</h3>
+    <p>Fale com a Numera. Primeira conversa sem compromisso, proposta em até 48 horas.</p>
+    <a href="/contato/" class="btn">Fale com a Numera</a>
+  </div>
+
+</main>
+
+<footer>
+  <span>© 2026 Numera. Todos os direitos reservados.</span>
+  <nav>
+    <a href="/">Início</a>
+    <a href="/solucoes/">Soluções</a>
+    <a href="/sobre/">Sobre</a>
+    <a href="/contato/">Contato</a>
+    <a href="/privacidade.html">Privacidade</a>
+    <a href="/cookies.html">Cookies</a>
+  </nav>
+</footer>
+
+</body>
+</html>

@@ -1,15 +1,87 @@
 import { motion } from 'framer-motion'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useId } from 'react'
 import { useLanguage } from '../i18n/LanguageContext'
-import ShadowOverlay from './ShadowOverlay'
 
 export default function HeroSection() {
   const { t } = useLanguage()
   const [heroReady, setHeroReady] = useState(false)
+  const bgRef  = useRef(null)
+  const hueRef = useRef(null)
 
+  // Unique filter id — avoids collisions if ever rendered twice
+  const rawId    = useId()
+  const filterId = `hf-${rawId.replace(/:/g, '')}`
+
+  // ── Entrance animation ────────────────────────────────────────────
   useEffect(() => {
-    const timer = setTimeout(() => setHeroReady(true), 100)
-    return () => clearTimeout(timer)
+    const t = setTimeout(() => setHeroReady(true), 100)
+    return () => clearTimeout(t)
+  }, [])
+
+  // ── Original mouse-tracking gradient ─────────────────────────────
+  useEffect(() => {
+    const bg = bgRef.current
+    let idleTimer = null
+    let animFrame = null
+    let idlePhase = 0
+    let isIdle    = false
+    let lastNx    = 0.5
+    let lastNy    = 0.85
+
+    const applyGradient = (nx, ny, pulse = 1) => {
+      if (!bg) return
+      const px  = 30 + nx * 40
+      const py  = 60 + ny * 40
+      const op1 = (0.24 * pulse).toFixed(3)
+      const op2 = (0.07 * pulse).toFixed(3)
+      bg.style.background = `radial-gradient(ellipse 60% 120% at ${px}% ${py}%, rgba(0,191,165,${op1}) 0%, rgba(0,191,165,${op2}) 40%, transparent 80%)`
+    }
+
+    const tickIdle = () => {
+      if (!isIdle) return
+      idlePhase += 0.007
+      const pulse = 0.72 + Math.sin(idlePhase) * 0.28
+      applyGradient(lastNx, lastNy, pulse)
+      animFrame = requestAnimationFrame(tickIdle)
+    }
+
+    const startIdle = () => { isIdle = true; idlePhase = 0; tickIdle() }
+    const stopIdle  = () => {
+      isIdle = false
+      if (animFrame) { cancelAnimationFrame(animFrame); animFrame = null }
+    }
+
+    const handleMove = (e) => {
+      lastNx = e.clientX / window.innerWidth
+      lastNy = e.clientY / window.innerHeight
+      stopIdle()
+      clearTimeout(idleTimer)
+      applyGradient(lastNx, lastNy, 1)
+      idleTimer = setTimeout(startIdle, 1800)
+    }
+
+    idleTimer = setTimeout(startIdle, 800)
+    window.addEventListener('mousemove', handleMove, { passive: true })
+    return () => {
+      window.removeEventListener('mousemove', handleMove)
+      clearTimeout(idleTimer)
+      stopIdle()
+    }
+  }, [])
+
+  // ── SVG turbulence hue-rotation (animates the gradient shape) ────
+  useEffect(() => {
+    let frame
+    let deg = 0
+    const tick = () => {
+      deg = (deg + 0.25) % 360
+      if (hueRef.current) {
+        hueRef.current.setAttribute('values', String(Math.round(deg)))
+      }
+      frame = requestAnimationFrame(tick)
+    }
+    frame = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(frame)
   }, [])
 
   return (
@@ -21,35 +93,67 @@ export default function HeroSection() {
         animate={heroReady ? { opacity: 1, scale: 1 } : {}}
         initial={{ opacity: 0, scale: 0.98 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
-        className="relative z-10 w-full h-full border border-white/10 rounded-2xl md:rounded-3xl flex items-center justify-center overflow-hidden bg-black"
+        className="relative z-10 w-full h-full border border-white/10 rounded-2xl md:rounded-3xl flex items-center justify-center overflow-hidden"
       >
-        {/* ── Shadow Overlay background effect ── */}
-        <div className="absolute inset-0 pointer-events-none">
-          <ShadowOverlay
-            color="rgba(0, 191, 165, 0.82)"
-            animation={{ scale: 38, speed: 16 }}
-            sizing="fill"
+        {/* ── Animated background ── */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-[inherit] bg-black">
+
+          {/* SVG filter definition — hidden, zero-size */}
+          <svg
+            aria-hidden="true"
+            style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden' }}
+          >
+            <defs>
+              <filter
+                id={filterId}
+                x="-20%" y="-20%"
+                width="140%" height="140%"
+                colorInterpolationFilters="sRGB"
+              >
+                {/* Organic turbulence noise */}
+                <feTurbulence
+                  type="turbulence"
+                  baseFrequency="0.0035 0.007"
+                  numOctaves="2"
+                  seed="9"
+                  result="noise"
+                />
+                {/* Animated hue rotation drives the displacement over time */}
+                <feColorMatrix
+                  ref={hueRef}
+                  in="noise"
+                  type="hueRotate"
+                  values="0"
+                  result="rotated"
+                />
+                {/* Displace the gradient — creates the morphing glow edge */}
+                <feDisplacementMap
+                  in="SourceGraphic"
+                  in2="rotated"
+                  scale="55"
+                  xChannelSelector="R"
+                  yChannelSelector="G"
+                />
+              </filter>
+            </defs>
+          </svg>
+
+          {/* The gradient — same as original, but displaced by SVG filter */}
+          <div
+            ref={bgRef}
+            className="absolute inset-0"
+            style={{
+              background:
+                'radial-gradient(ellipse 60% 120% at 50% 85%, rgba(0,191,165,0.22) 0%, rgba(0,191,165,0.06) 40%, transparent 80%)',
+              filter: `url(#${filterId})`,
+            }}
           />
         </div>
 
-        {/* Dark vignette so text stays readable */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              'radial-gradient(ellipse 80% 80% at 50% 50%, transparent 30%, rgba(0,0,0,0.55) 100%)',
-          }}
-        />
-
-        {/* Bottom fade */}
-        <div
-          className="absolute inset-x-0 bottom-0 h-40 pointer-events-none"
-          style={{ background: 'linear-gradient(to top, #000 0%, transparent 100%)' }}
-        />
-
-        {/* Content */}
+        {/* ── Text content ── */}
         <div className="absolute inset-0 flex items-center justify-start p-8 md:p-16 z-20 pointer-events-none">
           <div className="max-w-4xl pointer-events-auto">
+
             {/* Logo shimmer */}
             <motion.div
               animate={heroReady ? { opacity: 1, y: 0 } : {}}
@@ -89,6 +193,7 @@ export default function HeroSection() {
                 </span>
               </a>
             </motion.div>
+
           </div>
         </div>
       </motion.div>

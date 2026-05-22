@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { LanguageProvider } from './i18n/LanguageContext'
 import Navbar from './components/Navbar'
 import HeroSection from './components/HeroSection'
@@ -10,6 +11,9 @@ import FAQ from './components/FAQ'
 import CTASection from './components/CTASection'
 import Footer from './components/Footer'
 import CookieBanner from './components/CookieBanner'
+import SobrePage from './pages/SobrePage'
+import SolucoesPage from './pages/SolucoesPage'
+import ContatoPage from './pages/ContatoPage'
 import content from './content.json'
 
 function CursorSpotlight() {
@@ -45,27 +49,41 @@ function CursorSpotlight() {
   )
 }
 
-function App() {
+function HomePage() {
   const { sections } = content
   return (
-    <LanguageProvider>
-      <CursorSpotlight />
-      <CookieBanner />
-      <div className="max-w-[1800px] mx-auto w-full relative">
-        <Navbar />
-        <main className="bg-black">
-          <HeroSection />
-          {sections.ticker      && <ExchangeTicker />}
-          {sections.ecosystem   && <TradingInfrastructure />}
-          {sections.cases       && <MetricsCarousel />}
-          {sections.methodology && <Methodology />}
-          {sections.faq         && <FAQ />}
-          {sections.cta         && <CTASection />}
-        </main>
-        <Footer />
-      </div>
-    </LanguageProvider>
+    <div className="max-w-[1800px] mx-auto w-full relative">
+      <Navbar />
+      <main className="bg-black">
+        <HeroSection />
+        {sections.ticker      && <ExchangeTicker />}
+        {sections.ecosystem   && <TradingInfrastructure />}
+        {sections.cases       && <MetricsCarousel />}
+        {sections.methodology && <Methodology />}
+        {sections.faq         && <FAQ />}
+        {sections.cta         && <CTASection />}
+      </main>
+      <Footer />
+    </div>
   )
 }
 
-export default App
+export default function App() {
+  return (
+    <BrowserRouter>
+      <LanguageProvider>
+        <CursorSpotlight />
+        <CookieBanner />
+        <Routes>
+          <Route path="/"          element={<HomePage />} />
+          <Route path="/sobre"     element={<SobrePage />} />
+          <Route path="/sobre/"    element={<SobrePage />} />
+          <Route path="/solucoes"  element={<SolucoesPage />} />
+          <Route path="/solucoes/" element={<SolucoesPage />} />
+          <Route path="/contato"   element={<ContatoPage />} />
+          <Route path="/contato/"  element={<ContatoPage />} />
+        </Routes>
+      </LanguageProvider>
+    </BrowserRouter>
+  )
+}

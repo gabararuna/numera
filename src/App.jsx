@@ -14,6 +14,7 @@ import CookieBanner from './components/CookieBanner'
 import SobrePage from './pages/SobrePage'
 import SolucoesPage from './pages/SolucoesPage'
 import ContatoPage from './pages/ContatoPage'
+import Admin from './pages/Admin'
 import content from './content.json'
 
 function CursorSpotlight() {
@@ -75,13 +76,16 @@ export default function App() {
         <CursorSpotlight />
         <CookieBanner />
         <Routes>
-          <Route path="/"          element={<HomePage />} />
-          <Route path="/sobre"     element={<SobrePage />} />
-          <Route path="/sobre/"    element={<SobrePage />} />
-          <Route path="/solucoes"  element={<SolucoesPage />} />
-          <Route path="/solucoes/" element={<SolucoesPage />} />
-          <Route path="/contato"   element={<ContatoPage />} />
-          <Route path="/contato/"  element={<ContatoPage />} />
+          <Route path="/"           element={<HomePage />} />
+          <Route path="/sobre"      element={<SobrePage />} />
+          <Route path="/sobre/"     element={<SobrePage />} />
+          <Route path="/solucoes"   element={<SolucoesPage />} />
+          <Route path="/solucoes/"  element={<SolucoesPage />} />
+          <Route path="/contato"    element={<ContatoPage />} />
+          <Route path="/contato/"   element={<ContatoPage />} />
+          <Route path="/admin"      element={<Admin />} />
+          {/* Catch-all: redirect unknown paths to home */}
+          <Route path="*"           element={<HomePage />} />
         </Routes>
       </LanguageProvider>
     </BrowserRouter>

@@ -1,159 +1,126 @@
 import { useRef, useId, useEffect } from 'react'
-import { animate, useMotionValue } from 'framer-motion'
-
-function mapRange(value, fromLow, fromHigh, toLow, toHigh) {
-  if (fromLow === fromHigh) return toLow
-  const percentage = (value - fromLow) / (fromHigh - fromLow)
-  return toLow + percentage * (toHigh - toLow)
-}
+import { useMotionValue } from 'framer-motion'
 
 /**
- * ShadowOverlay — animated SVG turbulence displacement effect.
- * Ports the original TypeScript Framer component to plain JSX.
+ * ShadowOverlay — animated SVG turbulence displacement blob effect.
+ * No external assets. Self-contained SVG filter + mask.
  *
  * Props:
- *   sizing   — 'fill' | 'stretch'  (default 'fill')
- *   color    — CSS color string     (default teal brand)
- *   animation — { scale: 1-100, speed: 1-100 }
- *   noise    — { opacity: 0-1, scale: number }
- *   style    — inline style object
- *   className — extra CSS classes
+ *   color    — CSS color string   (default teal brand)
+ *   scale    — displacement scale  1-100 (default 35)
+ *   speed    — animation speed     1-100 (default 18, lower = slower)
  */
 export default function ShadowOverlay({
-  sizing = 'fill',
-  color = 'rgba(0, 191, 165, 0.9)',
-  animation = { scale: 35, speed: 18 },
-  noise,
-  style,
-  className = '',
+  color = 'rgba(0, 191, 165, 0.85)',
+  scale = 35,
+  speed = 18,
 }) {
   const rawId = useId()
-  const id = `shadowoverlay-${rawId.replace(/:/g, '')}`
+  const uid = rawId.replace(/:/g, '')
+  const filterId = `sf-${uid}`
+  const maskId  = `sm-${uid}`
 
-  const animationEnabled = animation && animation.scale > 0
-  const feColorMatrixRef = useRef(null)
-  const hueRotateMotionValue = useMotionValue(180)
-  const hueRotateAnimRef = useRef(null)
+  const hue = useMotionValue(0)
+  const feHueRef  = useRef(null)
+  const animRef   = useRef(null)
 
-  const displacementScale = animation
-    ? mapRange(animation.scale, 1, 100, 20, 100)
-    : 0
-
-  const animationDuration = animation
-    ? mapRange(animation.speed, 1, 100, 1000, 50) / 25
-    : 1
+  // Derived constants (stable across renders since props don't change)
+  const padding = Math.round(10 + (scale / 100) * 60)   // 10–70 px
+  const freqX   = (0.001 - (scale / 100) * 0.0005).toFixed(6)
+  const freqY   = (0.004 - (scale / 100) * 0.002).toFixed(6)
+  const dispScale = Math.round(20 + (scale / 100) * 80)
+  const duration  = Math.round(800 - (speed / 100) * 750) / 1000 // 0.05–0.8 s per deg → ≈full cycle
 
   useEffect(() => {
-    if (!feColorMatrixRef.current || !animationEnabled) return
+    let frame
+    let deg = 0
 
-    if (hueRotateAnimRef.current) hueRotateAnimRef.current.stop()
-
-    hueRotateMotionValue.set(0)
-    hueRotateAnimRef.current = animate(hueRotateMotionValue, 360, {
-      duration: animationDuration,
-      repeat: Infinity,
-      repeatType: 'loop',
-      repeatDelay: 0,
-      ease: 'linear',
-      delay: 0,
-      onUpdate: (value) => {
-        if (feColorMatrixRef.current) {
-          feColorMatrixRef.current.setAttribute('values', String(value))
-        }
-      },
-    })
-
-    return () => {
-      if (hueRotateAnimRef.current) hueRotateAnimRef.current.stop()
+    // Use a rAF loop — most compatible, no framer-motion animate() version concerns
+    const tick = () => {
+      deg = (deg + (speed * 0.015)) % 360
+      if (feHueRef.current) {
+        feHueRef.current.setAttribute('values', String(Math.round(deg)))
+      }
+      frame = requestAnimationFrame(tick)
     }
-  }, [animationEnabled, animationDuration, hueRotateMotionValue])
 
-  const turbFreqX = mapRange(animation?.scale ?? 0, 0, 100, 0.001, 0.0005)
-  const turbFreqY = mapRange(animation?.scale ?? 0, 0, 100, 0.004, 0.002)
+    frame = requestAnimationFrame(tick)
+
+    return () => cancelAnimationFrame(frame)
+  }, [speed])
 
   return (
     <div
-      className={className}
-      style={{ overflow: 'hidden', position: 'relative', width: '100%', height: '100%', ...style }}
+      style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden' }}
     >
-      {/* Displaced colored shape */}
+      {/* Hidden SVG definitions */}
+      <svg
+        aria-hidden="true"
+        style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden' }}
+      >
+        <defs>
+          {/* Blob mask — soft ellipse */}
+          <radialGradient id={maskId} cx="50%" cy="55%" r="48%">
+            <stop offset="30%" stopColor="white" stopOpacity="1" />
+            <stop offset="100%" stopColor="white" stopOpacity="0" />
+          </radialGradient>
+
+          {/* Turbulence displacement filter */}
+          <filter id={filterId} x="-20%" y="-20%" width="140%" height="140%"
+                  colorInterpolationFilters="sRGB">
+            <feTurbulence
+              type="turbulence"
+              baseFrequency={`${freqX} ${freqY}`}
+              numOctaves="2"
+              seed="5"
+              result="noise"
+            />
+            <feColorMatrix
+              ref={feHueRef}
+              in="noise"
+              type="hueRotate"
+              values="0"
+              result="rotatedNoise"
+            />
+            <feDisplacementMap
+              in="SourceGraphic"
+              in2="rotatedNoise"
+              scale={dispScale}
+              xChannelSelector="R"
+              yChannelSelector="G"
+              result="displaced"
+            />
+            <feGaussianBlur in="displaced" stdDeviation="6" />
+          </filter>
+        </defs>
+      </svg>
+
+      {/* The blob shape */}
       <div
         style={{
           position: 'absolute',
-          inset: -displacementScale,
-          filter: animationEnabled ? `url(#${id}) blur(4px)` : 'none',
+          top: `-${padding}px`,
+          right: `-${padding}px`,
+          bottom: `-${padding}px`,
+          left: `-${padding}px`,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
         }}
       >
-        {animationEnabled && (
-          <svg style={{ position: 'absolute', width: 0, height: 0 }}>
-            <defs>
-              <filter id={id}>
-                <feTurbulence
-                  result="undulation"
-                  numOctaves="2"
-                  baseFrequency={`${turbFreqX},${turbFreqY}`}
-                  seed="0"
-                  type="turbulence"
-                />
-                <feColorMatrix
-                  ref={feColorMatrixRef}
-                  in="undulation"
-                  type="hueRotate"
-                  values="180"
-                />
-                <feColorMatrix
-                  in="dist"
-                  result="circulation"
-                  type="matrix"
-                  values="4 0 0 0 1  4 0 0 0 1  4 0 0 0 1  1 0 0 0 0"
-                />
-                <feDisplacementMap
-                  in="SourceGraphic"
-                  in2="circulation"
-                  scale={displacementScale}
-                  result="dist"
-                />
-                <feDisplacementMap
-                  in="dist"
-                  in2="undulation"
-                  scale={displacementScale}
-                  result="output"
-                />
-              </filter>
-            </defs>
-          </svg>
-        )}
-
         <div
           style={{
+            width: '75%',
+            height: '75%',
             backgroundColor: color,
-            maskImage: `url('https://framerusercontent.com/images/ceBGguIpUU8luwByxuQz79t7To.png')`,
-            WebkitMaskImage: `url('https://framerusercontent.com/images/ceBGguIpUU8luwByxuQz79t7To.png')`,
-            maskSize: sizing === 'stretch' ? '100% 100%' : 'cover',
-            WebkitMaskSize: sizing === 'stretch' ? '100% 100%' : 'cover',
-            maskRepeat: 'no-repeat',
-            WebkitMaskRepeat: 'no-repeat',
-            maskPosition: 'center',
-            WebkitMaskPosition: 'center',
-            width: '100%',
-            height: '100%',
+            borderRadius: '50%',
+            filter: `url(#${filterId})`,
+            WebkitFilter: `url(#${filterId})`,
+            maskImage: `radial-gradient(ellipse 80% 70% at 50% 55%, black 25%, transparent 75%)`,
+            WebkitMaskImage: `radial-gradient(ellipse 80% 70% at 50% 55%, black 25%, transparent 75%)`,
           }}
         />
       </div>
-
-      {/* Optional noise overlay */}
-      {noise && noise.opacity > 0 && (
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            backgroundImage: `url("https://framerusercontent.com/images/g0QcWrxr87K0ufOxIUFBakwYA8.png")`,
-            backgroundSize: noise.scale * 200,
-            backgroundRepeat: 'repeat',
-            opacity: noise.opacity / 2,
-          }}
-        />
-      )}
     </div>
   )
 }

@@ -88,17 +88,17 @@ export default function Methodology() {
   , [t])
 
   return (
-    <section className="py-12 px-6 md:px-12 bg-black">
+    <section className="py-24 px-6 md:px-12 bg-black">
       <div className="max-w-[1800px] mx-auto">
         {/* Header */}
-        <div className="mb-24 text-left">
+        <div className="mb-20 text-left">
           <FadeIn>
-            <h2 className="text-xl md:text-3xl font-light tracking-tight text-white mb-4 shimmer-text">
+            <h2 className="text-2xl md:text-4xl font-medium tracking-tight text-white mb-4">
               {t('methodology_heading')}
             </h2>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <p className="text-white/70 text-sm md:text-base font-light leading-relaxed mx-auto">
+            <p className="text-white/55 text-sm md:text-base font-light leading-relaxed max-w-xl">
               {t('methodology_description')}
             </p>
           </FadeIn>
@@ -109,14 +109,14 @@ export default function Methodology() {
           {cards.map((card, i) => (
             <FadeIn key={i} delay={0.15 * (i + 1)}>
               <TiltCard>
-                <div className="space-y-3">
-                  <h4 className="text-[10px] tracking-widest text-white/60 font-medium uppercase">
+                <div className="space-y-4">
+                  <h4 className="text-[10px] tracking-[0.18em] text-white/40 font-medium uppercase">
                     {card.label}
                   </h4>
-                  <h3 className="text-lg md:text-xl font-light text-white tracking-tight">
+                  <h3 className="text-lg md:text-xl font-medium text-white tracking-tight">
                     {card.title}
                   </h3>
-                  <p className="text-sm text-white/70 font-light leading-relaxed max-w-sm">
+                  <p className="text-sm text-white/55 font-light leading-relaxed max-w-sm">
                     {card.desc}
                   </p>
                 </div>

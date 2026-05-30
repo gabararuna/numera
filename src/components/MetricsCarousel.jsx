@@ -30,14 +30,14 @@ export default function MetricsCarousel() {
   const dragStartX = useRef(0)
   const dragScrollLeft = useRef(0)
 
-  const [visibleCards, setVisibleCards] = useState(4)
+  const [visibleCards, setVisibleCards] = useState(3)
   const [activeDot, setActiveDot] = useState(0)
 
   useEffect(() => {
     const onResize = () => {
       if (window.innerWidth < 768) setVisibleCards(1)
       else if (window.innerWidth < 1280) setVisibleCards(2)
-      else setVisibleCards(4)
+      else setVisibleCards(3)
     }
     onResize()
     window.addEventListener('resize', onResize)
@@ -140,10 +140,10 @@ export default function MetricsCarousel() {
         {/* Header */}
         <div className="mb-20">
           <FadeIn>
-            <h2 className="text-xl md:text-3xl font-light tracking-tight text-white mb-4 shimmer-text">
+            <h2 className="text-2xl md:text-4xl font-medium tracking-tight text-white mb-4">
               {t('solutions_heading')}
             </h2>
-            <p className="text-white/70 text-sm md:text-base font-light leading-relaxed max-w-xl">
+            <p className="text-white/55 text-sm md:text-base font-light leading-relaxed max-w-xl">
               {t('solutions_description')}
             </p>
           </FadeIn>
@@ -192,11 +192,19 @@ export default function MetricsCarousel() {
                 {/* Dark gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none" />
                 {/* Glass content */}
-                <div className="relative z-10 glass-card m-4 md:m-5 p-5 md:p-6 rounded-xl pointer-events-none">
-                  <h3 className="text-lg md:text-xl font-light text-white tracking-tight mb-2">
+                <div
+                  className="relative z-10 m-4 md:m-5 p-5 md:p-6 rounded-xl pointer-events-none border border-white/[0.12]"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.58) 100%)',
+                    backdropFilter: 'blur(12px)',
+                    WebkitBackdropFilter: 'blur(12px)',
+                    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.07), 0 4px 24px rgba(0,0,0,0.5)',
+                  }}
+                >
+                  <h3 className="text-base md:text-lg font-medium text-white tracking-tight mb-2 leading-snug">
                     {metric.title}
                   </h3>
-                  <p className="text-sm text-white/75 font-light leading-relaxed">
+                  <p className="text-xs md:text-sm text-white/75 font-light leading-relaxed">
                     {metric.desc}
                   </p>
                 </div>

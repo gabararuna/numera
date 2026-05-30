@@ -54,12 +54,12 @@ export default function CTASection() {
             {/* Content */}
             <div className="relative z-10 w-full h-full flex flex-col items-center md:items-center justify-center text-center md:text-center px-6 md:px-6">
               <FadeIn delay={0.2}>
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-white mb-6 leading-tight shimmer-text">
+                <h2 className="text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-white mb-6 leading-[1.15] shimmer-text mx-auto max-w-2xl" style={{ textWrap: 'balance' }}>
                   {t('cta_heading')}
                 </h2>
               </FadeIn>
               <FadeIn delay={0.3}>
-                <p className="text-white/70 text-sm md:text-base font-light tracking-wide leading-relaxed max-w-xl mb-10">
+                <p className="text-white/55 text-sm md:text-base font-light tracking-wide leading-relaxed max-w-lg mb-10">
                   {t('cta_description')}
                 </p>
               </FadeIn>

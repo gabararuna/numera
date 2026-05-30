@@ -138,10 +138,10 @@ export default function HeroSection() {
             </defs>
           </svg>
 
-          {/* The gradient — same as original, but displaced by SVG filter */}
+          {/* The gradient — extended beyond bounds so feDisplacementMap has source pixels at all edges */}
           <div
             ref={bgRef}
-            className="absolute inset-0"
+            className="absolute -inset-20"
             style={{
               background:
                 'radial-gradient(ellipse 60% 120% at 50% 85%, rgba(0,191,165,0.22) 0%, rgba(0,191,165,0.06) 40%, transparent 80%)',
@@ -154,30 +154,22 @@ export default function HeroSection() {
         <div className="absolute inset-0 flex items-center justify-start p-8 md:p-16 z-20 pointer-events-none">
           <div className="max-w-4xl pointer-events-auto">
 
-            {/* Logo shimmer */}
-            <motion.div
-              animate={heroReady ? { opacity: 1, y: 0 } : {}}
-              initial={{ opacity: 0, y: 20 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="mb-6 h-8 md:h-12 lg:h-14 w-32 md:w-48 lg:w-56 shimmer-logo"
-            />
-
             {/* Heading */}
             <motion.h1
               animate={heroReady ? { opacity: 1, y: 0 } : {}}
               initial={{ opacity: 0, y: 20 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-3xl md:text-5xl lg:text-5xl tracking-tight leading-tight mb-6"
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-3xl md:text-5xl lg:text-[3.25rem] tracking-tight leading-[1.25] mb-6"
             >
-              <span className="block font-medium shimmer-text">{t('hero_heading_1')}</span>
-              <span className="block font-medium shimmer-text">{t('hero_heading_2')}</span>
+              <span className="block font-semibold shimmer-text pb-1">{t('hero_heading_1')}</span>
+              <span className="block font-light text-white/60">{t('hero_heading_2')}</span>
             </motion.h1>
 
             <motion.p
               animate={heroReady ? { opacity: 1, y: 0 } : {}}
               initial={{ opacity: 0, y: 20 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="text-sm md:text-base text-white/75 font-light tracking-wide leading-relaxed max-w-2xl mb-8"
+              transition={{ duration: 0.8, delay: 0.36 }}
+              className="text-sm md:text-base text-white/55 font-light tracking-wide leading-relaxed max-w-xl mb-9"
             >
               {t('hero_description')}
             </motion.p>
@@ -185,11 +177,19 @@ export default function HeroSection() {
             <motion.div
               animate={heroReady ? { opacity: 1, y: 0 } : {}}
               initial={{ opacity: 0, y: 20 }}
-              transition={{ duration: 0.8, delay: 0.7 }}
+              transition={{ duration: 0.8, delay: 0.52 }}
             >
-              <a className="glass-btn group" href="#contact">
-                <span className="relative z-10 text-sm font-light tracking-wide">
+              <a
+                href="#contact"
+                className="group inline-flex items-center gap-3 rounded-full border border-white/[0.12] bg-gradient-to-br from-white/[0.07] to-white/[0.02] pl-6 pr-2 py-2 text-white transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-[#00BFA5]/30 hover:from-[#00BFA5]/[0.10] hover:to-[#00BFA5]/[0.04] hover:shadow-[0_4px_28px_rgba(0,191,165,0.15)] active:scale-[0.98]"
+              >
+                <span className="text-sm font-light tracking-wide">
                   {t('hero_cta')}
+                </span>
+                <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:border-[#00BFA5]/25 group-hover:bg-[#00BFA5]/12 group-hover:translate-x-px group-hover:-translate-y-px">
+                  <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true" className="text-white/50 transition-colors duration-300 group-hover:text-[#00BFA5]">
+                    <path d="M2 9L9 2M9 2H4M9 2V7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
                 </span>
               </a>
             </motion.div>

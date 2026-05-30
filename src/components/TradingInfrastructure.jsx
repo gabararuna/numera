@@ -103,17 +103,17 @@ export default function TradingInfrastructure() {
   const mobileOrphan = count % 2 === 1 ? 'col-span-2 md:col-span-1' : ''
 
   return (
-    <section className="py-12 px-6 md:px-12 bg-black">
+    <section className="py-24 px-6 md:px-12 bg-black">
       <div className="max-w-[1800px] mx-auto">
         {/* Header */}
         <div className="mb-10">
           <FadeIn delay={0}>
-            <h2 className="text-xl md:text-3xl font-light tracking-tight text-white mb-3 shimmer-text">
+            <h2 className="text-2xl md:text-4xl font-medium tracking-tight text-white mb-3">
               {t('ecosystem_heading')}
             </h2>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <p className="text-white/70 text-sm font-light leading-relaxed max-w-xl">
+            <p className="text-white/55 text-sm font-light leading-relaxed max-w-xl">
               {t('ecosystem_description')}
             </p>
           </FadeIn>
@@ -138,31 +138,31 @@ export default function TradingInfrastructure() {
           </div>
         </FadeIn>
 
-        <div className={`grid grid-cols-2 ${MD_COLS[colsMd]} ${LG_COLS[colsLg]} ${XL_COLS[colsXl]} gap-3 auto-rows-[196px] md:auto-rows-[172px]`}>
+        <div className={`grid grid-cols-2 ${MD_COLS[colsMd]} ${LG_COLS[colsLg]} ${XL_COLS[colsXl]} gap-3 auto-rows-[220px] md:auto-rows-[200px]`}>
           {filtered.map((project, i) => {
             const inner = (
-              <GradientCard className="p-4 h-full">
-                <div className="flex items-start justify-between gap-2 mb-3">
-                  <h3 className="text-base md:text-lg font-medium text-white tracking-tight shimmer-text leading-tight">
-                    {project.name}
-                  </h3>
-                  {project.url
-                    ? <ArrowUpRight size={16} className="shrink-0 mt-0.5 text-white/25 group-hover:text-[#00BFA5] transition-colors duration-300" />
-                    : <Loader2 size={16} className="shrink-0 mt-0.5 text-white/20 animate-spin" />
-                  }
-                </div>
-                <div className="flex flex-col gap-2.5 flex-1 min-h-0">
-                  <div className="flex flex-wrap gap-1.5">
+              <GradientCard className="p-5 h-full">
+                <div className="flex h-full flex-col">
+                  <div className="flex items-start justify-between gap-2 mb-2">
+                    <h3 className="text-sm md:text-base font-medium text-white tracking-tight leading-snug">
+                      {project.name}
+                    </h3>
+                    {project.url
+                      ? <ArrowUpRight size={14} className="shrink-0 mt-0.5 text-white/20 group-hover:text-[#00BFA5] transition-colors duration-300" />
+                      : <Loader2 size={14} className="shrink-0 mt-0.5 text-white/20 animate-spin" />
+                    }
+                  </div>
+                  <div className="mb-3">
                     {project.wip
-                      ? <span className="inline-block w-fit px-2.5 py-0.5 border border-white/15 text-white/40 text-[9px] tracking-wider uppercase rounded-full font-medium">
+                      ? <span className="inline-block w-fit px-2.5 py-0.5 border border-white/12 text-white/35 text-[9px] tracking-[0.14em] uppercase rounded-full font-medium">
                           {t('badge_wip')}
                         </span>
-                      : <span className="inline-block w-fit px-2.5 py-0.5 border border-[#00BFA5]/20 text-[#00BFA5] text-[9px] tracking-wider uppercase rounded-full font-medium">
+                      : <span className="inline-block w-fit px-2.5 py-0.5 border border-[#00BFA5]/18 text-[#00BFA5]/80 text-[9px] tracking-[0.14em] uppercase rounded-full font-medium">
                           {project.badge}
                         </span>
                     }
                   </div>
-                  <p className="text-sm text-white/70 font-light leading-relaxed line-clamp-3">
+                  <p className="mt-auto text-xs text-white/55 font-light leading-relaxed overflow-hidden">
                     {project.desc}
                   </p>
                 </div>

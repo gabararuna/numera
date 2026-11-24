@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Numera · Promo Feed 4:5 (29s)</title>
+  <link rel="stylesheet" href="./fonts.css" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 1080px;
+      height: 1350px;
+      overflow: hidden;
+      background: #0A0A09;
+      color: #F4F3EF;
+      font-family: 'Figtree', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .canvas {
+      position: relative;
+      width: 1080px;
+      height: 1350px;
+      overflow: hidden;
+      background: #0A0A09;
+    }
+    .bg-grid {
+      position: absolute;
+      inset: -120px;
+      background-image:
+        linear-gradient(to right, rgba(244, 243, 239, 0.045) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(244, 243, 239, 0.045) 1px, transparent 1px);
+      background-size: 52px 52px;
+      -webkit-mask-image: radial-gradient(ellipse 86% 80% at 50% 50%, black 35%, transparent 94%);
+      mask-image: radial-gradient(ellipse 86% 80% at 50% 50%, black 35%, transparent 94%);
+      pointer-events: none;
+    }
+    #lightCurtain {
+      position: absolute;
+      inset: 0;
+      background: #F4F3EF;
+      z-index: 4;
+      pointer-events: none;
+      clip-path: inset(100% 0 0 0);
+    }
+
+    /* Uniform 88px safe zone for 4:5 Feed */
+    .safe-topbar {
+      position: absolute;
+      top: 52px;
+      left: 88px;
+      right: 88px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 20;
+    }
+    .progress-track {
+      width: 220px;
+      height: 4px;
+      border-radius: 9999px;
+      background: rgba(244, 243, 239, 0.14);
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      border-radius: 9999px;
+      background: #F4F3EF;
+    }
+
+    .scene {
+      position: absolute;
+      inset: 112px 88px 88px 88px;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    .wordmark {
+      font-family: 'Figtree', sans-serif;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+    .label-ui {
+      font-family: 'Figtree', sans-serif;
+      font-size: 16px;
+      line-height: 22px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #96948D;
+    }
+    .mono {
+      font-family: 'DM Mono', monospace;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+    }
+    .num {
+      font-variant-numeric: tabular-nums;
+    }
+    .status-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 9999px;
+      background: #8EB89F;
+      flex-shrink: 0;
+    }
+    .glass-card {
+      background: rgba(20, 20, 18, 0.88);
+      border: 1px solid rgba(244, 243, 239, 0.12);
+      border-radius: 22px;
+      box-shadow: inset 0 1px 0 rgba(244, 243, 239, 0.06), 0 24px 54px -22px rgba(0, 0, 0, 0.7);
+    }
+    .light-card {
+      background: #FAF9F6;
+      border: 1px solid rgba(10, 10, 9, 0.12);
+      border-radius: 22px;
+      box-shadow: 0 20px 44px -22px rgba(10, 10, 9, 0.12);
+      color: #0A0A09;
+    }
+
+    .client-grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+    .client-tile {
+      height: 76px;
+      border-radius: 14px;
+      background: rgba(244, 243, 239, 0.03);
+      border: 1px solid rgba(244, 243, 239, 0.10);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 16px;
+    }
+    .client-tile img {
+      max-height: 30px;
+      max-width: 145px;
+      width: auto;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="canvas">
+    <div class="bg-grid" id="bgGrid"></div>
+    <div id="lightCurtain"></div>
+
+    <div class="safe-topbar" id="topChrome">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <svg width="26" height="26" viewBox="0 0 64 64" fill="none">
+          <path d="M 24.4 47.8 L 21.9 50.3 A 5.8 5.8 0 0 1 12 46.2 V 17.8 A 5.8 5.8 0 0 1 21.9 13.7 L 40.2 32" stroke="currentColor" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M 39.6 16.2 L 42.1 13.7 A 5.8 5.8 0 0 1 52 17.8 V 46.2 A 5.8 5.8 0 0 1 42.1 50.3 L 23.8 32" stroke="currentColor" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="wordmark" style="font-size:22px;">Numera</span>
+      </div>
+      <div class="progress-track" id="progTrack">
+        <div class="progress-fill" id="progFill"></div>
+      </div>
+    </div>
+
+    <!-- SCENE 1: SCROLL-STOPPER HOOK (0.0s - 4.0s) -->
+    <section class="scene" id="scene1">
+      <div id="s1Badge" style="display:inline-flex; align-items:center; gap:10px; border-radius:9999px; padding:10px 20px; background:rgba(244,243,239,0.04); border:1px solid rgba(244,243,239,0.12); width:fit-content; margin-bottom:32px;">
+        <span class="status-dot"></span>
+        <span class="label-ui" style="font-size:15px;">Engenharia, Dados &amp; Ecossistema</span>
+      </div>
+
+      <h1 id="s1Title" style="font-size:74px; font-weight:500; letter-spacing:-0.03em; line-height:1.06; margin-bottom:44px;">
+        Sua operação merece<br /><span style="color:#BDBBB4; font-weight:300;">rodar com dados reais.</span>
+      </h1>
+
+      <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:18px; margin-bottom:34px;">
+        <div class="glass-card" id="s1Chip1" style="padding:26px;">
+          <div style="font-size:24px; font-weight:500; margin-bottom:8px;">Sem planilhas</div>
+          <div style="font-size:19px; color:#96948D; font-weight:300;">Fim do retrabalho manual diário.</div>
+        </div>
+        <div class="glass-card" id="s1Chip2" style="padding:26px;">
+          <div style="font-size:24px; font-weight:500; margin-bottom:8px;">Sem atraso</div>
+          <div style="font-size:19px; color:#96948D; font-weight:300;">Alertas e painéis em tempo real.</div>
+        </div>
+        <div class="glass-card" id="s1Chip3" style="padding:26px;">
+          <div style="font-size:24px; font-weight:500; margin-bottom:8px;">Sem caixa-preta</div>
+          <div style="font-size:19px; color:#96948D; font-weight:300;">Equipe autônoma após entrega.</div>
+        </div>
+      </div>
+
+      <div id="s1Scan" style="height:3px; width:100%; border-radius:9999px; background:linear-gradient(90deg, #F4F3EF, #8EB89F, transparent); transform-origin:left center;"></div>
+    </section>
+
+    <!-- SCENE 2: NUMERA + 3 FRENTES HORIZONTAIS (3.7s - 8.5s) -->
+    <section class="scene" id="scene2">
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:38px;">
+        <div style="display:flex; align-items:center; gap:22px;">
+          <div style="width:84px; height:84px; border-radius:20px; background:#141412; border:1px solid rgba(244,243,239,0.16); display:flex; align-items:center; justify-content:center;">
+            <svg width="52" height="52" viewBox="0 0 64 64" fill="none">
+              <path id="s2LoopA" d="M 24.4 47.8 L 21.9 50.3 A 5.8 5.8 0 0 1 12 46.2 V 17.8 A 5.8 5.8 0 0 1 21.9 13.7 L 40.2 32" stroke="#F4F3EF" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path id="s2LoopB" d="M 39.6 16.2 L 42.1 13.7 A 5.8 5.8 0 0 1 52 17.8 V 46.2 A 5.8 5.8 0 0 1 42.1 50.3 L 23.8 32" stroke="#F4F3EF" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <div class="wordmark" style="font-size:56px;">Numera</div>
+            <div style="font-size:22px; color:#96948D; font-weight:300; margin-top:6px;">Do zero para o problema real do cliente</div>
+          </div>
+        </div>
+        <span class="mono" style="font-size:18px; color:#96948D;">gruponumera.com</span>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:20px; margin-bottom:30px;">
+        <div class="glass-card" id="s2Col1" style="padding:32px 26px; display:flex; flex-direction:column; justify-content:space-between; min-height:390px;">
+          <div>
+            <div class="label-ui" style="font-size:15px; margin-bottom:16px;">01 · Processos</div>
+            <h3 style="font-size:30px; font-weight:500; letter-spacing:-0.02em; line-height:1.15; margin-bottom:14px;">Automação &amp; Sistemas</h3>
+            <p style="font-size:20px; color:#BDBBB4; font-weight:300; line-height:1.45;">Dashboards vivos, integrações e sistemas internos sob medida.</p>
+          </div>
+          <div style="padding-top:16px; border-top:1px solid rgba(244,243,239,0.1); display:flex; align-items:center; gap:10px; font-size:18px; color:#8EB89F;">
+            <span class="status-dot"></span>Zero software genérico
+          </div>
+        </div>
+
+        <div class="glass-card" id="s2Col2" style="padding:32px 26px; display:flex; flex-direction:column; justify-content:space-between; min-height:390px;">
+          <div>
+            <div class="label-ui" style="font-size:15px; margin-bottom:16px;">02 · Treinamentos</div>
+            <h3 style="font-size:30px; font-weight:500; letter-spacing:-0.02em; line-height:1.15; margin-bottom:14px;">Capacitação em Dados</h3>
+            <p style="font-size:20px; color:#BDBBB4; font-weight:300; line-height:1.45;">SQL, Python, BI e Apps Script com os dados reais da empresa.</p>
+          </div>
+          <div style="padding-top:16px; border-top:1px solid rgba(244,243,239,0.1); font-size:18px; color:#91B8D6;">
+            Aprendizado que cola
+          </div>
+        </div>
+
+        <div class="glass-card" id="s2Col3" style="padding:32px 26px; display:flex; flex-direction:column; justify-content:space-between; min-height:390px;">
+          <div>
+            <div class="label-ui" style="font-size:15px; margin-bottom:16px;">03 · Consultoria</div>
+            <h3 style="font-size:30px; font-weight:500; letter-spacing:-0.02em; line-height:1.15; margin-bottom:14px;">Estratégia &amp; KPIs</h3>
+            <p style="font-size:20px; color:#BDBBB4; font-weight:300; line-height:1.45;">Diagnóstico analítico completo para decisões com segurança.</p>
+          </div>
+          <div style="padding-top:16px; border-top:1px solid rgba(244,243,239,0.1); font-size:18px; color:#D1B886;">
+            Foco em resultado
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCENE 3: PROOF + 4 STEPS + CLIENTS (8.2s - 14.8s) -->
+    <section class="scene" id="scene3">
+      <div id="s3Head" style="margin-bottom:28px;">
+        <div class="label-ui" style="margin-bottom:10px;">Método &amp; Escala Real</div>
+        <h2 style="font-size:50px; font-weight:500; letter-spacing:-0.025em; line-height:1.1;">
+          Capacidade gerada entrega por entrega.
+        </h2>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:14px; margin-bottom:24px;" id="s3Stats">
+        <div class="glass-card" style="padding:24px;">
+          <div class="num" id="fNum1" style="font-size:52px; font-weight:300; letter-spacing:-0.04em; line-height:1;">30+</div>
+          <div class="label-ui" style="font-size:13px; margin-top:8px;">Projetos</div>
+        </div>
+        <div class="glass-card" style="padding:24px;">
+          <div class="num" id="fNum2" style="font-size:52px; font-weight:300; letter-spacing:-0.04em; line-height:1;">15+</div>
+          <div class="label-ui" style="font-size:13px; margin-top:8px;">Empresas</div>
+        </div>
+        <div class="glass-card" style="padding:24px;">
+          <div class="num" id="fNum3" style="font-size:52px; font-weight:300; letter-spacing:-0.04em; line-height:1;">200+</div>
+          <div class="label-ui" style="font-size:13px; margin-top:8px;">Treinados</div>
+        </div>
+        <div class="glass-card" style="padding:24px;">
+          <div class="num" style="font-size:52px; font-weight:300; letter-spacing:-0.04em; line-height:1; color:#8EB89F;">48h</div>
+          <div class="label-ui" style="font-size:13px; margin-top:8px;">Proposta</div>
+        </div>
+      </div>
+
+      <div class="glass-card" id="s3Method" style="padding:22px 26px; margin-bottom:26px; display:flex; align-items:center; justify-content:space-between; gap:12px;">
+        <span style="font-size:20px; font-weight:500;"><span class="num" style="color:#96948D;">01</span> Diagnóstico</span>
+        <span style="color:#96948D;">→</span>
+        <span style="font-size:20px; font-weight:500;"><span class="num" style="color:#96948D;">02</span> Projeto</span>
+        <span style="color:#96948D;">→</span>
+        <span style="font-size:20px; font-weight:500;"><span class="num" style="color:#96948D;">03</span> Entrega</span>
+        <span style="color:#96948D;">→</span>
+        <span style="font-size:20px; font-weight:500; color:#8EB89F;"><span class="num">04</span> Transferência</span>
+      </div>
+
+      <div id="s3Clients">
+        <div class="label-ui" style="font-size:14px; margin-bottom:12px;">Clientes &amp; Parceiros</div>
+        <div class="client-grid-4">
+          <div class="client-tile"><img src="../../public/exchanges/vale.svg" alt="Vale"/></div>
+          <div class="client-tile"><img src="../../public/exchanges/alumar.svg" alt="Alumar"/></div>
+          <div class="client-tile"><img src="../../public/exchanges/equatorial.svg" alt="Equatorial"/></div>
+          <div class="client-tile"><img src="../../public/exchanges/arcadis.svg" alt="Arcadis"/></div>
+          <div class="client-tile"><img src="../../public/exchanges/TJMA.svg" alt="TJMA"/></div>
+          <div class="client-tile"><img src="../../public/exchanges/projeta.svg" alt="Projeta"/></div>
+          <div class="client-tile"><img src="../../public/exchanges/spot.svg" alt="Spot"/></div>
+          <div class="client-tile"><img src="../../public/exchanges/amorim.svg" alt="Amorim"/></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCENE 4: ECOSYSTEM TRIPTYCH ON ALGODAO CRU (14.4s - 23.3s) -->
+    <section class="scene" id="scene4" style="color:#0A0A09;">
+      <div id="s4Head" style="margin-bottom:32px; display:flex; align-items:flex-end; justify-content:space-between;">
+        <div>
+          <div class="label-ui" style="color:#6B6961; margin-bottom:10px;">Ecossistema Numera</div>
+          <h2 style="font-size:52px; font-weight:600; letter-spacing:-0.03em; line-height:1.08;">
+            Um ecossistema. Uma assinatura.
+          </h2>
+        </div>
+        <span style="font-size:20px; font-weight:500; color:#6B6961;">Um app Numera</span>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:18px;">
+        <!-- Monno Column -->
+        <div class="light-card" id="triptychMonno" style="padding:28px; display:flex; flex-direction:column; justify-content:space-between; min-height:580px;">
+          <div>
+            <div style="width:68px; height:68px; border-radius:16px; background:#0A0A09; color:#F4F3EF; display:flex; align-items:center; justify-content:center; margin-bottom:20px;">
+              <svg width="40" height="40" viewBox="0 0 64 64" fill="none"><rect x="11" y="20" width="10" height="32" rx="5" fill="currentColor" opacity="0.36"/><rect x="27" y="12" width="10" height="32" rx="5" fill="currentColor"/><rect x="43" y="20" width="10" height="32" rx="5" fill="currentColor" opacity="0.36"/></svg>
+            </div>
+            <div class="wordmark" style="font-size:38px; color:#0A0A09;">Monno</div>
+            <div style="font-size:16px; font-weight:500; color:#6B6961; margin-top:4px; margin-bottom:18px;">Um app Numera</div>
+            <p style="font-size:20px; color:#52514B; font-weight:300; line-height:1.4;">Planejamento financeiro com projeção diária e faturas descontadas.</p>
+          </div>
+
+          <div style="background:#EAE8E1; border-radius:16px; padding:18px;">
+            <div class="num" style="font-size:25px; font-weight:300; white-space:nowrap;">R$ 12.480<span style="font-size:0.55em; color:#6B6961;">,90</span></div>
+            <div style="display:flex; align-items:flex-end; gap:8px; height:42px; margin-top:12px;">
+              <span style="flex:1; height:22px; border-radius:9999px; background:rgba(10,10,9,0.2);"></span>
+              <span style="flex:1; height:32px; border-radius:9999px; background:rgba(10,10,9,0.2);"></span>
+              <span style="flex:1; height:18px; border-radius:9999px; background:rgba(10,10,9,0.2);"></span>
+              <span style="flex:1; height:40px; border-radius:9999px; background:#2E6447;"></span>
+              <span style="flex:1; height:26px; border-radius:9999px; background:rgba(10,10,9,0.2);"></span>
+            </div>
+          </div>
+
+          <div class="mono" style="font-size:15px; color:#52514B;">monno.gruponumera.com</div>
+        </div>
+
+        <!-- Cronos Column -->
+        <div class="light-card" id="triptychCronos" style="padding:28px; display:flex; flex-direction:column; justify-content:space-between; min-height:580px;">
+          <div>
+            <div style="width:68px; height:68px; border-radius:16px; background:#0A0A09; color:#F4F3EF; display:flex; align-items:center; justify-content:center; margin-bottom:20px;">
+              <svg width="40" height="40" viewBox="0 0 64 64" fill="none"><path d="M 18.5 13.5 H 45.5 A 13.5 13.5 0 0 1 18.5 13.5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round"/><g opacity="0.36"><path d="M 45.5 50.5 H 18.5 A 13.5 13.5 0 0 1 45.5 50.5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round"/></g></svg>
+            </div>
+            <div class="wordmark" style="font-size:38px; color:#0A0A09;">Cronos</div>
+            <div style="font-size:16px; font-weight:500; color:#6B6961; margin-top:4px; margin-bottom:18px;">Um app Numera</div>
+            <p style="font-size:20px; color:#52514B; font-weight:300; line-height:1.4;">Ponto CLT, múltiplos ciclos, folgas inteligentes e conciliação.</p>
+          </div>
+
+          <div style="background:#EAE8E1; border-radius:16px; padding:18px;">
+            <div class="num" style="font-size:25px; font-weight:300; color:#2E6447;">+12:10 ciclo</div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:12px;">
+              <span class="num" style="font-size:18px; color:#52514B;">Saída 17:42</span>
+              <span style="font-size:15px; font-weight:600; color:#2E6447;">CLT em dia</span>
+            </div>
+          </div>
+
+          <div class="mono" style="font-size:15px; color:#52514B;">cronos.gruponumera.com</div>
+        </div>
+
+        <!-- NYOT Column -->
+        <div class="light-card" id="triptychNyot" style="padding:28px; display:flex; flex-direction:column; justify-content:space-between; min-height:580px;">
+          <div>
+            <div style="width:68px; height:68px; border-radius:16px; background:#0A0A09; color:#F4F3EF; display:flex; align-items:center; justify-content:center; margin-bottom:20px;">
+              <svg width="40" height="40" viewBox="0 0 64 64" fill="none"><g opacity="0.36"><path d="M 39.68 43.99 A 15.5 15.5 0 1 1 20.01 24.32 A 19 19 0 0 0 39.68 43.99 Z" fill="currentColor" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></g><circle cx="39" cy="25" r="15.5" fill="currentColor"/></svg>
+            </div>
+            <div class="wordmark" style="font-size:38px; color:#0A0A09;">NYOT</div>
+            <div style="font-size:16px; font-weight:500; color:#6B6961; margin-top:4px; margin-bottom:18px;">Um app Numera</div>
+            <p style="font-size:20px; color:#52514B; font-weight:300; line-height:1.4;">Diário modular em 10s para hábitos, peso e metas reais.</p>
+          </div>
+
+          <div style="background:#EAE8E1; border-radius:16px; padding:18px;">
+            <div class="num" style="font-size:24px; font-weight:500;">10s check-in</div>
+            <div style="display:flex; gap:7px; margin-top:14px;">
+              <span style="flex:1; height:22px; border-radius:6px; background:#0A0A09;"></span>
+              <span style="flex:1; height:22px; border-radius:6px; background:#0A0A09;"></span>
+              <span style="flex:1; height:22px; border-radius:6px; background:#0A0A09;"></span>
+              <span style="flex:1; height:22px; border-radius:6px; background:rgba(10,10,9,0.28);"></span>
+              <span style="flex:1; height:22px; border-radius:6px; background:#0A0A09;"></span>
+              <span style="flex:1; height:22px; border-radius:6px; background:#2E6447;"></span>
+            </div>
+          </div>
+
+          <div class="mono" style="font-size:15px; color:#52514B;">nyot.gruponumera.com</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCENE 5: OUTRO & CTA (22.9s - 29.0s) -->
+    <section class="scene" id="scene5" style="align-items:center; text-align:center;">
+      <div id="s5Brand" style="display:flex; align-items:center; gap:20px; margin-bottom:28px;">
+        <div style="width:88px; height:88px; border-radius:20px; background:#141412; border:1px solid rgba(244,243,239,0.16); display:flex; align-items:center; justify-content:center;">
+          <svg width="54" height="54" viewBox="0 0 64 64" fill="none"><path d="M 24.4 47.8 L 21.9 50.3 A 5.8 5.8 0 0 1 12 46.2 V 17.8 A 5.8 5.8 0 0 1 21.9 13.7 L 40.2 32" stroke="#F4F3EF" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M 39.6 16.2 L 42.1 13.7 A 5.8 5.8 0 0 1 52 17.8 V 46.2 A 5.8 5.8 0 0 1 42.1 50.3 L 23.8 32" stroke="#F4F3EF" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <span class="wordmark" style="font-size:78px; color:#F4F3EF;">Numera</span>
+      </div>
+
+      <h2 id="s5Title" style="font-size:52px; font-weight:500; letter-spacing:-0.025em; line-height:1.12; max-width:740px; margin-bottom:38px;">
+        Tecnologia aplicada para decisões reais.
+      </h2>
+
+      <div id="s5Cta" style="display:inline-flex; align-items:center; border-radius:9999px; background:#F4F3EF; color:#0A0A09; padding:20px 38px; font-size:26px; font-weight:600; letter-spacing:-0.015em; margin-bottom:28px;">
+        Fale conosco · Proposta em 48h
+      </div>
+
+      <div id="s5Domain" class="mono" style="font-size:24px; color:#BDBBB4; margin-bottom:44px;">gruponumera.com</div>
+
+      <div id="s5Eco" style="display:flex; gap:18px; align-items:center;">
+        <span style="display:inline-flex; align-items:center; gap:10px; padding:10px 18px; border-radius:9999px; background:#141412; border:1px solid rgba(244,243,239,0.12); font-size:20px; font-weight:600;">
+          <svg width="20" height="20" viewBox="0 0 64 64" fill="none"><rect x="11" y="20" width="10" height="32" rx="5" fill="#F4F3EF" opacity="0.36"/><rect x="27" y="12" width="10" height="32" rx="5" fill="#F4F3EF"/><rect x="43" y="20" width="10" height="32" rx="5" fill="#F4F3EF" opacity="0.36"/></svg>
+          Monno
+        </span>
+        <span style="display:inline-flex; align-items:center; gap:10px; padding:10px 18px; border-radius:9999px; background:#141412; border:1px solid rgba(244,243,239,0.12); font-size:20px; font-weight:600;">
+          <svg width="20" height="20" viewBox="0 0 64 64" fill="none"><path d="M 18.5 13.5 H 45.5 A 13.5 13.5 0 0 1 18.5 13.5 Z" fill="#F4F3EF" stroke="#F4F3EF" stroke-width="6" stroke-linejoin="round"/><g opacity="0.36"><path d="M 45.5 50.5 H 18.5 A 13.5 13.5 0 0 1 45.5 50.5 Z" fill="#F4F3EF" stroke="#F4F3EF" stroke-width="6" stroke-linejoin="round"/></g></svg>
+          Cronos
+        </span>
+        <span style="display:inline-flex; align-items:center; gap:10px; padding:10px 18px; border-radius:9999px; background:#141412; border:1px solid rgba(244,243,239,0.12); font-size:20px; font-weight:600;">
+          <svg width="20" height="20" viewBox="0 0 64 64" fill="none"><g opacity="0.36"><path d="M 39.68 43.99 A 15.5 15.5 0 1 1 20.01 24.32 A 19 19 0 0 0 39.68 43.99 Z" fill="#F4F3EF" stroke="#F4F3EF" stroke-width="2.5" stroke-linejoin="round"/></g><circle cx="39" cy="25" r="15.5" fill="#F4F3EF"/></svg>
+          NYOT
+        </span>
+      </div>
+    </section>
+  </div>
+
+  <script src="./engine.js"></script>
+  <script>
+    (function () {
+      var E = window.NumeraEngine;
+
+      window.renderFrame = function (frame, totalFrames, fps) {
+        var t = frame / fps;
+        var prog = E.clamp01(frame / Math.max(1, totalFrames - 1));
+
+        document.getElementById('bgGrid').style.transform = 'translate3d(' + (-t * 8).toFixed(2) + 'px,' + (-t * 4).toFixed(2) + 'px,0)';
+        document.getElementById('progFill').style.width = (prog * 100).toFixed(2) + '%';
+
+        // Editorial wipe for Scene 4 (14.4s -> 15.0s in, 22.7s -> 23.3s out)
+        var curtain = document.getElementById('lightCurtain');
+        var wipeIn = E.remap(t, 14.4, 15.0);
+        var wipeOut = E.remap(t, 22.7, 23.3);
+        var topChrome = document.getElementById('topChrome');
+        var progTrack = document.getElementById('progTrack');
+        var progFill = document.getElementById('progFill');
+
+        if (wipeIn <= 0.001 || wipeOut >= 0.999) {
+          curtain.style.clipPath = 'inset(100% 0 0 0)';
+          topChrome.style.color = '#F4F3EF';
+          progTrack.style.background = 'rgba(244, 243, 239, 0.14)';
+          progFill.style.background = '#F4F3EF';
+        } else if (t < 19.0) {
+          curtain.style.clipPath = 'inset(' + ((1 - wipeIn) * 100).toFixed(2) + '% 0 0 0)';
+          var isLight = wipeIn > 0.55;
+          topChrome.style.color = isLight ? '#0A0A09' : '#F4F3EF';
+          progTrack.style.background = isLight ? 'rgba(10, 10, 9, 0.14)' : 'rgba(244, 243, 239, 0.14)';
+          progFill.style.background = isLight ? '#0A0A09' : '#F4F3EF';
+        } else {
+          curtain.style.clipPath = 'inset(0 0 ' + (wipeOut * 100).toFixed(2) + '% 0)';
+          var isLightOut = wipeOut < 0.45;
+          topChrome.style.color = isLightOut ? '#0A0A09' : '#F4F3EF';
+          progTrack.style.background = isLightOut ? 'rgba(10, 10, 9, 0.14)' : 'rgba(244, 243, 239, 0.14)';
+          progFill.style.background = isLightOut ? '#0A0A09' : '#F4F3EF';
+        }
+
+        // SCENE 1 (0.0s - 3.7s)
+        var s1 = E.sceneEnv(t, 0.0, 3.7, 0.0, 0.2);
+        E.setScene(document.getElementById('scene1'), s1);
+        if (s1.active) {
+          E.setReveal(document.getElementById('s1Badge'), E.remap(t, 0.0, 0.4), 12);
+          E.setReveal(document.getElementById('s1Title'), E.remap(t, 0.05, 0.55), 20);
+          E.setReveal(document.getElementById('s1Chip1'), E.remap(t, 0.35, 0.85), 22);
+          E.setReveal(document.getElementById('s1Chip2'), E.remap(t, 0.55, 1.05), 22);
+          E.setReveal(document.getElementById('s1Chip3'), E.remap(t, 0.75, 1.25), 22);
+          document.getElementById('s1Scan').style.transform = 'scaleX(' + E.remap(t, 1.2, 2.3).toFixed(3) + ')';
+        }
+
+        // SCENE 2 (3.7s - 8.2s)
+        var s2 = E.sceneEnv(t, 3.7, 8.2, 0.24, 0.2);
+        E.setScene(document.getElementById('scene2'), s2);
+        if (s2.active) {
+          E.setStrokeDraw(document.getElementById('s2LoopA'), 96, E.remap(t, 3.75, 4.55));
+          E.setStrokeDraw(document.getElementById('s2LoopB'), 96, E.remap(t, 3.95, 4.75));
+          E.setReveal(document.getElementById('s2Col1'), E.remap(t, 4.05, 4.75), 24);
+          E.setReveal(document.getElementById('s2Col2'), E.remap(t, 4.3, 5.0), 24);
+          E.setReveal(document.getElementById('s2Col3'), E.remap(t, 4.55, 5.25), 24);
+        }
+
+        // SCENE 3 (8.2s - 14.4s)
+        var s3 = E.sceneEnv(t, 8.2, 14.4, 0.24, 0.2);
+        E.setScene(document.getElementById('scene3'), s3);
+        if (s3.active) {
+          E.setReveal(document.getElementById('s3Head'), E.remap(t, 8.25, 8.85), 18);
+          E.setReveal(document.getElementById('s3Stats'), E.remap(t, 8.55, 9.15), 20);
+          var cp = E.remap(t, 8.55, 10.05);
+          document.getElementById('fNum1').textContent = Math.round(30 * cp) + '+';
+          document.getElementById('fNum2').textContent = Math.round(15 * cp) + '+';
+          document.getElementById('fNum3').textContent = Math.round(200 * cp) + '+';
+          E.setReveal(document.getElementById('s3Method'), E.remap(t, 9.15, 9.75), 18);
+          E.setReveal(document.getElementById('s3Clients'), E.remap(t, 9.65, 10.35), 18);
+        }
+
+        // SCENE 4 (14.4s - 22.95s)
+        var s4 = E.sceneEnv(t, 14.4, 22.95, 0.24, 0.2);
+        E.setScene(document.getElementById('scene4'), s4);
+        if (s4.active) {
+          E.setReveal(document.getElementById('s4Head'), E.remap(t, 14.55, 15.15), 18);
+          var cols = [
+            { id: 'triptychMonno', start: 14.95, focusStart: 15.4, focusEnd: 17.9 },
+            { id: 'triptychCronos', start: 15.2, focusStart: 17.9, focusEnd: 20.4 },
+            { id: 'triptychNyot', start: 15.45, focusStart: 20.4, focusEnd: 22.95 },
+          ];
+          cols.forEach(function (c) {
+            var el = document.getElementById(c.id);
+            var rp = E.remap(t, c.start, c.start + 0.6);
+            var inFocus = t >= c.focusStart && t <= c.focusEnd;
+            var lift = inFocus ? -10 : 0;
+            el.style.opacity = rp.toFixed(4);
+            el.style.transform = 'translate3d(0,' + (24 * (1 - rp) + lift).toFixed(2) + 'px,0)';
+            el.style.borderColor = inFocus ? 'rgba(10, 10, 9, 0.36)' : 'rgba(10, 10, 9, 0.10)';
+          });
+        }
+
+        // SCENE 5 (22.95s - 29.0s)
+        var s5 = E.sceneEnv(t, 22.95, 29.5, 0.28, 0.0);
+        E.setScene(document.getElementById('scene5'), s5);
+        if (s5.active) {
+          E.setReveal(document.getElementById('s5Brand'), E.remap(t, 22.95, 23.6), 20);
+          E.setReveal(document.getElementById('s5Title'), E.remap(t, 23.3, 23.95), 18);
+          E.setReveal(document.getElementById('s5Cta'), E.remap(t, 23.7, 24.35), 16);
+          E.setReveal(document.getElementById('s5Domain'), E.remap(t, 24.1, 24.75), 14);
+          E.setReveal(document.getElementById('s5Eco'), E.remap(t, 24.5, 25.15), 14);
+        }
+      };
+    })();
+  </script>
+</body>
+</html>

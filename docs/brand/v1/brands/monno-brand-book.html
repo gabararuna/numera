@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Monno · Brand Book &amp; Design System | Um app Numera</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root, :root[data-theme="dark"] {
+      color-scheme: dark;
+      --c-canvas: #0A0A09; --c-raised: #141412; --c-sunken: #22221F;
+      --c-fg: #F4F3EF; --c-fg-2: #BDBBB4; --c-fg-3: #96948D;
+      --c-line: rgba(244, 243, 239, 0.11); --c-line-strong: rgba(244, 243, 239, 0.22);
+      --c-positive: #8EB89F; --c-positive-fg: #8EB89F;
+      --c-negative: #E0A39D; --c-negative-fg: #E0A39D;
+      --c-warning: #D1B886; --c-warning-fg: #D1B886;
+      --c-info: #91B8D6; --c-info-fg: #91B8D6;
+      --glass-bar: rgba(10, 10, 9, 0.86);
+      --glass-3: rgba(20, 20, 18, 0.88);
+      --shadow-card: 0 24px 60px -28px rgba(0, 0, 0, 0.65);
+    }
+    :root[data-theme="light"] {
+      color-scheme: light;
+      --c-canvas: #F4F3EF; --c-raised: #FAF9F6; --c-sunken: #EAE8E1;
+      --c-fg: #0A0A09; --c-fg-2: #52514B; --c-fg-3: #6B6961;
+      --c-line: rgba(10, 10, 9, 0.10); --c-line-strong: rgba(10, 10, 9, 0.22);
+      --c-positive: #3D7355; --c-positive-fg: #2E6447;
+      --c-negative: #9E3D38; --c-negative-fg: #9E3D38;
+      --c-warning: #825E1E; --c-warning-fg: #825E1E;
+      --c-info: #2B5E85; --c-info-fg: #2B5E85;
+      --glass-bar: rgba(244, 243, 239, 0.88);
+      --glass-3: rgba(250, 249, 246, 0.92);
+      --shadow-card: 0 18px 44px -24px rgba(10, 10, 9, 0.12);
+    }
+    :root {
+      --r-tag: 6px; --r-icon: 10px; --r-field: 14px; --r-card: 18px; --r-sheet: 26px; --r-pill: 9999px;
+      --ease-numera: cubic-bezier(0.22, 1, 0.36, 1);
+      --font-sans: "Figtree", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-mono: "DM Mono", ui-monospace, monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; background: var(--c-canvas); color: var(--c-fg); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
+    body { background: var(--c-canvas); color: var(--c-fg); font-size: 16px; line-height: 1.6; transition: background-color 0.32s var(--ease-numera), color 0.32s var(--ease-numera); }
+    .mono-tech { font-family: var(--font-mono); font-weight: 400; font-size: 12px; letter-spacing: 0.01em; }
+    .num { font-variant-numeric: tabular-nums; }
+    .wordmark { font-family: var(--font-sans); font-weight: 600; letter-spacing: -0.03em; line-height: 1; }
+    .eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--c-fg-3); }
+    .endorsement { font-size: 12px; font-weight: 500; color: var(--c-fg-3); margin-top: 4px; }
+
+    .topbar { position: sticky; top: 0; z-index: 50; background: var(--glass-bar); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--c-line); }
+    .topbar-inner { max-width: 1220px; margin: 0 auto; padding: 12px 24px; display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+    .brand-pill { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--c-fg); flex-shrink: 0; }
+    .nav-scroll { display: flex; align-items: center; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+    .nav-scroll::-webkit-scrollbar { display: none; }
+    .nav-link { text-decoration: none; color: var(--c-fg-3); font-size: 12px; font-weight: 500; padding: 6px 10px; border-radius: var(--r-pill); white-space: nowrap; transition: background-color 0.2s var(--ease-numera), color 0.2s var(--ease-numera); }
+    .nav-link:hover { color: var(--c-fg); background: var(--c-sunken); }
+    .nav-sep { width: 1px; height: 16px; background: var(--c-line-strong); margin: 0 6px; flex-shrink: 0; }
+    .brand-switch { text-decoration: none; color: var(--c-fg-2); font-size: 12px; font-weight: 600; padding: 6px 11px; border-radius: var(--r-pill); border: 1px solid var(--c-line); white-space: nowrap; transition: background-color 0.2s var(--ease-numera), border-color 0.2s var(--ease-numera); }
+    .brand-switch:hover { color: var(--c-fg); background: var(--c-sunken); border-color: var(--c-line-strong); }
+    .brand-switch.current { background: var(--c-fg); color: var(--c-canvas); border-color: var(--c-fg); }
+    .theme-btn { appearance: none; border: 1px solid var(--c-line-strong); background: var(--c-raised); color: var(--c-fg); border-radius: var(--r-pill); padding: 7px 14px; font-family: inherit; font-size: 12px; font-weight: 500; cursor: pointer; flex-shrink: 0; display: inline-flex; align-items: center; gap: 8px; }
+    .theme-btn:hover { background: var(--c-sunken); }
+
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 24px 96px; }
+    .cover { padding: 76px 0 64px; border-bottom: 1px solid var(--c-line); display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 40px; align-items: end; }
+    .cover-mark-row { display: flex; align-items: center; gap: 20px; margin-bottom: 24px; }
+    .cover-title { font-size: clamp(34px, 5vw, 52px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.06; margin-bottom: 16px; }
+    .cover-sub { font-size: 17px; color: var(--c-fg-2); max-width: 580px; line-height: 1.58; }
+    .cover-meta-card { background: var(--c-raised); border: 1px solid var(--c-line); border-radius: var(--r-card); padding: 24px; box-shadow: var(--shadow-card); display: flex; flex-direction: column; gap: 13px; }
+    .meta-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--c-line); font-size: 13px; }
+    .meta-row:last-child { padding-bottom: 0; border-bottom: none; }
+    .meta-key { color: var(--c-fg-3); font-weight: 500; }
+
+    section.chapter { padding: 70px 0; border-bottom: 1px solid var(--c-line); scroll-margin-top: 72px; }
+    .chapter-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px; margin-bottom: 34px; }
+    .chapter-num { font-size: 12px; font-weight: 500; color: var(--c-fg-3); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+    .chapter-title { font-size: clamp(24px, 3vw, 32px); font-weight: 600; letter-spacing: -0.025em; line-height: 1.15; }
+    .chapter-lead { max-width: 480px; font-size: 15px; color: var(--c-fg-2); line-height: 1.55; }
+
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+    .card { background: var(--c-raised); border: 1px solid var(--c-line); border-radius: var(--r-card); padding: 24px; }
+    .card-sunken { background: var(--c-sunken); border: 1px solid var(--c-line); border-radius: var(--r-card); padding: 20px; }
+    .card h3 { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 8px; }
+    .card p, .card li { font-size: 14px; color: var(--c-fg-2); line-height: 1.55; }
+
+    .blueprint-box { background: var(--c-raised); border: 1px solid var(--c-line); border-radius: var(--r-sheet); padding: 32px; display: flex; align-items: center; justify-content: center; min-height: 280px; background-image: linear-gradient(to right, var(--c-line) 1px, transparent 1px), linear-gradient(to bottom, var(--c-line) 1px, transparent 1px); background-size: 24px 24px; }
+    .size-ladder { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding: 20px; background: var(--c-sunken); border-radius: var(--r-card); margin-top: 16px; }
+    .size-step { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+
+    .pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: var(--r-pill); font-size: 12px; font-weight: 500; border: 1px solid var(--c-line); background: var(--c-sunken); color: var(--c-fg-2); }
+    .pill-sage { color: var(--c-positive-fg); border-color: color-mix(in srgb, var(--c-positive) 35%, transparent); background: color-mix(in srgb, var(--c-positive) 12%, transparent); }
+    .pill-terra { color: var(--c-negative-fg); border-color: color-mix(in srgb, var(--c-negative) 35%, transparent); background: color-mix(in srgb, var(--c-negative) 12%, transparent); }
+    .pill-sand { color: var(--c-warning-fg); border-color: color-mix(in srgb, var(--c-warning) 35%, transparent); background: color-mix(in srgb, var(--c-warning) 12%, transparent); }
+    .pill-slate { color: var(--c-info-fg); border-color: color-mix(in srgb, var(--c-info) 35%, transparent); background: color-mix(in srgb, var(--c-info) 12%, transparent); }
+
+    .status-dot { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; }
+    .status-dot-pip { width: 6px; height: 6px; border-radius: 9999px; flex-shrink: 0; }
+
+    .money-display { font-size: 40px; line-height: 44px; font-weight: 300; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .money-cents { font-size: 0.5em; letter-spacing: -0.02em; color: var(--c-fg-3); }
+
+    .palette-row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; margin-top: 12px; }
+    .palette-chip { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border-radius: var(--r-field); border: 1px solid var(--c-line); background: var(--c-sunken); font-size: 12px; }
+    .palette-dot { width: 12px; height: 12px; border-radius: 9999px; flex-shrink: 0; }
+
+    .pill-bars { display: flex; align-items: flex-end; justify-content: space-between; height: 76px; gap: 8px; padding: 8px 4px 0; }
+    .pill-bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+    .pill-bar { width: 6px; border-radius: 9999px; background: var(--c-line-strong); transition: height 0.35s var(--ease-numera), background-color 0.25s var(--ease-numera); }
+    .pill-bar.hi { background: var(--c-positive); }
+
+    .switch-btn { position: relative; display: inline-flex; width: 44px; height: 24px; border-radius: 9999px; border: 2px solid transparent; background: var(--c-line-strong); cursor: pointer; transition: background-color 0.2s var(--ease-numera); }
+    .switch-btn[aria-checked="true"] { background: var(--c-fg); }
+    .switch-thumb { width: 20px; height: 20px; border-radius: 9999px; background: var(--c-fg-2); transform: translateX(0); transition: transform 0.2s var(--ease-numera), background-color 0.2s var(--ease-numera); }
+    .switch-btn[aria-checked="true"] .switch-thumb { transform: translateX(20px); background: var(--c-canvas); }
+
+    .input-nyot { width: 100%; background: var(--c-sunken); border: 1px solid var(--c-line); color: var(--c-fg); border-radius: var(--r-field); padding: 11px 14px; font-family: inherit; font-size: 14px; outline: none; }
+    .btn-primary { appearance: none; border: none; background: var(--c-fg); color: var(--c-canvas); border-radius: var(--r-pill); padding: 11px 20px; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; }
+    .btn-ghost { appearance: none; border: 1px solid var(--c-line-strong); background: transparent; color: var(--c-fg); border-radius: var(--r-pill); padding: 9px 16px; font-family: inherit; font-size: 13px; font-weight: 500; cursor: pointer; }
+
+    .motion-stage { background: var(--c-sunken); border: 1px solid var(--c-line); border-radius: var(--r-sheet); padding: 32px; display: flex; flex-direction: column; align-items: center; gap: 22px; }
+    .bar-l, .bar-c, .bar-r { transition: transform 0.65s var(--ease-numera), opacity 0.65s var(--ease-numera); }
+    .motion-stage.balanced .bar-l { transform: translateY(-6px); opacity: 0.65; }
+    .motion-stage.balanced .bar-c { transform: translateY(6px); }
+    .motion-stage.balanced .bar-r { transform: translateY(-3px); opacity: 0.8; }
+
+    .phone-frame { width: 100%; max-width: 360px; margin: 0 auto; background: var(--c-canvas); border: 1px solid var(--c-line-strong); border-radius: 34px; padding: 20px 20px 16px; box-shadow: var(--shadow-card); }
+    .phone-header { display: flex; align-items: center; justify-content: space-between; padding-bottom: 14px; border-bottom: 1px solid var(--c-line); margin-bottom: 16px; }
+    .phone-dock { margin-top: 16px; padding: 8px 14px; border-radius: var(--r-pill); background: var(--glass-3); border: 1px solid var(--c-line-strong); display: flex; justify-content: space-around; align-items: center; font-size: 11px; color: var(--c-fg-3); }
+    .phone-dock .active { color: var(--c-fg); background: color-mix(in srgb, var(--c-fg) 10%, transparent); padding: 5px 10px; border-radius: var(--r-pill); font-weight: 500; }
+    .eco-lockup { display: inline-flex; align-items: center; gap: 10px; }
+
+    table.spec-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    table.spec-table th, table.spec-table td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--c-line); }
+    table.spec-table th { color: var(--c-fg-3); font-weight: 500; font-size: 12px; }
+    .list-clean { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+    .list-clean li { padding-left: 14px; position: relative; font-size: 14px; color: var(--c-fg-2); }
+    .list-clean li::before { content: ""; position: absolute; left: 0; top: 9px; width: 5px; height: 5px; border-radius: 9999px; background: var(--c-fg-3); }
+
+    @media (max-width: 960px) { .cover, .grid-3, .grid-4, .palette-row { grid-template-columns: repeat(2, minmax(0, 1fr)); } .cover { grid-template-columns: 1fr; } }
+    @media (max-width: 640px) { .grid-2, .grid-3, .grid-4, .palette-row { grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: 0.01ms !important; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="../Numera%20Global%20Brand%20Book%20%26%20Design%20System.html" class="brand-pill">
+        <svg width="24" height="24" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <rect x="11" y="20" width="10" height="32" rx="5" fill="currentColor" opacity="0.36" />
+          <rect x="27" y="12" width="10" height="32" rx="5" fill="currentColor" />
+          <rect x="43" y="20" width="10" height="32" rx="5" fill="currentColor" opacity="0.36" />
+        </svg>
+        <span class="wordmark" style="font-size:17px;">Monno</span>
+      </a>
+
+      <nav class="nav-scroll" aria-label="Navegação Monno">
+        <a class="nav-link" href="../Numera%20Global%20Brand%20Book%20%26%20Design%20System.html">Hub Global</a>
+        <span class="nav-sep" aria-hidden="true"></span>
+        <a class="nav-link" href="#cap-01">01 Marca</a>
+        <a class="nav-link" href="#cap-02">02 Símbolo</a>
+        <a class="nav-link" href="#cap-03">03 Tipografia &amp; Cor</a>
+        <a class="nav-link" href="#cap-04">04 Componentes</a>
+        <a class="nav-link" href="#cap-05">05 Movimento</a>
+        <a class="nav-link" href="#cap-06">06 Aplicação</a>
+        <span class="nav-sep" aria-hidden="true"></span>
+        <a class="brand-switch" href="./numera-brand-book.html">Numera</a>
+        <a class="brand-switch current" href="./monno-brand-book.html">Monno</a>
+        <a class="brand-switch" href="./cronos-brand-book.html">Cronos</a>
+        <a class="brand-switch" href="./nyot-brand-book.html">NYOT</a>
+      </nav>
+
+      <button type="button" class="theme-btn" id="themeToggle">
+        <span style="width:10px;height:10px;border-radius:9999px;background:currentColor;"></span>
+        <span id="themeLabel">Modo Claro</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="cover" id="capa">
+      <div>
+        <div class="cover-mark-row">
+          <svg width="68" height="68" viewBox="0 0 64 64" fill="none" aria-label="Símbolo Monno">
+            <rect x="11" y="20" width="10" height="32" rx="5" fill="currentColor" opacity="0.36" />
+            <rect x="27" y="12" width="10" height="32" rx="5" fill="currentColor" />
+            <rect x="43" y="20" width="10" height="32" rx="5" fill="currentColor" opacity="0.36" />
+          </svg>
+          <div>
+            <div class="wordmark" style="font-size:48px;">Monno</div>
+            <div class="endorsement">Um app Numera</div>
+          </div>
+        </div>
+        <h1 class="cover-title">Brand Book &amp; Design System</h1>
+        <p class="cover-sub">
+          Identidade unificada do aplicativo de planejamento e projeção de saldo diário pessoal. Substitui o antigo turquesa pela sobriedade Ônix e Algodão Cru do ecossistema Numera.
+        </p>
+      </div>
+
+      <aside class="cover-meta-card">
+        <div class="eyebrow">Ficha do Produto</div>
+        <div class="meta-row"><span class="meta-key">Escopo</span><span>Saldo Futuro · Faturas · Planejado vs Realizado</span></div>
+        <div class="meta-row"><span class="meta-key">Grafia</span><span>Monno (Title Case)</span></div>
+        <div class="meta-row"><span class="meta-key">Símbolo</span><span>3 Pílulas Branco/Cinza (100% + 36%)</span></div>
+        <div class="meta-row"><span class="meta-key">Endosso</span><span>Um app Numera</span></div>
+        <div class="meta-row"><span class="meta-key">Domínio</span><span class="mono-tech">monno.gruponumera.com</span></div>
+      </aside>
+    </section>
+
+    <section class="chapter" id="cap-01">
+      <div class="chapter-head">
+        <div>
+          <div class="chapter-num">01 Marca, Módulos e Voz Financeira</div>
+          <h2 class="chapter-title">Calma analítica para saber hoje se o dinheiro chega</h2>
+        </div>
+        <p class="chapter-lead">
+          Finanças pessoais não precisam de vermelho estridente nem verde neon. O Monno prioriza clareza diária entre o que já aconteceu, o que você planejou e o saldo futuro com faturas já descontadas.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <article class="card">
+          <h3>Projeção Sem Limite</h3>
+          <p>Saldo diário dos próximos meses — com fechamento e vencimento de cartões descontados — além de alertas antes da conta ficar negativa.</p>
+        </article>
+        <article class="card">
+          <h3>Planejado vs Realizado</h3>
+          <p>Comparativo direto por categoria e subcategoria, ritmo de gastos contra meta diária e recorrências materializadas de 6 a 60 meses.</p>
+        </article>
+        <article class="card">
+          <h3>Faturas, Open Finance &amp; Privacidade</h3>
+          <p>Comparador de extrato CSV/PDF, triagem de transações pendentes, resumo modular personalizável, exportação Excel e modo privacidade em 1 toque.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="chapter" id="cap-02">
+      <div class="chapter-head">
+        <div>
+          <div class="chapter-num">02 Símbolo em Branco e Cinza</div>
+          <h2 class="chapter-title">Três pílulas verticais com eixo central elevado</h2>
+        </div>
+        <p class="chapter-lead">
+          As colunas laterais permanecem em 36% de opacidade enquanto a coluna central em 100% ancora equilíbrio e elevação. A geometria da barra se repete no gráfico <span class="mono-tech">PillBarChart</span> e no <span class="mono-tech">Spinner</span>.
+        </p>
+      </div>
+
+      <div class="grid-2">
+        <div class="blueprint-box">
+          <svg width="200" height="200" viewBox="0 0 64 64" fill="none">
+            <rect x="0.5" y="0.5" width="63" height="63" rx="14" stroke="currentColor" stroke-opacity="0.18" stroke-dasharray="2 2" stroke-width="0.6" />
+            <rect x="11" y="20" width="10" height="32" rx="5" fill="currentColor" opacity="0.36" />
+            <rect x="27" y="12" width="10" height="32" rx="5" fill="currentColor" />
+            <rect x="43" y="20" width="10" height="32" rx="5" fill="currentColor" opacity="0.36" />
+          </svg>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          <div class="card">
+            <h3>Especificação Vetorial 64x64</h3>
+            <table class="spec-table" style="margin-top:8px;">
+              <tbody>
+                <tr><td>Pílula esquerda (36%)</td><td class="mono-tech">x="11" y="20" w="10" h="32" rx="5"</td></tr>
+                <tr><td>Pílula central (100%)</td><td class="mono-tech">x="27" y="12" w="10" h="32" rx="5"</td></tr>
+                <tr><td>Pílula direita (36%)</td><td class="mono-tech">x="43" y="20" w="10" h="32" rx="5"</td></tr>
+                <tr><td>Ícone PWA</td><td class="mono-tech">512x512 rx="112" (#0A0A09 opaco)</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="size-ladder">
+            <div class="size-step"><svg width="16" height="16" viewBox="0 0 64 64" fill="none"><rect x="11" y="20" width="10" height="32" rx="5" fill="currentColor" opacity="0.36" /><rect x="27" y="12" width="10" height="32" rx="5" fill="currentColor" /><rect x="43" y="20" width="10" height="32" rx="5" fill="currentColor" opacity="0.36" /></svg><span class="mono-tech">16px</span></div>
+            <div class="size-step"><svg width="24" height="24" viewBox="0 0 64 64" fill="none"><rect x="11" y="20" width="10" height="32" rx="5" fill="currentColor" opacity="0.36" /><rect x="27" y="12" width="10" height="32" rx="5" fill="currentColor" /><rect x="43" y="20" width="10" height="32" rx="5" fill="currentColor" opacity="0.36" /></svg><span class="mono-tech">24px</span></div>
+            <div class="size-step"><svg width="36" height="36" viewBox="0 0 64 64" fill="none"><rect x="11" y="20" width="10" height="32" rx="5" fill="currentColor" opacity="0.36" /><rect x="27" y="12" width="10" height="32" rx="5" fill="currentColor" /><rect x="43" y="20" width="10" height="32" rx="5" fill="currentColor" opacity="0.36" /></svg><span class="mono-tech">36px</span></div>
+            <div class="size-step"><svg width="52" height="52" viewBox="0 0 512 512" fill="none"><rect width="512" height="512" rx="112" fill="#0A0A09" stroke="rgba(244,243,239,0.16)" stroke-width="8" /><g transform="translate(80 80) scale(5.5)" color="#F4F3EF"><rect x="11" y="20" width="10" height="32" rx="5" fill="currentColor" opacity="0.36" /><rect x="27" y="12" width="10" height="32" rx="5" fill="currentColor" /><rect x="43" y="20" width="10" height="32" rx="5" fill="currentColor" opacity="0.36" /></g></svg><span class="mono-tech">App Tile</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" id="cap-03">
+      <div class="chapter-head">
+        <div>
+          <div class="chapter-num">03 Tipografia, Anatomia Monetária &amp; Cores</div>
+          <h2 class="chapter-title">Leitura tabular, centavos atenuados e paleta mineral</h2>
+        </div>
+        <p class="chapter-lead">
+          O componente <span class="mono-tech">Money</span> exibe o valor em <span class="mono-tech">Figtree 300</span> tabular, centavos em <span class="mono-tech">0.5em</span> terciário e sinal explícito <span class="mono-tech">+ / −</span> para nunca depender só da cor.
+        </p>
+      </div>
+
+      <div class="grid-2" style="margin-bottom:20px;">
+        <article class="card">
+          <div class="eyebrow" style="margin-bottom:12px;">Anatomia Monetária (Money)</div>
+          <div class="money-display">R$ 12.480<span class="money-cents">,90</span></div>
+          <div style="display:flex; flex-direction:column; gap:8px; margin-top:16px;">
+            <div class="status-dot"><span class="status-dot-pip" style="background:var(--c-positive);"></span><span style="color:var(--c-positive-fg);" class="num">+ R$ 640,00 · Saldo positivo / meta cumprida</span></div>
+            <div class="status-dot"><span class="status-dot-pip" style="background:var(--c-warning);"></span><span style="color:var(--c-warning-fg);">Sem subcategoria ou orçamento próximo do teto</span></div>
+            <div class="status-dot"><span class="status-dot-pip" style="background:var(--c-negative);"></span><span style="color:var(--c-negative-fg);" class="num">− R$ 185,00 · Saldo em risco / desvio acima</span></div>
+            <div class="status-dot"><span class="status-dot-pip" style="background:var(--c-info);"></span><span style="color:var(--c-info-fg);">Projeção calculada / cartão sem fatura</span></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="eyebrow" style="margin-bottom:12px;">Auditoria Aplicada em Produção</div>
+          <table class="spec-table">
+            <thead><tr><th>Superfície</th><th>Implementação Atual</th></tr></thead>
+            <tbody>
+              <tr><td>Marca &amp; Endosso (<span class="mono-tech">MonnoLogo</span>)</td><td>3 pílulas <span class="mono-tech">64x64</span> · Figtree <span class="mono-tech">600</span> + Um app Numera</td></tr>
+              <tr><td>Rótulos (<span class="mono-tech">.label-ui</span>)</td><td>Figtree <span class="mono-tech">500</span> · <span class="mono-tech">11px/15px</span> · <span class="mono-tech">+0.12em</span></td></tr>
+              <tr><td>Palavra de confirmação (<span class="mono-tech">RESETAR</span>)</td><td class="mono-tech">DM Mono (único uso na UI)</td></tr>
+              <tr><td>Domínio institucional</td><td class="mono-tech">monno.gruponumera.com</td></tr>
+            </tbody>
+          </table>
+        </article>
+      </div>
+
+      <article class="card">
+        <div class="eyebrow">Paleta Editorial para Categorias &amp; Contas (10 tons minerais suaves)</div>
+        <p style="margin-top:6px;">Substitui cores saturadas de sistema (<span class="mono-tech">#00BFA5</span>, <span class="mono-tech">#EF4444</span>, <span class="mono-tech">#3B82F6</span>) em categorias padrão, chips de contas e filtros.</p>
+        <div class="palette-row">
+          <div class="palette-chip"><span class="palette-dot" style="background:#8EB89F;"></span><span class="mono-tech">#8EB89F</span></div>
+          <div class="palette-chip"><span class="palette-dot" style="background:#91B8D6;"></span><span class="mono-tech">#91B8D6</span></div>
+          <div class="palette-chip"><span class="palette-dot" style="background:#D1B886;"></span><span class="mono-tech">#D1B886</span></div>
+          <div class="palette-chip"><span class="palette-dot" style="background:#E0A39D;"></span><span class="mono-tech">#E0A39D</span></div>
+          <div class="palette-chip"><span class="palette-dot" style="background:#A799C4;"></span><span class="mono-tech">#A799C4</span></div>
+          <div class="palette-chip"><span class="palette-dot" style="background:#C99778;"></span><span class="mono-tech">#C99778</span></div>
+          <div class="palette-chip"><span class="palette-dot" style="background:#6B947C;"></span><span class="mono-tech">#6B947C</span></div>
+          <div class="palette-chip"><span class="palette-dot" style="background:#B88AA4;"></span><span class="mono-tech">#B88AA4</span></div>
+          <div class="palette-chip"><span class="palette-dot" style="background:#7C98A6;"></span><span class="mono-tech">#7C98A6</span></div>
+          <div class="palette-chip"><span class="palette-dot" style="background:#96948D;"></span><span class="mono-tech">#96948D</span></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="chapter" id="cap-04">
+      <div class="chapter-head">
+        <div>
+          <div class="chapter-num">04 Componentes Financeiros &amp; Privacidade</div>
+          <h2 class="chapter-title">Planejado vs Realizado, PillBarChart e Modo Privacidade</h2>
+        </div>
+        <p class="chapter-lead">
+          Cartões <span class="mono-tech">18px</span>, campos sublinhados e switches monocromáticos onde o pino ativo usa sempre <span class="mono-tech">bg-accent-on</span> para garantir leitura em Ônix.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <article class="card" style="display:flex; flex-direction:column; gap:16px;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span class="eyebrow">Resumo do Mês</span>
+            <span class="pill pill-sage num">+ R$ 640,00 sobra</span>
+          </div>
+          <div class="card-sunken">
+            <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-size:13px;">
+              <span style="color:var(--c-fg-2);">Realizado / Planejado</span>
+              <span class="num" style="font-weight:600;">R$ 3.860 / R$ 4.500</span>
+            </div>
+            <div style="height:8px; background:var(--c-canvas); border-radius:9999px; overflow:hidden;">
+              <div style="width:85.7%; height:100%; background:var(--c-positive); border-radius:9999px;"></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" style="display:flex; flex-direction:column; gap:12px;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span class="eyebrow">Gastos da Semana</span>
+            <span class="num" style="font-size:13px; color:var(--c-fg-2);">R$ 842,10</span>
+          </div>
+          <div class="pill-bars" aria-label="Exemplo de PillBarChart">
+            <div class="pill-bar-col"><span class="pill-bar" style="height:30px;"></span><span style="font-size:11px; color:var(--c-fg-3);">S</span></div>
+            <div class="pill-bar-col"><span class="pill-bar" style="height:48px;"></span><span style="font-size:11px; color:var(--c-fg-3);">T</span></div>
+            <div class="pill-bar-col"><span class="pill-bar" style="height:24px;"></span><span style="font-size:11px; color:var(--c-fg-3);">Q</span></div>
+            <div class="pill-bar-col"><span class="pill-bar hi" style="height:56px;"></span><span style="font-size:11px; font-weight:600;">Q</span></div>
+            <div class="pill-bar-col"><span class="pill-bar" style="height:36px;"></span><span style="font-size:11px; color:var(--c-fg-3);">S</span></div>
+            <div class="pill-bar-col"><span class="pill-bar" style="height:18px;"></span><span style="font-size:11px; color:var(--c-fg-3);">S</span></div>
+            <div class="pill-bar-col"><span class="pill-bar" style="height:22px;"></span><span style="font-size:11px; color:var(--c-fg-3);">D</span></div>
+          </div>
+        </article>
+
+        <article class="card" style="display:flex; flex-direction:column; justify-content:space-between; gap:14px;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span class="eyebrow">Modo Privacidade</span>
+            <button type="button" class="switch-btn" id="privacyToggle" role="switch" aria-checked="false" aria-label="Ocultar valores">
+              <span class="switch-thumb"></span>
+            </button>
+          </div>
+          <div class="card-sunken">
+            <div class="eyebrow" style="margin-bottom:4px;">Saldo projetado</div>
+            <div id="privacyAmount" class="money-display" style="font-size:28px; line-height:32px;">R$ 12.480<span class="money-cents">,90</span></div>
+          </div>
+          <p style="font-size:12px; color:var(--c-fg-3);">Regra de contraste: pino ativo usa <span class="mono-tech">bg-accent-on</span>, nunca branco fixo.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="chapter" id="cap-05">
+      <div class="chapter-head">
+        <div>
+          <div class="chapter-num">05 Movimento &amp; MonnoIntroSplash</div>
+          <h2 class="chapter-title">Equilíbrio das três pílulas em curva única</h2>
+        </div>
+        <p class="chapter-lead">
+          As colunas laterais compensam o centro sem springs quicantes. O <span class="mono-tech">MonnoIntroSplash</span> abre uma vez por sessão e respeita integralmente <span class="mono-tech">prefers-reduced-motion</span>.
+        </p>
+      </div>
+
+      <div class="motion-stage" id="monnoMotion">
+        <svg width="112" height="112" viewBox="0 0 64 64" fill="none">
+          <rect class="bar-l" x="11" y="20" width="10" height="32" rx="5" fill="currentColor" opacity="0.36" />
+          <rect class="bar-c" x="27" y="12" width="10" height="32" rx="5" fill="currentColor" />
+          <rect class="bar-r" x="43" y="20" width="10" height="32" rx="5" fill="currentColor" opacity="0.36" />
+        </svg>
+        <div class="mono-tech" style="color:var(--c-fg-3);">cubic-bezier(0.22, 1, 0.36, 1) · 0.28s dock &amp; toggle · 1.45s splash</div>
+        <button type="button" class="btn-primary" id="monnoMotionBtn">Alternar estado das pílulas</button>
+      </div>
+    </section>
+
+    <section class="chapter" id="cap-06" style="border-bottom:none;">
+      <div class="chapter-head">
+        <div>
+          <div class="chapter-num">06 Restrições &amp; Aplicação Mobile</div>
+          <h2 class="chapter-title">Prévia em produção e regras invioláveis</h2>
+        </div>
+        <p class="chapter-lead">
+          Estrutura real do app com cabeçalho de vidro, resumo modular, barras em pílula e <span class="mono-tech">FloatingDock</span> inferior.
+        </p>
+      </div>
+
+      <div class="grid-2" style="align-items:start;">
+        <div class="phone-frame">
+          <div class="phone-header">
+            <span class="eco-lockup">
+              <svg width="24" height="24" viewBox="0 0 64 64" fill="none"><rect x="11" y="20" width="10" height="32" rx="5" fill="currentColor" opacity="0.36" /><rect x="27" y="12" width="10" height="32" rx="5" fill="currentColor" /><rect x="43" y="20" width="10" height="32" rx="5" fill="currentColor" opacity="0.36" /></svg>
+              <span class="wordmark" style="font-size:18px;">Monno</span>
+            </span>
+            <span class="pill">Novembro</span>
+          </div>
+          <div class="card-sunken" style="margin-bottom:12px;">
+            <div class="eyebrow">Saldo projetado (faturas descontadas)</div>
+            <div class="money-display" style="font-size:30px; line-height:36px; margin-top:6px;">R$ 2.140<span class="money-cents">,00</span></div>
+            <p style="font-size:12px; color:var(--c-positive-fg); margin-top:6px;" class="num">+ R$ 640,00 acima do plano base</p>
+          </div>
+          <div class="card" style="padding:16px;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-size:13px; font-weight:600;">Fatura atual · Cartão</span>
+              <span class="pill pill-sage num">74% do plano</span>
+            </div>
+          </div>
+          <div class="phone-dock">
+            <span class="active">Resumo</span>
+            <span>Projeção</span>
+            <span>Transações</span>
+            <span>Recorr.</span>
+            <span>Análises</span>
+          </div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          <article class="card">
+            <div class="pill pill-terra" style="margin-bottom:12px;">Proibido no Ecossistema</div>
+            <ul class="list-clean">
+              <li>Manter verde turquesa (<span class="mono-tech">#00BFA5</span>) ou glows coloridos de fundo.</li>
+              <li>Escrever MONNO em caixa alta total, usar <span class="mono-tech">transition-all</span> ou cantos de 90 graus.</li>
+              <li>Usar <span class="mono-tech">DM Mono</span> em valores de moeda, categorias ou rótulos de formulário.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Ativos do Kit Monno</h3>
+            <p style="margin-top:8px;">SVGs em <span class="mono-tech">../logos/monno-*.svg</span> · tokens em <span class="mono-tech">../tokens/numera-tokens.css</span> · roteiro validado em <span class="mono-tech">../ROLLOUT-PLAYBOOK.md</span>.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var toggle = document.getElementById('themeToggle');
+      var label = document.getElementById('themeLabel');
+      function sync() { label.textContent = root.getAttribute('data-theme') === 'light' ? 'Modo Escuro' : 'Modo Claro'; }
+      toggle.addEventListener('click', function () {
+        root.setAttribute('data-theme', root.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+        sync();
+      });
+      sync();
+
+      var privBtn = document.getElementById('privacyToggle');
+      var privVal = document.getElementById('privacyAmount');
+      privBtn.addEventListener('click', function () {
+        var on = privBtn.getAttribute('aria-checked') === 'true';
+        privBtn.setAttribute('aria-checked', on ? 'false' : 'true');
+        privVal.innerHTML = on
+          ? 'R$ 12.480<span class="money-cents">,90</span>'
+          : 'R$ •••••';
+      });
+
+      document.getElementById('monnoMotionBtn').addEventListener('click', function () {
+        document.getElementById('monnoMotion').classList.toggle('balanced');
+      });
+    })();
+  </script>
+</body>
+</html>

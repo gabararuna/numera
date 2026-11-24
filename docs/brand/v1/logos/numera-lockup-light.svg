@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 272 96" width="272" height="96" fill="none" color="#0A0A09">
+  <title>Numera Lockup Light</title>
+  <g transform="translate(16 20) scale(0.875)">
+    <path d="M 24.4 47.8 L 21.9 50.3 A 5.8 5.8 0 0 1 12 46.2 V 17.8 A 5.8 5.8 0 0 1 21.9 13.7 L 40.2 32" stroke="currentColor" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M 39.6 16.2 L 42.1 13.7 A 5.8 5.8 0 0 1 52 17.8 V 46.2 A 5.8 5.8 0 0 1 42.1 50.3 L 23.8 32" stroke="currentColor" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+  <text x="88" y="62" fill="currentColor" font-family="Figtree, -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-weight="600" letter-spacing="-0.03em">Numera</text>
+</svg>

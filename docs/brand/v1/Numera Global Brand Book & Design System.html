@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Numera · Brand Book Global &amp; Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root,
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --c-canvas: #0A0A09;
+      --c-raised: #141412;
+      --c-sunken: #22221F;
+      --c-fg: #F4F3EF;
+      --c-fg-2: #BDBBB4;
+      --c-fg-3: #96948D;
+      --c-line: rgba(244, 243, 239, 0.11);
+      --c-line-strong: rgba(244, 243, 239, 0.22);
+      --c-positive: #8EB89F;
+      --c-positive-fg: #8EB89F;
+      --c-negative: #E0A39D;
+      --c-negative-fg: #E0A39D;
+      --c-warning: #D1B886;
+      --c-warning-fg: #D1B886;
+      --c-info: #91B8D6;
+      --c-info-fg: #91B8D6;
+      --glass-1: rgba(244, 243, 239, 0.02);
+      --glass-2: rgba(244, 243, 239, 0.045);
+      --glass-3: rgba(20, 20, 18, 0.86);
+      --glass-bar: rgba(10, 10, 9, 0.86);
+      --shadow-card: 0 24px 60px -28px rgba(0, 0, 0, 0.65);
+    }
+
+    :root[data-theme="light"] {
+      color-scheme: light;
+      --c-canvas: #F4F3EF;
+      --c-raised: #FAF9F6;
+      --c-sunken: #EAE8E1;
+      --c-fg: #0A0A09;
+      --c-fg-2: #52514B;
+      --c-fg-3: #6B6961;
+      --c-line: rgba(10, 10, 9, 0.10);
+      --c-line-strong: rgba(10, 10, 9, 0.22);
+      --c-positive: #3D7355;
+      --c-positive-fg: #2E6447;
+      --c-negative: #9E3D38;
+      --c-negative-fg: #9E3D38;
+      --c-warning: #825E1E;
+      --c-warning-fg: #825E1E;
+      --c-info: #2B5E85;
+      --c-info-fg: #2B5E85;
+      --glass-1: rgba(250, 249, 246, 0.62);
+      --glass-2: rgba(250, 249, 246, 0.78);
+      --glass-3: rgba(250, 249, 246, 0.90);
+      --glass-bar: rgba(244, 243, 239, 0.88);
+      --shadow-card: 0 18px 44px -24px rgba(10, 10, 9, 0.12);
+    }
+
+    :root {
+      --r-tag: 6px;
+      --r-icon: 10px;
+      --r-field: 14px;
+      --r-card: 18px;
+      --r-sheet: 26px;
+      --r-pill: 9999px;
+      --ease-numera: cubic-bezier(0.22, 1, 0.36, 1);
+      --font-sans: "Figtree", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-mono: "DM Mono", ui-monospace, monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--c-canvas);
+      color: var(--c-fg);
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--c-canvas);
+      color: var(--c-fg);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.6;
+      transition: background-color 0.32s var(--ease-numera), color 0.32s var(--ease-numera);
+    }
+
+    .mono-tech { font-family: var(--font-mono); font-weight: 400; font-size: 12px; letter-spacing: 0.01em; }
+    .num { font-variant-numeric: tabular-nums; }
+    .wordmark { font-family: var(--font-sans); font-weight: 600; letter-spacing: -0.03em; line-height: 1; }
+    .eyebrow {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--c-fg-3);
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--glass-bar);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--c-line);
+    }
+
+    .topbar-inner {
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .brand-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--c-fg);
+      flex-shrink: 0;
+    }
+
+    .nav-scroll {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .nav-scroll::-webkit-scrollbar { display: none; }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--c-fg-3);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 6px 10px;
+      border-radius: var(--r-pill);
+      white-space: nowrap;
+      transition: background-color 0.2s var(--ease-numera), color 0.2s var(--ease-numera);
+    }
+    .nav-link:hover, .nav-link.active { color: var(--c-fg); background-color: var(--c-sunken); }
+
+    .nav-sep { width: 1px; height: 16px; background: var(--c-line-strong); margin: 0 6px; flex-shrink: 0; }
+
+    .brand-switch {
+      text-decoration: none;
+      color: var(--c-fg-2);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 11px;
+      border-radius: var(--r-pill);
+      border: 1px solid var(--c-line);
+      white-space: nowrap;
+      transition: background-color 0.2s var(--ease-numera), border-color 0.2s var(--ease-numera), color 0.2s var(--ease-numera);
+    }
+    .brand-switch:hover { color: var(--c-fg); background: var(--c-sunken); border-color: var(--c-line-strong); }
+
+    .theme-btn {
+      appearance: none;
+      border: 1px solid var(--c-line-strong);
+      background: var(--c-raised);
+      color: var(--c-fg);
+      border-radius: var(--r-pill);
+      padding: 7px 14px;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background-color 0.2s var(--ease-numera), transform 0.2s var(--ease-numera);
+    }
+    .theme-btn:hover { background: var(--c-sunken); }
+    .theme-btn:active { transform: scale(0.97); }
+
+    .container { max-width: 1220px; margin: 0 auto; padding: 0 24px 96px; }
+
+    .cover {
+      padding: 76px 0 64px;
+      border-bottom: 1px solid var(--c-line);
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 40px;
+      align-items: end;
+    }
+
+    .cover-mark-row { display: flex; align-items: center; gap: 18px; margin-bottom: 24px; }
+    .cover-title { font-size: clamp(34px, 5vw, 54px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.06; margin-bottom: 16px; }
+    .cover-sub { font-size: 17px; color: var(--c-fg-2); max-width: 600px; line-height: 1.58; }
+
+    .cover-meta-card {
+      background: var(--c-raised);
+      border: 1px solid var(--c-line);
+      border-radius: var(--r-card);
+      padding: 24px;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--c-line);
+      font-size: 13px;
+    }
+    .meta-row:last-child { padding-bottom: 0; border-bottom: none; }
+    .meta-key { color: var(--c-fg-3); font-weight: 500; }
+
+    section.chapter { padding: 72px 0; border-bottom: 1px solid var(--c-line); scroll-margin-top: 72px; }
+    .chapter-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px; margin-bottom: 34px; }
+    .chapter-num { font-size: 12px; font-weight: 500; color: var(--c-fg-3); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+    .chapter-title { font-size: clamp(24px, 3vw, 32px); font-weight: 600; letter-spacing: -0.025em; line-height: 1.15; }
+    .chapter-lead { max-width: 500px; font-size: 15px; color: var(--c-fg-2); line-height: 1.55; }
+
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+
+    .card {
+      background: var(--c-raised);
+      border: 1px solid var(--c-line);
+      border-radius: var(--r-card);
+      padding: 24px;
+      transition: border-color 0.25s var(--ease-numera), background-color 0.25s var(--ease-numera);
+    }
+    .card-sunken {
+      background: var(--c-sunken);
+      border: 1px solid var(--c-line);
+      border-radius: var(--r-card);
+      padding: 20px;
+    }
+    .card h3 { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 8px; }
+    .card p, .card li { font-size: 14px; color: var(--c-fg-2); line-height: 1.55; }
+
+    .portal-card {
+      background: var(--c-raised);
+      border: 1px solid var(--c-line);
+      border-radius: var(--r-card);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 20px;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.24s var(--ease-numera), transform 0.24s var(--ease-numera), background-color 0.24s var(--ease-numera);
+    }
+    .portal-card:hover {
+      border-color: var(--c-line-strong);
+      transform: translateY(-2px);
+      background: color-mix(in srgb, var(--c-raised) 88%, var(--c-fg) 4%);
+    }
+
+    .btn-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: var(--r-pill);
+      background: var(--c-fg);
+      color: var(--c-canvas);
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      width: fit-content;
+      transition: opacity 0.2s var(--ease-numera);
+    }
+    .btn-link:hover { opacity: 0.88; }
+
+    .btn-primary {
+      appearance: none;
+      border: none;
+      background: var(--c-fg);
+      color: var(--c-canvas);
+      border-radius: var(--r-pill);
+      padding: 11px 20px;
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.2s var(--ease-numera), transform 0.2s var(--ease-numera);
+    }
+    .btn-primary:hover { opacity: 0.9; }
+    .btn-primary:active { transform: scale(0.98); }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: var(--r-pill);
+      font-size: 12px;
+      font-weight: 500;
+      border: 1px solid var(--c-line);
+      background: var(--c-sunken);
+      color: var(--c-fg-2);
+    }
+    .pill-sage { color: var(--c-positive-fg); border-color: color-mix(in srgb, var(--c-positive) 35%, transparent); background: color-mix(in srgb, var(--c-positive) 12%, transparent); }
+    .pill-terra { color: var(--c-negative-fg); border-color: color-mix(in srgb, var(--c-negative) 35%, transparent); background: color-mix(in srgb, var(--c-negative) 12%, transparent); }
+
+    .eco-lockup { display: inline-flex; align-items: center; gap: 14px; }
+    .endorsement { font-size: 12px; font-weight: 500; color: var(--c-fg-3); margin-top: 3px; }
+
+    .dual-stage { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 20px; }
+    .stage-dark { background: #0A0A09; color: #F4F3EF; border: 1px solid rgba(244, 243, 239, 0.12); border-radius: var(--r-card); padding: 26px; }
+    .stage-light { background: #F4F3EF; color: #0A0A09; border: 1px solid rgba(10, 10, 9, 0.12); border-radius: var(--r-card); padding: 26px; }
+
+    .swatch-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; margin-bottom: 22px; }
+    .swatch-card {
+      background: var(--c-raised);
+      border: 1px solid var(--c-line);
+      border-radius: var(--r-card);
+      overflow: hidden;
+      cursor: pointer;
+      text-align: left;
+      color: inherit;
+      font-family: inherit;
+      transition: transform 0.2s var(--ease-numera), border-color 0.2s var(--ease-numera);
+    }
+    .swatch-card:hover { transform: translateY(-2px); border-color: var(--c-line-strong); }
+    .swatch-chip { height: 70px; width: 100%; border-bottom: 1px solid var(--c-line); }
+    .swatch-body { padding: 12px 14px; display: flex; flex-direction: column; gap: 3px; }
+    .swatch-name { font-size: 13px; font-weight: 600; }
+
+    .radius-sample {
+      background: var(--c-sunken);
+      border: 1px solid var(--c-line-strong);
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+      font-weight: 500;
+      font-size: 13px;
+    }
+
+    .glass-stage {
+      border-radius: var(--r-sheet);
+      padding: 26px;
+      border: 1px solid var(--c-line);
+      background:
+        radial-gradient(circle at 20% 20%, rgba(142, 184, 159, 0.14), transparent 55%),
+        radial-gradient(circle at 85% 75%, rgba(145, 184, 214, 0.12), transparent 55%),
+        var(--c-canvas);
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+    .glass-demo {
+      border-radius: var(--r-card);
+      padding: 18px;
+      min-height: 112px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid var(--c-line);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    /* Ecosystem Motion Showcase */
+    .motion-stage {
+      background: var(--c-sunken);
+      border: 1px solid var(--c-line);
+      border-radius: var(--r-sheet);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .motion-item {
+      background: var(--c-raised);
+      border: 1px solid var(--c-line);
+      border-radius: var(--r-card);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      text-align: center;
+    }
+    .m-numera-a, .m-numera-b, .m-monno-mid, .m-cronos-top, .m-cronos-bot, .m-nyot-disc {
+      transition: transform 0.65s var(--ease-numera), opacity 0.65s var(--ease-numera);
+    }
+    .motion-stage.active .m-numera-a { transform: translate(2px, 2px); }
+    .motion-stage.active .m-numera-b { transform: translate(-2px, -2px); }
+    .motion-stage.active .m-monno-mid { transform: translateY(-4px); }
+    .motion-stage.active .m-cronos-top { transform: translateY(3px); }
+    .motion-stage.active .m-cronos-bot { transform: translateY(-3px); }
+    .motion-stage.active .m-nyot-disc { transform: translate(-10px, 10px); }
+
+    table.spec-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    table.spec-table th, table.spec-table td { text-align: left; padding: 11px 12px; border-bottom: 1px solid var(--c-line); }
+    table.spec-table th { color: var(--c-fg-3); font-weight: 500; font-size: 12px; }
+
+    .list-clean { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+    .list-clean li { padding-left: 14px; position: relative; font-size: 14px; color: var(--c-fg-2); }
+    .list-clean li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 5px;
+      height: 5px;
+      border-radius: var(--r-pill);
+      background: var(--c-fg-3);
+    }
+
+    .copy-toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--c-fg);
+      color: var(--c-canvas);
+      padding: 10px 16px;
+      border-radius: var(--r-pill);
+      font-size: 13px;
+      font-weight: 500;
+      opacity: 0;
+      transform: translateY(8px);
+      pointer-events: none;
+      transition: opacity 0.25s var(--ease-numera), transform 0.25s var(--ease-numera);
+      z-index: 100;
+    }
+    .copy-toast.show { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 980px) {
+      .cover { grid-template-columns: 1fr; }
+      .grid-3, .grid-4, .swatch-grid, .glass-stage { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 640px) {
+      .grid-2, .grid-3, .grid-4, .dual-stage, .swatch-grid, .glass-stage { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="#capa" class="brand-pill">
+        <svg width="26" height="26" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <path d="M 24.4 47.8 L 21.9 50.3 A 5.8 5.8 0 0 1 12 46.2 V 17.8 A 5.8 5.8 0 0 1 21.9 13.7 L 40.2 32" stroke="currentColor" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M 39.6 16.2 L 42.1 13.7 A 5.8 5.8 0 0 1 52 17.8 V 46.2 A 5.8 5.8 0 0 1 42.1 50.3 L 23.8 32" stroke="currentColor" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <span class="wordmark" style="font-size: 18px;">Numera</span>
+        <span class="pill" style="font-size: 11px; padding: 2px 8px;">Global</span>
+      </a>
+
+      <nav class="nav-scroll" aria-label="Navegacao Global e Marcas">
+        <a class="nav-link" href="#cap-01">01 Arquitetura</a>
+        <a class="nav-link" href="#cap-02">02 Simbolos</a>
+        <a class="nav-link" href="#cap-03">03 Tipografia</a>
+        <a class="nav-link" href="#cap-04">04 Cores</a>
+        <a class="nav-link" href="#cap-05">05 Movimento</a>
+        <a class="nav-link" href="#cap-06">06 Marcas</a>
+        <span class="nav-sep" aria-hidden="true"></span>
+        <a class="brand-switch" href="./brands/numera-brand-book.html">Numera</a>
+        <a class="brand-switch" href="./brands/monno-brand-book.html">Monno</a>
+        <a class="brand-switch" href="./brands/cronos-brand-book.html">Cronos</a>
+        <a class="brand-switch" href="./brands/nyot-brand-book.html">NYOT</a>
+      </nav>
+
+      <button type="button" class="theme-btn" id="themeToggle" aria-label="Alternar tema escuro e claro">
+        <span style="width:10px;height:10px;border-radius:9999px;background:currentColor;"></span>
+        <span id="themeLabel">Modo Claro</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="cover" id="capa">
+      <div>
+        <div class="cover-mark-row">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" aria-label="Simbolo Numera">
+            <path d="M 24.4 47.8 L 21.9 50.3 A 5.8 5.8 0 0 1 12 46.2 V 17.8 A 5.8 5.8 0 0 1 21.9 13.7 L 40.2 32" stroke="currentColor" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M 39.6 16.2 L 42.1 13.7 A 5.8 5.8 0 0 1 52 17.8 V 46.2 A 5.8 5.8 0 0 1 42.1 50.3 L 23.8 32" stroke="currentColor" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <div>
+            <div class="wordmark" style="font-size: 46px;">Numera</div>
+            <div class="eyebrow" style="margin-top:6px;">Ecossistema &amp; Design System Global</div>
+          </div>
+        </div>
+        <h1 class="cover-title">Sistema Unico para Quatro Marcas</h1>
+        <p class="cover-sub">
+          Este hub governa os fundamentos visuais compartilhados entre a marca-mae Numera e seus aplicativos Monno, Cronos e NYOT. Cada marca possui também seu proprio Brand Book dedicado na area de marcas.
+        </p>
+      </div>
+
+      <aside class="cover-meta-card">
+        <div class="eyebrow">Estrutura do Pacote v1</div>
+        <div class="meta-row">
+          <span class="meta-key">Marca-mae</span>
+          <span style="font-weight:600;">Numera (Title Case)</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-key">Aplicativos</span>
+          <span>Monno · Cronos · NYOT</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-key">Paleta Base</span>
+          <span class="mono-tech">#0A0A09 / #F4F3EF</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-key">Tipografia Global</span>
+          <span>Figtree (300 a 600)</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-key">Curva de Movimento</span>
+          <span class="mono-tech">cubic-bezier(0.22, 1, 0.36, 1)</span>
+        </div>
+      </aside>
+    </section>
+
+    <!-- 01 ARQUITETURA -->
+    <section class="chapter" id="cap-01">
+      <div class="chapter-head">
+        <div>
+          <div class="chapter-num">01 Arquitetura do Ecossistema</div>
+          <h2 class="chapter-title">Marca-mae soberana regendo produtos autonomos</h2>
+        </div>
+        <p class="chapter-lead">
+          A Numera entrega o chassi cromático, geométrico e tipográfico. Monno, Cronos e NYOT herdam a mesma disciplina mantendo simbolos proprios.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <article class="card">
+          <h3>Grafia e Hierarquia</h3>
+          <ul class="list-clean" style="margin-top:10px;">
+            <li><strong>Numera</strong>, <strong>Monno</strong> e <strong>Cronos</strong> sao palavras comuns e permanecem sempre em Title Case.</li>
+            <li>Somente <strong>NYOT</strong> permanece em caixa alta integral por ser sigla (Not Your Ordinary Tracker).</li>
+            <li>Todo aplicativo usa o endosso discreto <strong>Um app Numera</strong>.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Idioma Visual Unico</h3>
+          <ul class="list-clean" style="margin-top:10px;">
+            <li>Monocromia organica Onix e Algodao Cru sem cores vibrantes de fundo ou destaque.</li>
+            <li>Nenhum canto vivo de 90 graus em cartoes, campos, paineis ou icones.</li>
+            <li>Aposentadoria integral de cores turquesa legadas no Monno e grade antiga no NYOT.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Reuso para Reformulacao</h3>
+          <ul class="list-clean" style="margin-top:10px;">
+            <li>Tokens portateis em <span class="mono-tech">tokens/numera-tokens.css</span>.</li>
+            <li>Preset Tailwind em <span class="mono-tech">tokens/tailwind-preset.js</span>.</li>
+            <li>Roteiro tecnico completo em <span class="mono-tech">ROLLOUT-PLAYBOOK.md</span>.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- 02 SIMBOLOS -->
+    <section class="chapter" id="cap-02">
+      <div class="chapter-head">
+        <div>
+          <div class="chapter-num">02 Gramatica Vetorial 64x64</div>
+          <h2 class="chapter-title">Curvas continuas e opacidade 100% + 36%</h2>
+        </div>
+        <p class="chapter-lead">
+          Os quatro simbolos nascem no mesmo viewBox 64x64 com caps suaves, zero angulos retos e contraste branco/cinza harmonizado.
+        </p>
+      </div>
+
+      <div class="grid-4">
+        <article class="card">
+          <div class="eco-lockup" style="margin-bottom:14px;">
+            <svg width="48" height="48" viewBox="0 0 64 64" fill="none"><path d="M 24.4 47.8 L 21.9 50.3 A 5.8 5.8 0 0 1 12 46.2 V 17.8 A 5.8 5.8 0 0 1 21.9 13.7 L 40.2 32" stroke="currentColor" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round" /><path d="M 39.6 16.2 L 42.1 13.7 A 5.8 5.8 0 0 1 52 17.8 V 46.2 A 5.8 5.8 0 0 1 42.1 50.3 L 23.8 32" stroke="currentColor" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            <div>
+              <div class="wordmark" style="font-size:24px;">Numera</div>
+              <div class="endorsement">Marca-mae</div>
+            </div>
+          </div>
+          <p>Loops N continuos em <span class="mono-tech">stroke-width="7.2"</span> a <span class="mono-tech">100%</span>.</p>
+        </article>
+
+        <article class="card">
+          <div class="eco-lockup" style="margin-bottom:14px;">
+            <svg width="48" height="48" viewBox="0 0 64 64" fill="none"><rect x="11" y="20" width="10" height="32" rx="5" fill="currentColor" opacity="0.36" /><rect x="27" y="12" width="10" height="32" rx="5" fill="currentColor" /><rect x="43" y="20" width="10" height="32" rx="5" fill="currentColor" opacity="0.36" /></svg>
+            <div>
+              <div class="wordmark" style="font-size:24px;">Monno</div>
+              <div class="endorsement">Um app Numera</div>
+            </div>
+          </div>
+          <p>Tres pilulas (<span class="mono-tech">rx="5"</span>): laterais <span class="mono-tech">36%</span> e central <span class="mono-tech">100%</span>.</p>
+        </article>
+
+        <article class="card">
+          <div class="eco-lockup" style="margin-bottom:14px;">
+            <svg width="48" height="48" viewBox="0 0 64 64" fill="none"><path d="M 18.5 13.5 H 45.5 A 13.5 13.5 0 0 1 18.5 13.5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round" /><g opacity="0.36"><path d="M 45.5 50.5 H 18.5 A 13.5 13.5 0 0 1 45.5 50.5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round" /></g></svg>
+            <div>
+              <div class="wordmark" style="font-size:24px;">Cronos</div>
+              <div class="endorsement">Um app Numera</div>
+            </div>
+          </div>
+          <p>Bulbos semicirculares: superior <span class="mono-tech">100%</span> e inferior <span class="mono-tech">36%</span>.</p>
+        </article>
+
+        <article class="card">
+          <div class="eco-lockup" style="margin-bottom:14px;">
+            <svg width="48" height="48" viewBox="0 0 64 64" fill="none"><g opacity="0.36"><path d="M 39.68 43.99 A 15.5 15.5 0 1 1 20.01 24.32 A 19 19 0 0 0 39.68 43.99 Z" fill="currentColor" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" /></g><circle cx="39" cy="25" r="15.5" fill="currentColor" /></svg>
+            <div>
+              <div class="wordmark" style="font-size:24px;">NYOT</div>
+              <div class="endorsement">Um app Numera</div>
+            </div>
+          </div>
+          <p>Simbolo Eclipse: meia-lua <span class="mono-tech">36%</span> e disco pleno <span class="mono-tech">100%</span>.</p>
+        </article>
+      </div>
+
+      <div class="dual-stage">
+        <div class="stage-dark">
+          <div class="eyebrow" style="color:#96948D; margin-bottom:14px;">Familia em Onix (#0A0A09)</div>
+          <div style="display:flex; flex-wrap:wrap; align-items:center; gap:26px;">
+            <span class="eco-lockup" style="gap:10px;"><svg width="28" height="28" viewBox="0 0 64 64" fill="none"><path d="M 24.4 47.8 L 21.9 50.3 A 5.8 5.8 0 0 1 12 46.2 V 17.8 A 5.8 5.8 0 0 1 21.9 13.7 L 40.2 32" stroke="currentColor" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round" /><path d="M 39.6 16.2 L 42.1 13.7 A 5.8 5.8 0 0 1 52 17.8 V 46.2 A 5.8 5.8 0 0 1 42.1 50.3 L 23.8 32" stroke="currentColor" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round" /></svg><span class="wordmark" style="font-size:20px;">Numera</span></span>
+            <span class="eco-lockup" style="gap:10px;"><svg width="28" height="28" viewBox="0 0 64 64" fill="none"><rect x="11" y="20" width="10" height="32" rx="5" fill="currentColor" opacity="0.36" /><rect x="27" y="12" width="10" height="32" rx="5" fill="currentColor" /><rect x="43" y="20" width="10" height="32" rx="5" fill="currentColor" opacity="0.36" /></svg><span class="wordmark" style="font-size:20px;">Monno</span></span>
+            <span class="eco-lockup" style="gap:10px;"><svg width="28" height="28" viewBox="0 0 64 64" fill="none"><path d="M 18.5 13.5 H 45.5 A 13.5 13.5 0 0 1 18.5 13.5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round" /><g opacity="0.36"><path d="M 45.5 50.5 H 18.5 A 13.5 13.5 0 0 1 45.5 50.5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round" /></g></svg><span class="wordmark" style="font-size:20px;">Cronos</span></span>
+            <span class="eco-lockup" style="gap:10px;"><svg width="28" height="28" viewBox="0 0 64 64" fill="none"><g opacity="0.36"><path d="M 39.68 43.99 A 15.5 15.5 0 1 1 20.01 24.32 A 19 19 0 0 0 39.68 43.99 Z" fill="currentColor" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" /></g><circle cx="39" cy="25" r="15.5" fill="currentColor" /></svg><span class="wordmark" style="font-size:20px;">NYOT</span></span>
+          </div>
+        </div>
+
+        <div class="stage-light">
+          <div class="eyebrow" style="color:#6B6961; margin-bottom:14px;">Familia em Algodao Cru (#F4F3EF)</div>
+          <div style="display:flex; flex-wrap:wrap; align-items:center; gap:26px;">
+            <span class="eco-lockup" style="gap:10px;"><svg width="28" height="28" viewBox="0 0 64 64" fill="none"><path d="M 24.4 47.8 L 21.9 50.3 A 5.8 5.8 0 0 1 12 46.2 V 17.8 A 5.8 5.8 0 0 1 21.9 13.7 L 40.2 32" stroke="currentColor" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round" /><path d="M 39.6 16.2 L 42.1 13.7 A 5.8 5.8 0 0 1 52 17.8 V 46.2 A 5.8 5.8 0 0 1 42.1 50.3 L 23.8 32" stroke="currentColor" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round" /></svg><span class="wordmark" style="font-size:20px;">Numera</span></span>
+            <span class="eco-lockup" style="gap:10px;"><svg width="28" height="28" viewBox="0 0 64 64" fill="none"><rect x="11" y="20" width="10" height="32" rx="5" fill="currentColor" opacity="0.36" /><rect x="27" y="12" width="10" height="32" rx="5" fill="currentColor" /><rect x="43" y="20" width="10" height="32" rx="5" fill="currentColor" opacity="0.36" /></svg><span class="wordmark" style="font-size:20px;">Monno</span></span>
+            <span class="eco-lockup" style="gap:10px;"><svg width="28" height="28" viewBox="0 0 64 64" fill="none"><path d="M 18.5 13.5 H 45.5 A 13.5 13.5 0 0 1 18.5 13.5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round" /><g opacity="0.36"><path d="M 45.5 50.5 H 18.5 A 13.5 13.5 0 0 1 45.5 50.5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round" /></g></svg><span class="wordmark" style="font-size:20px;">Cronos</span></span>
+            <span class="eco-lockup" style="gap:10px;"><svg width="28" height="28" viewBox="0 0 64 64" fill="none"><g opacity="0.36"><path d="M 39.68 43.99 A 15.5 15.5 0 1 1 20.01 24.32 A 19 19 0 0 0 39.68 43.99 Z" fill="currentColor" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" /></g><circle cx="39" cy="25" r="15.5" fill="currentColor" /></svg><span class="wordmark" style="font-size:20px;">NYOT</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:20px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:18px;">
+        <div>
+          <div class="eyebrow">Icones de Aplicativo (PWA / Desktop)</div>
+          <p style="margin-top:6px;">Todos os quatro produtos compartilham o container <span class="mono-tech">512x512 rx="112"</span> em <span class="mono-tech">#0A0A09</span> com marca centralizada em <span class="mono-tech">#F4F3EF</span>.</p>
+        </div>
+        <div style="display:flex; gap:14px; align-items:center;">
+          <svg width="52" height="52" viewBox="0 0 512 512" fill="none"><rect width="512" height="512" rx="112" fill="#0A0A09" stroke="rgba(244,243,239,0.16)" stroke-width="8" /><g transform="translate(80 80) scale(5.5)" color="#F4F3EF"><path d="M 24.4 47.8 L 21.9 50.3 A 5.8 5.8 0 0 1 12 46.2 V 17.8 A 5.8 5.8 0 0 1 21.9 13.7 L 40.2 32" stroke="currentColor" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round" /><path d="M 39.6 16.2 L 42.1 13.7 A 5.8 5.8 0 0 1 52 17.8 V 46.2 A 5.8 5.8 0 0 1 42.1 50.3 L 23.8 32" stroke="currentColor" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round" /></g></svg>
+          <svg width="52" height="52" viewBox="0 0 512 512" fill="none"><rect width="512" height="512" rx="112" fill="#0A0A09" stroke="rgba(244,243,239,0.16)" stroke-width="8" /><g transform="translate(80 80) scale(5.5)" color="#F4F3EF"><rect x="11" y="20" width="10" height="32" rx="5" fill="currentColor" opacity="0.36" /><rect x="27" y="12" width="10" height="32" rx="5" fill="currentColor" /><rect x="43" y="20" width="10" height="32" rx="5" fill="currentColor" opacity="0.36" /></g></svg>
+          <svg width="52" height="52" viewBox="0 0 512 512" fill="none"><rect width="512" height="512" rx="112" fill="#0A0A09" stroke="rgba(244,243,239,0.16)" stroke-width="8" /><g transform="translate(80 80) scale(5.5)" color="#F4F3EF"><path d="M 18.5 13.5 H 45.5 A 13.5 13.5 0 0 1 18.5 13.5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round" /><g opacity="0.36"><path d="M 45.5 50.5 H 18.5 A 13.5 13.5 0 0 1 45.5 50.5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round" /></g></g></svg>
+          <svg width="52" height="52" viewBox="0 0 512 512" fill="none"><rect width="512" height="512" rx="112" fill="#0A0A09" stroke="rgba(244,243,239,0.16)" stroke-width="8" /><g transform="translate(80 80) scale(5.5)" color="#F4F3EF"><g opacity="0.36"><path d="M 39.68 43.99 A 15.5 15.5 0 1 1 20.01 24.32 A 19 19 0 0 0 39.68 43.99 Z" fill="currentColor" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" /></g><circle cx="39" cy="25" r="15.5" fill="currentColor" /></g></svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 TIPOGRAFIA -->
+    <section class="chapter" id="cap-03">
+      <div class="chapter-head">
+        <div>
+          <div class="chapter-num">03 Tipografia &amp; Restricao Mono</div>
+          <h2 class="chapter-title">Figtree na interface inteira, DM Mono somente tecnico</h2>
+        </div>
+        <p class="chapter-lead">
+          Pesos leves e limpos em Figtree substituem o antigo peso 800. Nenhuma fonte serifada entra no ecossistema.
+        </p>
+      </div>
+
+      <div class="grid-2">
+        <article class="card">
+          <div class="eyebrow" style="margin-bottom:14px;">Escala Compartilhada</div>
+          <table class="spec-table">
+            <thead>
+              <tr><th>Papel</th><th>Peso / Tracking</th><th>Exemplo</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Wordmarks</td><td class="mono-tech">600 / -0.03em</td><td class="wordmark" style="font-size:20px;">Numera · Monno · Cronos · NYOT</td></tr>
+              <tr><td>Display / Titulos</td><td class="mono-tech">500 / 300</td><td style="font-size:18px; font-weight:500;">Planejado vs Realizado</td></tr>
+              <tr><td>Numeros de UI</td><td class="mono-tech">tabular-nums</td><td class="num" style="font-size:18px;">74,8 kg · R$ 4.820,00 · 08:15</td></tr>
+              <tr><td>Eyebrows (.label-ui)</td><td class="mono-tech">500 / 0.12em</td><td><span class="eyebrow">Resumo do ciclo</span></td></tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article class="card">
+          <div class="eyebrow" style="margin-bottom:14px;">Regra de Uso da DM Mono</div>
+          <table class="spec-table">
+            <thead>
+              <tr><th>Onde entra DM Mono</th><th>Onde permanece Figtree</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="mono-tech">#0A0A09 · --c-canvas · 64x64</td><td>Datas, dias da semana e horarios</td></tr>
+              <tr><td class="mono-tech">17.84:1 · cubic-bezier(...)</td><td>Titulos de capitulo e etiquetas</td></tr>
+              <tr><td class="mono-tech">nyot.gruponumera.com · monno.gruponumera.com</td><td>Valores financeiros e metricas</td></tr>
+              <tr><td class="mono-tech">RESETAR · EXCLUIR</td><td>Slogans e endosso Um app Numera</td></tr>
+            </tbody>
+          </table>
+        </article>
+      </div>
+    </section>
+
+    <!-- 04 CORES -->
+    <section class="chapter" id="cap-04">
+      <div class="chapter-head">
+        <div>
+          <div class="chapter-num">04 Paleta Global Onix &amp; Algodao Cru</div>
+          <h2 class="chapter-title">Contraste AA verificado em ambos os temas</h2>
+        </div>
+        <p class="chapter-lead">
+          Clique para copiar qualquer valor hexadecimal. Base organica quente unificada para todos os produtos.
+        </p>
+      </div>
+
+      <div class="eyebrow" style="margin-bottom:10px;">Escuro (Onix, Padrao Global)</div>
+      <div class="swatch-grid">
+        <button type="button" class="swatch-card" data-copy="#0A0A09"><div class="swatch-chip" style="background:#0A0A09;"></div><div class="swatch-body"><span class="swatch-name">Onix Canvas</span><span class="mono-tech">#0A0A09</span></div></button>
+        <button type="button" class="swatch-card" data-copy="#141412"><div class="swatch-chip" style="background:#141412;"></div><div class="swatch-body"><span class="swatch-name">Raised</span><span class="mono-tech">#141412</span></div></button>
+        <button type="button" class="swatch-card" data-copy="#22221F"><div class="swatch-chip" style="background:#22221F;"></div><div class="swatch-body"><span class="swatch-name">Sunken</span><span class="mono-tech">#22221F</span></div></button>
+        <button type="button" class="swatch-card" data-copy="#F4F3EF"><div class="swatch-chip" style="background:#F4F3EF;"></div><div class="swatch-body"><span class="swatch-name">Ink Primario</span><span class="mono-tech">#F4F3EF (17.84:1)</span></div></button>
+        <button type="button" class="swatch-card" data-copy="#96948D"><div class="swatch-chip" style="background:#96948D;"></div><div class="swatch-body"><span class="swatch-name">Ink Terciario</span><span class="mono-tech">#96948D (6.52:1)</span></div></button>
+      </div>
+
+      <div class="eyebrow" style="margin-bottom:10px;">Claro (Algodao Cru) &amp; Semantica Discreta</div>
+      <div class="grid-4">
+        <button type="button" class="swatch-card" data-copy="#8EB89F"><div class="swatch-chip" style="background:var(--c-positive);"></div><div class="swatch-body"><span class="swatch-name">Salvia</span><span class="mono-tech">#8EB89F / #2E6447</span></div></button>
+        <button type="button" class="swatch-card" data-copy="#E0A39D"><div class="swatch-chip" style="background:var(--c-negative);"></div><div class="swatch-body"><span class="swatch-name">Terracota</span><span class="mono-tech">#E0A39D / #9E3D38</span></div></button>
+        <button type="button" class="swatch-card" data-copy="#D1B886"><div class="swatch-chip" style="background:var(--c-warning);"></div><div class="swatch-body"><span class="swatch-name">Areia</span><span class="mono-tech">#D1B886 / #825E1E</span></div></button>
+        <button type="button" class="swatch-card" data-copy="#91B8D6"><div class="swatch-chip" style="background:var(--c-info);"></div><div class="swatch-body"><span class="swatch-name">Ardosia</span><span class="mono-tech">#91B8D6 / #2B5E85</span></div></button>
+      </div>
+    </section>
+
+    <!-- 05 FORMA, GLASS E MOVIMENTO -->
+    <section class="chapter" id="cap-05">
+      <div class="chapter-head">
+        <div>
+          <div class="chapter-num">05 Forma, Glass &amp; Movimento</div>
+          <h2 class="chapter-title">Raios concentricos e desaceleracao unica</h2>
+        </div>
+        <p class="chapter-lead">
+          Toda a familia compartilha a escala 6/10/14/18/26/9999px, vidro fumace e a curva --ease-numera sem springs exagerados.
+        </p>
+      </div>
+
+      <div class="grid-3" style="margin-bottom:18px;">
+        <div class="card"><div class="radius-sample" style="border-radius:6px;">tag / 6px</div><span class="mono-tech">rounded-tag</span></div>
+        <div class="card"><div class="radius-sample" style="border-radius:10px;">icon / 10px</div><span class="mono-tech">rounded-icon</span></div>
+        <div class="card"><div class="radius-sample" style="border-radius:14px;">field / 14px</div><span class="mono-tech">rounded-field</span></div>
+        <div class="card"><div class="radius-sample" style="border-radius:18px;">card / 18px</div><span class="mono-tech">rounded-card</span></div>
+        <div class="card"><div class="radius-sample" style="border-radius:26px;">sheet / 26px</div><span class="mono-tech">rounded-sheet</span></div>
+        <div class="card"><div class="radius-sample" style="border-radius:9999px;">pill / full</div><span class="mono-tech">rounded-full</span></div>
+      </div>
+
+      <div class="glass-stage" style="margin-bottom:24px;">
+        <div class="glass-demo" style="background: var(--glass-1);"><span class="eyebrow">Nivel 1</span><span class="mono-tech">.glass-1</span></div>
+        <div class="glass-demo" style="background: var(--glass-2);"><span class="eyebrow">Nivel 2</span><span class="mono-tech">.glass-2</span></div>
+        <div class="glass-demo" style="background: var(--glass-3);"><span class="eyebrow">Nivel 3</span><span class="mono-tech">.glass-3</span></div>
+        <div class="glass-demo" style="background: var(--glass-bar);"><span class="eyebrow">Barra</span><span class="mono-tech">.glass-bar</span></div>
+      </div>
+
+      <div class="motion-stage" id="ecoMotionStage">
+        <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px;">
+          <div>
+            <h3>Coreografia Sincronizada do Ecossistema</h3>
+            <p class="mono-tech" style="color:var(--c-fg-3);">--ease-numera: cubic-bezier(0.22, 1, 0.36, 1) · zero transition: all</p>
+          </div>
+          <button type="button" class="btn-primary" id="ecoMotionBtn">Acionar transicao das 4 marcas</button>
+        </div>
+
+        <div class="grid-4">
+          <div class="motion-item">
+            <svg width="56" height="56" viewBox="0 0 64 64" fill="none"><path class="m-numera-a" d="M 24.4 47.8 L 21.9 50.3 A 5.8 5.8 0 0 1 12 46.2 V 17.8 A 5.8 5.8 0 0 1 21.9 13.7 L 40.2 32" stroke="currentColor" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round" /><path class="m-numera-b" d="M 39.6 16.2 L 42.1 13.7 A 5.8 5.8 0 0 1 52 17.8 V 46.2 A 5.8 5.8 0 0 1 42.1 50.3 L 23.8 32" stroke="currentColor" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            <strong>Numera</strong>
+            <span style="font-size:12px; color:var(--c-fg-3);">Engate continuo</span>
+          </div>
+          <div class="motion-item">
+            <svg width="56" height="56" viewBox="0 0 64 64" fill="none"><rect x="11" y="20" width="10" height="32" rx="5" fill="currentColor" opacity="0.36" /><rect class="m-monno-mid" x="27" y="12" width="10" height="32" rx="5" fill="currentColor" /><rect x="43" y="20" width="10" height="32" rx="5" fill="currentColor" opacity="0.36" /></svg>
+            <strong>Monno</strong>
+            <span style="font-size:12px; color:var(--c-fg-3);">Elevacao central</span>
+          </div>
+          <div class="motion-item">
+            <svg width="56" height="56" viewBox="0 0 64 64" fill="none"><path class="m-cronos-top" d="M 18.5 13.5 H 45.5 A 13.5 13.5 0 0 1 18.5 13.5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round" /><g class="m-cronos-bot" opacity="0.36"><path d="M 45.5 50.5 H 18.5 A 13.5 13.5 0 0 1 45.5 50.5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round" /></g></svg>
+            <strong>Cronos</strong>
+            <span style="font-size:12px; color:var(--c-fg-3);">Cadencia de ciclo</span>
+          </div>
+          <div class="motion-item">
+            <svg width="56" height="56" viewBox="0 0 64 64" fill="none"><g opacity="0.36"><path d="M 39.68 43.99 A 15.5 15.5 0 1 1 20.01 24.32 A 19 19 0 0 0 39.68 43.99 Z" fill="currentColor" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" /></g><circle class="m-nyot-disc" cx="39" cy="25" r="15.5" fill="currentColor" /></svg>
+            <strong>NYOT</strong>
+            <span style="font-size:12px; color:var(--c-fg-3);">Emergencia Eclipse</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 PORTAL POR MARCA -->
+    <section class="chapter" id="cap-06" style="border-bottom:none;">
+      <div class="chapter-head">
+        <div>
+          <div class="chapter-num">06 Areas Dedicadas por Marca</div>
+          <h2 class="chapter-title">Abra o Brand Book especifico de cada produto</h2>
+        </div>
+        <p class="chapter-lead">
+          Cada documento filho aprofunda voz, componentes, mockups, laboratorio de animacao e notas de migracao proprias.
+        </p>
+      </div>
+
+      <div class="grid-2" style="margin-bottom:24px;">
+        <a class="portal-card" href="./brands/numera-brand-book.html">
+          <div>
+            <div class="eco-lockup" style="margin-bottom:14px;">
+              <svg width="44" height="44" viewBox="0 0 64 64" fill="none"><path d="M 24.4 47.8 L 21.9 50.3 A 5.8 5.8 0 0 1 12 46.2 V 17.8 A 5.8 5.8 0 0 1 21.9 13.7 L 40.2 32" stroke="currentColor" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round" /><path d="M 39.6 16.2 L 42.1 13.7 A 5.8 5.8 0 0 1 52 17.8 V 46.2 A 5.8 5.8 0 0 1 42.1 50.3 L 23.8 32" stroke="currentColor" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              <div>
+                <div class="wordmark" style="font-size:28px;">Numera</div>
+                <div class="mono-tech" style="color:var(--c-fg-3);">gruponumera.com</div>
+              </div>
+            </div>
+            <p>Identidade institucional da plataforma-mae, arquitetura de endosso Um app Numera, vitrine e sistemas.</p>
+          </div>
+          <span class="btn-link">Abrir Brand Book Numera</span>
+        </a>
+
+        <a class="portal-card" href="./brands/monno-brand-book.html">
+          <div>
+            <div class="eco-lockup" style="margin-bottom:14px;">
+              <svg width="44" height="44" viewBox="0 0 64 64" fill="none"><rect x="11" y="20" width="10" height="32" rx="5" fill="currentColor" opacity="0.36" /><rect x="27" y="12" width="10" height="32" rx="5" fill="currentColor" /><rect x="43" y="20" width="10" height="32" rx="5" fill="currentColor" opacity="0.36" /></svg>
+              <div>
+                <div class="wordmark" style="font-size:28px;">Monno</div>
+                <div class="mono-tech" style="color:var(--c-fg-3);">monno.gruponumera.com · Um app Numera</div>
+              </div>
+            </div>
+            <p>Planejamento e projecao de financas pessoais (Planejado vs Realizado), pilulas acromaticas e retirada do turquesa legado.</p>
+          </div>
+          <span class="btn-link">Abrir Brand Book Monno</span>
+        </a>
+
+        <a class="portal-card" href="./brands/cronos-brand-book.html">
+          <div>
+            <div class="eco-lockup" style="margin-bottom:14px;">
+              <svg width="44" height="44" viewBox="0 0 64 64" fill="none"><path d="M 18.5 13.5 H 45.5 A 13.5 13.5 0 0 1 18.5 13.5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round" /><g opacity="0.36"><path d="M 45.5 50.5 H 18.5 A 13.5 13.5 0 0 1 45.5 50.5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round" /></g></svg>
+              <div>
+                <div class="wordmark" style="font-size:28px;">Cronos</div>
+                <div class="mono-tech" style="color:var(--c-fg-3);">cronos.com.br · Um app Numera</div>
+              </div>
+            </div>
+            <p>Gestao de ponto, quadrimestres, feriados personalizados e ciclos de trabalho com bulbos semicirculares.</p>
+          </div>
+          <span class="btn-link">Abrir Brand Book Cronos</span>
+        </a>
+
+        <a class="portal-card" href="./brands/nyot-brand-book.html">
+          <div>
+            <div class="eco-lockup" style="margin-bottom:14px;">
+              <svg width="44" height="44" viewBox="0 0 64 64" fill="none"><g opacity="0.36"><path d="M 39.68 43.99 A 15.5 15.5 0 1 1 20.01 24.32 A 19 19 0 0 0 39.68 43.99 Z" fill="currentColor" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" /></g><circle cx="39" cy="25" r="15.5" fill="currentColor" /></svg>
+              <div>
+                <div class="wordmark" style="font-size:28px;">NYOT</div>
+                <div class="mono-tech" style="color:var(--c-fg-3);">nyot.gruponumera.com · Um app Numera</div>
+              </div>
+            </div>
+            <p>Diario modular em 10s (habitos, evolucao de peso, marcos e canetas) guiado pelo simbolo Eclipse em producao.</p>
+          </div>
+          <span class="btn-link">Abrir Brand Book NYOT</span>
+        </a>
+      </div>
+
+      <article class="card">
+        <h3>Base Compartilhada para Reformulacao dos Demais Repositorios</h3>
+        <div class="grid-3" style="margin-top:14px;">
+          <div class="card-sunken">
+            <div class="eyebrow">Tokens CSS</div>
+            <p style="margin-top:6px;" class="mono-tech">./tokens/numera-tokens.css</p>
+          </div>
+          <div class="card-sunken">
+            <div class="eyebrow">Preset Tailwind</div>
+            <p style="margin-top:6px;" class="mono-tech">./tokens/tailwind-preset.js</p>
+          </div>
+          <div class="card-sunken">
+            <div class="eyebrow">Roteiro de Migracao</div>
+            <p style="margin-top:6px;" class="mono-tech">./ROLLOUT-PLAYBOOK.md</p>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <div class="copy-toast" id="copyToast" role="status" aria-live="polite">Copiado</div>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var toggle = document.getElementById('themeToggle');
+      var label = document.getElementById('themeLabel');
+      var toast = document.getElementById('copyToast');
+      var timer;
+
+      function sync() {
+        label.textContent = root.getAttribute('data-theme') === 'light' ? 'Modo Escuro' : 'Modo Claro';
+      }
+      toggle.addEventListener('click', function () {
+        root.setAttribute('data-theme', root.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+        sync();
+      });
+      sync();
+
+      document.querySelectorAll('[data-copy]').forEach(function (el) {
+        el.addEventListener('click', function () {
+          var v = el.getAttribute('data-copy');
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(v).catch(function () {});
+          }
+          toast.textContent = 'Copiado ' + v;
+          toast.classList.add('show');
+          clearTimeout(timer);
+          timer = setTimeout(function () { toast.classList.remove('show'); }, 1500);
+        });
+      });
+
+      var stage = document.getElementById('ecoMotionStage');
+      var btn = document.getElementById('ecoMotionBtn');
+      btn.addEventListener('click', function () {
+        stage.classList.toggle('active');
+      });
+    })();
+  </script>
+</body>
+</html>

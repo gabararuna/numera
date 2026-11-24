@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cronos · Brand Book &amp; Design System | Um app Numera</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root, :root[data-theme="dark"] {
+      color-scheme: dark;
+      --c-canvas: #0A0A09; --c-raised: #141412; --c-sunken: #22221F;
+      --c-fg: #F4F3EF; --c-fg-2: #BDBBB4; --c-fg-3: #96948D;
+      --c-line: rgba(244, 243, 239, 0.11); --c-line-strong: rgba(244, 243, 239, 0.22);
+      --c-positive: #8EB89F; --c-positive-fg: #8EB89F;
+      --c-negative: #E0A39D; --c-negative-fg: #E0A39D;
+      --c-warning: #D1B886; --c-warning-fg: #D1B886;
+      --c-info: #91B8D6; --c-info-fg: #91B8D6;
+      --glass-bar: rgba(10, 10, 9, 0.86);
+      --shadow-card: 0 24px 60px -28px rgba(0, 0, 0, 0.65);
+    }
+    :root[data-theme="light"] {
+      color-scheme: light;
+      --c-canvas: #F4F3EF; --c-raised: #FAF9F6; --c-sunken: #EAE8E1;
+      --c-fg: #0A0A09; --c-fg-2: #52514B; --c-fg-3: #6B6961;
+      --c-line: rgba(10, 10, 9, 0.10); --c-line-strong: rgba(10, 10, 9, 0.22);
+      --c-positive: #3D7355; --c-positive-fg: #2E6447;
+      --c-negative: #9E3D38; --c-negative-fg: #9E3D38;
+      --c-warning: #825E1E; --c-warning-fg: #825E1E;
+      --c-info: #2B5E85; --c-info-fg: #2B5E85;
+      --glass-bar: rgba(244, 243, 239, 0.88);
+      --shadow-card: 0 18px 44px -24px rgba(10, 10, 9, 0.12);
+    }
+    :root {
+      --r-tag: 6px; --r-icon: 10px; --r-field: 14px; --r-card: 18px; --r-sheet: 26px; --r-pill: 9999px;
+      --ease-numera: cubic-bezier(0.22, 1, 0.36, 1);
+      --font-sans: "Figtree", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-mono: "DM Mono", ui-monospace, monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; background: var(--c-canvas); color: var(--c-fg); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
+    body { background: var(--c-canvas); color: var(--c-fg); font-size: 16px; line-height: 1.6; transition: background-color 0.32s var(--ease-numera), color 0.32s var(--ease-numera); }
+    .mono-tech { font-family: var(--font-mono); font-weight: 400; font-size: 12px; letter-spacing: 0.01em; }
+    .num { font-variant-numeric: tabular-nums; }
+    .wordmark { font-family: var(--font-sans); font-weight: 600; letter-spacing: -0.03em; line-height: 1; }
+    .eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--c-fg-3); }
+    .endorsement { font-size: 12px; font-weight: 500; color: var(--c-fg-3); margin-top: 4px; }
+
+    .topbar { position: sticky; top: 0; z-index: 50; background: var(--glass-bar); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--c-line); }
+    .topbar-inner { max-width: 1220px; margin: 0 auto; padding: 12px 24px; display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+    .brand-pill { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--c-fg); flex-shrink: 0; }
+    .nav-scroll { display: flex; align-items: center; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+    .nav-scroll::-webkit-scrollbar { display: none; }
+    .nav-link { text-decoration: none; color: var(--c-fg-3); font-size: 12px; font-weight: 500; padding: 6px 10px; border-radius: var(--r-pill); white-space: nowrap; transition: background-color 0.2s var(--ease-numera), color 0.2s var(--ease-numera); }
+    .nav-link:hover { color: var(--c-fg); background: var(--c-sunken); }
+    .nav-sep { width: 1px; height: 16px; background: var(--c-line-strong); margin: 0 6px; flex-shrink: 0; }
+    .brand-switch { text-decoration: none; color: var(--c-fg-2); font-size: 12px; font-weight: 600; padding: 6px 11px; border-radius: var(--r-pill); border: 1px solid var(--c-line); white-space: nowrap; transition: background-color 0.2s var(--ease-numera), border-color 0.2s var(--ease-numera); }
+    .brand-switch:hover { color: var(--c-fg); background: var(--c-sunken); border-color: var(--c-line-strong); }
+    .brand-switch.current { background: var(--c-fg); color: var(--c-canvas); border-color: var(--c-fg); }
+    .theme-btn { appearance: none; border: 1px solid var(--c-line-strong); background: var(--c-raised); color: var(--c-fg); border-radius: var(--r-pill); padding: 7px 14px; font-family: inherit; font-size: 12px; font-weight: 500; cursor: pointer; flex-shrink: 0; display: inline-flex; align-items: center; gap: 8px; }
+    .theme-btn:hover { background: var(--c-sunken); }
+
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 24px 96px; }
+    .cover { padding: 76px 0 64px; border-bottom: 1px solid var(--c-line); display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 40px; align-items: end; }
+    .cover-mark-row { display: flex; align-items: center; gap: 20px; margin-bottom: 24px; }
+    .cover-title { font-size: clamp(34px, 5vw, 52px); font-weight: 600; letter-spacing: -0.03em; line-height: 1.06; margin-bottom: 16px; }
+    .cover-sub { font-size: 17px; color: var(--c-fg-2); max-width: 580px; line-height: 1.58; }
+    .cover-meta-card { background: var(--c-raised); border: 1px solid var(--c-line); border-radius: var(--r-card); padding: 24px; box-shadow: var(--shadow-card); display: flex; flex-direction: column; gap: 13px; }
+    .meta-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--c-line); font-size: 13px; }
+    .meta-row:last-child { padding-bottom: 0; border-bottom: none; }
+    .meta-key { color: var(--c-fg-3); font-weight: 500; }
+
+    section.chapter { padding: 70px 0; border-bottom: 1px solid var(--c-line); scroll-margin-top: 72px; }
+    .chapter-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px; margin-bottom: 34px; }
+    .chapter-num { font-size: 12px; font-weight: 500; color: var(--c-fg-3); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+    .chapter-title { font-size: clamp(24px, 3vw, 32px); font-weight: 600; letter-spacing: -0.025em; line-height: 1.15; }
+    .chapter-lead { max-width: 480px; font-size: 15px; color: var(--c-fg-2); line-height: 1.55; }
+
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+    .card { background: var(--c-raised); border: 1px solid var(--c-line); border-radius: var(--r-card); padding: 24px; }
+    .card-sunken { background: var(--c-sunken); border: 1px solid var(--c-line); border-radius: var(--r-card); padding: 20px; }
+    .card h3 { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 8px; }
+    .card p, .card li { font-size: 14px; color: var(--c-fg-2); line-height: 1.55; }
+
+    .blueprint-box { background: var(--c-raised); border: 1px solid var(--c-line); border-radius: var(--r-sheet); padding: 32px; display: flex; align-items: center; justify-content: center; min-height: 280px; background-image: linear-gradient(to right, var(--c-line) 1px, transparent 1px), linear-gradient(to bottom, var(--c-line) 1px, transparent 1px); background-size: 24px 24px; }
+    .size-ladder { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding: 20px; background: var(--c-sunken); border-radius: var(--r-card); margin-top: 16px; }
+    .size-step { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+
+    .pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: var(--r-pill); font-size: 12px; font-weight: 500; border: 1px solid var(--c-line); background: var(--c-sunken); color: var(--c-fg-2); }
+    .pill-sage { color: var(--c-positive-fg); border-color: color-mix(in srgb, var(--c-positive) 35%, transparent); background: color-mix(in srgb, var(--c-positive) 12%, transparent); }
+    .pill-terra { color: var(--c-negative-fg); border-color: color-mix(in srgb, var(--c-negative) 35%, transparent); background: color-mix(in srgb, var(--c-negative) 12%, transparent); }
+    .pill-sand { color: var(--c-warning-fg); border-color: color-mix(in srgb, var(--c-warning) 35%, transparent); background: color-mix(in srgb, var(--c-warning) 12%, transparent); }
+    .pill-slate { color: var(--c-info-fg); border-color: color-mix(in srgb, var(--c-info) 35%, transparent); background: color-mix(in srgb, var(--c-info) 12%, transparent); }
+
+    .btn-primary { appearance: none; border: none; background: var(--c-fg); color: var(--c-canvas); border-radius: var(--r-pill); padding: 11px 20px; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; }
+
+    .motion-stage { background: var(--c-sunken); border: 1px solid var(--c-line); border-radius: var(--r-sheet); padding: 32px; display: flex; flex-direction: column; align-items: center; gap: 22px; }
+    .bulb-top, .bulb-bot { transition: transform 0.68s var(--ease-numera), opacity 0.68s var(--ease-numera); }
+    .motion-stage.cycled .bulb-top { transform: translateY(3px); opacity: 0.45; }
+    .motion-stage.cycled .bulb-bot { transform: translateY(-3px); opacity: 1; }
+
+    .phone-frame { width: 100%; max-width: 360px; margin: 0 auto; background: var(--c-canvas); border: 1px solid var(--c-line-strong); border-radius: 34px; padding: 20px; box-shadow: var(--shadow-card); }
+    .phone-header { display: flex; align-items: center; justify-content: space-between; padding-bottom: 16px; border-bottom: 1px solid var(--c-line); margin-bottom: 16px; }
+    .eco-lockup { display: inline-flex; align-items: center; gap: 10px; }
+
+    table.spec-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    table.spec-table th, table.spec-table td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--c-line); }
+    table.spec-table th { color: var(--c-fg-3); font-weight: 500; font-size: 12px; }
+    .list-clean { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+    .list-clean li { padding-left: 14px; position: relative; font-size: 14px; color: var(--c-fg-2); }
+    .list-clean li::before { content: ""; position: absolute; left: 0; top: 9px; width: 5px; height: 5px; border-radius: 9999px; background: var(--c-fg-3); }
+
+    @media (max-width: 960px) { .cover, .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); } .cover { grid-template-columns: 1fr; } }
+    @media (max-width: 640px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: 0.01ms !important; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="../Numera%20Global%20Brand%20Book%20%26%20Design%20System.html" class="brand-pill">
+        <svg width="24" height="24" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <path d="M 18.5 13.5 H 45.5 A 13.5 13.5 0 0 1 18.5 13.5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round" />
+          <g opacity="0.36"><path d="M 45.5 50.5 H 18.5 A 13.5 13.5 0 0 1 45.5 50.5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round" /></g>
+        </svg>
+        <span class="wordmark" style="font-size:17px;">Cronos</span>
+      </a>
+
+      <nav class="nav-scroll" aria-label="Navegacao Cronos">
+        <a class="nav-link" href="../Numera%20Global%20Brand%20Book%20%26%20Design%20System.html">Hub Global</a>
+        <span class="nav-sep" aria-hidden="true"></span>
+        <a class="nav-link" href="#cap-01">01 Marca</a>
+        <a class="nav-link" href="#cap-02">02 Simbolo</a>
+        <a class="nav-link" href="#cap-03">03 Regras &amp; Cor</a>
+        <a class="nav-link" href="#cap-04">04 Componentes</a>
+        <a class="nav-link" href="#cap-05">05 Movimento</a>
+        <a class="nav-link" href="#cap-06">06 Aplicacao</a>
+        <span class="nav-sep" aria-hidden="true"></span>
+        <a class="brand-switch" href="./numera-brand-book.html">Numera</a>
+        <a class="brand-switch" href="./monno-brand-book.html">Monno</a>
+        <a class="brand-switch current" href="./cronos-brand-book.html">Cronos</a>
+        <a class="brand-switch" href="./nyot-brand-book.html">NYOT</a>
+      </nav>
+
+      <button type="button" class="theme-btn" id="themeToggle">
+        <span style="width:10px;height:10px;border-radius:9999px;background:currentColor;"></span>
+        <span id="themeLabel">Modo Claro</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="cover" id="capa">
+      <div>
+        <div class="cover-mark-row">
+          <svg width="68" height="68" viewBox="0 0 64 64" fill="none" aria-label="Simbolo Cronos Semicircular">
+            <path d="M 18.5 13.5 H 45.5 A 13.5 13.5 0 0 1 18.5 13.5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round" />
+            <g opacity="0.36"><path d="M 45.5 50.5 H 18.5 A 13.5 13.5 0 0 1 45.5 50.5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round" /></g>
+          </svg>
+          <div>
+            <div class="wordmark" style="font-size:48px;">Cronos</div>
+            <div class="endorsement">Um app Numera</div>
+          </div>
+        </div>
+        <h1 class="cover-title">Brand Book &amp; Design System</h1>
+        <p class="cover-sub">
+          Identidade unificada para gestao de ponto, quadrimestres, ciclos de trabalho, feriados personalizados e relatorios operacionais sob a plataforma Numera.
+        </p>
+      </div>
+
+      <aside class="cover-meta-card">
+        <div class="eyebrow">Ficha do Produto</div>
+        <div class="meta-row"><span class="meta-key">Escopo</span><span>Gestao de Ponto e Quadrimestres</span></div>
+        <div class="meta-row"><span class="meta-key">Grafia</span><span>Cronos (Title Case)</span></div>
+        <div class="meta-row"><span class="meta-key">Simbolo</span><span>C1 Semicircular (100% + 36%)</span></div>
+        <div class="meta-row"><span class="meta-key">Endosso</span><span>Um app Numera</span></div>
+        <div class="meta-row"><span class="meta-key">Dominio</span><span class="mono-tech">cronos.com.br</span></div>
+      </aside>
+    </section>
+
+    <section class="chapter" id="cap-01">
+      <div class="chapter-head">
+        <div>
+          <div class="chapter-num">01 Marca e Cadencia Operacional</div>
+          <h2 class="chapter-title">Clareza rigorosa em horarios, ciclos e saldo de horas</h2>
+        </div>
+        <p class="chapter-lead">
+          O Cronos traduz regras institucionais de jornada e quadrimestres em interfaces calmas, previsiveis e rapidas de bater o ponto diariamente.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <article class="card">
+          <h3>Precisao de Jornada</h3>
+          <p>Marcacoes de entrada, pausa e saida exibidas em Figtree tabular (<span class="num">08:15</span>, <span class="num">+01h20</span>) com legibilidade imediata.</p>
+        </article>
+        <article class="card">
+          <h3>Visao por Quadrimestre</h3>
+          <p>Barras segmentadas com raio de 14px mostram fechamento de ciclo, feriados locais e metas mensais sem poluicao.</p>
+        </article>
+        <article class="card">
+          <h3>Exportacao Limpa</h3>
+          <p>Relatorios em Excel e quadros de resumo herdam a sobriedade da Numera sem cabecalhos estridentes.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="chapter" id="cap-02">
+      <div class="chapter-head">
+        <div>
+          <div class="chapter-num">02 Simbolo C1 Semicircular</div>
+          <h2 class="chapter-title">Ampulheta geometrica sem pontas afiadas</h2>
+        </div>
+        <p class="chapter-lead">
+          Dois bulbos semicirculares com contornos arredondados por stroke-width 6 representam passagem de tempo entre turnos.
+        </p>
+      </div>
+
+      <div class="grid-2">
+        <div class="blueprint-box">
+          <svg width="200" height="200" viewBox="0 0 64 64" fill="none">
+            <rect x="0.5" y="0.5" width="63" height="63" rx="14" stroke="currentColor" stroke-opacity="0.18" stroke-dasharray="2 2" stroke-width="0.6" />
+            <path d="M 18.5 13.5 H 45.5 A 13.5 13.5 0 0 1 18.5 13.5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round" />
+            <g opacity="0.36"><path d="M 45.5 50.5 H 18.5 A 13.5 13.5 0 0 1 45.5 50.5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round" /></g>
+          </svg>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          <div class="card">
+            <h3>Especificacao Vetorial 64x64</h3>
+            <table class="spec-table" style="margin-top:8px;">
+              <tbody>
+                <tr><td>Bulbo superior (100%)</td><td class="mono-tech">H 45.5 A 13.5 13.5 · r=13.5</td></tr>
+                <tr><td>Bulbo inferior (36%)</td><td class="mono-tech">g opacity="0.36"</td></tr>
+                <tr><td>Suavizacao de cantos</td><td class="mono-tech">stroke-width="6" stroke-linejoin="round"</td></tr>
+                <tr><td>Icone PWA</td><td class="mono-tech">512x512 rx="112" (#0A0A09)</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="size-ladder">
+            <div class="size-step"><svg width="16" height="16" viewBox="0 0 64 64" fill="none"><path d="M 18.5 13.5 H 45.5 A 13.5 13.5 0 0 1 18.5 13.5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round" /><g opacity="0.36"><path d="M 45.5 50.5 H 18.5 A 13.5 13.5 0 0 1 45.5 50.5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round" /></g></svg><span class="mono-tech">16px</span></div>
+            <div class="size-step"><svg width="24" height="24" viewBox="0 0 64 64" fill="none"><path d="M 18.5 13.5 H 45.5 A 13.5 13.5 0 0 1 18.5 13.5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round" /><g opacity="0.36"><path d="M 45.5 50.5 H 18.5 A 13.5 13.5 0 0 1 45.5 50.5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round" /></g></svg><span class="mono-tech">24px</span></div>
+            <div class="size-step"><svg width="36" height="36" viewBox="0 0 64 64" fill="none"><path d="M 18.5 13.5 H 45.5 A 13.5 13.5 0 0 1 18.5 13.5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round" /><g opacity="0.36"><path d="M 45.5 50.5 H 18.5 A 13.5 13.5 0 0 1 45.5 50.5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round" /></g></svg><span class="mono-tech">36px</span></div>
+            <div class="size-step"><svg width="52" height="52" viewBox="0 0 512 512" fill="none"><rect width="512" height="512" rx="112" fill="#0A0A09" stroke="rgba(244,243,239,0.16)" stroke-width="8" /><g transform="translate(80 80) scale(5.5)" color="#F4F3EF"><path d="M 18.5 13.5 H 45.5 A 13.5 13.5 0 0 1 18.5 13.5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round" /><g opacity="0.36"><path d="M 45.5 50.5 H 18.5 A 13.5 13.5 0 0 1 45.5 50.5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round" /></g></g></svg><span class="mono-tech">App Tile</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" id="cap-03">
+      <div class="chapter-head">
+        <div>
+          <div class="chapter-num">03 Tipografia e Estados Operacionais</div>
+          <h2 class="chapter-title">Horarios em Figtree tabular, semanticas contidas</h2>
+        </div>
+        <p class="chapter-lead">
+          Relogios, quadrimestres e feriados utilizam a familia unica Figtree. Semantica aparece somente em pilulas de estado.
+        </p>
+      </div>
+
+      <div class="grid-2">
+        <article class="card">
+          <div class="eyebrow" style="margin-bottom:12px;">Pilulas de Ponto &amp; Ciclos</div>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <div><span class="pill pill-sage">Jornada cumprida (08h00)</span></div>
+            <div><span class="pill pill-sand">Registro de saida pendente</span></div>
+            <div><span class="pill pill-slate">Feriado institucional configurado</span></div>
+            <div><span class="pill pill-terra">Deficit no banco de horas</span></div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="eyebrow" style="margin-bottom:12px;">Regra de Tipografia no Cronos</div>
+          <table class="spec-table">
+            <thead><tr><th>Dado na Interface</th><th>Fonte / Estilo</th></tr></thead>
+            <tbody>
+              <tr><td>Batida de ponto (<span class="num">08:02 · 17:14</span>)</td><td>Figtree 500 <span class="mono-tech">tabular-nums</span></td></tr>
+              <tr><td>Rotulos de quadrimestre (<span class="eyebrow">Q3 · 2026</span>)</td><td>Figtree 500 uppercase</td></tr>
+              <tr><td>Tokens, hex e URL <span class="mono-tech">cronos.com.br</span></td><td class="mono-tech">DM Mono</td></tr>
+            </tbody>
+          </table>
+        </article>
+      </div>
+    </section>
+
+    <section class="chapter" id="cap-04">
+      <div class="chapter-head">
+        <div>
+          <div class="chapter-num">04 Componentes Operacionais</div>
+          <h2 class="chapter-title">Registro de ponto e progresso de quadrimestre</h2>
+        </div>
+        <p class="chapter-lead">
+          Simulacao interativa do registro de entrada e progresso de horas no ciclo vigente.
+        </p>
+      </div>
+
+      <div class="grid-2">
+        <article class="card" style="display:flex; flex-direction:column; gap:16px;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span class="eyebrow">Ciclo Quadrimestral</span>
+            <span class="pill pill-sage num">+04h20 banco</span>
+          </div>
+          <div class="card-sunken">
+            <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-size:13px;">
+              <span style="color:var(--c-fg-2);">Horas acumuladas</span>
+              <span class="num" style="font-weight:600;">412h / 560h</span>
+            </div>
+            <div style="height:8px; background:var(--c-canvas); border-radius:9999px; overflow:hidden;">
+              <div style="width:73.5%; height:100%; background:var(--c-positive); border-radius:9999px;"></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" style="display:flex; flex-direction:column; gap:14px;">
+          <div class="eyebrow">Marcacao Rapida</div>
+          <div class="num" style="font-size:28px; font-weight:600;" id="cronosClock">08:00 · 12:00</div>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <button type="button" class="btn-primary" id="cronosPunch">Registrar retorno (13:02)</button>
+            <span id="cronosMsg" style="font-size:13px; color:var(--c-positive-fg);"></span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="chapter" id="cap-05">
+      <div class="chapter-head">
+        <div>
+          <div class="chapter-num">05 Movimento Cronos</div>
+          <h2 class="chapter-title">Inversao calma entre os dois bulbos</h2>
+        </div>
+        <p class="chapter-lead">
+          A passagem de peso visual de 100% para 36% representa alternancia de turno em --ease-numera.
+        </p>
+      </div>
+
+      <div class="motion-stage" id="cronosMotion">
+        <svg width="112" height="112" viewBox="0 0 64 64" fill="none">
+          <path class="bulb-top" d="M 18.5 13.5 H 45.5 A 13.5 13.5 0 0 1 18.5 13.5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round" />
+          <g class="bulb-bot" opacity="0.36"><path d="M 45.5 50.5 H 18.5 A 13.5 13.5 0 0 1 45.5 50.5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round" /></g>
+        </svg>
+        <div class="mono-tech" style="color:var(--c-fg-3);">cubic-bezier(0.22, 1, 0.36, 1)</div>
+        <button type="button" class="btn-primary" id="cronosMotionBtn">Alternar ciclo de tempo</button>
+      </div>
+    </section>
+
+    <section class="chapter" id="cap-06" style="border-bottom:none;">
+      <div class="chapter-head">
+        <div>
+          <div class="chapter-num">06 Restricoes &amp; Aplicacao Mobile</div>
+          <h2 class="chapter-title">Previa mobile e guia de migracao Cronos</h2>
+        </div>
+        <p class="chapter-lead">
+          Visao do dashboard de ponto atualizado para Onix &amp; Algodao Cru.
+        </p>
+      </div>
+
+      <div class="grid-2" style="align-items:start;">
+        <div class="phone-frame">
+          <div class="phone-header">
+            <span class="eco-lockup">
+              <svg width="24" height="24" viewBox="0 0 64 64" fill="none"><path d="M 18.5 13.5 H 45.5 A 13.5 13.5 0 0 1 18.5 13.5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round" /><g opacity="0.36"><path d="M 45.5 50.5 H 18.5 A 13.5 13.5 0 0 1 45.5 50.5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round" /></g></svg>
+              <span class="wordmark" style="font-size:18px;">Cronos</span>
+            </span>
+            <span class="pill">3o Quadrimestre</span>
+          </div>
+          <div class="card-sunken" style="margin-bottom:12px;">
+            <div class="eyebrow">Saldo do dia</div>
+            <div class="num" style="font-size:30px; font-weight:600; letter-spacing:-0.03em; margin-top:6px;">07h 48m</div>
+            <p style="font-size:12px; color:var(--c-fg-3); margin-top:4px;">Saida prevista as 17:12</p>
+          </div>
+          <div class="card" style="padding:16px;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-size:13px; font-weight:600;">Relatorio mensal (.xlsx)</span>
+              <span class="pill pill-slate">Pronto</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          <article class="card">
+            <div class="pill pill-terra" style="margin-bottom:12px;">Proibido na Migracao</div>
+            <ul class="list-clean">
+              <li>Grafar CRONOS em caixa alta total ou retornar ao icone antigo.</li>
+              <li>Usar cantos retos em tabelas de batidas de ponto ou botes de acao.</li>
+              <li>Aplicar <span class="mono-tech">DM Mono</span> em horarios de entrada/saida ou datas.</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Ativos do Kit Cronos</h3>
+            <p style="margin-top:8px;">SVGs em <span class="mono-tech">../logos/cronos-*.svg</span> e instrucoes em <span class="mono-tech">../ROLLOUT-PLAYBOOK.md</span>.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var toggle = document.getElementById('themeToggle');
+      var label = document.getElementById('themeLabel');
+      function sync() { label.textContent = root.getAttribute('data-theme') === 'light' ? 'Modo Escuro' : 'Modo Claro'; }
+      toggle.addEventListener('click', function () {
+        root.setAttribute('data-theme', root.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+        sync();
+      });
+      sync();
+
+      document.getElementById('cronosPunch').addEventListener('click', function () {
+        document.getElementById('cronosClock').textContent = '08:00 · 12:00 · 13:02';
+        document.getElementById('cronosMsg').textContent = 'Retorno registrado.';
+      });
+      document.getElementById('cronosMotionBtn').addEventListener('click', function () {
+        document.getElementById('cronosMotion').classList.toggle('cycled');
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 104" width="240" height="104" fill="none" color="#F4F3EF">
+  <title>NYOT Lockup Dark</title>
+  <g transform="translate(16 24) scale(0.875)">
+    <g opacity="0.36">
+      <path d="M 39.68 43.99 A 15.5 15.5 0 1 1 20.01 24.32 A 19 19 0 0 0 39.68 43.99 Z" fill="currentColor" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" />
+    </g>
+    <circle cx="39" cy="25" r="15.5" fill="currentColor" />
+  </g>
+  <text x="88" y="59" fill="currentColor" font-family="Figtree, -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-weight="600" letter-spacing="-0.03em">NYOT</text>
+  <text x="89" y="80" fill="currentColor" opacity="0.62" font-family="Figtree, -apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-weight="500" letter-spacing="0.02em">Um app Numera</text>
+</svg>

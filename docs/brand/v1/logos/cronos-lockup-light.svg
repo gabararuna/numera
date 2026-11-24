@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268 104" width="268" height="104" fill="none" color="#0A0A09">
+  <title>Cronos Lockup Light</title>
+  <g transform="translate(16 24) scale(0.875)">
+    <path d="M 18.5 13.5 H 45.5 A 13.5 13.5 0 0 1 18.5 13.5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round" />
+    <g opacity="0.36">
+      <path d="M 45.5 50.5 H 18.5 A 13.5 13.5 0 0 1 45.5 50.5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round" />
+    </g>
+  </g>
+  <text x="88" y="59" fill="currentColor" font-family="Figtree, -apple-system, BlinkMacSystemFont, sans-serif" font-size="42" font-weight="600" letter-spacing="-0.03em">Cronos</text>
+  <text x="89" y="80" fill="currentColor" opacity="0.62" font-family="Figtree, -apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-weight="500" letter-spacing="0.02em">Um app Numera</text>
+</svg>

@@ -74,10 +74,11 @@ Cada app deve padronizar seu componente (`NumeraLogo`, `MonnoLogo`, `CronosLogo`
 - **Anatomia monetária (`Money`), `StatusDot` e `PillBarChart`:** valores usam `Figtree 300` + `tabular-nums`, centavos em `0.5em` (`fg-3`) e sinal explícito `+` / `−`; gráficos em pílulas de `6px` herdam a geometria da marca; status usam ponto de `6px` + texto sem preencher cartões inteiros.
 - **Contraste obrigatório em switches monocromáticos:** como `--c-accent` no escuro é `#F4F3EF`, todo botão `role="switch"` ativo com `bg-accent` DEVE usar `bg-accent-on` no pino deslizante (nunca `bg-white`).
 
-### 6.3 Cronos (`cronos.com.br`)
-- Substituir logotipo anterior pelo `cronos-mark.svg` (`C1 Semicircular`, bulbo superior `100%`, inferior `36%`).
-- Atualizar cantos de cards e seletores de quadrimestre/ciclo para a escala `6/10/14/18/26px`.
-- Horários (`08:15`), saldos de banco de horas e contadores de quadrimestre usam `Figtree` + `tabular-nums`; exportar relatórios mantendo estética limpa e zero fontes serifadas.
+### 6.3 Cronos (`cronos.gruponumera.com`)
+- **Remoção de fontes, tema frio e símbolo legados:** eliminar `Sora`, `Geist`, `Geist Mono`, escala grafite fria (`#0B0C0E`, `#16171A`, `#F6F7F8`), peso `200`/`700+` e o símbolo antigo de triângulos. Adotar `cronos-mark.svg` (`C1 Semicircular`, bulbo superior `100%`, inferior `36%`) e `CronosIntroSplash` animado no mesmo grid `64x64` com `--ease-numera`.
+- **Tema duplo e script CSP-safe:** `public/theme-init.js` aplica `Ônix` (`#0A0A09`, padrão) ou `Algodão Cru` (`#F4F3EF`) antes do primeiro paint usando `cronos-theme`, compatível com `script-src 'self'` no `_headers` da Cloudflare.
+- **Tipografia tabular e endosso:** horários (`08:02 · 12:00`), saldos (`Hoje / Mês / Ciclo`), metas de folga, `CycleRibbon` e calendários usam `Figtree` (`300/500`) + `tabular-nums` (classe `.num`, zero mono); usar `DM Mono` apenas na URL técnica `cronos.gruponumera.com`. Substituir `Powered by Numera` por `Um app Numera`.
+- **Raios, vidro, switches e exportação:** aplicar escala `6/10/14/18/26/9999px` em tabelas, cartões de saldo, `MobileBottomDock` (`.glass-3`) e `Toggle` (`var(--on-accent)` no pino ativo); planilhas `.xlsx` exportadas usam `Figtree` sem serifas.
 
 ---
 

@@ -18,6 +18,7 @@
       --c-warning: #D1B886; --c-warning-fg: #D1B886;
       --c-info: #91B8D6; --c-info-fg: #91B8D6;
       --glass-bar: rgba(10, 10, 9, 0.86);
+      --glass-3: rgba(20, 20, 18, 0.88);
       --shadow-card: 0 24px 60px -28px rgba(0, 0, 0, 0.65);
     }
     :root[data-theme="light"] {
@@ -30,6 +31,7 @@
       --c-warning: #825E1E; --c-warning-fg: #825E1E;
       --c-info: #2B5E85; --c-info-fg: #2B5E85;
       --glass-bar: rgba(244, 243, 239, 0.88);
+      --glass-3: rgba(250, 249, 246, 0.92);
       --shadow-card: 0 18px 44px -24px rgba(10, 10, 9, 0.12);
     }
     :root {
@@ -94,6 +96,20 @@
     .pill-sand { color: var(--c-warning-fg); border-color: color-mix(in srgb, var(--c-warning) 35%, transparent); background: color-mix(in srgb, var(--c-warning) 12%, transparent); }
     .pill-slate { color: var(--c-info-fg); border-color: color-mix(in srgb, var(--c-info) 35%, transparent); background: color-mix(in srgb, var(--c-info) 12%, transparent); }
 
+    .status-dot { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; }
+    .status-dot-pip { width: 6px; height: 6px; border-radius: 9999px; flex-shrink: 0; }
+
+    .time-display { font-size: 40px; line-height: 44px; font-weight: 300; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .time-est { font-size: 14px; color: var(--c-fg-3); font-variant-numeric: tabular-nums; }
+
+    .dist-track { display: flex; gap: 2px; height: 10px; }
+    .dist-seg { height: 100%; }
+
+    .switch-btn { position: relative; display: inline-flex; width: 44px; height: 24px; border-radius: 9999px; border: 2px solid transparent; background: var(--c-line-strong); cursor: pointer; transition: background-color 0.2s var(--ease-numera); flex-shrink: 0; }
+    .switch-btn[aria-checked="true"] { background: var(--c-fg); }
+    .switch-thumb { width: 20px; height: 20px; border-radius: 9999px; background: var(--c-fg-2); transform: translateX(0); transition: transform 0.2s var(--ease-numera), background-color 0.2s var(--ease-numera); }
+    .switch-btn[aria-checked="true"] .switch-thumb { transform: translateX(20px); background: var(--c-canvas); }
+
     .btn-primary { appearance: none; border: none; background: var(--c-fg); color: var(--c-canvas); border-radius: var(--r-pill); padding: 11px 20px; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; }
 
     .motion-stage { background: var(--c-sunken); border: 1px solid var(--c-line); border-radius: var(--r-sheet); padding: 32px; display: flex; flex-direction: column; align-items: center; gap: 22px; }
@@ -101,8 +117,10 @@
     .motion-stage.cycled .bulb-top { transform: translateY(3px); opacity: 0.45; }
     .motion-stage.cycled .bulb-bot { transform: translateY(-3px); opacity: 1; }
 
-    .phone-frame { width: 100%; max-width: 360px; margin: 0 auto; background: var(--c-canvas); border: 1px solid var(--c-line-strong); border-radius: 34px; padding: 20px; box-shadow: var(--shadow-card); }
-    .phone-header { display: flex; align-items: center; justify-content: space-between; padding-bottom: 16px; border-bottom: 1px solid var(--c-line); margin-bottom: 16px; }
+    .phone-frame { width: 100%; max-width: 360px; margin: 0 auto; background: var(--c-canvas); border: 1px solid var(--c-line-strong); border-radius: 34px; padding: 20px 20px 16px; box-shadow: var(--shadow-card); }
+    .phone-header { display: flex; align-items: center; justify-content: space-between; padding-bottom: 14px; border-bottom: 1px solid var(--c-line); margin-bottom: 14px; }
+    .phone-dock { margin-top: 14px; padding: 8px 12px; border-radius: var(--r-pill); background: var(--glass-3); border: 1px solid var(--c-line-strong); display: flex; justify-content: space-around; align-items: center; font-size: 11px; color: var(--c-fg-3); }
+    .phone-dock .active { color: var(--c-canvas); background: var(--c-fg); padding: 5px 12px; border-radius: var(--r-pill); font-weight: 600; }
     .eco-lockup { display: inline-flex; align-items: center; gap: 10px; }
 
     table.spec-table { width: 100%; border-collapse: collapse; font-size: 13px; }
@@ -128,15 +146,15 @@
         <span class="wordmark" style="font-size:17px;">Cronos</span>
       </a>
 
-      <nav class="nav-scroll" aria-label="Navegacao Cronos">
+      <nav class="nav-scroll" aria-label="Navegação Cronos">
         <a class="nav-link" href="../Numera%20Global%20Brand%20Book%20%26%20Design%20System.html">Hub Global</a>
         <span class="nav-sep" aria-hidden="true"></span>
         <a class="nav-link" href="#cap-01">01 Marca</a>
-        <a class="nav-link" href="#cap-02">02 Simbolo</a>
-        <a class="nav-link" href="#cap-03">03 Regras &amp; Cor</a>
+        <a class="nav-link" href="#cap-02">02 Símbolo</a>
+        <a class="nav-link" href="#cap-03">03 Tipografia &amp; CLT</a>
         <a class="nav-link" href="#cap-04">04 Componentes</a>
         <a class="nav-link" href="#cap-05">05 Movimento</a>
-        <a class="nav-link" href="#cap-06">06 Aplicacao</a>
+        <a class="nav-link" href="#cap-06">06 Aplicação</a>
         <span class="nav-sep" aria-hidden="true"></span>
         <a class="brand-switch" href="./numera-brand-book.html">Numera</a>
         <a class="brand-switch" href="./monno-brand-book.html">Monno</a>
@@ -155,7 +173,7 @@
     <section class="cover" id="capa">
       <div>
         <div class="cover-mark-row">
-          <svg width="68" height="68" viewBox="0 0 64 64" fill="none" aria-label="Simbolo Cronos Semicircular">
+          <svg width="68" height="68" viewBox="0 0 64 64" fill="none" aria-label="Símbolo Cronos Semicircular">
             <path d="M 18.5 13.5 H 45.5 A 13.5 13.5 0 0 1 18.5 13.5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round" />
             <g opacity="0.36"><path d="M 45.5 50.5 H 18.5 A 13.5 13.5 0 0 1 45.5 50.5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round" /></g>
           </svg>
@@ -166,43 +184,43 @@
         </div>
         <h1 class="cover-title">Brand Book &amp; Design System</h1>
         <p class="cover-sub">
-          Identidade unificada para gestao de ponto, quadrimestres, ciclos de trabalho, feriados personalizados e relatorios operacionais sob a plataforma Numera.
+          Identidade unificada do aplicativo de gestão de ponto CLT, múltiplos ciclos de banco de horas, planejamento de folgas, conciliação e controle de equipes sob a plataforma Numera.
         </p>
       </div>
 
       <aside class="cover-meta-card">
         <div class="eyebrow">Ficha do Produto</div>
-        <div class="meta-row"><span class="meta-key">Escopo</span><span>Gestao de Ponto e Quadrimestres</span></div>
+        <div class="meta-row"><span class="meta-key">Escopo</span><span>Ponto CLT · Múltiplos Ciclos · Planejamento · Equipes</span></div>
         <div class="meta-row"><span class="meta-key">Grafia</span><span>Cronos (Title Case)</span></div>
-        <div class="meta-row"><span class="meta-key">Simbolo</span><span>C1 Semicircular (100% + 36%)</span></div>
+        <div class="meta-row"><span class="meta-key">Símbolo</span><span>C1 Semicircular (100% + 36%)</span></div>
         <div class="meta-row"><span class="meta-key">Endosso</span><span>Um app Numera</span></div>
-        <div class="meta-row"><span class="meta-key">Dominio</span><span class="mono-tech">cronos.com.br</span></div>
+        <div class="meta-row"><span class="meta-key">Domínio</span><span class="mono-tech">cronos.gruponumera.com</span></div>
       </aside>
     </section>
 
     <section class="chapter" id="cap-01">
       <div class="chapter-head">
         <div>
-          <div class="chapter-num">01 Marca e Cadencia Operacional</div>
-          <h2 class="chapter-title">Clareza rigorosa em horarios, ciclos e saldo de horas</h2>
+          <div class="chapter-num">01 Marca, Módulos e Cadência Operacional</div>
+          <h2 class="chapter-title">Clareza rigorosa em horários, ciclos e saldo de horas</h2>
         </div>
         <p class="chapter-lead">
-          O Cronos traduz regras institucionais de jornada e quadrimestres em interfaces calmas, previsiveis e rapidas de bater o ponto diariamente.
+          O Cronos traduz regras trabalhistas e acordos de banco de horas em interfaces calmas, previsíveis e imediatas para bater o ponto e fechar cada ciclo sem surpresa.
         </p>
       </div>
 
       <div class="grid-3">
         <article class="card">
-          <h3>Precisao de Jornada</h3>
-          <p>Marcacoes de entrada, pausa e saida exibidas em Figtree tabular (<span class="num">08:15</span>, <span class="num">+01h20</span>) com legibilidade imediata.</p>
+          <h3>Ponto Ao Vivo &amp; Três Saldos</h3>
+          <p>Registro rápido das quatro batidas diárias (manhã e tarde) com edição inline, tolerância por batida e diária, leitura simultânea de Hoje, Mês e Ciclo e estimativa (<span class="num">~</span>) de aprovações pendentes.</p>
         </article>
         <article class="card">
-          <h3>Visao por Quadrimestre</h3>
-          <p>Barras segmentadas com raio de 14px mostram fechamento de ciclo, feriados locais e metas mensais sem poluicao.</p>
+          <h3>Múltiplos Ciclos &amp; Planejamento</h3>
+          <p>Linha do tempo <span class="mono-tech">CycleRibbon</span> para ciclo principal (1 a 12 meses), ciclo secundário (ex.: Classe A) e exceções, combinada ao calendário de 12 meses que recalcula a meta diária e a hora exata de saída para cada folga.</p>
         </article>
         <article class="card">
-          <h3>Exportacao Limpa</h3>
-          <p>Relatorios em Excel e quadros de resumo herdam a sobriedade da Numera sem cabecalhos estridentes.</p>
+          <h3>Guarda CLT, Conciliação &amp; Equipes</h3>
+          <p>Alertas automáticos dos arts. 71, 66 e 59 da CLT, conciliação com prévia (<span class="num">novos / alterados / iguais</span>) de relatórios PDF Senior, CSV ou XLSX, feriados municipais e gestão B2B de aprovações e férias.</p>
         </article>
       </div>
     </section>
@@ -210,8 +228,8 @@
     <section class="chapter" id="cap-02">
       <div class="chapter-head">
         <div>
-          <div class="chapter-num">02 Simbolo C1 Semicircular</div>
-          <h2 class="chapter-title">Ampulheta geometrica sem pontas afiadas</h2>
+          <div class="chapter-num">02 Símbolo C1 Semicircular</div>
+          <h2 class="chapter-title">Ampulheta geométrica sem pontas afiadas</h2>
         </div>
         <p class="chapter-lead">
           Dois bulbos semicirculares com contornos arredondados por stroke-width 6 representam passagem de tempo entre turnos.
@@ -229,13 +247,13 @@
 
         <div style="display:flex; flex-direction:column; gap:16px;">
           <div class="card">
-            <h3>Especificacao Vetorial 64x64</h3>
+            <h3>Especificação Vetorial 64x64</h3>
             <table class="spec-table" style="margin-top:8px;">
               <tbody>
                 <tr><td>Bulbo superior (100%)</td><td class="mono-tech">H 45.5 A 13.5 13.5 · r=13.5</td></tr>
                 <tr><td>Bulbo inferior (36%)</td><td class="mono-tech">g opacity="0.36"</td></tr>
-                <tr><td>Suavizacao de cantos</td><td class="mono-tech">stroke-width="6" stroke-linejoin="round"</td></tr>
-                <tr><td>Icone PWA</td><td class="mono-tech">512x512 rx="112" (#0A0A09)</td></tr>
+                <tr><td>Suavização de cantos</td><td class="mono-tech">stroke-width="6" stroke-linejoin="round"</td></tr>
+                <tr><td>Ícone PWA</td><td class="mono-tech">512x512 rx="112" (#0A0A09 opaco)</td></tr>
               </tbody>
             </table>
           </div>
@@ -253,32 +271,43 @@
     <section class="chapter" id="cap-03">
       <div class="chapter-head">
         <div>
-          <div class="chapter-num">03 Tipografia e Estados Operacionais</div>
-          <h2 class="chapter-title">Horarios em Figtree tabular, semanticas contidas</h2>
+          <div class="chapter-num">03 Tipografia, Anatomia Temporal &amp; Semântica CLT</div>
+          <h2 class="chapter-title">Horários em Figtree tabular e estados trabalhistas contidos</h2>
         </div>
         <p class="chapter-lead">
-          Relogios, quadrimestres e feriados utilizam a familia unica Figtree. Semantica aparece somente em pilulas de estado.
+          Todas as batidas, saldos e datas utilizam <span class="mono-tech">Figtree 300/500</span> com <span class="mono-tech">tabular-nums</span>. As cores semânticas sinalizam apenas conformidade de jornada, CLT e ciclos.
         </p>
       </div>
 
       <div class="grid-2">
         <article class="card">
-          <div class="eyebrow" style="margin-bottom:12px;">Pilulas de Ponto &amp; Ciclos</div>
-          <div style="display:flex; flex-direction:column; gap:10px;">
-            <div><span class="pill pill-sage">Jornada cumprida (08h00)</span></div>
-            <div><span class="pill pill-sand">Registro de saida pendente</span></div>
-            <div><span class="pill pill-slate">Feriado institucional configurado</span></div>
-            <div><span class="pill pill-terra">Deficit no banco de horas</span></div>
+          <div class="eyebrow" style="margin-bottom:12px;">Anatomia Temporal &amp; Semântica CLT</div>
+          <div style="display:flex; align-items:baseline; gap:14px; flex-wrap:wrap;">
+            <span class="time-display" style="color:var(--c-positive-fg);">+12:10</span>
+            <span class="time-est">~ +12:45 com aprovação pendente</span>
+          </div>
+          <div class="num" style="margin-top:8px; font-size:15px; font-weight:500; color:var(--c-fg-2);">
+            08:02 · 12:00 · 13:00 · 17:42
+          </div>
+          <div style="display:flex; flex-direction:column; gap:9px; margin-top:18px;">
+            <div class="status-dot"><span class="status-dot-pip" style="background:var(--c-positive);"></span><span style="color:var(--c-positive-fg);">Sálvia · Saldo positivo, ciclo dentro do critério e intervalo válido</span></div>
+            <div class="status-dot"><span class="status-dot-pip" style="background:var(--c-warning);"></span><span style="color:var(--c-warning-fg);">Areia · Batida pendente, descanso &lt; 11h (art. 66) ou facultativo</span></div>
+            <div class="status-dot"><span class="status-dot-pip" style="background:var(--c-negative);"></span><span style="color:var(--c-negative-fg);">Terracota · Déficit no banco, almoço &lt; 1h (art. 71) ou &gt; 2h extras (art. 59)</span></div>
+            <div class="status-dot"><span class="status-dot-pip" style="background:var(--c-info);"></span><span style="color:var(--c-info-fg);">Ardósia · Feriado municipal, projeção futura ou aprovação de equipe</span></div>
           </div>
         </article>
+
         <article class="card">
-          <div class="eyebrow" style="margin-bottom:12px;">Regra de Tipografia no Cronos</div>
+          <div class="eyebrow" style="margin-bottom:12px;">Auditoria Aplicada em Produção</div>
           <table class="spec-table">
-            <thead><tr><th>Dado na Interface</th><th>Fonte / Estilo</th></tr></thead>
+            <thead><tr><th>Superfície</th><th>Implementação em Produção</th></tr></thead>
             <tbody>
-              <tr><td>Batida de ponto (<span class="num">08:02 · 17:14</span>)</td><td>Figtree 500 <span class="mono-tech">tabular-nums</span></td></tr>
-              <tr><td>Rotulos de quadrimestre (<span class="eyebrow">Q3 · 2026</span>)</td><td>Figtree 500 uppercase</td></tr>
-              <tr><td>Tokens, hex e URL <span class="mono-tech">cronos.com.br</span></td><td class="mono-tech">DM Mono</td></tr>
+              <tr><td>Marca &amp; Endosso (<span class="mono-tech">CronosLogo</span>)</td><td>Bulbos C1 <span class="mono-tech">64x64</span> · Figtree <span class="mono-tech">600</span> + Um app Numera</td></tr>
+              <tr><td>Rótulos (<span class="mono-tech">.t-eyebrow</span> / <span class="mono-tech">.label-ui</span>)</td><td>Figtree <span class="mono-tech">500</span> · <span class="mono-tech">11px/15px</span> · <span class="mono-tech">+0.12em</span></td></tr>
+              <tr><td>Batidas, saldos e metas (<span class="mono-tech">.num</span>)</td><td>Figtree <span class="mono-tech">300/500</span> · <span class="mono-tech">tabular-nums</span> (zero mono)</td></tr>
+              <tr><td>Tema antes do paint (<span class="mono-tech">theme-init.js</span>)</td><td>Script externo CSP-safe (<span class="mono-tech">cronos-theme</span> · Ônix padrão)</td></tr>
+              <tr><td>Switches (<span class="mono-tech">Toggle</span>)</td><td>Pino ativo usa <span class="mono-tech">var(--on-accent)</span> para contraste em Ônix</td></tr>
+              <tr><td>Domínio institucional</td><td class="mono-tech">cronos.gruponumera.com (único uso de DM Mono na UI)</td></tr>
             </tbody>
           </table>
         </article>
@@ -289,36 +318,66 @@
       <div class="chapter-head">
         <div>
           <div class="chapter-num">04 Componentes Operacionais</div>
-          <h2 class="chapter-title">Registro de ponto e progresso de quadrimestre</h2>
+          <h2 class="chapter-title">Ciclos, ponto ao vivo e guarda CLT</h2>
         </div>
         <p class="chapter-lead">
-          Simulacao interativa do registro de entrada e progresso de horas no ciclo vigente.
+          Blocos reais do Cronos: faixa de ciclos com Classe A, registro rápido das quatro batidas e ritmo com toggle de pontos facultativos.
         </p>
       </div>
 
-      <div class="grid-2">
-        <article class="card" style="display:flex; flex-direction:column; gap:16px;">
+      <div class="grid-3">
+        <article class="card" style="display:flex; flex-direction:column; gap:14px;">
           <div style="display:flex; justify-content:space-between; align-items:center;">
-            <span class="eyebrow">Ciclo Quadrimestral</span>
-            <span class="pill pill-sage num">+04h20 banco</span>
+            <span class="eyebrow">CycleRibbon &amp; Meta</span>
+            <span class="pill pill-sage num">+12:10 ciclo</span>
           </div>
-          <div class="card-sunken">
-            <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-size:13px;">
-              <span style="color:var(--c-fg-2);">Horas acumuladas</span>
-              <span class="num" style="font-weight:600;">412h / 560h</span>
+          <div class="card-sunken" style="display:flex; flex-direction:column; gap:10px;">
+            <div style="display:flex; justify-content:space-between; font-size:11px; color:var(--c-fg-3);">
+              <span>Quadrimestre</span><span class="num">Dentro ✓</span>
             </div>
-            <div style="height:8px; background:var(--c-canvas); border-radius:9999px; overflow:hidden;">
-              <div style="width:73.5%; height:100%; background:var(--c-positive); border-radius:9999px;"></div>
+            <div style="display:flex; gap:6px;">
+              <div style="flex:2; height:22px; border-radius:var(--r-tag); background:var(--c-fg); color:var(--c-canvas); font-size:11px; font-weight:600; display:flex; align-items:center; justify-content:center;" class="num">+00:23/dia</div>
+              <div style="flex:1; height:22px; border-radius:var(--r-tag); background:var(--c-canvas); border:1px dashed var(--c-line-strong); font-size:10px; color:var(--c-fg-3); display:flex; align-items:center; justify-content:center;">Classe A</div>
             </div>
+            <div style="font-size:12px; color:var(--c-fg-2);">Folga planejada em <strong style="color:var(--c-fg); font-weight:500;">18/12</strong> já diluída até o fechamento.</div>
           </div>
         </article>
 
         <article class="card" style="display:flex; flex-direction:column; gap:14px;">
-          <div class="eyebrow">Marcacao Rapida</div>
-          <div class="num" style="font-size:28px; font-weight:600;" id="cronosClock">08:00 · 12:00</div>
-          <div style="display:flex; align-items:center; gap:12px;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span class="eyebrow">PunchRow Ao Vivo</span>
+            <span class="pill num">Saída 17:12</span>
+          </div>
+          <div class="num" style="font-size:24px; font-weight:300; letter-spacing:-0.02em;" id="cronosClock">08:00 · 12:00</div>
+          <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-top:auto;">
             <button type="button" class="btn-primary" id="cronosPunch">Registrar retorno (13:02)</button>
             <span id="cronosMsg" style="font-size:13px; color:var(--c-positive-fg);"></span>
+          </div>
+        </article>
+
+        <article class="card" style="display:flex; flex-direction:column; gap:14px;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span class="eyebrow">Insights &amp; Facultativos</span>
+            <span class="pill pill-sage">0 pendências</span>
+          </div>
+          <div>
+            <div style="display:flex; justify-content:space-between; font-size:12px; color:var(--c-fg-3); margin-bottom:6px;">
+              <span>Chegada no horário</span><span class="num" style="color:var(--c-fg);">84%</span>
+            </div>
+            <div class="dist-track">
+              <div class="dist-seg" style="flex:10; background:var(--c-warning); border-radius:6px 0 0 6px;"></div>
+              <div class="dist-seg" style="flex:84; background:var(--c-positive);"></div>
+              <div class="dist-seg" style="flex:6; background:var(--c-negative); border-radius:0 6px 6px 0;"></div>
+            </div>
+          </div>
+          <div class="card-sunken" style="display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:auto;">
+            <div>
+              <div style="font-size:13px; font-weight:500;">Ponto facultativo</div>
+              <div style="font-size:11px; color:var(--c-fg-3);" id="facState">Conta como dia útil</div>
+            </div>
+            <button type="button" class="switch-btn" id="facToggle" role="switch" aria-checked="false" aria-label="Alternar ponto facultativo">
+              <span class="switch-thumb"></span>
+            </button>
           </div>
         </article>
       </div>
@@ -327,11 +386,11 @@
     <section class="chapter" id="cap-05">
       <div class="chapter-head">
         <div>
-          <div class="chapter-num">05 Movimento Cronos</div>
-          <h2 class="chapter-title">Inversao calma entre os dois bulbos</h2>
+          <div class="chapter-num">05 Movimento &amp; CronosIntroSplash</div>
+          <h2 class="chapter-title">Inversão calma entre os dois bulbos</h2>
         </div>
         <p class="chapter-lead">
-          A passagem de peso visual de 100% para 36% representa alternancia de turno em --ease-numera.
+          A passagem de peso visual de 100% para 36% representa alternância de turno em <span class="mono-tech">--ease-numera</span> (<span class="mono-tech">0.20s–0.30s</span> em controles e <span class="mono-tech">1.45s</span> no <span class="mono-tech">CronosIntroSplash</span>), com zero <span class="mono-tech">transition: all</span> e respeito integral a <span class="mono-tech">prefers-reduced-motion</span>.
         </p>
       </div>
 
@@ -340,7 +399,7 @@
           <path class="bulb-top" d="M 18.5 13.5 H 45.5 A 13.5 13.5 0 0 1 18.5 13.5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round" />
           <g class="bulb-bot" opacity="0.36"><path d="M 45.5 50.5 H 18.5 A 13.5 13.5 0 0 1 45.5 50.5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round" /></g>
         </svg>
-        <div class="mono-tech" style="color:var(--c-fg-3);">cubic-bezier(0.22, 1, 0.36, 1)</div>
+        <div class="mono-tech" style="color:var(--c-fg-3);">cubic-bezier(0.22, 1, 0.36, 1) · 0.24s dock &amp; toggle · 1.45s splash</div>
         <button type="button" class="btn-primary" id="cronosMotionBtn">Alternar ciclo de tempo</button>
       </div>
     </section>
@@ -348,11 +407,11 @@
     <section class="chapter" id="cap-06" style="border-bottom:none;">
       <div class="chapter-head">
         <div>
-          <div class="chapter-num">06 Restricoes &amp; Aplicacao Mobile</div>
-          <h2 class="chapter-title">Previa mobile e guia de migracao Cronos</h2>
+          <div class="chapter-num">06 Restrições &amp; Aplicação Mobile</div>
+          <h2 class="chapter-title">Prévia em produção e regras invioláveis</h2>
         </div>
         <p class="chapter-lead">
-          Visao do dashboard de ponto atualizado para Onix &amp; Algodao Cru.
+          Estrutura real do app com cabeçalho Ônix &amp; Algodão Cru, três saldos, <span class="mono-tech">PlanGoalCard</span>, status CLT e <span class="mono-tech">MobileBottomDock</span> flutuante.
         </p>
       </div>
 
@@ -363,33 +422,60 @@
               <svg width="24" height="24" viewBox="0 0 64 64" fill="none"><path d="M 18.5 13.5 H 45.5 A 13.5 13.5 0 0 1 18.5 13.5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round" /><g opacity="0.36"><path d="M 45.5 50.5 H 18.5 A 13.5 13.5 0 0 1 45.5 50.5 Z" fill="currentColor" stroke="currentColor" stroke-width="6" stroke-linejoin="round" /></g></svg>
               <span class="wordmark" style="font-size:18px;">Cronos</span>
             </span>
-            <span class="pill">3o Quadrimestre</span>
+            <span class="pill">3º Quadrimestre</span>
           </div>
-          <div class="card-sunken" style="margin-bottom:12px;">
-            <div class="eyebrow">Saldo do dia</div>
-            <div class="num" style="font-size:30px; font-weight:600; letter-spacing:-0.03em; margin-top:6px;">07h 48m</div>
-            <p style="font-size:12px; color:var(--c-fg-3); margin-top:4px;">Saida prevista as 17:12</p>
-          </div>
-          <div class="card" style="padding:16px;">
-            <div style="display:flex; justify-content:space-between; align-items:center;">
-              <span style="font-size:13px; font-weight:600;">Relatorio mensal (.xlsx)</span>
-              <span class="pill pill-slate">Pronto</span>
+
+          <div style="display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:8px; margin-bottom:10px;">
+            <div class="card-sunken" style="padding:10px; border-radius:var(--r-field);">
+              <div class="eyebrow" style="font-size:9px;">Hoje</div>
+              <div class="num" style="font-size:16px; font-weight:300; color:var(--c-positive-fg); margin-top:3px;">+00:18</div>
             </div>
+            <div class="card-sunken" style="padding:10px; border-radius:var(--r-field);">
+              <div class="eyebrow" style="font-size:9px;">Mês</div>
+              <div class="num" style="font-size:16px; font-weight:300; color:var(--c-positive-fg); margin-top:3px;">+04:20</div>
+            </div>
+            <div class="card-sunken" style="padding:10px; border-radius:var(--r-field);">
+              <div class="eyebrow" style="font-size:9px;">Ciclo</div>
+              <div class="num" style="font-size:16px; font-weight:300; color:var(--c-positive-fg); margin-top:3px;">+12:10</div>
+            </div>
+          </div>
+
+          <div class="card" style="padding:14px; margin-bottom:10px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+              <span class="eyebrow" style="font-size:10px;">Meta diária</span>
+              <span class="pill pill-sage" style="font-size:10px;">CLT em dia</span>
+            </div>
+            <div class="num" style="font-size:28px; font-weight:300; letter-spacing:-0.03em;">17:42</div>
+            <p style="font-size:12px; color:var(--c-fg-3); margin-top:4px;">Saída sugerida com folga de 18/12 já planejada</p>
+          </div>
+
+          <div class="card" style="padding:12px 14px;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-size:12px; font-weight:500;">Relatório mensal (.xlsx)</span>
+              <span class="pill pill-slate" style="font-size:10px;">Pronto</span>
+            </div>
+          </div>
+
+          <div class="phone-dock">
+            <span class="active">Início</span>
+            <span>Detalhamento</span>
+            <span>Planejamento</span>
           </div>
         </div>
 
         <div style="display:flex; flex-direction:column; gap:16px;">
           <article class="card">
-            <div class="pill pill-terra" style="margin-bottom:12px;">Proibido na Migracao</div>
+            <div class="pill pill-terra" style="margin-bottom:12px;">Proibido no Ecossistema</div>
             <ul class="list-clean">
-              <li>Grafar CRONOS em caixa alta total ou retornar ao icone antigo.</li>
-              <li>Usar cantos retos em tabelas de batidas de ponto ou botes de acao.</li>
-              <li>Aplicar <span class="mono-tech">DM Mono</span> em horarios de entrada/saida ou datas.</li>
+              <li>Usar fontes legadas (<span class="mono-tech">Sora</span>, <span class="mono-tech">Geist</span>, <span class="mono-tech">Geist Mono</span>) ou o antigo ícone de dois triângulos.</li>
+              <li>Manter base grafite fria (<span class="mono-tech">#0B0C0E</span>), peso <span class="mono-tech">200</span>/<span class="mono-tech">700+</span> ou <span class="mono-tech">transition-all</span>.</li>
+              <li>Grafar CRONOS em caixa alta total ou colocar <span class="mono-tech">Powered by Numera</span> (usar sempre <span class="mono-tech">Um app Numera</span>).</li>
+              <li>Usar cantos retos em tabelas de batidas, botões ou aplicar <span class="mono-tech">DM Mono</span> em horários, saldos ou datas.</li>
             </ul>
           </article>
           <article class="card">
             <h3>Ativos do Kit Cronos</h3>
-            <p style="margin-top:8px;">SVGs em <span class="mono-tech">../logos/cronos-*.svg</span> e instrucoes em <span class="mono-tech">../ROLLOUT-PLAYBOOK.md</span>.</p>
+            <p style="margin-top:8px;">SVGs em <span class="mono-tech">../logos/cronos-*.svg</span> · tokens em <span class="mono-tech">../tokens/numera-tokens.css</span> · roteiro em <span class="mono-tech">../ROLLOUT-PLAYBOOK.md</span>.</p>
           </article>
         </div>
       </div>
@@ -411,6 +497,13 @@
       document.getElementById('cronosPunch').addEventListener('click', function () {
         document.getElementById('cronosClock').textContent = '08:00 · 12:00 · 13:02';
         document.getElementById('cronosMsg').textContent = 'Retorno registrado.';
+      });
+      var facBtn = document.getElementById('facToggle');
+      var facState = document.getElementById('facState');
+      facBtn.addEventListener('click', function () {
+        var on = facBtn.getAttribute('aria-checked') === 'true';
+        facBtn.setAttribute('aria-checked', on ? 'false' : 'true');
+        facState.textContent = on ? 'Conta como dia útil' : 'Marcado como folga';
       });
       document.getElementById('cronosMotionBtn').addEventListener('click', function () {
         document.getElementById('cronosMotion').classList.toggle('cycled');

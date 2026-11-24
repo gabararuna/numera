@@ -47,6 +47,7 @@ Cada app deve padronizar seu componente (`NumeraLogo`, `MonnoLogo`, `CronosLogo`
 - `viewBox="0 0 64 64"` usando `currentColor` (`100%` no elemento principal e `opacity="0.36"` no elemento complementar).
 - Wordmark com `font-sans font-semibold leading-none tracking-[-0.03em] text-fg` (`Figtree 600`).
 - Title Case para `Numera`, `Monno`, `Cronos`; caixa alta apenas para `NYOT`.
+- Regra exclusiva NYOT: usar ou `NYOT` ou `Not Your Ordinary Tracker`, nunca ambos na mesma tela, splash ou cartao.
 - Sub-linha opcional de endosso `Um app Numera` em `text-[11px] font-medium text-fg-3` (sem `font-mono`).
 
 ---
@@ -63,9 +64,10 @@ Cada app deve padronizar seu componente (`NumeraLogo`, `MonnoLogo`, `CronosLogo`
 ## 6. Auditoria e Limpeza Especifica por Marca
 
 ### 6.1 Numera (`gruponumera.com`)
-- Substituir fundos frios/gradientes coloridos anteriores pela base `Ônix` (`#0A0A09`) com glass `.glass-2` e highlight quente (`rgb(var(--c-ov) / 0.045)`).
-- Consolidar cards de ecossistema apontando para `Monno`, `Cronos` e `NYOT` usando exatamente os lockups em `docs/brand/v1/logos/`.
-- Conferir se os domínios (`gruponumera.com`, `nyot.gruponumera.com`) são os únicos pontos além de specs técnicas usando fonte monoespaçada.
+- **Remoção de legado visual e fontes:** eliminar `Plus Jakarta Sans`, `.shimmer-text`, `.shimmer-logo`, `#00BFA5`, `CursorSpotlight`, `ShadowOverlay` e fundos `#000`/`bg-black`, adotando `Figtree` (`300/400/500/600`) + `DM Mono` (`400`) exclusivamente para domínios técnicos e chaves de configuração.
+- **Tailwind v4 `@theme inline` e tema duplo pré-paint:** mapear os canais RGB de `numera-tokens.css` no bloco `@theme inline` de `src/index.css` e carregar `public/theme-init.js` (`numera-theme`, Ônix `#0A0A09` padrão ou Algodão Cru `#F4F3EF` claro) antes do primeiro paint.
+- **Componentes oficiais e vitrine em 2 camadas:** centralizar os símbolos `64x64` em `src/components/BrandMarks.jsx`, exibir na Camada 1 os apps endossados `Monno`, `Cronos` e `NYOT` (`Um app Numera` + `*.gruponumera.com` em `DM Mono`) e na Camada 2 as calculadoras web e projetos em incubação.
+- **Páginas legais, painel `/admin` e assets PWA:** migrar `privacidade.html`, `cookies.html`, `Admin.jsx` (switch com `bg-accent-on` no pino ativo) e gerar `favicon.svg` + PNGs `192`/`512`/`180` + `og-image.png` (`1200x630`).
 
 ### 6.2 Monno (`monno.gruponumera.com`)
 - **Remoção crítica de cor legada:** eliminar escalas `turq-*` (`#00BFA5`, `#14CCB1`, etc.) e `gray-*` frios do `tailwind.config.js` e CSS. Substituir realces positivos por `Sálvia` (`#8EB89F` escuro / `#2E6447` claro) e neutros `Ônix & Algodão Cru`.
@@ -93,7 +95,7 @@ root = pathlib.Path('src')
 bad_mono = []
 bad_all = []
 bad_heavy = []
-for p in list(root.rglob('*.ts')) + list(root.rglob('*.tsx')) + list(root.rglob('*.css')):
+for p in list(root.rglob('*.ts')) + list(root.rglob('*.tsx')) + list(root.rglob('*.js')) + list(root.rglob('*.jsx')) + list(root.rglob('*.css')):
     for i, line in enumerate(p.read_text(encoding='utf-8').splitlines(), 1):
         if re.search(r'transition-all|transition:\s*all', line): bad_all.append(f'{p}:{i}')
         if re.search(r'font-mono|DM Mono', line): bad_mono.append(f'{p}:{i}: {line.strip()[:80]}')

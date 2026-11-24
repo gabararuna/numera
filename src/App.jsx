@@ -12,9 +12,9 @@ import content from './content.json'
 export default function App() {
   const { sections } = content
   return (
-    <div className="max-w-[1800px] mx-auto w-full relative">
+    <div className="min-h-screen flex flex-col bg-canvas text-fg relative">
       <Navbar />
-      <main className="bg-black">
+      <main className="flex-1 bg-canvas">
         <HeroSection />
         {sections.ticker      && <ExchangeTicker />}
         {sections.ecosystem   && <TradingInfrastructure />}

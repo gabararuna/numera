@@ -134,7 +134,8 @@
     .nav-scroll {
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 3px;
+      min-width: 0;
       overflow-x: auto;
       scrollbar-width: none;
     }
@@ -145,21 +146,21 @@
       color: var(--c-fg-3);
       font-size: 12px;
       font-weight: 500;
-      padding: 6px 10px;
+      padding: 6px 7px;
       border-radius: var(--r-pill);
       white-space: nowrap;
       transition: background-color 0.2s var(--ease-numera), color 0.2s var(--ease-numera);
     }
     .nav-link:hover, .nav-link.active { color: var(--c-fg); background-color: var(--c-sunken); }
 
-    .nav-sep { width: 1px; height: 16px; background: var(--c-line-strong); margin: 0 6px; flex-shrink: 0; }
+    .nav-sep { width: 1px; height: 16px; background: var(--c-line-strong); margin: 0 5px; flex-shrink: 0; }
 
     .brand-switch {
       text-decoration: none;
       color: var(--c-fg-2);
       font-size: 12px;
       font-weight: 600;
-      padding: 6px 11px;
+      padding: 6px 9px;
       border-radius: var(--r-pill);
       border: 1px solid var(--c-line);
       white-space: nowrap;
@@ -400,15 +401,17 @@
       gap: 12px;
       text-align: center;
     }
-    .m-numera-a, .m-numera-b, .m-monno-mid, .m-cronos-top, .m-cronos-bot, .m-nyot-disc {
+    .m-numera-a, .m-numera-b, .m-monno-mid, .m-cronos-top, .m-cronos-bot, .m-nyot-disc, .m-nyot-crescent {
       transition: transform 0.65s var(--ease-numera), opacity 0.65s var(--ease-numera);
     }
+    .m-nyot-disc, .m-nyot-crescent { transform-box: fill-box; transform-origin: center; }
     .motion-stage.active .m-numera-a { transform: translate(2px, 2px); }
     .motion-stage.active .m-numera-b { transform: translate(-2px, -2px); }
     .motion-stage.active .m-monno-mid { transform: translateY(-4px); }
     .motion-stage.active .m-cronos-top { transform: translateY(3px); }
     .motion-stage.active .m-cronos-bot { transform: translateY(-3px); }
-    .motion-stage.active .m-nyot-disc { transform: translate(-10px, 10px); }
+    .motion-stage.active .m-nyot-disc { transform: translate(-14px, 14px) scale(0.96); }
+    .motion-stage.active .m-nyot-crescent { opacity: 0.10; transform: scale(0.94); }
 
     table.spec-table { width: 100%; border-collapse: collapse; font-size: 13px; }
     table.spec-table th, table.spec-table td { text-align: left; padding: 11px 12px; border-bottom: 1px solid var(--c-line); }
@@ -477,6 +480,7 @@
         <a class="nav-link" href="#cap-05">05 Movimento</a>
         <a class="nav-link" href="#cap-06">06 Marcas</a>
         <span class="nav-sep" aria-hidden="true"></span>
+        <a class="brand-switch" href="../../system/Numera%20Design%20System.html">System</a>
         <a class="brand-switch" href="./brands/numera-brand-book.html">Numera</a>
         <a class="brand-switch" href="./brands/monno-brand-book.html">Monno</a>
         <a class="brand-switch" href="./brands/cronos-brand-book.html">Cronos</a>
@@ -551,7 +555,7 @@
           <h3>Grafia e Hierarquia</h3>
           <ul class="list-clean" style="margin-top:10px;">
             <li><strong>Numera</strong>, <strong>Monno</strong> e <strong>Cronos</strong> sao palavras comuns e permanecem sempre em Title Case.</li>
-            <li>Somente <strong>NYOT</strong> permanece em caixa alta integral por ser sigla (Not Your Ordinary Tracker).</li>
+            <li>Somente <strong>NYOT</strong> permanece em caixa alta integral por ser sigla. Regra exclusiva: grafar <strong>ou</strong> <strong>NYOT</strong> <strong>ou</strong> <strong>Not Your Ordinary Tracker</strong>, nunca os dois juntos na mesma tela ou peca.</li>
             <li>Todo aplicativo usa o endosso discreto <strong>Um app Numera</strong>.</li>
           </ul>
         </article>
@@ -566,10 +570,21 @@
         <article class="card">
           <h3>Reuso para Reformulacao</h3>
           <ul class="list-clean" style="margin-top:10px;">
-            <li>Tokens portateis em <span class="mono-tech">tokens/numera-tokens.css</span>.</li>
+            <li>Tokens portateis em <span class="mono-tech">tokens/numera-tokens.css</span> e suporte nativo a Tailwind v4 <span class="mono-tech">@theme inline</span>.</li>
             <li>Preset Tailwind em <span class="mono-tech">tokens/tailwind-preset.js</span>.</li>
-            <li>Roteiro tecnico completo em <span class="mono-tech">ROLLOUT-PLAYBOOK.md</span>.</li>
+            <li>Roteiro tecnico completo em <span class="mono-tech">ROLLOUT-PLAYBOOK.md</span> e diretriz audiovisual <span class="mono-tech">9:16 / 4:5</span> em <span class="mono-tech">numera-brand-book.html</span>.</li>
           </ul>
+        </article>
+      </div>
+
+      <div class="grid-2" style="margin-top:20px;">
+        <article class="card">
+          <h3>Dois Eixos sob a Marca-mãe</h3>
+          <p>Além dos três aplicativos principais (Monno, Cronos e NYOT), a Numera opera soluções B2B em automação, sistemas sob medida, treinamentos em dados e planejamento estratégico, com SLA de proposta em 48h úteis.</p>
+        </article>
+        <article class="card">
+          <h3>Camada de Calculadoras &amp; Parceiros</h3>
+          <p>Calculadoras web utilitárias (Estica Férias, Remunera, Habita, Mega, Mobi) e logos de clientes corporativos adotam o mesmo sistema monocromático adaptativo sem cores concorrentes.</p>
         </article>
       </div>
     </section>
@@ -797,7 +812,7 @@
             <span style="font-size:12px; color:var(--c-fg-3);">Cadencia de ciclo</span>
           </div>
           <div class="motion-item">
-            <svg width="56" height="56" viewBox="0 0 64 64" fill="none"><g opacity="0.36"><path d="M 39.68 43.99 A 15.5 15.5 0 1 1 20.01 24.32 A 19 19 0 0 0 39.68 43.99 Z" fill="currentColor" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" /></g><circle class="m-nyot-disc" cx="39" cy="25" r="15.5" fill="currentColor" /></svg>
+            <svg width="56" height="56" viewBox="0 0 64 64" fill="none"><g class="m-nyot-crescent" opacity="0.36"><path d="M 39.68 43.99 A 15.5 15.5 0 1 1 20.01 24.32 A 19 19 0 0 0 39.68 43.99 Z" fill="currentColor" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" /></g><circle class="m-nyot-disc" cx="39" cy="25" r="15.5" fill="currentColor" /></svg>
             <strong>NYOT</strong>
             <span style="font-size:12px; color:var(--c-fg-3);">Emergencia Eclipse</span>
           </div>
@@ -827,7 +842,7 @@
                 <div class="mono-tech" style="color:var(--c-fg-3);">gruponumera.com</div>
               </div>
             </div>
-            <p>Identidade institucional da plataforma-mae, arquitetura de endosso Um app Numera, vitrine e sistemas.</p>
+            <p>Identidade institucional da plataforma-mãe, dois eixos (B2B + Produtos), taxonomia em 3 camadas, auditoria de produção e padrão audiovisual 9:16 &amp; 4:5.</p>
           </div>
           <span class="btn-link">Abrir Brand Book Numera</span>
         </a>

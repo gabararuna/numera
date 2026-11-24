@@ -1,126 +1,80 @@
-import { useRef, useMemo, useEffect } from 'react'
-import { motion, useInView } from 'framer-motion'
-import { useLanguage } from '../i18n/LanguageContext'
+import { useMemo } from 'react'
+import { Link } from 'react-router-dom'
+import { ArrowUpRight } from 'lucide-react'
+import { useLanguage } from '../i18n/useLanguage'
 import content from '../content.json'
 
-function FadeIn({ children, delay = 0, className = '' }) {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 20 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.7, delay }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  )
-}
-
-function TiltCard({ children }) {
-  const cardRef = useRef(null)
-  const overlayRef = useRef(null)
-
-  useEffect(() => {
-    const card = cardRef.current
-    const overlay = overlayRef.current
-    if (!card || !overlay) return
-
-    const handleMove = (e) => {
-      const rect = card.getBoundingClientRect()
-      const cx = rect.left + rect.width / 2
-      const cy = rect.top + rect.height / 2
-      const dx = (e.clientX - cx) / (rect.width / 2)
-      const dy = (e.clientY - cy) / (rect.height / 2)
-
-      card.style.transform = `perspective(1000px) rotateX(${-dy * 5}deg) rotateY(${dx * 5}deg) scale(1.02)`
-      card.style.transition = 'transform 0.08s ease'
-
-      const x = ((e.clientX - rect.left) / rect.width) * 100
-      const y = ((e.clientY - rect.top) / rect.height) * 100
-      overlay.style.opacity = '1'
-      overlay.style.background = `radial-gradient(circle at ${x}% ${y}%, rgba(0, 191, 165, 0.1) 0%, transparent 70%)`
-    }
-
-    const handleLeave = () => {
-      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)'
-      card.style.transition = 'transform 0.5s ease'
-      overlay.style.opacity = '0'
-    }
-
-    card.addEventListener('mousemove', handleMove)
-    card.addEventListener('mouseleave', handleLeave)
-    return () => {
-      card.removeEventListener('mousemove', handleMove)
-      card.removeEventListener('mouseleave', handleLeave)
-    }
-  }, [])
-
-  return (
-    <div
-      ref={cardRef}
-      className="relative border border-white/10 rounded-xl bg-transparent p-8 md:p-12 flex flex-col overflow-hidden"
-      style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
-    >
-      <div
-        ref={overlayRef}
-        className="absolute inset-0 pointer-events-none rounded-xl transition-opacity duration-300"
-        style={{ opacity: 0 }}
-      />
-      <div className="relative z-10">{children}</div>
-    </div>
-  )
+function FadeIn({ children, className = '' }) {
+  return <div className={className}>{children}</div>
 }
 
 export default function Methodology() {
   const { t } = useLanguage()
 
-  const cards = useMemo(() =>
-    content.services
-      .filter((s) => s.visible)
-      .map((s) => ({
-        label: t(`methodology_card${s.id}_label`),
-        title: t(`methodology_card${s.id}_title`),
-        desc:  t(`methodology_card${s.id}_desc`),
-      }))
-  , [t])
+  const cards = useMemo(
+    () =>
+      content.services
+        .filter((s) => s.visible)
+        .map((s, idx) => ({
+          num: String(idx + 1).padStart(2, '0'),
+          label: t(`methodology_card${s.id}_label`),
+          title: t(`methodology_card${s.id}_title`),
+          desc: t(`methodology_card${s.id}_desc`),
+        })),
+    [t]
+  )
 
   return (
-    <section className="py-24 px-6 md:px-12 bg-black">
-      <div className="max-w-[1800px] mx-auto">
-        {/* Header */}
-        <div className="mb-20 text-left">
-          <FadeIn>
-            <h2 className="text-2xl md:text-4xl font-medium tracking-tight text-white mb-4">
-              {t('methodology_heading')}
-            </h2>
-          </FadeIn>
-          <FadeIn delay={0.1}>
-            <p className="text-white/55 text-sm md:text-base font-light leading-relaxed max-w-xl">
-              {t('methodology_description')}
-            </p>
+    <section className="py-24 px-5 md:px-10 bg-canvas">
+      <div className="max-w-[1440px] mx-auto">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+          <div>
+            <FadeIn>
+              <div className="label-ui text-fg-3 mb-3">{t('nav_about')} · B2B</div>
+              <h2 className="text-2xl md:text-4xl font-medium tracking-[-0.025em] text-fg mb-3">
+                {t('methodology_heading')}
+              </h2>
+            </FadeIn>
+            <FadeIn delay={0.08}>
+              <p className="text-fg-2 text-sm md:text-base font-light leading-relaxed max-w-xl">
+                {t('methodology_description')}
+              </p>
+            </FadeIn>
+          </div>
+
+          <FadeIn delay={0.12}>
+            <Link
+              to="/solucoes"
+              className="inline-flex items-center gap-2 rounded-full border border-fg/12 bg-raised px-5 py-2.5 text-xs font-medium text-fg-2 hover:text-fg hover:bg-sunken hover:border-fg/24 transition-[background-color,border-color,color] duration-200 ease-numera"
+            >
+              <span>{t('services_more')}</span>
+              <ArrowUpRight size={14} />
+            </Link>
           </FadeIn>
         </div>
 
-        {/* Cards with 3D tilt */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {cards.map((card, i) => (
-            <FadeIn key={i} delay={0.15 * (i + 1)}>
-              <TiltCard>
+            <FadeIn key={card.num} delay={0.08 * (i + 1)}>
+              <article className="rounded-card border border-fg/10 bg-raised p-7 md:p-9 h-full flex flex-col justify-between gap-8 hover:border-fg/20 transition-[border-color,background-color] duration-200 ease-numera">
                 <div className="space-y-4">
-                  <h4 className="text-[10px] tracking-[0.18em] text-white/40 font-medium uppercase">
-                    {card.label}
-                  </h4>
-                  <h3 className="text-lg md:text-xl font-medium text-white tracking-tight">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="label-ui text-fg-3">{card.label}</span>
+                    <span className="num text-xs font-medium text-fg-3">{card.num}</span>
+                  </div>
+                  <h3 className="text-xl font-medium text-fg tracking-[-0.015em] leading-snug">
                     {card.title}
                   </h3>
-                  <p className="text-sm text-white/55 font-light leading-relaxed max-w-sm">
+                  <p className="text-sm text-fg-2 font-light leading-relaxed">
                     {card.desc}
                   </p>
                 </div>
-              </TiltCard>
+
+                <div className="pt-4 border-t border-fg/[0.08] flex items-center justify-between text-xs text-fg-3">
+                  <span>{t('cta_sla')}</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-positive" aria-hidden="true" />
+                </div>
+              </article>
             </FadeIn>
           ))}
         </div>

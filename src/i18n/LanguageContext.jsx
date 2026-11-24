@@ -1,15 +1,15 @@
-import { createContext, useContext, useState } from 'react'
+import { useState } from 'react'
 import content from '../content.json'
-
-const LanguageContext = createContext()
-
-const languages = ['pt', 'en', 'es']
-const defaultLanguage = 'pt'
+import { LanguageContext, languages, defaultLanguage } from './languageStore'
 
 const getInitialLanguage = () => {
   if (typeof window === 'undefined') return defaultLanguage
-  const saved = localStorage.getItem('numera-language')
-  if (saved && languages.includes(saved)) return saved
+  try {
+    const saved = localStorage.getItem('numera-language')
+    if (saved && languages.includes(saved)) return saved
+  } catch {
+    return defaultLanguage
+  }
   const browserLang = navigator.language.split('-')[0]
   if (languages.includes(browserLang)) return browserLang
   return defaultLanguage
@@ -21,7 +21,11 @@ export function LanguageProvider({ children }) {
   const setLang = (newLang) => {
     if (languages.includes(newLang)) {
       setLangState(newLang)
-      localStorage.setItem('numera-language', newLang)
+      try {
+        localStorage.setItem('numera-language', newLang)
+      } catch {
+        // Storage blocked in restricted mode
+      }
     }
   }
 
@@ -36,13 +40,3 @@ export function LanguageProvider({ children }) {
     </LanguageContext.Provider>
   )
 }
-
-export function useLanguage() {
-  const ctx = useContext(LanguageContext)
-  if (!ctx) throw new Error('useLanguage must be used within LanguageProvider')
-  return ctx
-}
-
-export { languages, defaultLanguage }
-
-export default LanguageContext

@@ -1,23 +1,10 @@
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
 import PageNavbar from '../components/PageNavbar'
 import Footer from '../components/Footer'
 import CTASection from '../components/CTASection'
+import { StatusDot } from '../components/BrandMarks'
 
-function FadeIn({ children, delay = 0, className = '' }) {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-60px' })
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 20 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.7, delay }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  )
+function FadeIn({ children, className = '' }) {
+  return <div className={className}>{children}</div>
 }
 
 const SERVICES = [
@@ -106,10 +93,10 @@ const TECHS = [
 
 function SectionRow({ label, children }) {
   return (
-    <section className="py-20 md:py-24 px-6 md:px-12 border-t border-white/5 bg-black">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-[200px_1fr] gap-12 md:gap-20 items-start">
+    <section className="py-16 md:py-24 px-5 md:px-10 border-t border-fg/10 bg-canvas">
+      <div className="max-w-6xl mx-auto grid md:grid-cols-[200px_1fr] gap-8 md:gap-16 items-start">
         <FadeIn>
-          <span className="text-[10px] tracking-[0.18em] text-white/30 uppercase font-medium block pt-1">
+          <span className="label-ui text-fg-3 block pt-1">
             {label}
           </span>
         </FadeIn>
@@ -121,107 +108,104 @@ function SectionRow({ label, children }) {
 
 export default function SolucoesPage() {
   return (
-    <div className="max-w-[1800px] mx-auto w-full relative">
+    <div className="min-h-screen flex flex-col bg-canvas text-fg relative">
       <PageNavbar />
-      <main className="bg-black">
-
-        {/* ── Hero ── */}
-        <section className="relative px-6 md:px-12 pt-20 pb-24 overflow-hidden bg-black">
-          <div
-            className="absolute inset-x-0 top-0 h-72 pointer-events-none"
-            style={{ background: 'radial-gradient(ellipse 60% 100% at 50% 0%, rgba(0,191,165,0.06) 0%, transparent 100%)' }}
-          />
-          <div className="max-w-6xl mx-auto relative z-10">
+      <main className="flex-1 bg-canvas">
+        {/* Hero */}
+        <section className="relative px-5 md:px-10 pt-16 pb-20 bg-canvas">
+          <div className="max-w-6xl mx-auto">
             <FadeIn>
-              <span className="inline-block text-[10px] tracking-[0.18em] text-[#00BFA5] border border-[#00BFA5]/25 rounded-full px-3 py-1.5 mb-8 font-medium uppercase">
-                Soluções
-              </span>
+              <div className="inline-flex items-center rounded-full glass-1 px-3.5 py-1.5 mb-7">
+                <StatusDot tone="positive" label="Soluções" className="label-ui" />
+              </div>
             </FadeIn>
-            <FadeIn delay={0.1}>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-light tracking-tight leading-[1.05] mb-6 shimmer-text max-w-4xl">
+            <FadeIn delay={0.08}>
+              <h1 className="text-4xl md:text-6xl font-medium tracking-[-0.03em] leading-[1.06] mb-6 text-fg max-w-4xl">
                 O que a Numera constrói para você.
               </h1>
             </FadeIn>
-            <FadeIn delay={0.2}>
-              <p className="text-base md:text-lg text-white/50 font-light leading-relaxed max-w-2xl">
+            <FadeIn delay={0.14}>
+              <p className="text-base md:text-lg text-fg-2 font-light leading-relaxed max-w-2xl">
                 Três frentes de trabalho, um único objetivo: operação mais eficiente.
               </p>
             </FadeIn>
           </div>
         </section>
 
-        {/* ── Serviços ── */}
-        {SERVICES.map((svc, si) => (
-          <SectionRow key={si} label={`Frente ${svc.num} — ${svc.label}`}>
-            <FadeIn delay={0.1}>
-              <h2 className="text-2xl md:text-3xl font-light text-white tracking-tight mb-6 shimmer-text leading-snug">
+        {/* Serviços */}
+        {SERVICES.map((svc) => (
+          <SectionRow key={svc.num} label={`Frente ${svc.num} · ${svc.label}`}>
+            <FadeIn delay={0.08}>
+              <h2 className="text-2xl md:text-3xl font-medium text-fg tracking-[-0.02em] mb-6 leading-snug">
                 {svc.title}
               </h2>
-              <p className="text-white/55 font-light leading-relaxed text-[0.9375rem] mb-5 italic">
+              <p className="text-fg font-normal leading-relaxed text-[0.95rem] mb-5 max-w-3xl">
                 {svc.intro}
               </p>
             </FadeIn>
-            <FadeIn delay={0.2}>
+            <FadeIn delay={0.14}>
               {svc.body.map((para, pi) => (
-                <p key={pi} className="text-white/55 font-light leading-relaxed text-[0.9375rem] mb-4">
+                <p key={pi} className="text-fg-2 font-light leading-relaxed text-[0.95rem] mb-4 max-w-3xl">
                   {para}
                 </p>
               ))}
-              <ul className="mt-6 space-y-2">
-                {svc.bullets.map((b, bi) => (
-                  <li
-                    key={bi}
-                    className="flex items-start gap-3 text-sm text-white/50 font-light leading-relaxed"
-                  >
-                    <span className="text-[#00BFA5] mt-0.5 shrink-0 font-normal">—</span>
-                    {b}
-                  </li>
-                ))}
-              </ul>
+              <div className="mt-7 rounded-card border border-fg/10 bg-raised p-6 max-w-3xl">
+                <ul className="space-y-2.5">
+                  {svc.bullets.map((b, bi) => (
+                    <li
+                      key={bi}
+                      className="flex items-start gap-3 text-sm text-fg-2 font-light leading-relaxed"
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-positive mt-2 shrink-0" aria-hidden="true" />
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </FadeIn>
           </SectionRow>
         ))}
 
-        {/* ── Processo ── */}
-        <SectionRow label="Como funciona na prática">
-          <FadeIn delay={0.1}>
-            <h2 className="text-2xl md:text-3xl font-light text-white tracking-tight mb-10 shimmer-text leading-snug">
+        {/* Processo */}
+        <SectionRow label="Como funciona">
+          <FadeIn delay={0.08}>
+            <h2 className="text-2xl md:text-3xl font-medium text-fg tracking-[-0.02em] mb-10 leading-snug">
               O processo em quatro etapas.
             </h2>
           </FadeIn>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-px bg-white/8 rounded-2xl overflow-hidden">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
             {PROCESS.map((step, i) => (
-              <FadeIn key={i} delay={0.1 * (i + 1)}>
-                <div className="bg-black p-8 h-full">
-                  <span className="text-[10px] tracking-[0.18em] text-white/20 uppercase font-medium block mb-4">
+              <FadeIn key={step.num} delay={0.06 * (i + 1)}>
+                <div className="rounded-card border border-fg/10 bg-raised p-6 h-full">
+                  <span className="num text-xs font-medium text-fg-3 block mb-3">
                     Etapa {step.num}
                   </span>
-                  <h3 className="text-[0.9375rem] font-medium text-white mb-3 tracking-tight">
+                  <h3 className="text-base font-medium text-fg mb-2.5 tracking-[-0.01em]">
                     {step.title}
                   </h3>
-                  <p className="text-sm text-white/45 font-light leading-relaxed">{step.desc}</p>
+                  <p className="text-sm text-fg-2 font-light leading-relaxed">{step.desc}</p>
                 </div>
               </FadeIn>
             ))}
           </div>
         </SectionRow>
 
-        {/* ── Tecnologias ── */}
+        {/* Tecnologias */}
         <SectionRow label="Tecnologias">
-          <FadeIn delay={0.1}>
-            <h2 className="text-2xl md:text-3xl font-light text-white tracking-tight mb-4 shimmer-text leading-snug">
+          <FadeIn delay={0.08}>
+            <h2 className="text-2xl md:text-3xl font-medium text-fg tracking-[-0.02em] mb-4 leading-snug">
               Ferramentas certas para cada problema.
             </h2>
-            <p className="text-white/50 font-light leading-relaxed text-[0.9375rem] mb-8">
+            <p className="text-fg-2 font-light leading-relaxed text-[0.95rem] mb-8 max-w-3xl">
               Trabalhamos com as ferramentas certas para cada problema — não com as mais sofisticadas disponíveis no mercado. Simplicidade e manutenibilidade são critérios tão importantes quanto performance.
             </p>
           </FadeIn>
-          <FadeIn delay={0.2}>
+          <FadeIn delay={0.14}>
             <div className="flex flex-wrap gap-2">
               {TECHS.map((tech) => (
                 <span
                   key={tech}
-                  className="border border-white/10 rounded-full px-4 py-1.5 text-xs text-white/45 tracking-wide"
+                  className="border border-fg/12 bg-raised rounded-full px-4 py-1.5 text-xs font-medium text-fg-2"
                 >
                   {tech}
                 </span>

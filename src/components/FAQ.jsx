@@ -1,51 +1,43 @@
-import { useState, useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
-import { useLanguage } from '../i18n/LanguageContext'
-import content from '../content.json'
+import { useState } from 'react'
+import { motion } from 'framer-motion'
+import { useLanguage } from '../i18n/useLanguage'
+import { NUMERA_EASE } from '../constants/motion'
 
-function FadeIn({ children, delay = 0 }) {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-60px' })
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 16 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay }}
-    >
-      {children}
-    </motion.div>
-  )
+function FadeIn({ children }) {
+  return <div>{children}</div>
 }
 
 function FAQItem({ question, answer, open, onToggle, index }) {
   return (
-    <FadeIn delay={0.05 * index}>
-      <div
-        className="border-b border-white/8 last:border-b-0"
-      >
+    <FadeIn delay={0.04 * index}>
+      <div className="border-b border-fg/10 last:border-b-0">
         <button
+          type="button"
           onClick={onToggle}
-          className="w-full flex items-center justify-between gap-6 py-6 text-left group cursor-pointer"
+          className="w-full flex items-center justify-between gap-6 py-5 md:py-6 text-left group cursor-pointer"
           aria-expanded={open}
         >
-          <span className="text-sm md:text-base font-light text-white/85 group-hover:text-white transition-colors duration-300 leading-snug">
+          <span className="text-sm md:text-base font-normal text-fg-2 group-hover:text-fg transition-colors duration-200 ease-numera leading-snug">
             {question}
           </span>
           <span
-            className="shrink-0 w-5 h-5 rounded-full border border-white/20 flex items-center justify-center text-white/40 group-hover:border-[#00BFA5]/50 group-hover:text-[#00BFA5] transition-all duration-300"
+            className={`shrink-0 w-7 h-7 rounded-full border flex items-center justify-center transition-[border-color,color,background-color] duration-200 ease-numera ${
+              open
+                ? 'border-fg/35 bg-sunken text-fg'
+                : 'border-fg/15 text-fg-3 group-hover:border-fg/35 group-hover:text-fg'
+            }`}
             aria-hidden="true"
           >
             <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
               <path
                 d="M5 1V9M1 5H9"
                 stroke="currentColor"
-                strokeWidth="1.5"
+                strokeWidth="1.4"
                 strokeLinecap="round"
                 style={{
                   transform: open ? 'rotate(45deg)' : 'rotate(0deg)',
                   transformOrigin: '5px 5px',
-                  transition: 'transform 0.3s ease',
+                  transition: 'transform 0.28s cubic-bezier(0.22, 1, 0.36, 1)',
                 }}
               />
             </svg>
@@ -55,10 +47,10 @@ function FAQItem({ question, answer, open, onToggle, index }) {
         <motion.div
           initial={false}
           animate={{ height: open ? 'auto' : 0, opacity: open ? 1 : 0 }}
-          transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
+          transition={{ duration: 0.32, ease: NUMERA_EASE }}
           style={{ overflow: 'hidden' }}
         >
-          <p className="text-sm text-white/55 font-light leading-relaxed pb-6 max-w-3xl">
+          <p className="text-sm text-fg-2 font-light leading-relaxed pb-6 max-w-2xl">
             {answer}
           </p>
         </motion.div>
@@ -79,22 +71,21 @@ export default function FAQ() {
   const toggle = (i) => setOpenIndex(openIndex === i ? null : i)
 
   return (
-    <section className="py-12 px-6 md:px-12 bg-black">
-      <div className="max-w-[1800px] mx-auto">
-        <div className="mb-16 text-left">
+    <section className="py-16 px-5 md:px-10 bg-canvas">
+      <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-[0.38fr_0.62fr] gap-10 lg:gap-16 items-start">
+        <div>
           <FadeIn>
-            <h2 className="text-xl md:text-3xl font-light tracking-tight text-white mb-4 shimmer-text">
+            <div className="label-ui text-fg-3 mb-3">FAQ</div>
+            <h2 className="text-2xl md:text-3xl font-medium tracking-[-0.025em] text-fg mb-3">
               {t('faq_heading')}
             </h2>
-          </FadeIn>
-          <FadeIn delay={0.1}>
-            <p className="text-white/70 text-sm md:text-base font-light leading-relaxed">
+            <p className="text-fg-2 text-sm md:text-base font-light leading-relaxed max-w-sm">
               {t('faq_description')}
             </p>
           </FadeIn>
         </div>
 
-        <div className="border-t border-white/8">
+        <div className="rounded-card border border-fg/10 bg-raised px-6 md:px-8">
           {items.map((item, i) => (
             <FAQItem
               key={i}

@@ -1,30 +1,16 @@
 import { useRef, useState, useEffect } from 'react'
-import { motion, useInView } from 'framer-motion'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { useLanguage } from '../i18n/LanguageContext'
+import { useLanguage } from '../i18n/useLanguage'
 import content from '../content.json'
 
-function FadeIn({ children, delay = 0, className = '' }) {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 15 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  )
+function FadeIn({ children, className = '' }) {
+  return <div className={className}>{children}</div>
 }
 
 export default function MetricsCarousel() {
   const { t } = useLanguage()
   const scrollRef = useRef(null)
 
-  // Drag state — refs to avoid re-renders
   const isDragging = useRef(false)
   const wasDragging = useRef(false)
   const dragStartX = useRef(0)
@@ -51,11 +37,8 @@ export default function MetricsCarousel() {
     image: c.image,
   }))
   const N = metrics.length
-
-  // Triple the array for infinite loop: [copy A | copy B (real) | copy C]
   const looped = [...metrics, ...metrics, ...metrics]
 
-  // On mount / resize: start positioned at the middle copy (B)
   useEffect(() => {
     const el = scrollRef.current
     if (!el) return
@@ -65,10 +48,9 @@ export default function MetricsCarousel() {
     return () => clearTimeout(timer)
   }, [visibleCards])
 
-  // Infinite loop: silently teleport when drifting into outer copies
   const handleScroll = () => {
     const el = scrollRef.current
-    if (!el) return
+    if (!el || N === 0) return
     const oneSet = el.scrollWidth / 3
 
     if (el.scrollLeft < oneSet * 0.5) {
@@ -80,13 +62,11 @@ export default function MetricsCarousel() {
       return
     }
 
-    // Update active dot relative to middle copy
     const rel = el.scrollLeft - oneSet
     const step = oneSet / N
     setActiveDot(Math.max(0, Math.min(Math.round(rel / step), N - 1)))
   }
 
-  // Arrow buttons — scroll exactly one card width
   const scrollCard = (direction) => {
     const el = scrollRef.current
     if (!el) return
@@ -94,16 +74,14 @@ export default function MetricsCarousel() {
     el.scrollBy({ left: direction * cardStep, behavior: 'smooth' })
   }
 
-  // Dot click — jump to that card within the middle copy
   const scrollToDot = (index) => {
     const el = scrollRef.current
-    if (!el) return
+    if (!el || N === 0) return
     const oneSet = el.scrollWidth / 3
     const step = oneSet / N
     el.scrollTo({ left: oneSet + index * step, behavior: 'smooth' })
   }
 
-  // ── Click-and-drag ──────────────────────────────────────────────
   const onMouseDown = (e) => {
     isDragging.current = true
     wasDragging.current = false
@@ -124,7 +102,6 @@ export default function MetricsCarousel() {
     if (scrollRef.current) scrollRef.current.style.cursor = 'grab'
   }
 
-  // Block click-through after drag (links inside cards)
   const onClickCapture = (e) => {
     if (wasDragging.current) {
       e.preventDefault()
@@ -134,34 +111,32 @@ export default function MetricsCarousel() {
   }
 
   return (
-    <section className="pt-12 pb-0 bg-black overflow-hidden relative">
-      <div className="max-w-[1800px] mx-auto px-6 md:px-12">
-
+    <section className="py-16 bg-canvas overflow-hidden relative">
+      <div className="max-w-[1440px] mx-auto px-5 md:px-10">
         {/* Header */}
-        <div className="mb-20">
+        <div className="mb-12">
           <FadeIn>
-            <h2 className="text-2xl md:text-4xl font-medium tracking-tight text-white mb-4">
+            <div className="label-ui text-fg-3 mb-3">{t('nav_solutions')}</div>
+            <h2 className="text-2xl md:text-4xl font-medium tracking-[-0.025em] text-fg mb-3">
               {t('solutions_heading')}
             </h2>
-            <p className="text-white/55 text-sm md:text-base font-light leading-relaxed max-w-xl">
+            <p className="text-fg-2 text-sm md:text-base font-light leading-relaxed max-w-xl">
               {t('solutions_description')}
             </p>
           </FadeIn>
         </div>
 
-        {/* Carousel wrapper */}
+        {/* Carousel */}
         <div className="relative">
-
-          {/* ◀ Left button */}
           <button
+            type="button"
             onClick={() => scrollCard(-1)}
-            className="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full border border-white/10 bg-black/70 backdrop-blur-sm flex items-center justify-center text-white/40 hover:text-white hover:border-[#00BFA5]/40 hover:bg-[#00BFA5]/10 transition-all duration-300"
+            className="hidden sm:flex absolute left-3 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full border border-fg/15 bg-raised/90 backdrop-blur-md items-center justify-center text-fg-2 hover:text-fg hover:border-fg/35 hover:bg-sunken cursor-pointer transition-[background-color,border-color,color,transform] duration-200 ease-numera active:scale-[0.96]"
             aria-label="Anterior"
           >
             <ChevronLeft size={16} />
           </button>
 
-          {/* Scroll track — overflow-x: auto (trackpad / touch nativo, sem bloquear scroll vertical) */}
           <div
             ref={scrollRef}
             onScroll={handleScroll}
@@ -170,7 +145,7 @@ export default function MetricsCarousel() {
             onMouseUp={onMouseUp}
             onMouseLeave={onMouseUp}
             onClickCapture={onClickCapture}
-            className="h-[420px] md:h-[480px] overflow-x-auto no-scrollbar flex gap-6 w-full select-none"
+            className="h-[420px] md:h-[460px] overflow-x-auto no-scrollbar flex gap-5 w-full select-none"
             style={{
               scrollbarWidth: 'none',
               msOverflowStyle: 'none',
@@ -181,30 +156,32 @@ export default function MetricsCarousel() {
             {looped.map((metric, i) => (
               <div
                 key={i}
-                className="h-full shrink-0 border border-white/10 rounded-[2rem] overflow-hidden relative flex flex-col justify-end group shadow-2xl"
-                style={{ width: `calc((100% - (24px * (${visibleCards} - 1))) / ${visibleCards})` }}
+                className="h-full shrink-0 border border-fg/10 rounded-sheet overflow-hidden relative flex flex-col justify-end group bg-raised"
+                style={{ width: `calc((100% - (20px * (${visibleCards} - 1))) / ${visibleCards})` }}
               >
-                {/* Background image */}
                 <div
-                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110 pointer-events-none"
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-numera group-hover:scale-105 pointer-events-none"
                   style={{ backgroundImage: `url(${metric.image})` }}
                 />
-                {/* Dark gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none" />
-                {/* Glass content */}
                 <div
-                  className="relative z-10 m-4 md:m-5 p-5 md:p-6 rounded-xl pointer-events-none border border-white/[0.12]"
+                  className="absolute inset-0 pointer-events-none"
                   style={{
-                    background: 'linear-gradient(135deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.58) 100%)',
-                    backdropFilter: 'blur(12px)',
-                    WebkitBackdropFilter: 'blur(12px)',
-                    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.07), 0 4px 24px rgba(0,0,0,0.5)',
+                    background: 'linear-gradient(to top, rgba(10, 10, 9, 0.88) 0%, rgba(10, 10, 9, 0.36) 55%, rgba(10, 10, 9, 0.10) 100%)',
+                  }}
+                />
+                <div
+                  className="relative z-10 m-4 p-5 rounded-card pointer-events-none border border-[rgba(244,243,239,0.14)] text-[#F4F3EF]"
+                  style={{
+                    background: 'rgba(10, 10, 9, 0.82)',
+                    backdropFilter: 'blur(20px)',
+                    WebkitBackdropFilter: 'blur(20px)',
+                    boxShadow: 'inset 0 1px 0 rgba(244, 243, 239, 0.08), 0 18px 40px -16px rgba(0, 0, 0, 0.65)',
                   }}
                 >
-                  <h3 className="text-base md:text-lg font-medium text-white tracking-tight mb-2 leading-snug">
+                  <h3 className="text-base md:text-lg font-medium text-[#F4F3EF] tracking-[-0.015em] mb-1.5 leading-snug">
                     {metric.title}
                   </h3>
-                  <p className="text-xs md:text-sm text-white/75 font-light leading-relaxed">
+                  <p className="text-xs md:text-sm text-[#BDBBB4] font-light leading-relaxed">
                     {metric.desc}
                   </p>
                 </div>
@@ -212,10 +189,10 @@ export default function MetricsCarousel() {
             ))}
           </div>
 
-          {/* ▶ Right button */}
           <button
+            type="button"
             onClick={() => scrollCard(1)}
-            className="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full border border-white/10 bg-black/70 backdrop-blur-sm flex items-center justify-center text-white/40 hover:text-white hover:border-[#00BFA5]/40 hover:bg-[#00BFA5]/10 transition-all duration-300"
+            className="hidden sm:flex absolute right-3 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full border border-fg/15 bg-raised/90 backdrop-blur-md items-center justify-center text-fg-2 hover:text-fg hover:border-fg/35 hover:bg-sunken cursor-pointer transition-[background-color,border-color,color,transform] duration-200 ease-numera active:scale-[0.96]"
             aria-label="Próximo"
           >
             <ChevronRight size={16} />
@@ -223,21 +200,19 @@ export default function MetricsCarousel() {
         </div>
 
         {/* Dots */}
-        <div className="flex justify-center gap-2.5 mt-10 mb-4">
+        <div className="flex justify-center gap-2 mt-8">
           {metrics.map((_, i) => (
             <button
               key={i}
+              type="button"
               onClick={() => scrollToDot(i)}
-              className={`h-1.5 rounded-full transition-all duration-500 ease-out ${
-                activeDot === i
-                  ? 'w-8 bg-white shadow-[0_0_12px_rgba(255,255,255,0.4)]'
-                  : 'w-1.5 bg-white/20 hover:bg-white/40'
+              className={`h-1.5 rounded-full cursor-pointer transition-[width,background-color] duration-300 ease-numera ${
+                activeDot === i ? 'w-7 bg-accent' : 'w-1.5 bg-fg/20 hover:bg-fg/40'
               }`}
               aria-label={`Slide ${i + 1}`}
             />
           ))}
         </div>
-
       </div>
     </section>
   )

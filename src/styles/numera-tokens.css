@@ -1,0 +1,184 @@
+/* ============================================================================
+   Numera Ecosystem Portable Design Tokens (Onix & Algodao Cru)
+   Baseline shared across Numera, Monno, Cronos, and NYOT
+   ============================================================================ */
+
+:root,
+html.dark,
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --ease-numera: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-nyot: var(--ease-numera);
+
+  /* Surface & Text Channels (RGB triplets for opacity composition) */
+  --c-canvas: 10 10 9;         /* #0A0A09 Onix */
+  --c-raised: 20 20 18;        /* #141412 */
+  --c-sunken: 34 34 31;        /* #22221F */
+  --c-fg:     244 243 239;     /* #F4F3EF Algodao Cru (17.84:1 vs #0A0A09) */
+  --c-fg-2:   189 187 180;     /* #BDBBB4 (10.31:1) */
+  --c-fg-3:   150 148 141;     /* #96948D (6.52:1) */
+  --c-line:   112 110 104;     /* #706E68 */
+  --c-fg-4:   84 82 77;        /* #54524D */
+  --c-ov:     244 243 239;     /* Overlay tint */
+
+  /* Monochrome Interactive Accent */
+  --c-accent:       244 243 239; /* #F4F3EF */
+  --c-accent-fg:    234 232 225; /* #EAE8E1 */
+  --c-on-accent:    10 10 9;     /* #0A0A09 */
+  --c-accent-hover: 214 212 204; /* #D6D4CC */
+
+  --c-primary:       244 243 239;
+  --c-on-primary:    10 10 9;
+  --c-primary-hover: 234 232 225;
+
+  --line-strong: rgb(244 243 239 / 0.24);
+
+  /* Chart Channels */
+  --c-chart-hi:   142 184 159; /* #8EB89F Salvia */
+  --c-chart-plan: 112 110 104; /* #706E68 */
+  --c-chart-real: 214 212 204; /* #D6D4CC */
+
+  /* Muted Clinical / Analytical Semantics */
+  --c-positive:    142 184 159; /* #8EB89F Salvia (8.97:1) */
+  --c-positive-fg: 142 184 159;
+  --c-negative:    224 163 157; /* #E0A39D Terracota (9.33:1) */
+  --c-negative-fg: 224 163 157;
+  --c-on-negative: 10 10 9;
+  --c-warning:     209 184 134; /* #D1B886 Areia (10.29:1) */
+  --c-warning-fg:  209 184 134;
+  --c-info:        145 184 214; /* #91B8D6 Ardosia (9.46:1) */
+  --c-info-fg:     145 184 214;
+
+  /* Smoked Glass Surfaces */
+  --glass-1-fill:   rgba(244, 243, 239, 0.02);
+  --glass-1-stroke: rgba(244, 243, 239, 0.08);
+  --glass-2-fill:   rgba(244, 243, 239, 0.04);
+  --glass-2-stroke: rgba(244, 243, 239, 0.08);
+  --glass-2-shadow: inset 0 1px 0 rgba(244, 243, 239, 0.06), 0 24px 64px -28px rgba(0, 0, 0, 0.65);
+  --glass-3-fill:   rgba(20, 20, 18, 0.84);
+  --glass-3-stroke: rgba(244, 243, 239, 0.12);
+  --glass-3-shadow: inset 0 1px 0 rgba(244, 243, 239, 0.10), 0 32px 64px rgba(0, 0, 0, 0.55);
+  --glass-bar-fill: rgba(10, 10, 9, 0.86);
+}
+
+html.light,
+.light,
+:root[data-theme='light'] {
+  color-scheme: light;
+  --ease-numera: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-nyot: var(--ease-numera);
+
+  --c-canvas: 244 243 239;     /* #F4F3EF Algodao Cru */
+  --c-raised: 250 249 246;     /* #FAF9F6 */
+  --c-sunken: 234 232 225;     /* #EAE8E1 */
+  --c-fg:     10 10 9;         /* #0A0A09 Onix (17.84:1 vs #F4F3EF) */
+  --c-fg-2:   82 81 75;        /* #52514B (7.17:1) */
+  --c-fg-3:   107 105 97;      /* #6B6961 (4.95:1) */
+  --c-line:   150 148 141;     /* #96948D */
+  --c-fg-4:   189 187 180;     /* #BDBBB4 */
+  --c-ov:     10 10 9;
+
+  --c-accent:       10 10 9;     /* #0A0A09 */
+  --c-accent-fg:    20 20 18;    /* #141412 */
+  --c-on-accent:    244 243 239; /* #F4F3EF */
+  --c-accent-hover: 34 34 31;    /* #22221F */
+
+  --c-primary:       10 10 9;
+  --c-on-primary:    244 243 239;
+  --c-primary-hover: 34 34 31;
+
+  --line-strong: rgb(10 10 9 / 0.32);
+
+  --c-chart-hi:   61 115 85;   /* #3D7355 */
+  --c-chart-plan: 150 148 141; /* #96948D */
+  --c-chart-real: 20 20 18;    /* #141412 */
+
+  --c-positive:    61 115 85;  /* #3D7355 fill */
+  --c-positive-fg: 46 100 71;  /* #2E6447 text (6.24:1) */
+  --c-negative:    158 61 56;  /* #9E3D38 Terracota (5.95:1) */
+  --c-negative-fg: 158 61 56;
+  --c-on-negative: 250 249 246;
+  --c-warning:     130 94 30;  /* #825E1E Areia (5.30:1) */
+  --c-warning-fg:  130 94 30;
+  --c-info:        43 94 133;  /* #2B5E85 Ardosia (6.22:1) */
+  --c-info-fg:     43 94 133;
+
+  --glass-1-fill:   rgba(250, 249, 246, 0.60);
+  --glass-1-stroke: rgba(10, 10, 9, 0.08);
+  --glass-2-fill:   rgba(250, 249, 246, 0.76);
+  --glass-2-stroke: rgba(10, 10, 9, 0.10);
+  --glass-2-shadow: 0 2px 12px rgba(10, 10, 9, 0.04);
+  --glass-3-fill:   rgba(250, 249, 246, 0.90);
+  --glass-3-stroke: rgba(10, 10, 9, 0.12);
+  --glass-3-shadow: 0 24px 48px rgba(10, 10, 9, 0.08);
+  --glass-bar-fill: rgba(244, 243, 239, 0.88);
+}
+
+/* Shape & Glass Constants */
+:root {
+  --r-tag: 6px;
+  --r-icon: 10px;
+  --r-field: 14px;
+  --r-card: 18px;
+  --r-sheet: 26px;
+  --r-pill: 9999px;
+
+  --glass-1-blur: 16px;
+  --glass-2-blur: 28px;
+  --glass-3-blur: 40px;
+}
+
+.glass-1 {
+  background: var(--glass-1-fill);
+  border: 1px solid var(--glass-1-stroke);
+  -webkit-backdrop-filter: blur(var(--glass-1-blur));
+  backdrop-filter: blur(var(--glass-1-blur));
+}
+
+.glass-2 {
+  background: var(--glass-2-fill);
+  border: 1px solid var(--glass-2-stroke);
+  box-shadow: var(--glass-2-shadow);
+  -webkit-backdrop-filter: blur(var(--glass-2-blur));
+  backdrop-filter: blur(var(--glass-2-blur));
+}
+
+.glass-3 {
+  background: var(--glass-3-fill);
+  border: 1px solid var(--glass-3-stroke);
+  box-shadow: var(--glass-3-shadow);
+  -webkit-backdrop-filter: blur(var(--glass-3-blur)) saturate(130%);
+  backdrop-filter: blur(var(--glass-3-blur)) saturate(130%);
+}
+
+.glass-bar {
+  background: var(--glass-bar-fill);
+  border-bottom: 1px solid var(--glass-2-stroke);
+  -webkit-backdrop-filter: blur(var(--glass-3-blur)) saturate(130%);
+  backdrop-filter: blur(var(--glass-3-blur)) saturate(130%);
+}
+
+/* Figtree UI Eyebrow (strictly non-mono) */
+.label-ui {
+  font-family: 'Figtree', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 11px;
+  line-height: 15px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

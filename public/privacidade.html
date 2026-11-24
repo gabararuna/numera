@@ -3,88 +3,157 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0A0A09">
+  <script src="/theme-init.js"></script>
   <title>Política de Privacidade | Numera</title>
   <meta name="description" content="Política de Privacidade da Numera — transparência no tratamento de dados pessoais conforme a LGPD (Lei 13.709/2018).">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
   <style>
+    :root, html.dark, :root[data-theme="dark"] {
+      color-scheme: dark;
+      --c-canvas: #0A0A09;
+      --c-raised: #141412;
+      --c-sunken: #22221F;
+      --c-fg: #F4F3EF;
+      --c-fg-2: #BDBBB4;
+      --c-fg-3: #96948D;
+      --c-line: rgba(244, 243, 239, 0.11);
+      --c-positive: #8EB89F;
+      --glass-bar: rgba(10, 10, 9, 0.86);
+    }
+    html.light, :root[data-theme="light"] {
+      color-scheme: light;
+      --c-canvas: #F4F3EF;
+      --c-raised: #FAF9F6;
+      --c-sunken: #EAE8E1;
+      --c-fg: #0A0A09;
+      --c-fg-2: #52514B;
+      --c-fg-3: #6B6961;
+      --c-line: rgba(10, 10, 9, 0.11);
+      --c-positive: #2E6447;
+      --glass-bar: rgba(244, 243, 239, 0.88);
+    }
+    :root {
+      --ease-numera: cubic-bezier(0.22, 1, 0.36, 1);
+      --font-sans: 'Figtree', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'DM Mono', ui-monospace, monospace;
+    }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background: #000;
-      color: #fff;
-      font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+      background: var(--c-canvas);
+      color: var(--c-fg);
+      font-family: var(--font-sans);
       font-weight: 300;
-      line-height: 1.75;
+      line-height: 1.7;
       -webkit-font-smoothing: antialiased;
+      transition: background-color 0.32s var(--ease-numera), color 0.32s var(--ease-numera);
     }
-    a { color: #00BFA5; text-decoration: underline; }
-    a:hover { color: #00E6C7; }
+    a { color: var(--c-fg); text-decoration: underline; text-underline-offset: 3px; }
+    a:hover { color: var(--c-fg-2); }
+    .mono { font-family: var(--font-mono); font-size: 0.875em; }
     header {
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      padding: 1.25rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: var(--glass-bar);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--c-line);
+      padding: 0.9rem 2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
-    header a.brand { color: #fff; text-decoration: none; font-size: 1rem; font-weight: 500; letter-spacing: -0.01em; }
-    header a.back { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.2s; }
-    header a.back:hover { color: #fff; }
-    main { max-width: 720px; margin: 0 auto; padding: 5rem 2rem 6rem; }
-    h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 500; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
-    .subtitle { color: rgba(255,255,255,0.35); margin-bottom: 3.5rem; font-size: 0.95rem; }
-    h2 { font-size: 1.125rem; font-weight: 500; color: #fff; margin-top: 2.5rem; margin-bottom: 0.75rem; }
-    p { color: rgba(255,255,255,0.55); margin-bottom: 1rem; font-size: 0.9375rem; }
-    ul { color: rgba(255,255,255,0.55); font-size: 0.9375rem; padding-left: 1.5rem; margin-bottom: 1rem; }
-    ul li { margin-bottom: 0.4rem; }
+    header a.brand {
+      color: var(--c-fg);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+    .header-actions { display: flex; align-items: center; gap: 14px; }
+    header a.back {
+      color: var(--c-fg-3);
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      transition: color 0.2s var(--ease-numera);
+    }
+    header a.back:hover { color: var(--c-fg); }
+    main { max-width: 740px; margin: 0 auto; padding: 4.5rem 1.5rem 6rem; }
+    h1 { font-size: clamp(2rem, 5vw, 2.9rem); font-weight: 500; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 0.6rem; }
+    .subtitle { color: var(--c-fg-3); margin-bottom: 3rem; font-size: 0.95rem; }
+    h2 { font-size: 1.2rem; font-weight: 500; letter-spacing: -0.015em; color: var(--c-fg); margin-top: 2.5rem; margin-bottom: 0.75rem; }
+    p { color: var(--c-fg-2); margin-bottom: 1rem; font-size: 0.95rem; }
+    ul { color: var(--c-fg-2); font-size: 0.95rem; padding-left: 1.4rem; margin-bottom: 1rem; }
+    ul li { margin-bottom: 0.45rem; }
+    strong { color: var(--c-fg); font-weight: 500; }
     .card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 12px;
-      padding: 1.25rem 1.5rem;
-      margin: 1rem 0 1.5rem;
+      background: var(--c-raised);
+      border: 1px solid var(--c-line);
+      border-radius: 18px;
+      padding: 1.35rem 1.5rem;
+      margin: 1rem 0 1.35rem;
     }
     .card-title {
-      font-size: 0.625rem;
+      font-size: 11px;
+      line-height: 15px;
       text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: #00BFA5;
+      letter-spacing: 0.12em;
+      color: var(--c-fg-3);
       display: block;
       margin-bottom: 0.75rem;
       font-weight: 500;
     }
-    .card p { color: rgba(255,255,255,0.45); margin: 0 0 0.5rem; font-size: 0.875rem; }
+    .card p { color: var(--c-fg-2); margin: 0 0 0.5rem; font-size: 0.875rem; }
     .card p:last-child { margin-bottom: 0; }
-    .card ul { color: rgba(255,255,255,0.45); font-size: 0.875rem; margin: 0; }
     .highlight {
-      background: rgba(0,191,165,0.05);
-      border: 1px solid rgba(0,191,165,0.15);
-      border-radius: 12px;
-      padding: 1.25rem 1.5rem;
+      background: var(--c-sunken);
+      border: 1px solid var(--c-line);
+      border-radius: 18px;
+      padding: 1.35rem 1.5rem;
       margin-top: 0.75rem;
     }
-    .highlight p { color: rgba(255,255,255,0.45); margin: 0; font-size: 0.875rem; }
-    .label { font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.15em; color: #00BFA5; display: block; margin-bottom: 0.5rem; }
-    .divider { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 2rem 0; }
-    footer { border-top: 1px solid rgba(255,255,255,0.08); padding: 2rem; text-align: center; }
-    footer p { color: rgba(255,255,255,0.2); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; }
+    .highlight p { color: var(--c-fg-2); margin: 0; font-size: 0.875rem; }
+    .label { font-size: 11px; line-height: 15px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.12em; color: var(--c-positive); display: block; margin-bottom: 0.5rem; }
+    .divider { border: none; border-top: 1px solid var(--c-line); margin: 2.25rem 0; }
+    footer { border-top: 1px solid var(--c-line); padding: 2rem 1.5rem; text-align: center; }
+    footer p { color: var(--c-fg-3); font-size: 0.75rem; letter-spacing: 0.04em; margin: 0; }
   </style>
 </head>
 <body>
   <header>
-    <a class="brand" href="/">Numera</a>
-    <a class="back" href="/">← Voltar</a>
+    <a class="brand" href="/">
+      <svg width="22" height="22" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+        <path d="M 24.4 47.8 L 21.9 50.3 A 5.8 5.8 0 0 1 12 46.2 V 17.8 A 5.8 5.8 0 0 1 21.9 13.7 L 40.2 32" stroke="currentColor" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M 39.6 16.2 L 42.1 13.7 A 5.8 5.8 0 0 1 52 17.8 V 46.2 A 5.8 5.8 0 0 1 42.1 50.3 L 23.8 32" stroke="currentColor" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <span>Numera</span>
+    </a>
+    <div class="header-actions">
+      <a class="back" href="/">Voltar ao início</a>
+    </div>
   </header>
 
   <main>
     <h1>Política de Privacidade</h1>
     <p class="subtitle">Última atualização: maio de 2026 — em conformidade com a Lei nº 13.709/2018 (LGPD)</p>
 
-    <!-- 1. CONTROLADOR -->
     <h2>1. Identificação do Controlador</h2>
     <p>
       O controlador responsável pelo tratamento dos dados pessoais coletados neste site é a
       <strong>Numera Consultoria de Engenharia LTDA</strong>, nome fantasia <strong>Numera Consultoria</strong>,
       inscrita no CNPJ sob o nº <strong>51.387.729/0001-01</strong>, operadora do domínio
-      <strong>gruponumera.com</strong> e subdomínios associados
+      <span class="mono">gruponumera.com</span> e subdomínios associados
       (esticaferias, remunera, habita, mega, mobi, cronos, monno, sage, bateesteira, integra, nyot).
     </p>
     <div class="highlight">
@@ -99,14 +168,13 @@
 
     <hr class="divider">
 
-    <!-- 2. DADOS COLETADOS -->
     <h2>2. Quais Dados Tratamos e Para Quê</h2>
     <p>Tratamos apenas os dados estritamente necessários para cada finalidade descrita abaixo.</p>
 
     <div class="card">
-      <span class="card-title">2a — Preferência de idioma</span>
-      <p><strong>Dado:</strong> código do idioma selecionado pelo usuário (ex: "pt", "en", "es").</p>
-      <p><strong>Finalidade:</strong> exibir o site no idioma preferido do usuário entre sessões.</p>
+      <span class="card-title">2a — Preferência de idioma e tema</span>
+      <p><strong>Dado:</strong> código do idioma selecionado pelo usuário (ex: "pt", "en", "es") e tema visual ("dark" ou "light").</p>
+      <p><strong>Finalidade:</strong> exibir o site no idioma e aparência preferidos entre sessões.</p>
       <p><strong>Base legal:</strong> legítimo interesse do controlador (art. 7º, IX da Lei 13.709/2018) — melhoria da experiência sem identificação pessoal.</p>
       <p><strong>Retenção:</strong> armazenado localmente no navegador do usuário (localStorage); eliminado ao limpar os dados do navegador ou mediante solicitação.</p>
       <p><strong>Natureza do dado:</strong> não é dado pessoal — não permite identificação individual.</p>
@@ -139,19 +207,17 @@
 
     <hr class="divider">
 
-    <!-- 3. BASE LEGAL -->
     <h2>3. Base Legal do Tratamento (Art. 7º, LGPD)</h2>
     <p>Todo tratamento de dados realizado pela Numera está fundamentado em pelo menos uma das seguintes bases legais:</p>
     <ul>
       <li><strong>Consentimento (art. 7º, I):</strong> cookies analíticos e de publicidade, quando aplicável, e dados de contato iniciados pelo titular.</li>
       <li><strong>Cumprimento de obrigação legal (art. 7º, II):</strong> registro de logs de acesso (Marco Civil da Internet) e registro de consentimento (LGPD).</li>
       <li><strong>Execução de contrato ou procedimentos preliminares (art. 7º, V):</strong> tratamento de dados necessário para responder a solicitações comerciais.</li>
-      <li><strong>Legítimo interesse do controlador (art. 7º, IX):</strong> preferência de idioma (funcionalidade essencial) e logs de acesso para segurança do serviço, desde que não prevaleçam sobre os interesses ou direitos fundamentais do titular.</li>
+      <li><strong>Legítimo interesse do controlador (art. 7º, IX):</strong> preferência de idioma/tema (funcionalidade essencial) e logs de acesso para segurança do serviço, desde que não prevaleçam sobre os interesses ou direitos fundamentais do titular.</li>
     </ul>
 
     <hr class="divider">
 
-    <!-- 4. COMPARTILHAMENTO E TRANSFERÊNCIA -->
     <h2>4. Compartilhamento e Transferência Internacional de Dados</h2>
     <p>
       A Numera não vende dados pessoais. O compartilhamento ocorre apenas na medida necessária
@@ -190,11 +256,10 @@
 
     <hr class="divider">
 
-    <!-- 5. RETENÇÃO -->
     <h2>5. Retenção de Dados</h2>
     <p>Os dados são mantidos pelo menor tempo necessário para cumprir as finalidades descritas:</p>
     <ul>
-      <li><strong>Preferência de idioma:</strong> até o usuário limpar os dados do navegador (sem prazo fixo).</li>
+      <li><strong>Preferência de idioma e tema:</strong> até o usuário limpar os dados do navegador (sem prazo fixo).</li>
       <li><strong>Registro de consentimento:</strong> 13 meses, renovado a cada nova manifestação de consentimento.</li>
       <li><strong>Logs de acesso (Cloudflare):</strong> até 6 meses.</li>
       <li><strong>Dados de contato:</strong> enquanto durar a relação comercial ou até solicitação de exclusão.</li>
@@ -206,7 +271,6 @@
 
     <hr class="divider">
 
-    <!-- 6. DIREITOS DO TITULAR -->
     <h2>6. Seus Direitos como Titular (Art. 18, LGPD)</h2>
     <p>
       Em conformidade com a Lei Geral de Proteção de Dados, você tem os seguintes direitos em relação
@@ -236,7 +300,6 @@
 
     <hr class="divider">
 
-    <!-- 7. SEGURANÇA -->
     <h2>7. Segurança dos Dados</h2>
     <p>
       Adotamos medidas técnicas e organizacionais adequadas para proteger os dados pessoais contra
@@ -255,7 +318,6 @@
 
     <hr class="divider">
 
-    <!-- 8. COOKIES -->
     <h2>8. Cookies</h2>
     <p>
       Utilizamos cookies e tecnologias similares para garantir o funcionamento do site e,
@@ -270,7 +332,6 @@
 
     <hr class="divider">
 
-    <!-- 9. LINKS EXTERNOS -->
     <h2>9. Links para Sites de Terceiros</h2>
     <p>
       Este site pode conter links para sites externos. Não somos responsáveis pelas práticas
@@ -280,7 +341,6 @@
 
     <hr class="divider">
 
-    <!-- 10. MENORES -->
     <h2>10. Proteção de Menores</h2>
     <p>
       Nossos serviços são direcionados a pessoas com 18 anos ou mais. Não coletamos
@@ -290,7 +350,6 @@
 
     <hr class="divider">
 
-    <!-- 11. ALTERAÇÕES -->
     <h2>11. Alterações nesta Política</h2>
     <p>
       Esta Política de Privacidade pode ser atualizada periodicamente para refletir mudanças
@@ -304,7 +363,6 @@
 
     <hr class="divider">
 
-    <!-- 12. CONTATO -->
     <h2>12. Contato e Encarregado de Dados</h2>
     <p>
       Para quaisquer questões sobre esta Política de Privacidade, o tratamento de seus dados

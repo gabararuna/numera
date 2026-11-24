@@ -1,0 +1,201 @@
+/* ============================================================================
+   Numera Ecosystem Design System — Layout, Shell & Component Tokens
+   Import strictly AFTER docs/brand/v1/tokens/numera-tokens.css.
+   Zero hardcoded colors or all-property transitions.
+   ============================================================================ */
+
+:root {
+  /* Shell proportions (mobile baseline < 768px) */
+  --header-h: 56px;
+  --dock-h: 56px;
+  --dock-gap: calc(12px + env(safe-area-inset-bottom));
+  --dock-space: calc(var(--dock-h) + var(--dock-gap) + 24px);
+  --sidebar-secondary-w: 272px;
+
+  /* Content width tiers */
+  --container-focused: 1024px;
+  --container-operational: 1440px;
+  --container-analytical: 1600px;
+
+  /* Layering scale */
+  --z-base: 10;
+  --z-sticky: 20;
+  --z-fab: 30;
+  --z-bar: 40;
+  --z-dock: 40;
+  --z-dropdown: 60;
+  --z-modal: 70;
+  --z-alert: 80;
+  --z-splash: 90;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --header-h: 64px;
+    --dock-gap: 24px;
+    /* Desktop uses Top Bar; reclaim vertical space on fixed-height tables */
+    --dock-space: 16px;
+  }
+}
+
+/* Skip link for keyboard navigation */
+.numera-skip-link {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.numera-skip-link:focus {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: var(--z-dropdown);
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  padding: 10px 18px;
+  border-radius: var(--r-pill);
+  background: rgb(var(--c-raised));
+  color: rgb(var(--c-fg));
+  border: 1px solid var(--line-strong);
+  font-size: 14px;
+  font-weight: 500;
+  outline: 2px solid rgb(var(--c-accent));
+  outline-offset: 2px;
+}
+
+/* Top Bar 3-zone structural helpers */
+.numera-top-bar {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-bar);
+  padding-top: env(safe-area-inset-top);
+  background: var(--glass-bar-fill);
+  border-bottom: 1px solid var(--glass-2-stroke);
+  -webkit-backdrop-filter: blur(var(--glass-3-blur)) saturate(130%);
+  backdrop-filter: blur(var(--glass-3-blur)) saturate(130%);
+}
+
+.numera-top-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 4px;
+  border-radius: var(--r-pill);
+  border: 1px solid rgb(var(--c-ov) / 0.08);
+  background: rgb(var(--c-ov) / 0.02);
+}
+
+.numera-nav-item {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: 0 14px;
+  border-radius: var(--r-pill);
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  color: rgb(var(--c-fg-2));
+  user-select: none;
+  text-decoration: none;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  transition: color 0.15s var(--ease-numera);
+}
+
+.numera-nav-item:hover {
+  color: rgb(var(--c-fg));
+}
+
+.numera-nav-item[aria-current='page'],
+.numera-nav-item[data-active='true'] {
+  color: rgb(var(--c-fg));
+}
+
+.numera-nav-active {
+  border-radius: var(--r-pill);
+  border: 1px solid var(--line-strong);
+  background: rgb(var(--c-ov) / 0.08);
+}
+
+/* Mobile Floating Dock */
+.numera-dock {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: var(--dock-h);
+  max-width: 100%;
+  padding: 4px 6px;
+  border-radius: var(--r-pill);
+  background: var(--glass-3-fill);
+  border: 1px solid var(--glass-3-stroke);
+  box-shadow: var(--glass-3-shadow);
+  -webkit-backdrop-filter: blur(var(--glass-3-blur)) saturate(130%);
+  backdrop-filter: blur(var(--glass-3-blur)) saturate(130%);
+}
+
+/* Unified Account Menu container */
+.numera-account-menu {
+  width: 272px;
+  border-radius: var(--r-card);
+  overflow: hidden;
+  background: var(--glass-3-fill);
+  border: 1px solid var(--glass-3-stroke);
+  box-shadow: var(--glass-3-shadow);
+  -webkit-backdrop-filter: blur(var(--glass-3-blur)) saturate(130%);
+  backdrop-filter: blur(var(--glass-3-blur)) saturate(130%);
+}
+
+/* Canonical underlined input (16px avoids mobile Safari focus zoom, 44px+ hit target) */
+.numera-input {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgb(var(--c-fg));
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line-strong);
+  border-radius: 0;
+  outline: none;
+  transition: border-color 0.15s var(--ease-numera), box-shadow 0.15s var(--ease-numera);
+}
+
+.numera-input::placeholder {
+  color: rgb(var(--c-fg-3));
+}
+
+.numera-input:hover:not(:focus):not(:disabled) {
+  border-bottom-color: rgb(var(--c-ov) / 0.6);
+}
+
+.numera-input:focus {
+  border-bottom-color: rgb(var(--c-accent));
+  box-shadow: 0 1px 0 0 rgb(var(--c-accent));
+}
+
+.numera-input[aria-invalid='true'] {
+  border-bottom-color: rgb(var(--c-negative));
+}
+
+.numera-input[aria-invalid='true']:focus {
+  box-shadow: 0 1px 0 0 rgb(var(--c-negative));
+}
+
+.numera-input:disabled {
+  color: rgb(var(--c-fg-4));
+  border-bottom-color: rgb(var(--c-ov) / 0.12);
+  cursor: not-allowed;
+}

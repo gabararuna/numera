@@ -4,12 +4,17 @@ Regras estruturais para tudo que vive dentro de `<main id="main-content">`.
 
 ---
 
-## 1. Cabeçalho Padrão de Página (`PageHeader`)
+## 1. Cabeçalho Padrão de Página (`PageHeader`) & Padrão de Data
 
-Toda página interna começa com o mesmo cabeçalho flexível:
+Toda página interna começa com cabeçalho enxuto e data padronizada:
 - **Esquerda (`min-w-0`):**
   - `<h1>` em `text-h1` (`32px / 40px · Figtree 300 · tracking -0.025em`) ou `text-h2` (`24px`) em sub-telas densas de tabela.
-  - Subtítulo ou data contextual em `text-body text-fg-2 mt-1`.
+  - **Saudação vs Operacional:** duas variações oficiais de `Início`:
+    - **Saudação pessoal** (**Monno**, **NYOT**): `<h1>Olá, {primeiroNome}</h1>` com eyebrow da data logo abaixo (`mt-1.5`).
+    - **Operacional direto** (**Cronos**, consoles **B2B**): eyebrow da data diretamente no topo do painel operacional ao vivo (sem `Olá`).
+  - **Formato canônico de data no cabeçalho:** `WeekdaySemFeira, D de mês` — dia da semana natural sem `"-feira"` (`Domingo`, `Segunda`, `Terça`, `Quarta`, `Quinta`, `Sexta`, `Sábado`), dia sem zero à esquerda (`1`–`31`) e mês completo em minúsculas (`janeiro`..`dezembro`), ex.: **`Terça, 24 de novembro`**.
+  - **Estilo visual da data:** sempre em eyebrow tipográfico (`.label-ui` / `.label-mono` / `.t-eyebrow` com `.num`: `Figtree 11px 500 uppercase tracking-[0.12em] text-fg-3`), exibindo **`TERÇA, 24 DE NOVEMBRO`**.
+  - Datas compactas dentro de tabelas, gráficos e badges continuam abreviadas (`24 nov` ou `24/11`).
 - **Direita (`flex items-center gap-2 shrink-0`):**
   - Filtros (`FilterBar`), alternadores de visão (`SegmentedControl`) e **no máximo 1 ação primária (`Button variant="primary"`)**.
   - No mobile, botões primários de criação recorrente podem ir para um FAB (`h-14 w-14 rounded-full bottom-[calc(var(--dock-h)+var(--dock-gap)+16px)] right-4 md:hidden`), mantendo o topo livre.

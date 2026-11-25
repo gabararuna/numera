@@ -13,12 +13,13 @@ Nunca escolher aleatoriamente entre modal, gaveta ou popover:
 | **`ConfirmDialog`** | Bottom sheet compacto | AlertDialog centralizado `max-w-md` (`role="alertdialog"`) | Confirmações irreversíveis (`Excluir conta`, `Revogar acesso`); exige botão neutro à esquerda + ação destrutiva à direita |
 | **`Popover`** | Floating `glass-3` contido à viewport (`max-h` + scroll interno) | Floating `glass-3` ancorado no trigger | Filtros (`FilterBar`), menus de contexto (`AccountMenu`) |
 
-**Regras obrigatórias de acessibilidade em modais/sheets:**
-1. Prender o foco (`Tab` / `Shift+Tab`) dentro do painel aberto e fechar com `Escape`.
-2. Devolver o foco ao botão de origem ao fechar.
-3. Bloquear scroll do fundo (`overflow-hidden`) enquanto aberto.
-4. Botão fechar `X` sempre com hit box mínimo de **`44×44px`**, no canto superior direito (`z-10`).
-5. **Auto-foco inteligente em `FormSheet`:** focar o primeiro campo útil (ex.: valor ou título), nunca o botão `X`.
+**Regras obrigatórias de acessibilidade e camada em overlays (`backdrop-filter`):**
+1. **Regra do Portal:** qualquer menu flutuante, dropdown, popover ou modal (`AccountMenu`, `Dialog`, `FormSheet`) deve renderizar via `createPortal(..., document.body)` em `z-[60]` (`--z-dropdown`) ou `z-[70]` (`--z-modal`). Nunca renderizar menus flutuantes presos dentro de `<header className="glass-bar">` ou cards `.glass-2` (pois `backdrop-filter` cria *stacking context* próprio e faz cards posteriores cobrirem o menu).
+2. Prender o foco (`Tab` / `Shift+Tab`) dentro de modais/sheets abertos e fechar com `Escape`.
+3. Devolver o foco ao botão de origem ao fechar.
+4. Bloquear scroll do fundo (`overflow-hidden`) enquanto um modal/sheet estiver aberto.
+5. Botão fechar `X` sempre com hit box mínimo de **`44×44px`**, no canto superior direito (`z-10`).
+6. **Auto-foco inteligente em `FormSheet`:** focar o primeiro campo útil (ex.: valor ou título), nunca o botão `X`.
 
 ---
 

@@ -473,8 +473,12 @@
       cursor: pointer;
     }
     .sim-dd-item:hover { background: rgba(var(--c-ov), 0.06); }
+    .sim-dd-item.eco-link { color: var(--c-fg-2); text-decoration: none; }
+    .sim-dd-item.eco-link:hover { color: var(--c-fg); }
     .sim-dd-item.current { background: rgba(var(--c-ov), 0.06); font-weight: 500; }
     .sim-dd-item.danger { color: var(--c-negative-fg); }
+    #simEcoSwitch .eco-mark-slot { display: inline-flex; align-items: center; }
+    #simEcoSwitch .eco-mark-slot svg { width: 14px; height: 14px; display: block; flex-shrink: 0; }
 
     /* Simulated Main */
     .sim-main {
@@ -1001,7 +1005,7 @@
 
       <div class="grid-2">
         <div class="card">
-          <h3>Glossário Canônico PT-BR</h3>
+          <h3>Glossário Canônico &amp; Datas</h3>
           <table class="spec-table" style="margin-top:10px;">
             <thead>
               <tr><th>Conceito</th><th>Canônico (Usar)</th><th>Legado (Evitar)</th></tr>
@@ -1010,7 +1014,10 @@
               <tr><td>Tela principal</td><td><strong>Início</strong></td><td>Resumo, Dashboard, Home</td></tr>
               <tr><td>Preferências</td><td><strong>Ajustes</strong></td><td>Misturar Configurações/Ajustes</td></tr>
               <tr><td>Admin org</td><td><strong>Administração</strong></td><td>Admin isolado, Painel</td></tr>
-              <tr><td>Tema no menu</td><td><strong>Tema claro / Tema escuro</strong></td><td>Light Mode, Dark Mode</td></tr>
+              <tr><td>Tema no menu</td><td><strong>Tema Claro / Tema Escuro</strong></td><td>Light Mode, Dark Mode, Tema claro</td></tr>
+              <tr><td>Badge no switcher</td><td><strong>Atual</strong></td><td>atual, current, Ativo</td></tr>
+              <tr><td>Ordem no Ecossistema</td><td><strong>Numera · Monno · Cronos · NYOT</strong></td><td>gruponumera.com desalinhado no rodapé</td></tr>
+              <tr><td>Data de cabeçalho</td><td><strong class="eyebrow" style="color:var(--c-fg);">Terça, 24 de novembro</strong></td><td>ter., 24 de nov. · Terça-feira · Ter, 24</td></tr>
               <tr><td>Endosso</td><td><strong>Um app Numera</strong></td><td>Powered by Numera</td></tr>
             </tbody>
           </table>
@@ -1024,9 +1031,9 @@
             </thead>
             <tbody>
               <tr><td>Logo completo clicável no canto esquerdo</td><td>Símbolo isolado não clicável no app</td></tr>
-              <tr><td>Cápsula central no desktop (`hidden md:flex`)</td><td>Dock flutuante no desktop ou sidebar global</td></tr>
+              <tr><td>TopBar <span class="mono-tech">z-40</span> + menus via <span class="mono-tech">createPortal</span> (<span class="mono-tech">z-[60]</span>)</td><td>Dropdown <span class="mono-tech">fixed</span> preso dentro de <span class="mono-tech">backdrop-filter</span></td></tr>
               <tr><td>Tema e ecossistema dentro do AccountMenu</td><td>Botão de sol/lua ou engrenagem soltos no header</td></tr>
-              <tr><td>Avatar monocromático (`bg-ov/[0.06]`)</td><td>Gradiente teal legado ou círculo sólido gritante</td></tr>
+              <tr><td>Avatar monocromático (<span class="mono-tech">bg-ov/[0.06]</span>)</td><td>Gradiente teal legado ou círculo sólido gritante</td></tr>
             </tbody>
           </table>
         </div>
@@ -1223,7 +1230,7 @@
       const extrasHtml = [
         ...cfg.extras.map(ex => `<button type="button" class="sim-dd-item">${ex}</button>`),
         `<button type="button" class="sim-dd-item" data-action="settings"><span>Ajustes</span></button>`,
-        `<button type="button" class="sim-dd-item" data-action="theme"><span>${dark ? 'Tema claro' : 'Tema escuro'}</span></button>`,
+        `<button type="button" class="sim-dd-item" data-action="theme"><span>${dark ? 'Tema Claro' : 'Tema Escuro'}</span></button>`,
         `<button type="button" class="sim-dd-item" data-action="admin"><span>Administração</span></button>`
       ].join('');
       const extrasEl = document.getElementById('simDropdownExtras');
@@ -1235,15 +1242,21 @@
         renderTheme();
       });
 
+      const arrowSvg = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--c-fg-3);flex-shrink:0;" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>';
       const ecoEl = document.getElementById('simEcoSwitch');
-      ecoEl.innerHTML = ['monno', 'cronos', 'nyot'].map(id => {
+      const numeraRow = `<a href="https://gruponumera.com" target="_blank" rel="noopener noreferrer" class="sim-dd-item eco-link">
+        <span style="display:inline-flex;align-items:center;gap:8px;"><span class="eco-mark-slot">${SVG_MARKS.numera}</span><span>Numera</span></span>
+        ${arrowSvg}
+      </a>`;
+      const appRows = ['monno', 'cronos', 'nyot'].map(id => {
         const appInfo = APP_PROFILES[id];
         const cur = id === state.app;
-        return `<button type="button" class="sim-dd-item ${cur ? 'current' : ''}" data-eco="${id}">
-          <span style="display:inline-flex;align-items:center;gap:8px;">${SVG_MARKS[id]}<span>${appInfo.name}</span></span>
-          <span style="font-size:11px;color:var(--c-fg-3);">${cur ? 'atual' : '↗'}</span>
+        return `<button type="button" class="sim-dd-item ${cur ? 'current' : 'eco-link'}" data-eco="${id}">
+          <span style="display:inline-flex;align-items:center;gap:8px;"><span class="eco-mark-slot">${SVG_MARKS[id]}</span><span>${appInfo.name}</span></span>
+          ${cur ? '<span style="font-size:11px;color:var(--c-fg-3);">Atual</span>' : arrowSvg}
         </button>`;
       }).join('');
+      ecoEl.innerHTML = numeraRow + appRows;
       ecoEl.querySelectorAll('[data-eco]').forEach(btn => {
         btn.addEventListener('click', () => {
           state.app = btn.dataset.eco;
@@ -1260,11 +1273,14 @@
 
       // Main simulated canvas
       const activeTab = cfg.tabs[state.tabIdx];
+      const useGreeting = state.tabIdx === 0 && (state.app === 'monno' || state.app === 'nyot');
+      const headingTitle = useGreeting ? 'Olá, Gabriel' : activeTab;
       document.getElementById('simMain').innerHTML = `
         <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;">
           <div>
             <div class="eyebrow">${cfg.name} · tier <span class="mono-tech">${cfg.tier}</span></div>
-            <h3 style="font-size:28px;font-weight:300;letter-spacing:-0.02em;margin-top:4px;">${activeTab}</h3>
+            <h3 style="font-size:28px;font-weight:300;letter-spacing:-0.02em;margin-top:4px;">${headingTitle}</h3>
+            <div class="eyebrow num" style="margin-top:6px;">Terça, 24 de novembro</div>
           </div>
           <span class="n-btn secondary" style="height:36px;padding:0 14px;font-size:12px;">+ Nova ação</span>
         </div>

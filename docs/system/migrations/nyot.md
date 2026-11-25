@@ -6,7 +6,7 @@
 |---|---|---|
 | **Navegação Desktop** | Sidebar lateral esquerda fixa (`md:w-56 lg:w-64 border-r`) | **Top Bar unificada** em grade de 3 zonas (`max-w-5xl focused`) com cápsula centrada deslizante (`Início · Hábitos · Peso`) |
 | **Header Esquerdo** | Divisão acoplada à largura da sidebar (`md:w-56 border-r`) | Zona fluida alinhada ao container `max-w-5xl` com `<NyotLogo variant="full" />` clicável para `/app` |
-| **Header Direito** | Check-in + Share + Engrenagem solta para Configurações (sem avatar/tema/sair) | Check-in (`Atualização Diária`) + Share + **`AccountMenu` unificado** com monograma, nome, `Ajustes`, `Tema claro/escuro`, `Administração`, **Ecossistema Numera** e `Sair` |
+| **Header Direito** | Check-in + Share + Engrenagem solta para Configurações (sem avatar/tema/sair) | Check-in (`Atualização Diária`) + Share + **`AccountMenu` unificado** com monograma, nome, `Ajustes`, `Tema Claro / Tema Escuro`, `Administração`, **Ecossistema Numera** e `Sair` |
 | **Dock Mobile** | Exibia também `Ajustes` e `Admin` em rolagem horizontal | Focado apenas nos módulos primários (`Início · Hábitos · Peso`), oculto se `<= 1` módulo |
 
 ## Escopo Aplicado Agora (Shell & Tokens)

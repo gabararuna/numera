@@ -16,6 +16,6 @@ Implementação de referência pronta para copiar para novos projetos **Numera B
 ## Arquivos Incluídos
 
 - **`NumeraEcosystemMarks.tsx`**: vetores oficiais `64x64` (`NumeraMark`, `MonnoMark`, `CronosMark`, `NyotMark`) + registro `ECOSYSTEM_APPS`.
-- **`NumeraAccountMenu.tsx`**: gatilho unificado de conta + dropdown `glass-3` com `Ajustes`, `Tema claro/escuro`, `Administração` condicional, switcher `Ecossistema Numera` e `Sair`.
+- **`NumeraAccountMenu.tsx`**: gatilho unificado de conta + dropdown `glass-3` com `Ajustes`, `Tema Claro / Tema Escuro`, `Administração` condicional, switcher `Ecossistema Numera` (`Numera`, `Monno`, `Cronos`, `NYOT`) e `Sair`.
 - **`NumeraAppShell.tsx`**: `NumeraAppShell`, `NumeraTopBar` (grade de 3 zonas + pílula deslizante `--ease-numera`), `NumeraMobileDock` (`md:hidden`) e `SecondaryTwoPane`.
 - **`NumeraPrimitives.tsx`**: componentes base (`Button`, `Toggle`, `SegmentedControl`, `Input`, `EmptyState`, `Notice`).

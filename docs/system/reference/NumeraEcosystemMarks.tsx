@@ -12,6 +12,13 @@ export interface EcosystemAppMeta {
 
 export const ECOSYSTEM_APPS: readonly EcosystemAppMeta[] = [
   {
+    id: 'numera',
+    name: 'Numera',
+    tagline: 'Plataforma e engenharia',
+    domain: 'gruponumera.com',
+    url: 'https://gruponumera.com',
+  },
+  {
     id: 'monno',
     name: 'Monno',
     tagline: 'Finanças e projeção',

@@ -8,7 +8,7 @@
 | **Navegação Desktop** | Apenas Floating Dock flutuante inferior só com ícones (exigia hover para ler nomes) | **Top Bar centrada com rótulos visíveis** (`Início · Projeção · Transações · Recorrências · Análises`) em cápsula `--ease-numera`; `--dock-space` reduzido para `16px` no desktop |
 | **Vocabulário** | Primeira aba chamada `"Resumo"` | Unificado como **`"Início"`** (`/app`) em todo o ecossistema |
 | **Dock Mobile** | Exibido em todas as larguras (desktop + mobile) | Restrito a **`md:hidden`**, mantendo o padrão de bolso apenas em telas pequenas |
-| **AccountMenu** | Sem acesso ao tema claro/escuro nem ao ecossistema | Inclui **`Tema claro / Tema escuro`** sincronizado com `useThemeStore` + faixa **`Ecossistema Numera`** |
+| **AccountMenu** | Sem acesso ao tema claro/escuro nem ao ecossistema | Inclui **`Tema Claro / Tema Escuro`** sincronizado com `useThemeStore` + faixa **`Ecossistema Numera`** (`Numera`, `Monno`, `Cronos`, `NYOT`) |
 | **Higiene Legada** | Gradiente teal legado no avatar do `SettingsSidebar.tsx` | Avatar monocromático oficial `border-ov/[0.14] bg-ov/[0.06] text-fg` |
 
 ## Escopo Aplicado Agora (Shell & Tokens)

@@ -11,14 +11,19 @@ Mesma palavra = mesma função em **todos** os produtos Numera:
 | Página inicial autenticada | **`Início`** | `Resumo`, `Dashboard`, `Home` |
 | Configurações do usuário / app | **`Ajustes`** | Mixing `Configurações` no header e `Ajustes` no rodapé |
 | Área administrativa / organização | **`Administração`** | `Admin` (aceitável só como micro-badge), `Painel` |
-| Alternar tema no menu | **`Tema claro`** / **`Tema escuro`** | `Light Mode`, `Dark Mode`, `Alternar tema` |
+| Alternar tema no menu | **`Tema Claro`** / **`Tema Escuro`** | `Light Mode`, `Dark Mode`, `Alternar tema`, `Tema claro` |
+| App ativo no switcher | **`Atual`** | `atual`, `current`, `Ativo` |
 | Encerrar sessão | **`Sair`** (ou `Sair da conta` em título explícito) | `Logout`, `Desconectar` |
 | Rótulo institucional nos apps | **`Um app Numera`** | `Powered by Numera`, `A Numera app` |
 | Ação de gravação em formulário | **`Salvar`** / **`Salvar alterações`** | `Gravar`, `Submit`, `Atualizar dados` |
 | Fechar / abortar formulário | **`Cancelar`** | `Descartar` (usar apenas para ação explícita com modal) |
 | Remover item permanente | **`Excluir`** | `Apagar`, `Remover` (usar remover apenas para desvincular relação) |
 
-**Grafia das Marcas:** `Numera`, `Monno`, `Cronos` sempre em Title Case. Apenas `NYOT` em caixa alta (nunca colocar `NYOT` e `Not Your Ordinary Tracker` juntos na mesma frase).
+**Grafia das Marcas, Capitalização & Datas:**
+- `Numera`, `Monno`, `Cronos` sempre em Title Case. Apenas `NYOT` em caixa alta (nunca colocar `NYOT` e `Not Your Ordinary Tracker` juntos na mesma frase).
+- **Capitalização de rótulos curtos e badges:** itens de menu, toggles e badges de status usam sempre **Title Case** (`Tema Claro`, `Tema Escuro`, `Atual`, `Ecossistema Numera`); sentenças e descrições auxiliares seguem frase normal em português.
+- **Ordem do `Ecossistema Numera`:** sempre **`Numera`** primeiro, seguido por **`Monno`**, **`Cronos`** e **`NYOT`**, todos na mesma linha tipográfica (`Figtree` `text-caption`), ícone `14×14px` e seta `ArrowUpRight` `13px`.
+- **Datas de cabeçalho:** sempre no formato natural sem `"-feira"` (`Terça, 24 de novembro` exibido em `.label-ui` caixa alta: `TERÇA, 24 DE NOVEMBRO`). Datas compactas em gráficos/badges usam forma curta (`24 de nov.` ou `24/11`).
 
 ---
 

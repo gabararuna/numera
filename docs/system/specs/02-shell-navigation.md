@@ -83,17 +83,19 @@ Ordem padrão de blocos em todos os apps:
 2. **Links secundários opcionais do app** (se houver, máximo 1–2): ex. no Monno, `Faturas` (`/app/faturas`).
 3. **Bloco padrão de Sistema (mesma ordem em todos os apps):**
    - `Ajustes` *(ícone `Settings`)*
-   - `Tema claro` / `Tema escuro` *(ícone `Sun` ou `Moon`, alterna o tema e fecha em 1 clique — sincroniza com perfil no backend quando suportado)*
+   - `Tema Claro` / `Tema Escuro` *(ícone `Sun` ou `Moon`, alterna o tema e fecha em 1 clique — sincroniza com perfil no backend quando suportado)*
    - `Administração` *(ícone `ShieldCheck`, exibido apenas quando `isAdmin === true`)*
 4. **Faixa `Ecossistema Numera`:**
    - Rótulo `.label-ui`: `Ecossistema Numera`
-   - Lista compacta com os símbolos `64x64` (`14px`) de **Monno**, **Cronos** e **NYOT**:
-     - O app corrente é exibido destacado sutilmente (`bg-ov/[0.06]`) com badge `atual`.
-     - Os apps irmãos abrem em nova aba (`target="_blank" rel="noopener noreferrer"`) apontando para `monno.gruponumera.com`, `cronos.gruponumera.com`, `nyot.gruponumera.com`.
-     - Rodapé discreto para o portal institucional `gruponumera.com` em `DM Mono`.
+   - Lista compacta e visualmente idêntica em ordem fixa: **`Numera`** -> **`Monno`** -> **`Cronos`** -> **`NYOT`**, usando sempre os símbolos `64x64` em **`14×14px`**, tipografia **`Figtree`** (`text-caption`, nunca `DM Mono`) e seta uniforme `ArrowUpRight size={13}` (`text-fg-3`):
+     - **`Numera`** é sempre o **primeiro** item, apontando em nova aba para `https://gruponumera.com` (ou marcado como **`Atual`** caso o próprio portal autenticado esteja em execução); proibido exibir domínio `gruponumera.com` em `DM Mono` ou tamanho reduzido no rodapé da lista.
+     - O app corrente é exibido destacado sutilmente (`bg-ov/[0.06] text-fg font-medium`) com badge **`Atual`** (Title Case).
+     - Os demais itens abrem em nova aba (`target="_blank" rel="noopener noreferrer"`) apontando para `gruponumera.com`, `monno.gruponumera.com`, `cronos.gruponumera.com`, `nyot.gruponumera.com`.
 5. **Divisor + `Sair`** (`LogOut`, `text-negative-fg`, altura `min-h-11`).
 
-**Comportamento de teclado e foco:**
+**Comportamento de teclado, foco e empilhamento (`backdrop-filter`):**
+- Todo `<header className="glass-bar ...">` deve declarar **`z-40` (`var(--z-bar)`)** explicitamente.
+- **Regra obrigatória de Portal:** como `.glass-bar`, `.glass-2` e `.glass-3` usam `backdrop-filter`, o CSS cria um novo *stacking context* e um *containing block* para descendentes `position: fixed`. Por isso, `AccountMenu` e qualquer dropdown/popover flutuante do topo **nunca** podem ser montados como filhos diretos dentro do `<header>` ou de containers `overflow-hidden`: precisam ser renderizados via `createPortal(..., document.body)` com `z-[60]` (`var(--z-dropdown)`), posicionados a partir de `triggerRef.current.getBoundingClientRect()` (`top: rect.bottom + 8`, `right: Math.max(12, window.innerWidth - rect.right)`).
 - Clicar fora fecha o menu.
 - `Escape` fecha o menu e devolve o foco para o botão trigger.
 

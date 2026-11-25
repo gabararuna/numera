@@ -231,6 +231,47 @@ export function EmptyState({
   );
 }
 
+const WEEKDAY_NATURAL_PT = [
+  'Domingo',
+  'Segunda',
+  'Terça',
+  'Quarta',
+  'Quinta',
+  'Sexta',
+  'Sábado',
+] as const;
+
+const MONTH_LOWER_PT = [
+  'janeiro',
+  'fevereiro',
+  'março',
+  'abril',
+  'maio',
+  'junho',
+  'julho',
+  'agosto',
+  'setembro',
+  'outubro',
+  'novembro',
+  'dezembro',
+] as const;
+
+/**
+ * Canonical header date formatter (`Terça, 24 de novembro` — rendered in `.label-ui` uppercase).
+ * Drops `-feira`, omits leading zeros on day, uses lowercase month name, and avoids UTC shift for ISO dates.
+ */
+export function formatHeaderDatePt(input: Date | string): string {
+  let date: Date;
+  if (typeof input === 'string') {
+    const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(input);
+    if (!match) return input;
+    date = new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3]), 12, 0, 0);
+  } else {
+    date = input;
+  }
+  return `${WEEKDAY_NATURAL_PT[date.getDay()]}, ${date.getDate()} de ${MONTH_LOWER_PT[date.getMonth()]}`;
+}
+
 export function Notice({
   tone,
   children,
